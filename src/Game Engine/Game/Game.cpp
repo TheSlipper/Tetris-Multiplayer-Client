@@ -1,6 +1,20 @@
 ////////////////////////////////////////////////////////////
-// Created by Kornel Domeradzki.
-// Copyright © 2018 Kornel Domeradzki. All rights reserved.
+/// Tetris Multiplayer Game - PvP Tetris Experience
+/// Copyright (C) 2019 Kornel Domeradzki
+///
+/// This program is free software; you can redistribute it and/or
+/// modify it under the terms of the GNU General Public License
+/// as published by the Free Software Foundation; either version 2
+/// of the License, or (at your option) any later version.
+///
+/// This program is distributed in the hope that it will be useful,
+/// but WITHOUT ANY WARRANTY; without even the implied warranty of
+/// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+/// GNU General Public License for more details.
+///
+/// You should have received a copy of the GNU General Public License
+/// along with this program; if not, write to the Free Software
+/// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
@@ -27,54 +41,12 @@ namespace ArktisEngine
     ////////////////////////////////////////////////////////////
     void Game::LoadGamesSettings(std::string settingsFilePath)
     {
-//        std::fstream fileReader(settingsFilePath, std::ios::in);
-//        unsigned short int settIterator = 0;  // 0 = width, 1 = height;
-//        std::string readLine;
-//        unsigned int width, height, master_vol, sfx_vol, music_vol;
-//
-//        if (!fileReader.good())
-//            exit(-255); // TODO: Show some info on no settings file
-//
-//        while(!fileReader.eof())
-//        {
-//            getline(fileReader, readLine);
-//            if (isdigit(readLine[0]) || isalpha(readLine[0]))
-//            {
-//                switch (settIterator)
-//                {
-//                    case 0:
-//                        width = std::stoi(readLine);
-//                        break;
-//                    case 1:
-//                        height = std::stoi(readLine);
-//                        break;
-//                    case 2:
-//                        master_vol = std::stoi(readLine);
-//                        break;
-//                    case 3:
-//                        sfx_vol = std::stoi(readLine);
-//                        break;
-//                    case 4:
-//                        music_vol = std::stoi(readLine);
-//                        break;
-//                    default:
-//                        break;
-//                }
-//                settIterator++;
-//            }
-//        }
-//        fileReader.clear();
-//        fileReader.close();
-//        this->_data->settings.width = width;
-//        this->_data->settings.height = height;
-//        this->_data->settings.master_vol = master_vol;
-//        this->_data->settings.sfx_vol = sfx_vol;
-//        this->_data->settings.music_vol = music_vol;
-                this->_data->settings.width = 1920;
-                this->_data->settings.height = 1080;
-                this->_data->settings.master_vol = 100;
-                this->_data->settings.sfx_vol = 100;
-                this->_data->settings.music_vol = 100;
+        // TODO: This function
+        this->_data->settings.width = 1920;
+        this->_data->settings.height = 1080;
+        this->_data->settings.master_vol = 100;
+        this->_data->settings.sfx_vol = 100;
+        this->_data->settings.music_vol = 100;
     }
     
     ////////////////////////////////////////////////////////////
