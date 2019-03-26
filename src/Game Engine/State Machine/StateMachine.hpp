@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////
-// Created by Kornel Domeradzki and Kamil Kwaśnik.
-// Copyright © 2018 Kornel Domeradzki and Kamil Kwaśnik. All rights reserved.
+// Created by Kornel Domeradzki.
+// Copyright © 2018 Kornel Domeradzki. All rights reserved.
 ////////////////////////////////////////////////////////////
 #pragma once
 

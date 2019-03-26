@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////
-// Created by Kornel Domeradzki and Kamil Kwaśnik.
-// Copyright © 2018 Kornel Domeradzki and Kamil Kwaśnik. All rights reserved.
+// Created by Kornel Domeradzki.
+// Copyright © 2018 Kornel Domeradzki. All rights reserved.
 ////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
@@ -23,6 +23,9 @@ namespace States
     ////////////////////////////////////////////////////////////
     void SplashState::Init()
     {
+        this->startTime = this->_data->gameClock.getElapsedTime().asSeconds();
+        this->_data->assets.LoadTexture(SPLASHSCREEN_NAME, SPLASHSCREEN_PATH);
+        this->logo = this->_data->assets.GetScaledSprite(SPLASHSCREEN_NAME, this->_data->settings.height, this->_data->settings.width);
     }
     
     ////////////////////////////////////////////////////////////
@@ -40,12 +43,17 @@ namespace States
     ////////////////////////////////////////////////////////////
     void SplashState::Update(float dt)
     {
+        float updatedTime = this->_data->gameClock.getElapsedTime().asSeconds();
+        if (updatedTime - this->startTime > 3.0)
+            exit(0);
     }
     
     ////////////////////////////////////////////////////////////
     void SplashState::Draw(float dt)
     {
         this->_data->window.clear(sf::Color::Red);
+        
+        this->_data->window.draw(this->logo);
         
         this->_data->window.display();
     }

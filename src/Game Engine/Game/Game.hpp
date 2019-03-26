@@ -12,8 +12,8 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include "../GameData/GameData.hpp"
-#include "../../DEFINITIONS.h"
-#include "../../Game States/Splash State/SplashState.cpp"
+#include "../../Definitions/METADATA_DEFINITIONS.h"
+#include "../../Game States/Splash State/SplashState.hpp"
 
 namespace ArktisEngine
 {

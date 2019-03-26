@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////
-// Created by Kornel Domeradzki and Kamil Kwaśnik.
-// Copyright © 2018 Kornel Domeradzki and Kamil Kwaśnik. All rights reserved.
+// Created by Kornel Domeradzki.
+// Copyright © 2018 Kornel Domeradzki. All rights reserved.
 ////////////////////////////////////////////////////////////
 #pragma once
 
@@ -8,10 +8,11 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
+#include <SFML/Network.hpp>
+#include <memory>
 #include "../State/State.hpp"
 #include "../../Game Engine/GameData/GameData.hpp"
-#include "../../DEFINITIONS.h"
+#include "../../Definitions/TEXTURE_DEFINITIONS.h"
 
 namespace States
 {
@@ -56,24 +57,10 @@ namespace States
         void Draw(float dt);
         
     private:
-        // TODO: Comments
-        // sf::Clock, sf::Text - Change to unique pointers
-        sf::Clock _clock;
+        float startTime;
         
-        sf::Text logoText;
-        
-        sf::Text pressToContinue;
-        
-        sf::SoundBuffer soundBuffer;
-        
-        std::unique_ptr<sf::Sound> _clickSound;
+        sf::Sprite logo;
         
         ArktisEngine::GameDataRef _data;
-        
-        float previousTimeStamp;
-        
-        bool previousWasWhite;
-        
-        bool wasItClicked;
     };
 }

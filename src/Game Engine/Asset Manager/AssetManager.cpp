@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////
-// Created by Kornel Domeradzki and Kamil Kwaśnik.
-// Copyright © 2018 Kornel Domeradzki and Kamil Kwaśnik. All rights reserved.
+// Created by Kornel Domeradzki.
+// Copyright © 2018 Kornel Domeradzki. All rights reserved.
 ////////////////////////////////////////////////////////////
 
 ////////////////////////////////////////////////////////////
@@ -40,6 +40,16 @@ namespace ArktisEngine
     sf::Texture &AssetManager::GetTexture(std::string name)
     {
         return this->textures.at(name);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    sf::Sprite& AssetManager::GetScaledSprite(std::string name, int height, int width)
+    {
+        sf::Sprite sprite;
+        sprite.setTexture(this->GetTexture(name));
+        sprite.setScale((width * 100.0 / 3840.0) * 0.01, (height * 100.0 / 2160.0) * 0.01);
+        
+        return sprite;
     }
     
     ////////////////////////////////////////////////////////////

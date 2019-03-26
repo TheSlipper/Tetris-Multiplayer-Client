@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////
-// Created by Kornel Domeradzki and Kamil Kwaśnik.
-// Copyright © 2018 Kornel Domeradzki and Kamil Kwaśnik. All rights reserved.
+// Created by Kornel Domeradzki.
+// Copyright © 2018 Kornel Domeradzki. All rights reserved.
 ////////////////////////////////////////////////////////////
 #pragma once
 
@@ -69,6 +69,15 @@ namespace ArktisEngine
         ///
         ////////////////////////////////////////////////////////////
         sf::Texture &GetTexture(std::string name);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Gets the reference to a scaled sf::Sprite object with
+        ///          the specified texture's name
+        ///
+        /// \param std::string name of the file
+        ///
+        ////////////////////////////////////////////////////////////
+        sf::Sprite& GetScaledSprite(std::string name, int height=1080, int width=1920);
         
         ////////////////////////////////////////////////////////////
         /// \brief Loads font to the fonts map
