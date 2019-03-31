@@ -21,100 +21,95 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <memory>
-#include "../State/State.hpp"
-#include "../../Game Engine/GameData/GameData.hpp"
-#include "../../Definitions/FONT_DEFINITIONS.h"
-#include "../../Definitions/TEXTURE_DEFINITIONS.h"
-#include "../../Game Objects/Button/Button.hpp"
-#include "../../Game Objects/Input Field/InputField.hpp"
+#include "../Rounded Rectangle Shape/RoundedRectangleShape.hpp"
+#include <SFML/System/String.hpp>
+#include <SFML/Graphics.hpp>
 
-namespace States
+namespace GameObjects
 {
-    class LoginState : public State
+    class Button : public sf::Drawable
     {
     public:
         ////////////////////////////////////////////////////////////
         /// \brief Default constructor
         ///
-        /// \param GameDataRef data pointer to the game's crucial data
+        /// \param label content of the button's label
+        ///
+        /// \param x x coordinate of the object
+        ///
+        /// \param y y coordinate of the object
+        ///
+        /// \param width width of the button
+        ///
+        /// \param height height of the button
         ///
         ////////////////////////////////////////////////////////////
-        LoginState(ArktisEngine::GameDataRef data);
+        Button(std::string label, float x=0.f, float y=0.f, float width=300.f, float height=50.f);
         
         ////////////////////////////////////////////////////////////
-        /// \brief Initialization of the state
+        /// \brief Button constructor
+        ///
+        /// \param font font to be used on the label
+        ///
+        /// \param label content of the button's label
+        ///
+        /// \param x x coordinate of the object
+        ///
+        /// \param y y coordinate of the object
+        ///
+        /// \param width width of the button
+        ///
+        /// \param height height of the button
         ///
         ////////////////////////////////////////////////////////////
-        void Init();
+        Button(sf::Font &font, std::string label, float x=0.f, float y=0.f, float width=300.f, float height=50.f);
         
         ////////////////////////////////////////////////////////////
-        /// \brief Handles scene-specific user input
+        /// \brief Sets the font for the label
+        ///
+        /// \param font
         ///
         ////////////////////////////////////////////////////////////
-        void HandleInput();
+        void SetFont(sf::Font &font);
         
         ////////////////////////////////////////////////////////////
-        /// \brief Updates the scene (call the animation or physics
-        ///         methods here)
+        /// \brief Gets the global bounds of the object
+        ///
+        /// \return sf::FloatRect global bounds
         ///
         ////////////////////////////////////////////////////////////
-        void Update(float dt);
+        sf::FloatRect GetGlobalBounds();
         
         ////////////////////////////////////////////////////////////
-        /// \brief Draws to the screen
+        /// \brief Gets the position of the object
+        ///
+        /// \return sf::Vector2f position
         ///
         ////////////////////////////////////////////////////////////
-        void Draw(float dt);
+        sf::Vector2f GetPosition();
+        
     private:
         ////////////////////////////////////////////////////////////
-        /// \brief Centers and positions the logo sprite
+        /// \brief Defines how an instance of this class should be drawn
+        ///
+        /// \param target target on which the object is going to be drawn
+        ///
+        /// \param states
         ///
         ////////////////////////////////////////////////////////////
-        void centerAndPositionLogo();
+        virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
         
         ////////////////////////////////////////////////////////////
-        /// \brief Centers the labels on the horizontal axis of the canvas
-        ///         and positions the labels
+        /// \brief Centers the text vertically
         ///
         ////////////////////////////////////////////////////////////
-        void centerAndPositionLabels();
-        
-        ////////////////////////////////////////////////////////////
-        /// \brief Sets up the login and password labels
-        ///
-        ////////////////////////////////////////////////////////////
-        void setUpLabels();
-        
-        ////////////////////////////////////////////////////////////
-        /// \brief Sets up the game logo
-        ///
-        ////////////////////////////////////////////////////////////
-        void setUpGameLogo();
-        
-        ////////////////////////////////////////////////////////////
-        /// \brief Sets up the login and password inputs
-        ///
-        ////////////////////////////////////////////////////////////
-        void setUpForm();
+        void centerTextVert();
         
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
-        const sf::Color BG_COLOR;
+        sf::Text buttonLabel; ///< Label of the button
         
-        sf::Sprite logo; ///< Logo of the game
-        
-        sf::Text loginLabel; ///< Login label
-        
-        sf::Text passwdLabel; ///< Password label
-        
-        std::unique_ptr<GameObjects::InputField> loginInput; ///< Login input field
-        
-        std::unique_ptr<GameObjects::InputField> passwordInput; ///< Password input field
-        
-        std::unique_ptr<GameObjects::Button> btn;
-        
-        ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
+        sf::RoundedRectangleShape rrs; ///< Outline of the button
     };
 }

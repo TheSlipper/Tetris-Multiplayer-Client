@@ -34,7 +34,8 @@ namespace States
     void SplashState::Init()
     {
         this->startTime = this->_data->gameClock.getElapsedTime().asSeconds();
-        this->_data->assets.LoadTexture(SPLASHSCREEN_NAME, SPLASHSCREEN_PATH);
+        if (!this->_data->assets.LoadTexture(SPLASHSCREEN_NAME, SPLASHSCREEN_PATH))
+            exit(ERROR_CODE_TEXTURE_NOT_LOADED);
         this->logo = this->_data->assets.GetScaledSprite(SPLASHSCREEN_NAME, this->_data->settings.height, this->_data->settings.width);
     }
     
@@ -55,7 +56,7 @@ namespace States
     {
         float updatedTime = this->_data->gameClock.getElapsedTime().asSeconds();
         if (updatedTime - this->startTime > 3.0)
-            exit(0);
+            this->_data->machine.AddState(ArktisEngine::StateRef(new LoginState(this->_data)), true);
     }
     
     ////////////////////////////////////////////////////////////

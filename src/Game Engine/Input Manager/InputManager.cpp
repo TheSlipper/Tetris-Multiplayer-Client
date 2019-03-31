@@ -53,6 +53,32 @@ namespace ArktisEngine
     }
     
     ////////////////////////////////////////////////////////////
+    bool InputManager::IsInputFieldClicked(GameObjects::InputField inputField, sf::Mouse::Button button, sf::RenderWindow &window)
+    {
+        if(sf::Mouse::isButtonPressed(button))
+        {
+            sf::IntRect ifRect(inputField.GetPosition().x, inputField.GetPosition().y, inputField.GetGlobalBounds().width, inputField.GetGlobalBounds().height);
+            if (ifRect.contains(sf::Mouse::getPosition(window)))
+                return true;
+        }
+        
+        return false;
+    }
+    
+    ////////////////////////////////////////////////////////////
+    bool InputManager::IsButtonClicked(GameObjects::Button btn, sf::Mouse::Button button, sf::RenderWindow &window)
+    {
+        if(sf::Mouse::isButtonPressed(button))
+        {
+            sf::IntRect btnRect(btn.GetPosition().x, btn.GetPosition().y, btn.GetGlobalBounds().width, btn.GetGlobalBounds().height);
+            if (btnRect.contains(sf::Mouse::getPosition(window)))
+                return true;
+        }
+        
+        return false;
+    }
+    
+    ////////////////////////////////////////////////////////////
     sf::Vector2i InputManager::GetMousePosition(sf::RenderWindow &window)
     {
         return sf::Mouse::getPosition(window);

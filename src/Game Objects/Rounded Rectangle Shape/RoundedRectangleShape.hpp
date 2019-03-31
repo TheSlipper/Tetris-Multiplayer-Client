@@ -21,100 +21,106 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <memory>
-#include "../State/State.hpp"
-#include "../../Game Engine/GameData/GameData.hpp"
-#include "../../Definitions/FONT_DEFINITIONS.h"
-#include "../../Definitions/TEXTURE_DEFINITIONS.h"
-#include "../../Game Objects/Button/Button.hpp"
-#include "../../Game Objects/Input Field/InputField.hpp"
+#include <SFML/Graphics/Shape.hpp>
+#include <cmath>
 
-namespace States
+namespace sf
 {
-    class LoginState : public State
+    ////////////////////////////////////////////////////////////
+    /// \brief Specialized shape representing a rectangle
+    /// with rounded corners
+    ////////////////////////////////////////////////////////////
+    class RoundedRectangleShape : public sf::Shape
     {
     public:
         ////////////////////////////////////////////////////////////
         /// \brief Default constructor
         ///
-        /// \param GameDataRef data pointer to the game's crucial data
+        /// \param size Size of the rectangle
+        /// \param radius Radius for each rounded corner
+        /// \param pointCount Number of points of each corner
         ///
         ////////////////////////////////////////////////////////////
-        LoginState(ArktisEngine::GameDataRef data);
+        explicit RoundedRectangleShape(const Vector2f& size = Vector2f(0, 0), float radius = 0, unsigned int cornerPointCount = 0);
         
         ////////////////////////////////////////////////////////////
-        /// \brief Initialization of the state
+        /// \brief Set the size of the rounded rectangle
+        ///
+        /// \param size New size of the rounded rectangle
+        ///
+        /// \see GetSize
         ///
         ////////////////////////////////////////////////////////////
-        void Init();
+        void setSize(const Vector2f& size);
         
         ////////////////////////////////////////////////////////////
-        /// \brief Handles scene-specific user input
+        /// \brief Get the size of the rounded rectangle
+        ///
+        /// \return Size of the rounded rectangle
+        ///
+        /// \see SetSize
         ///
         ////////////////////////////////////////////////////////////
-        void HandleInput();
+        const Vector2f& getSize() const;
         
         ////////////////////////////////////////////////////////////
-        /// \brief Updates the scene (call the animation or physics
-        ///         methods here)
+        /// \brief Set the radius of the rounded corners
+        ///
+        /// \param Radius of the rounded corners
+        ///
+        /// \see GetRadius
         ///
         ////////////////////////////////////////////////////////////
-        void Update(float dt);
+        void setCornersRadius(float radius);
         
         ////////////////////////////////////////////////////////////
-        /// \brief Draws to the screen
+        /// \brief Get the radius of the rounded corners
+        ///
+        /// \return Radius of the rounded corners
+        ///
+        /// \see SetRadius
         ///
         ////////////////////////////////////////////////////////////
-        void Draw(float dt);
+        const float getCornersRadius() const;
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Set the number of points of each corner
+        ///
+        /// \param count New number of points of the rounded rectangle
+        ///
+        /// \see GetPointCount
+        ///
+        ////////////////////////////////////////////////////////////
+        void setCornerPointCount(unsigned int count);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Get the number of points defining the rounded rectangle
+        ///
+        /// \return Number of points of the rounded rectangle
+        ///
+        ////////////////////////////////////////////////////////////
+        virtual std::size_t getPointCount() const;
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Get a point of the rounded rectangle
+        ///
+        /// The result is undefined if \a index is out of the valid range.
+        ///
+        /// \param index Index of the point to get, in range [0 .. GetPointCount() - 1]
+        ///
+        /// \return Index-th point of the shape
+        ///
+        ////////////////////////////////////////////////////////////
+        virtual sf::Vector2f getPoint(std::size_t index) const;
+        
     private:
-        ////////////////////////////////////////////////////////////
-        /// \brief Centers and positions the logo sprite
-        ///
-        ////////////////////////////////////////////////////////////
-        void centerAndPositionLogo();
-        
-        ////////////////////////////////////////////////////////////
-        /// \brief Centers the labels on the horizontal axis of the canvas
-        ///         and positions the labels
-        ///
-        ////////////////////////////////////////////////////////////
-        void centerAndPositionLabels();
-        
-        ////////////////////////////////////////////////////////////
-        /// \brief Sets up the login and password labels
-        ///
-        ////////////////////////////////////////////////////////////
-        void setUpLabels();
-        
-        ////////////////////////////////////////////////////////////
-        /// \brief Sets up the game logo
-        ///
-        ////////////////////////////////////////////////////////////
-        void setUpGameLogo();
-        
-        ////////////////////////////////////////////////////////////
-        /// \brief Sets up the login and password inputs
-        ///
-        ////////////////////////////////////////////////////////////
-        void setUpForm();
-        
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
-        const sf::Color BG_COLOR;
+        Vector2f mySize;    ///< Size of the object
         
-        sf::Sprite logo; ///< Logo of the game
+        float myRadius; ///< Radius of the object's corners
         
-        sf::Text loginLabel; ///< Login label
-        
-        sf::Text passwdLabel; ///< Password label
-        
-        std::unique_ptr<GameObjects::InputField> loginInput; ///< Login input field
-        
-        std::unique_ptr<GameObjects::InputField> passwordInput; ///< Password input field
-        
-        std::unique_ptr<GameObjects::Button> btn;
-        
-        ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
+        unsigned int myCornerPointCount;    ///< Determines the number of the corners
     };
 }

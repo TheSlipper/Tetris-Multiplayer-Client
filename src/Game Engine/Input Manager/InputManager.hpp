@@ -22,6 +22,8 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics.hpp>
+#include "../../Game Objects/Input Field/InputField.hpp"
+#include "../../Game Objects/Button/Button.hpp"
 
 namespace ArktisEngine
 {
@@ -60,14 +62,38 @@ namespace ArktisEngine
         ////////////////////////////////////////////////////////////
         /// \brief Checks if a given text was clicked
         ///
-        /// \param sf::Text object object that could be clicked
+        /// \param object object that could be clicked
         ///
-        /// \param sf::Mouse::Button button
+        /// \param button
         ///
-        /// \param sf::RenderWindow &window reference to the window
+        /// \param &window reference to the window
         ///
         ////////////////////////////////////////////////////////////
         bool IsTextClicked(sf::Text object, sf::Mouse::Button button, sf::RenderWindow &window);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Checks if an input field was clicked
+        ///
+        /// \param inputField
+        ///
+        /// \param button
+        ///
+        /// \param &window reference to the window
+        ///
+        ////////////////////////////////////////////////////////////
+        bool IsInputFieldClicked(GameObjects::InputField inputField, sf::Mouse::Button button, sf::RenderWindow &window);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Checks if an input field was clicked
+        ///
+        /// \param btn UI button
+        ///
+        /// \param button
+        ///
+        /// \param &window reference to the window
+        ///
+        ////////////////////////////////////////////////////////////
+        bool IsButtonClicked(GameObjects::Button btn, sf::Mouse::Button button, sf::RenderWindow &window);
         
         ////////////////////////////////////////////////////////////
         /// \brief Returns the position of the mouse in relation to

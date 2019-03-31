@@ -19,12 +19,8 @@
 #pragma once
 
 /// Errors
-#define ERROR_CODE_TEXTURE_NOT_LOADED -200
+#define ERROR_CODE_FONT_NOT_LOADED -200
 
-/// Splash State
-#define SPLASHSCREEN_PATH "Resources/Splash Screen/SplashScreenLogo.png"
-#define SPLASHSCREEN_NAME "Splash Screen Logo"
-
-/// Login State
-#define TETRISMP_LOGO_PATH "Resources/Game Logo/Tetris Multiplayer Logo.png"
-#define TETRISMP_LOGO_NAME "Tetris Multiplayer Logo"
+/// Default UI Font
+#define UI_FONT_PATH "Resources/Fonts/Roboto/Roboto-Regular.ttf"
+#define UI_FONT_NAME "Regular UI font"

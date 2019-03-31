@@ -54,7 +54,7 @@ namespace ArktisEngine
         /// \param std::string filePath relative path to the file
         ///
         ////////////////////////////////////////////////////////////
-        void LoadTexture(std::string name, std::string filePath);
+        bool LoadTexture(std::string name, std::string filePath);
         
         ////////////////////////////////////////////////////////////
         /// \brief Loads texture to the textures map
@@ -64,7 +64,7 @@ namespace ArktisEngine
         /// \param std::string filePath relative path to the file
         ///
         ////////////////////////////////////////////////////////////
-        void LoadRepetitiveTexture(std::string name, std::string filePath);
+        bool LoadRepetitiveTexture(std::string name, std::string filePath);
         
         ////////////////////////////////////////////////////////////
         /// \brief Removes the texture from the textures map
@@ -101,7 +101,7 @@ namespace ArktisEngine
         /// \param std::string filePath relative path to the file
         ///
         ////////////////////////////////////////////////////////////
-        void LoadFont(std::string name, std::string filePath);
+        bool LoadFont(std::string name, std::string filePath);
         
         ////////////////////////////////////////////////////////////
         /// \brief Removes the font from the textures map
@@ -129,7 +129,7 @@ namespace ArktisEngine
         /// \param std::string filePath relative path to the file
         ///
         ////////////////////////////////////////////////////////////
-        void LoadSoundBuffer(std::string name, std::string filePath);
+        bool LoadSoundBuffer(std::string name, std::string filePath);
         
         ////////////////////////////////////////////////////////////
         /// \brief Removes the sound buffer from the textures map

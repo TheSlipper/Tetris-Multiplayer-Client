@@ -25,23 +25,32 @@
 namespace ArktisEngine
 {
     ////////////////////////////////////////////////////////////
-    void AssetManager::LoadTexture(std::string name, std::string filePath)
+    bool AssetManager::LoadTexture(std::string name, std::string filePath)
     {
         sf::Texture tex;
         
         if (tex.loadFromFile(filePath))
+        {
             this->textures[name] = tex;
+            return true;
+        }
+        
+        return false;
     }
     
     ////////////////////////////////////////////////////////////
-    void AssetManager::LoadRepetitiveTexture(std::string name, std::string filePath)
+    bool AssetManager::LoadRepetitiveTexture(std::string name, std::string filePath)
     {
         sf::Texture tex;
         
-        if (tex.loadFromFile(filePath)) {
+        if (tex.loadFromFile(filePath))
+        {
             tex.setRepeated(true);
             this->textures[name] = tex;
+            return true;
         }
+        
+        return false;
     }
     
     ////////////////////////////////////////////////////////////
@@ -67,14 +76,17 @@ namespace ArktisEngine
     }
     
     ////////////////////////////////////////////////////////////
-    void AssetManager::LoadFont(std::string name, std::string filePath)
+    bool AssetManager::LoadFont(std::string name, std::string filePath)
     {
         sf::Font font;
         
         if (font.loadFromFile(filePath))
         {
             this->fonts[name] = font;
+            return true;
         }
+        
+        return false;
     }
     
     ////////////////////////////////////////////////////////////
@@ -90,14 +102,17 @@ namespace ArktisEngine
     }
     
     ////////////////////////////////////////////////////////////
-    void AssetManager::LoadSoundBuffer(std::string name, std::string filePath)
+    bool AssetManager::LoadSoundBuffer(std::string name, std::string filePath)
     {
         sf::SoundBuffer sndb;
         
         if (sndb.loadFromFile(filePath))
         {
             this->soundBuffers[name] = sndb;
+            return true;
         }
+        
+        return false;
     }
     
     ////////////////////////////////////////////////////////////

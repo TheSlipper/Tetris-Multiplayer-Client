@@ -27,6 +27,7 @@
 #include "../State/State.hpp"
 #include "../../Game Engine/GameData/GameData.hpp"
 #include "../../Definitions/TEXTURE_DEFINITIONS.h"
+#include "../Login State/LoginState.hpp"
 
 namespace States
 {
@@ -71,10 +72,13 @@ namespace States
         void Draw(float dt);
         
     private:
-        float startTime;
+        ////////////////////////////////////////////////////////////
+        // Member data
+        ////////////////////////////////////////////////////////////
+        float startTime; ///< Time at which the state was created
         
-        sf::Sprite logo;
+        sf::Sprite logo; ///< Logo of the company
         
-        ArktisEngine::GameDataRef _data;
+        ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };
 }
