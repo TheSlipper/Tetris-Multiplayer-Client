@@ -22,12 +22,11 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics.hpp>
-#include <SFML/Network.hpp>
 #include <memory>
-#include "../State/State.hpp"
-#include "../../Game Engine/GameData/GameData.hpp"
 #include "../../Definitions/TEXTURE_DEFINITIONS.h"
-#include "../Login State/LoginState.hpp"
+#include "../../Definitions/FONT_DEFINITIONS.h"
+#include "../../Game Engine/GameData/GameData.hpp"
+#include "../../Game Objects/Button/Button.hpp"
 #include "../../Game Engine/Misc Utils/MiscUtils.hpp"
 
 namespace States
@@ -36,7 +35,7 @@ namespace States
     /// \brief Splash State
     ///
     ////////////////////////////////////////////////////////////
-    class SplashState : public State
+    class HomeScreenState : public State
     {
     public:
         ////////////////////////////////////////////////////////////
@@ -45,7 +44,7 @@ namespace States
         /// \param GameDataRef data pointer to the game's crucial data
         ///
         ////////////////////////////////////////////////////////////
-        SplashState(ArktisEngine::GameDataRef data);
+        HomeScreenState(ArktisEngine::GameDataRef data);
         
         ////////////////////////////////////////////////////////////
         /// \brief Initialization of the state
@@ -74,11 +73,57 @@ namespace States
         
     private:
         ////////////////////////////////////////////////////////////
+        /// \brief Sets up the play buttons
+        ///
+        ////////////////////////////////////////////////////////////
+        void setUpPlayButtons();
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Sets up the account HUD
+        ///
+        ////////////////////////////////////////////////////////////
+        void setUpAccHUD();
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Sets up the news section
+        ///
+        ////////////////////////////////////////////////////////////
+        void setUpNewsSection();
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Loads the avatar textures to the asset manager
+        ///
+        ////////////////////////////////////////////////////////////
+        void loadAvatarTextures();
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Loads articles for the game from the database
+        ///
+        ////////////////////////////////////////////////////////////
+        void loadArticles();
+        
+        ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
-        float startTime; ///< Time at which the state was created
+        sf::RoundedRectangleShape newsOutline; ///< Outline of the news section
         
-        sf::Sprite logo; ///< Logo of the company
+        std::vector<sf::Text> articleHeaders; ///< Headers of the articles
+        
+        std::vector<sf::Text> articleContent; ///< Content of the articles
+        
+        std::unique_ptr<GameObjects::Button> _playNormal; ///< Play normal game box
+        
+        std::unique_ptr<GameObjects::Button> _playRanked; ///< Play ranked game box
+        
+        std::unique_ptr<GameObjects::Button> _nicknameBox; ///< User's nickname box
+        
+        std::unique_ptr<GameObjects::Button> _blocksBox; ///< User's block points box
+        
+        sf::Sprite gameLogo; ///< Game's logo
+        
+        sf::Sprite avatar; ///< User avatar
+        
+        sf::Sprite bgStylizedImage; ///< Stylized background image
         
         ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };

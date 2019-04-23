@@ -73,6 +73,65 @@ namespace GameObjects
         void SetFont(sf::Font &font);
         
         ////////////////////////////////////////////////////////////
+        /// \brief Sets the rounded rectangle shape's fill color
+        ///
+        /// \param clr color used on the rounded rectangle shape
+        ///
+        ////////////////////////////////////////////////////////////
+        void SetRrsFillColor(sf::Color clr);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Sets the rounded rectangle shape's outline color
+        ///
+        /// \param clr color used on the rounded rectangle shape's
+        ///         outline
+        ///
+        ////////////////////////////////////////////////////////////
+        void SetRrsOutlineColor(sf::Color clr);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Sets the fill color of the text
+        ///
+        /// \param clr color used on the text
+        ///
+        ////////////////////////////////////////////////////////////
+        void SetTextFillColor(sf::Color clr);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Sets the outline color of the text
+        ///
+        /// \param clr color used on the outline of the text
+        ///
+        ////////////////////////////////////////////////////////////
+        void SetTextOutlineColor(sf::Color clr);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Sets the position of the object
+        ///
+        /// \param vect new coordinates of the object
+        ///
+        ////////////////////////////////////////////////////////////
+        void SetPosition(sf::Vector2f vect);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Sets the position of the object
+        ///
+        /// \param x new x coordinate of the object
+        ///
+        /// \param y new y coordinate of the object
+        ///
+        ////////////////////////////////////////////////////////////
+        void SetPosition(float x, float y);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Sets the dimensions of the object
+        ///
+        /// \brief vect new dimensions of the object
+        ///
+        ////////////////////////////////////////////////////////////
+        void SetSize(sf::Vector2f vect);
+        
+        ////////////////////////////////////////////////////////////
         /// \brief Gets the global bounds of the object
         ///
         /// \return sf::FloatRect global bounds
@@ -87,6 +146,14 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         sf::Vector2f GetPosition();
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Gets the position of the center of the object
+        ///
+        /// \return sf::Vector2f center position
+        ///
+        ////////////////////////////////////////////////////////////
+        sf::Vector2f GetCenterCoord();
         
     private:
         ////////////////////////////////////////////////////////////

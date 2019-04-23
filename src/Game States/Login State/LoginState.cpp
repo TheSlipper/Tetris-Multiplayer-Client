@@ -22,6 +22,9 @@
 ////////////////////////////////////////////////////////////
 #include "LoginState.hpp"
 
+// TODO: Delete
+#include <iostream>
+
 namespace States
 {
     ////////////////////////////////////////////////////////////
@@ -37,6 +40,10 @@ namespace States
             exit(ERROR_CODE_FONT_NOT_LOADED);
         
         // Set up the state
+        this->_data->socket.connect(SERVER_IP, SERVER_PORT);
+        this->_data->listener.listen(GAME_PORT);
+        this->_data->listener.setBlocking(false);
+        this->_data->listener.accept(this->_data->socket);
         this->setUpGameLogo();
         this->centerAndPositionLogo();
         this->setUpLabels();
@@ -55,16 +62,23 @@ namespace States
                 this->_data->window.close();
             else if (sf::Event::MouseButtonPressed == event.type)
             {
-                this->passwordInput->SetFocus(false);
-                this->loginInput->SetFocus(false);
+                this->_passwordInput->SetFocus(false);
+                this->_loginInput->SetFocus(false);
                 
-                if (this->_data->input.IsInputFieldClicked(*this->loginInput, sf::Mouse::Left, this->_data->window))
-                    this->loginInput->SwitchFocusState();
-                else if (this->_data->input.IsInputFieldClicked(*this->passwordInput, sf::Mouse::Left, this->_data->window))
-                    this->passwordInput->SwitchFocusState();
-                else if (this->_data->input.IsButtonClicked(*this->btn, sf::Mouse::Left, this->_data->window))
+                if (this->_data->input.IsInputFieldClicked(*this->_loginInput, sf::Mouse::Left, this->_data->window))
+                    this->_loginInput->SwitchFocusState();
+                else if (this->_data->input.IsInputFieldClicked(*this->_passwordInput, sf::Mouse::Left, this->_data->window))
+                    this->_passwordInput->SwitchFocusState();
+                else if (this->_data->input.IsButtonClicked(*this->_loginButton, sf::Mouse::Left, this->_data->window))
                 {
-                    // TODO: New state
+                    std::string strLoginData = "LOGIN " + this->_loginInput->GetStdString() + " " + this->passwd;
+                    char buffer[500];
+                    std::size_t rec = 0;
+                    char *loginData = strdup(strLoginData.c_str());
+                    this->_data->socket.send(loginData, strlen(loginData));
+                    this->_data->socket.receive(buffer, sizeof(buffer), rec);
+                    std::cout << "Data received: " << buffer << std::endl;
+                    this->_data->machine.AddState((ArktisEngine::StateRef)new HomeScreenState(this->_data));
                 }
             }
             else if (sf::Event::TextEntered == event.type)
@@ -72,20 +86,38 @@ namespace States
                 char inputCharacter = static_cast<char>(event.text.unicode);
                 if (inputCharacter == (char)8)
                 {
-                    if (this->loginInput->HasFocus())
-                        this->loginInput->RemoveLastContentChar();
-                    else if (this->passwordInput->HasFocus())
-                        this->passwordInput->RemoveLastContentChar();
+                    // Backspace
+                    if (this->_loginInput->HasFocus())
+                        this->_loginInput->RemoveLastContentChar();
+                    else if (this->_passwordInput->HasFocus())
+                    {
+                        this->passwd.pop_back();
+                        this->_passwordInput->RemoveLastContentChar();
+                    }
                 }
                 else if (inputCharacter == (char)9)
                 {
+                    // Tab
+                    if (this->_loginInput->HasFocus())
+                    {
+                        this->_loginInput->SwitchFocusState();
+                        this->_passwordInput->SetFocus(true);
+                    }
+                    else
+                    {
+                        this->_loginInput->SetFocus(true);
+                        this->_passwordInput->SwitchFocusState();
+                    }
                 }
                 else
                 {
-                    if (this->loginInput->HasFocus())
-                        this->loginInput->AppendCharacter(inputCharacter);
-                    else if (this->passwordInput->HasFocus())
-                        this->passwordInput->AppendCharacter(inputCharacter);
+                    if (this->_loginInput->HasFocus())
+                        this->_loginInput->AppendCharacter(inputCharacter);
+                    else if (this->_passwordInput->HasFocus())
+                    {
+                        this->passwd += inputCharacter;
+                        this->_passwordInput->AppendCharacter('*');
+                    }
                 }
             }
         }
@@ -94,8 +126,8 @@ namespace States
     ////////////////////////////////////////////////////////////
     void LoginState::Update(float dt)
     {
-        this->loginInput->ProcessFocusAnimation();
-        this->passwordInput->ProcessFocusAnimation();
+        this->_loginInput->ProcessFocusAnimation();
+        this->_passwordInput->ProcessFocusAnimation();
     }
     
     ////////////////////////////////////////////////////////////
@@ -107,13 +139,13 @@ namespace States
         
         this->_data->window.draw(this->loginLabel);
         
-        this->_data->window.draw(*this->loginInput);
+        this->_data->window.draw(*this->_loginInput);
         
         this->_data->window.draw(this->passwdLabel);
         
-        this->_data->window.draw(*this->passwordInput);
+        this->_data->window.draw(*this->_passwordInput);
         
-        this->_data->window.draw(*this->btn);
+        this->_data->window.draw(*this->_loginButton);
         
         this->_data->window.display();
     }
@@ -129,9 +161,13 @@ namespace States
     ////////////////////////////////////////////////////////////
     void LoginState::centerAndPositionLabels()
     {
-        sf::FloatRect localRect = this->logo.getGlobalBounds();
-        this->loginLabel.setPosition(localRect.left - (5.0f * this->_data->settings.width / 100.0f),
-                                     localRect.height + localRect.top + (5.0f * this->_data->settings.height / 100.0f));
+//        sf::FloatRect localRect = this->logo.getGlobalBounds();
+        sf::FloatRect localRect;
+        localRect.width = this->_data->settings.width;
+        localRect.height = this->_data->settings.height;
+//        this->loginLabel.setPosition(localRect.left - (5.0f * this->_data->settings.width / 100.0f),
+//                                     localRect.height + localRect.top + (5.0f * this->_data->settings.height / 100.0f));
+        this->loginLabel.setPosition(localRect.width/2.75f, localRect.height - (localRect.height * 30.f / 100.f));
         localRect = this->loginLabel.getGlobalBounds();
         this->passwdLabel.setPosition(localRect.left, localRect.height + localRect.top + (4.0f * this->_data->settings.height / 100.0f));
     }
@@ -155,27 +191,27 @@ namespace States
     {
         if (!this->_data->assets.LoadTexture(TETRISMP_LOGO_NAME, TETRISMP_LOGO_PATH))
             exit(ERROR_CODE_TEXTURE_NOT_LOADED);
-        this->logo = this->_data->assets.GetScaledSprite(TETRISMP_LOGO_NAME); // TODO: Check if scaled sprite works for everything
+        // this->logo = this->_data->assets.GetScaledSprite(TETRISMP_LOGO_NAME); // TODO: Check if scaled sprite works for everything
+        this->logo.setTexture(this->_data->assets.GetTexture(TETRISMP_LOGO_NAME));
     }
     
     ////////////////////////////////////////////////////////////
     void LoginState::setUpForm()
     {
-        this->loginInput = std::make_unique<GameObjects::InputField>(this->_data->gameClock);
-        this->passwordInput = std::make_unique<GameObjects::InputField>(this->_data->gameClock);
+        this->_loginInput = std::make_unique<GameObjects::InputField>(this->_data->gameClock);
+        this->_passwordInput = std::make_unique<GameObjects::InputField>(this->_data->gameClock);
         
         sf::FloatRect localRect = this->passwdLabel.getGlobalBounds();
-        this->passwordInput->SetPosition(localRect.left + localRect.width + (this->_data->settings.width * 2.5f / 100.0f),
+        this->_passwordInput->SetPosition(localRect.left + localRect.width + (this->_data->settings.width * 2.5f / 100.0f),
                                         localRect.top - (this->_data->settings.height * 1.0f / 100.0f));
-        this->passwordInput->SetFont(this->_data->assets.GetFont(UI_FONT_NAME));
+        this->_passwordInput->SetFont(this->_data->assets.GetFont(UI_FONT_NAME));
         
-        this->btn = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME), "Log in", localRect.left, localRect.top + localRect.width + 10.0f);
+        this->_loginButton = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME), "Log in", this->passwdLabel.getGlobalBounds().left + localRect.width/2.f, localRect.top + (localRect.width/2.f) + 10.0f);
         
         localRect = this->loginLabel.getGlobalBounds();
-        this->loginInput->SetPosition(20.0f, 20.0f);
-        this->loginInput->SetPosition(localRect.left + localRect.width + (this->_data->settings.width * 5.6f / 100.0f),
+        this->_loginInput->SetPosition(localRect.left + localRect.width + (this->_data->settings.width * 5.6f / 100.0f),
                                         localRect.top - (this->_data->settings.height * 1.0f / 100.0f));
-        this->loginInput->SetFont(this->_data->assets.GetFont(UI_FONT_NAME));
-        this->loginInput->SetFocus(true);
+        this->_loginInput->SetFont(this->_data->assets.GetFont(UI_FONT_NAME));
+        this->_loginInput->SetFocus(true);
     }
 }

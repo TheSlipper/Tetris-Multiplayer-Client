@@ -60,14 +60,70 @@ namespace GameObjects
     }
     
     ////////////////////////////////////////////////////////////
+    void Button::SetRrsFillColor(sf::Color clr)
+    {
+        this->rrs.setFillColor(clr);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void Button::SetRrsOutlineColor(sf::Color clr)
+    {
+        this->rrs.setOutlineColor(clr);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void Button::SetTextFillColor(sf::Color clr)
+    {
+        this->buttonLabel.setFillColor(clr);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void Button::SetTextOutlineColor(sf::Color clr)
+    {
+        this->buttonLabel.setOutlineColor(clr);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void Button::SetPosition(sf::Vector2f vect)
+    {
+        this->rrs.setPosition(vect);
+        this->buttonLabel.setPosition(vect);
+        this->centerTextVert();
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void Button::SetPosition(float x, float y)
+    {
+        this->SetPosition(sf::Vector2f(x, y));
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void Button::SetSize(sf::Vector2f vect)
+    {
+        this->rrs.setSize(vect);
+        this->centerTextVert();
+    }
+    
+    ////////////////////////////////////////////////////////////
     sf::FloatRect Button::GetGlobalBounds()
     {
         return this->rrs.getGlobalBounds();
     }
     
+    ////////////////////////////////////////////////////////////
     sf::Vector2f Button::GetPosition()
     {
         return this->rrs.getPosition();
+    }
+    
+    ////////////////////////////////////////////////////////////
+    sf::Vector2f Button::GetCenterCoord()
+    {
+        sf::Vector2f vect;
+        auto rrsBounds = this->rrs.getGlobalBounds();
+        vect.x = rrsBounds.left + (rrsBounds.width/2.f);
+        vect.y = rrsBounds.top + (rrsBounds.height/2.f);
+        return vect;
     }
     
     ////////////////////////////////////////////////////////////
@@ -83,6 +139,7 @@ namespace GameObjects
         sf::FloatRect textBounds = this->buttonLabel.getGlobalBounds();
         sf::FloatRect rrsBounds = this->rrs.getGlobalBounds();
         
+        this->buttonLabel.setOrigin(0.0f, 0.0f);
         this->buttonLabel.setOrigin(textBounds.width/2.0f, textBounds.height/2.0f);
         this->buttonLabel.setPosition(rrsBounds.left + rrsBounds.width/2.0f, rrsBounds.top + rrsBounds.height/2.75f);
     }

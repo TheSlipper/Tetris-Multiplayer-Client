@@ -16,43 +16,25 @@
 /// along with this program; if not, write to the Free Software
 /// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ////////////////////////////////////////////////////////////
-#pragma once
 
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include "../State Machine/StateMachine.hpp"
-#include "../Asset Manager/AssetManager.hpp"
-#include "../Input Manager/InputManager.hpp"
-#include <SFML/Network.hpp>
+#include "MiscUtils.hpp"
 
 namespace ArktisEngine
 {
     ////////////////////////////////////////////////////////////
-    /// \brief Contains all of the important game settings
-    ///
-    ////////////////////////////////////////////////////////////
-    struct GameSettings
+    void ScaleSprToDims(sf::Sprite& spr, float &width, float &height)
     {
-        float width, height;
-        float master_vol, sfx_vol, music_vol;
-    };
+        sf::FloatRect bounds = spr.getGlobalBounds();
+        spr.setScale((width * 100.0 / bounds.width) * 0.01, (height * 100.0 / bounds.height) * 0.01);
+    }
     
     ////////////////////////////////////////////////////////////
-    /// \brief Contains the game essentials
-    ///
-    ////////////////////////////////////////////////////////////
-    struct GameData
+    void ScaleSprToDims(sf::Sprite& spr, sf::Vector2f& vect)
     {
-        StateMachine machine;
-        sf::RenderWindow window;
-        sf::Clock gameClock;
-        sf::TcpSocket socket;
-        sf::TcpListener listener;
-        AssetManager assets;
-        InputManager input;
-        GameSettings settings;
-    };
-    
-    typedef std::shared_ptr<GameData> GameDataRef;  ///< Definition of shared pointer to the GameData struct
+        sf::FloatRect bounds = spr.getGlobalBounds();
+        spr.setScale((vect.x * 100.0 / bounds.width) * 0.01, (vect.y * 100.0 / bounds.height) * 0.01);
+    }
 }

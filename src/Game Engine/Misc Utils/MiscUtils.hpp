@@ -21,38 +21,29 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include "../State Machine/StateMachine.hpp"
-#include "../Asset Manager/AssetManager.hpp"
-#include "../Input Manager/InputManager.hpp"
-#include <SFML/Network.hpp>
+#include <SFML/Graphics.hpp>
 
 namespace ArktisEngine
 {
     ////////////////////////////////////////////////////////////
-    /// \brief Contains all of the important game settings
+    /// \brief Scales the sprite to the given width and height
+    ///
+    /// \param spr sprite
+    ///
+    /// \param width new width of the sprite
+    ///
+    /// \param height new height of the sprite
     ///
     ////////////////////////////////////////////////////////////
-    struct GameSettings
-    {
-        float width, height;
-        float master_vol, sfx_vol, music_vol;
-    };
+    void ScaleSprToDims(sf::Sprite& spr, float &width, float &height);
     
     ////////////////////////////////////////////////////////////
-    /// \brief Contains the game essentials
+    /// \brief Scales the sprite to the given width and height
+    ///
+    /// \param spr sprite
+    ///
+    /// \param vect vector with dimensions
     ///
     ////////////////////////////////////////////////////////////
-    struct GameData
-    {
-        StateMachine machine;
-        sf::RenderWindow window;
-        sf::Clock gameClock;
-        sf::TcpSocket socket;
-        sf::TcpListener listener;
-        AssetManager assets;
-        InputManager input;
-        GameSettings settings;
-    };
-    
-    typedef std::shared_ptr<GameData> GameDataRef;  ///< Definition of shared pointer to the GameData struct
+    void ScaleSprToDims(sf::Sprite& spr, sf::Vector2f& vect);
 }

@@ -104,6 +104,22 @@ namespace GameObjects
         void SetFont(sf::Font& font);
         
         ////////////////////////////////////////////////////////////
+        /// \brief Gets the char* of the input
+        ///
+        /// \returns input's C string
+        ///
+        ////////////////////////////////////////////////////////////
+        char* GetCString();
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Gets the std::string of the input
+        ///
+        /// \returns input's std::string
+        ///
+        ////////////////////////////////////////////////////////////
+        std::string GetStdString();
+        
+        ////////////////////////////////////////////////////////////
         /// \brief Sets the focus of the input object
         ///
         /// \param focus focus of the object

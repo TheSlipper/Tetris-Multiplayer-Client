@@ -24,10 +24,12 @@
 #include <memory>
 #include "../State/State.hpp"
 #include "../../Game Engine/GameData/GameData.hpp"
+#include "../../Definitions/METADATA_DEFINITIONS.h"
 #include "../../Definitions/FONT_DEFINITIONS.h"
 #include "../../Definitions/TEXTURE_DEFINITIONS.h"
 #include "../../Game Objects/Button/Button.hpp"
 #include "../../Game Objects/Input Field/InputField.hpp"
+#include "../Home Screen State/HomeScreenState.hpp"
 
 namespace States
 {
@@ -109,11 +111,13 @@ namespace States
         
         sf::Text passwdLabel; ///< Password label
         
-        std::unique_ptr<GameObjects::InputField> loginInput; ///< Login input field
+        std::string passwd = "";
         
-        std::unique_ptr<GameObjects::InputField> passwordInput; ///< Password input field
+        std::unique_ptr<GameObjects::InputField> _loginInput; ///< Login input field
         
-        std::unique_ptr<GameObjects::Button> btn;
+        std::unique_ptr<GameObjects::InputField> _passwordInput; ///< Password input field
+        
+        std::unique_ptr<GameObjects::Button> _loginButton;
         
         ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };

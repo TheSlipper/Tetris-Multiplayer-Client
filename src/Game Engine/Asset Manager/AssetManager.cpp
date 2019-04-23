@@ -66,16 +66,6 @@ namespace ArktisEngine
     }
     
     ////////////////////////////////////////////////////////////
-    sf::Sprite& AssetManager::GetScaledSprite(std::string name, int height, int width)
-    {
-        sf::Sprite sprite;
-        sprite.setTexture(this->GetTexture(name));
-        sprite.setScale((width * 100.0 / 3840.0) * 0.01, (height * 100.0 / 2160.0) * 0.01);
-        
-        return sprite;
-    }
-    
-    ////////////////////////////////////////////////////////////
     bool AssetManager::LoadFont(std::string name, std::string filePath)
     {
         sf::Font font;

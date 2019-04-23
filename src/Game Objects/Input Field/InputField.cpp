@@ -26,8 +26,8 @@ namespace GameObjects
 {
     ////////////////////////////////////////////////////////////
     InputField::InputField(sf::Clock &clock, float width, float height, float xPos, float yPos)
-    : INPUT_OUTLINE_COL(sf::Color(113, 128, 147)),
-    INPUT_INNER_COL(sf::Color(47, 54, 64))
+    : INPUT_OUTLINE_COL(sf::Color(0, 0, 0)),
+    INPUT_INNER_COL(sf::Color(0, 0, 0))
     {
         this->clock = &clock;
         this->rrs.setSize(sf::Vector2f(width, height));
@@ -41,6 +41,7 @@ namespace GameObjects
         this->SetPosition(xPos, yPos);
     }
     
+    ////////////////////////////////////////////////////////////
     InputField::InputField(sf::Font& font, float width, float height, float xPos, float yPos)
     {
         sf::Clock clock; // TODO: Check if clock disappears after this scope
@@ -90,6 +91,18 @@ namespace GameObjects
     void InputField::SetFont(sf::Font& font)
     {
         this->inputText.setFont(font);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    char* InputField::GetCString()
+    {
+        return strdup(this->inputText.getString().toAnsiString().c_str());
+    }
+    
+    ////////////////////////////////////////////////////////////
+    std::string InputField::GetStdString()
+    {
+        return this->inputContent.toAnsiString();
     }
     
     ////////////////////////////////////////////////////////////
@@ -153,7 +166,6 @@ namespace GameObjects
     ////////////////////////////////////////////////////////////
     void InputField::centerTextVert()
     {
-        sf::FloatRect textBounds = this->inputText.getGlobalBounds();
         sf::FloatRect rrsBounds = this->rrs.getGlobalBounds();
         this->inputText.setPosition(rrsBounds.left + (rrsBounds.width * 2.5f/ 100.0f),
                                     rrsBounds.top + (rrsBounds.height * 20.0f / 100.0f));

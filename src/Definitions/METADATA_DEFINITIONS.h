@@ -21,3 +21,10 @@
 /// Game metadata
 #define GAME_NAME "Tetris Multiplayer"
 
+#define GAME_PORT 7000
+
+/// Server metadata
+#define SERVER_IP "localhost"
+
+#define SERVER_PORT 7001
+

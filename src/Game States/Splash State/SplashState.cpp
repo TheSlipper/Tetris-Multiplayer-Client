@@ -36,7 +36,8 @@ namespace States
         this->startTime = this->_data->gameClock.getElapsedTime().asSeconds();
         if (!this->_data->assets.LoadTexture(SPLASHSCREEN_NAME, SPLASHSCREEN_PATH))
             exit(ERROR_CODE_TEXTURE_NOT_LOADED);
-        this->logo = this->_data->assets.GetScaledSprite(SPLASHSCREEN_NAME, this->_data->settings.height, this->_data->settings.width);
+        this->logo.setTexture(this->_data->assets.GetTexture(SPLASHSCREEN_NAME));
+        ArktisEngine::ScaleSprToDims(this->logo, this->_data->settings.width, this->_data->settings.height);
     }
     
     ////////////////////////////////////////////////////////////

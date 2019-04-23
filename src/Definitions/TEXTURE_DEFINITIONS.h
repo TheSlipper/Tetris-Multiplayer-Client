@@ -28,3 +28,19 @@
 /// Login State
 #define TETRISMP_LOGO_PATH "Resources/Game Logo/Tetris Multiplayer Logo.png"
 #define TETRISMP_LOGO_NAME "Tetris Multiplayer Logo"
+
+/// Home Screen State
+#define HOME_BG_PATH "Resources/Home Screen/bg.png"
+#define HOME_BG_NAME "Home Screen Background"
+
+#define AVATAR_1_PATH "Resources/pfp/1.png"
+#define AVATAR_1_NAME "Avatar 1"
+
+#define AVATAR_2_PATH "Resources/pfp/2.png"
+#define AVATAR_2_NAME "Avatar 2"
+
+#define AVATAR_3_PATH "Resources/pfp/3.png"
+#define AVATAR_3_NAME "Avatar 3"
+
+#define TETRISMP_BARE_LOGO_PATH "Resources/Game Logo/logo_no_label.png"
+#define TETRISMP_BARE_LOGO_NAME "Tetris Mp Logo Without Caption"
