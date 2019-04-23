@@ -40,10 +40,11 @@ namespace States
             exit(ERROR_CODE_FONT_NOT_LOADED);
         
         // Set up the state
-        this->_data->socket.connect(SERVER_IP, SERVER_PORT);
-        this->_data->listener.listen(GAME_PORT);
-        this->_data->listener.setBlocking(false);
-        this->_data->listener.accept(this->_data->socket);
+//        this->_data->socket.connect(SERVER_IP, SERVER_PORT);
+//        this->_data->listener.listen(GAME_PORT);
+//        this->_data->listener.setBlocking(false);
+//        this->_data->listener.accept(this->_data->socket);
+        this->_data->messaging.ConnectToServer();
         this->setUpGameLogo();
         this->centerAndPositionLogo();
         this->setUpLabels();
@@ -71,14 +72,10 @@ namespace States
                     this->_passwordInput->SwitchFocusState();
                 else if (this->_data->input.IsButtonClicked(*this->_loginButton, sf::Mouse::Left, this->_data->window))
                 {
-                    std::string strLoginData = "LOGIN " + this->_loginInput->GetStdString() + " " + this->passwd;
-                    char buffer[500];
-                    std::size_t rec = 0;
-                    char *loginData = strdup(strLoginData.c_str());
-                    this->_data->socket.send(loginData, strlen(loginData));
-                    this->_data->socket.receive(buffer, sizeof(buffer), rec);
-                    std::cout << "Data received: " << buffer << std::endl;
-                    this->_data->machine.AddState((ArktisEngine::StateRef)new HomeScreenState(this->_data));
+                    this->_data->messaging.SendStringData("LOGIN " + this->_loginInput->GetStdString() + " " + this->passwd);
+                    std::string response = this->_data->messaging.GetStringResponse();
+                    if (response.compare("CORRECT_CREDENTIALS " + this->_loginInput->GetStdString()) == 0)
+                        this->_data->machine.AddState((ArktisEngine::StateRef)new HomeScreenState(this->_data));
                 }
             }
             else if (sf::Event::TextEntered == event.type)

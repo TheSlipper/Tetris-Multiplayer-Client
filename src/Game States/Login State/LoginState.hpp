@@ -22,6 +22,7 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <memory>
+#include <string.h>
 #include "../State/State.hpp"
 #include "../../Game Engine/GameData/GameData.hpp"
 #include "../../Definitions/METADATA_DEFINITIONS.h"

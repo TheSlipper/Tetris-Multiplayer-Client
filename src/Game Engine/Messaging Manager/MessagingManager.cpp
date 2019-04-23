@@ -16,43 +16,35 @@
 /// along with this program; if not, write to the Free Software
 /// Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ////////////////////////////////////////////////////////////
-#pragma once
 
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include "../State Machine/StateMachine.hpp"
-#include "../Asset Manager/AssetManager.hpp"
-#include "../Input Manager/InputManager.hpp"
-#include "../Messaging Manager/MessagingManager.hpp"
-#include <SFML/Network.hpp>
+#include "MessagingManager.hpp"
 
 namespace ArktisEngine
 {
     ////////////////////////////////////////////////////////////
-    /// \brief Contains all of the important game settings
-    ///
-    ////////////////////////////////////////////////////////////
-    struct GameSettings
+    bool MessagingManager::ConnectToServer()
     {
-        float width, height;
-        float master_vol, sfx_vol, music_vol;
-    };
+        return this->socket.connect(SERVER_IP, SERVER_PORT) == sf::Socket::Done;
+    }
     
     ////////////////////////////////////////////////////////////
-    /// \brief Contains the game essentials
-    ///
-    ////////////////////////////////////////////////////////////
-    struct GameData
+    bool MessagingManager::SendStringData(std::string stringData)
     {
-        StateMachine machine;
-        sf::RenderWindow window;
-        sf::Clock gameClock;
-        AssetManager assets;
-        InputManager input;
-        GameSettings settings;
-        MessagingManager messaging;
-    };
+        char *data = strdup(stringData.c_str());
+        return this->socket.send(data, strlen(data)) == sf::Socket::Done;
+    }
     
-    typedef std::shared_ptr<GameData> GameDataRef;  ///< Definition of shared pointer to the GameData struct
+    ////////////////////////////////////////////////////////////
+    std::string MessagingManager::GetStringResponse()
+    {
+        char buffer[255];
+        std::size_t received = 0;
+        if (this->socket.receive(buffer, sizeof(buffer), received) != sf::Socket::Done)
+            return "DATA_GET_ERR";
+        else
+            return std::string(buffer);
+    }
 }
