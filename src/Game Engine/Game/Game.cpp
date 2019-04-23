@@ -28,56 +28,56 @@ namespace ArktisEngine
     Game::Game()
     {
         this->LoadGamesSettings("game_settings.conf");
-        
+
         _data->window.create(sf::VideoMode(this->_data->settings.width,
                                            this->_data->settings.height), GAME_NAME, sf::Style::Close
                              | sf::Style::Titlebar);
-        
+
         _data->machine.AddState(StateRef(new States::SplashState(this->_data)));
-        
+
         this->Run();
     }
-    
+
     ////////////////////////////////////////////////////////////
     void Game::LoadGamesSettings(std::string settingsFilePath)
     {
         // TODO: This function
-        this->_data->settings.width = 1920.f;
-        this->_data->settings.height = 1080.f;
+        this->_data->settings.width = 1280.f;
+        this->_data->settings.height = 720.f;
         this->_data->settings.master_vol = 100.f;
         this->_data->settings.sfx_vol = 100.f;
         this->_data->settings.music_vol = 100.f;
     }
-    
+
     ////////////////////////////////////////////////////////////
     void Game::Run()
     {
         float newTime, frameTime, interpolation;
-        
+
         float currentTime = this->_clock.getElapsedTime().asSeconds();
         float accumulator = 0.0f;
-        
+
         while (this->_data->window.isOpen())
         {
             this->_data->machine.ProcessStateChanges();
-            
+
             newTime = this->_clock.getElapsedTime().asSeconds();
             frameTime = newTime - currentTime;
-            
+
             if (frameTime > 0.25f)
                 frameTime = 0.25f;
-            
+
             currentTime = newTime;
             accumulator += frameTime;
-            
+
             while (accumulator >= dt)
             {
                 this->_data->machine.GetActiveState()->HandleInput();
                 this->_data->machine.GetActiveState()->Update(dt);
-                
+
                 accumulator -= dt;
             }
-            
+
             interpolation = accumulator / dt;
             this->_data->machine.GetActiveState()->Draw(interpolation);
         }

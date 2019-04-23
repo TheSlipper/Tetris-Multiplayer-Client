@@ -29,6 +29,7 @@
 #include "../Rounded Rectangle Shape/RoundedRectangleShape.hpp"
 #include <SFML/System/String.hpp>
 #include <SFML/Graphics.hpp>
+#include <string.h>
 
 namespace GameObjects
 {
@@ -48,7 +49,7 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         InputField(sf::Clock &clock, float width=300.0f, float height=50.0f, float xPos=0.0f, float yPos=0.0f);
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief InputField constructor with a specified font
         ///
@@ -64,7 +65,7 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         InputField(sf::Font& font, float width=300.0f, float height=50.0f, float xPos=0.0f, float yPos=0.0f);
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Appends a character to the input content string
         ///
@@ -72,19 +73,19 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         void AppendCharacter(char character);
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Removes the last character (includes the '|' character)
         ///
         ////////////////////////////////////////////////////////////
         void RemoveLastChar();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Removes the last character before the '|'
         ///
         ////////////////////////////////////////////////////////////
         void RemoveLastContentChar();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Sets the position of the object on the canvas
         ///
@@ -94,7 +95,7 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         void SetPosition(float x, float y);
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Sets the font of the text in the input field
         ///
@@ -102,7 +103,7 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         void SetFont(sf::Font& font);
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Gets the char* of the input
         ///
@@ -110,7 +111,7 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         char* GetCString();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Gets the std::string of the input
         ///
@@ -118,7 +119,7 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         std::string GetStdString();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Sets the focus of the input object
         ///
@@ -126,14 +127,14 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         void SetFocus(bool focus);
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Switches the status of the focus either from true to
         ///         false or the other way around
         ///
         ////////////////////////////////////////////////////////////
         void SwitchFocusState();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Returns the position of the object
         ///
@@ -141,7 +142,7 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         sf::Vector2f GetPosition();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Returns global bounds of the input field
         ///
@@ -149,7 +150,7 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         sf::FloatRect GetGlobalBounds();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Used to determine if the input is focused on
         ///
@@ -157,14 +158,14 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         bool HasFocus();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Procecess the animation of the indicator at the
         ///         end of the line if focused
         ///
         ////////////////////////////////////////////////////////////
         void ProcessFocusAnimation();
-        
+
     private:
         ////////////////////////////////////////////////////////////
         /// \brief Defines how an instance of this class should be drawn
@@ -175,31 +176,31 @@ namespace GameObjects
         ///
         ////////////////////////////////////////////////////////////
         virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Centers the text on the vertical axis of the input
         ///         rounded shape
         ///
         ////////////////////////////////////////////////////////////
         void centerTextVert();
-        
+
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
         const sf::Color INPUT_OUTLINE_COL; ///< Color of the input field's outline
-        
+
         const sf::Color INPUT_INNER_COL; ///< Color of the input field's inner rectangle
-        
+
         bool focus = false; ///< Flag of input field's focus
-        
+
         sf::RoundedRectangleShape rrs; ///< Shape of the input field
-        
+
         sf::Clock *clock; ///< Pointer to the game's clock
-        
+
         float timeFocused; ///< Time when the object was focused
-        
+
         sf::String inputContent = ""; ///< Content of the input text
-        
+
         sf::Text inputText; ///< Drawable text with the content of input content
     };
 }

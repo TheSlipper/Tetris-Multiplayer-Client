@@ -31,14 +31,14 @@ namespace States
     LoginState::LoginState(ArktisEngine::GameDataRef data) :_data(data), BG_COLOR(sf::Color(245, 246, 250))
     {
     }
-    
+
     ////////////////////////////////////////////////////////////
     void LoginState::Init()
     {
         // Load UI font
         if (!this->_data->assets.LoadFont(UI_FONT_NAME, UI_FONT_PATH))
             exit(ERROR_CODE_FONT_NOT_LOADED);
-        
+
         // Set up the state
         this->_data->messaging.ConnectToServer();
         this->setUpGameLogo();
@@ -47,12 +47,12 @@ namespace States
         this->centerAndPositionLabels();
         this->setUpForm();
     }
-    
+
     ////////////////////////////////////////////////////////////
     void LoginState::HandleInput()
     {
         sf::Event event;
-        
+
         while(this->_data->window.pollEvent(event))
         {
             if (sf::Event::Closed == event.type)
@@ -64,7 +64,7 @@ namespace States
             {
                 this->_passwordInput->SetFocus(false);
                 this->_loginInput->SetFocus(false);
-                
+
                 if (this->_data->input.IsInputFieldClicked(*this->_loginInput, sf::Mouse::Left, this->_data->window))
                     this->_loginInput->SwitchFocusState();
                 else if (this->_data->input.IsInputFieldClicked(*this->_passwordInput, sf::Mouse::Left, this->_data->window))
@@ -73,7 +73,9 @@ namespace States
                 {
                     this->_data->messaging.SendStringData("LOGIN " + this->_loginInput->GetStdString() + " " + this->passwd);
                     std::string response = this->_data->messaging.GetStringResponse();
-                    if (response.compare("CORRECT_CREDENTIALS " + this->_loginInput->GetStdString()) == 0)
+                    std::cout << "Response: " << response << std::endl;
+                    // Substring 0-20 + login_length
+                    if (response.substr(0, 20 + this->_loginInput->GetStdString().length()).compare("CORRECT_CREDENTIALS " + this->_loginInput->GetStdString()) == 0)
                         this->_data->machine.AddState((ArktisEngine::StateRef)new HomeScreenState(this->_data));
                 }
             }
@@ -118,34 +120,34 @@ namespace States
             }
         }
     }
-    
+
     ////////////////////////////////////////////////////////////
     void LoginState::Update(float dt)
     {
         this->_loginInput->ProcessFocusAnimation();
         this->_passwordInput->ProcessFocusAnimation();
     }
-    
+
     ////////////////////////////////////////////////////////////
     void LoginState::Draw(float dt)
     {
         this->_data->window.clear(this->BG_COLOR);
- 
+
         this->_data->window.draw(this->logo);
-        
+
         this->_data->window.draw(this->loginLabel);
-        
+
         this->_data->window.draw(*this->_loginInput);
-        
+
         this->_data->window.draw(this->passwdLabel);
-        
+
         this->_data->window.draw(*this->_passwordInput);
-        
+
         this->_data->window.draw(*this->_loginButton);
-        
+
         this->_data->window.display();
     }
-    
+
     ////////////////////////////////////////////////////////////
     void LoginState::centerAndPositionLogo()
     {
@@ -153,7 +155,7 @@ namespace States
         this->logo.setOrigin(spriteRect.left + spriteRect.width/2.0f, 0.0f);
         this->logo.setPosition(sf::Vector2f(this->_data->settings.width / 2.40f, this->_data->settings.height * 5.0f / 100.0f));
     }
-    
+
     ////////////////////////////////////////////////////////////
     void LoginState::centerAndPositionLabels()
     {
@@ -167,7 +169,7 @@ namespace States
         localRect = this->loginLabel.getGlobalBounds();
         this->passwdLabel.setPosition(localRect.left, localRect.height + localRect.top + (4.0f * this->_data->settings.height / 100.0f));
     }
-    
+
     ////////////////////////////////////////////////////////////
     void LoginState::setUpLabels()
     {
@@ -175,13 +177,13 @@ namespace States
         this->loginLabel.setString("Login: ");
         this->loginLabel.setFillColor(sf::Color::Black);
         this->loginLabel.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
-        
+
         // Password
         this->passwdLabel.setString("Password: ");
         this->passwdLabel.setFillColor(sf::Color::Black);
         this->passwdLabel.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
     }
-    
+
     ////////////////////////////////////////////////////////////
     void LoginState::setUpGameLogo()
     {
@@ -190,20 +192,20 @@ namespace States
         // this->logo = this->_data->assets.GetScaledSprite(TETRISMP_LOGO_NAME); // TODO: Check if scaled sprite works for everything
         this->logo.setTexture(this->_data->assets.GetTexture(TETRISMP_LOGO_NAME));
     }
-    
+
     ////////////////////////////////////////////////////////////
     void LoginState::setUpForm()
     {
         this->_loginInput = std::make_unique<GameObjects::InputField>(this->_data->gameClock);
         this->_passwordInput = std::make_unique<GameObjects::InputField>(this->_data->gameClock);
-        
+
         sf::FloatRect localRect = this->passwdLabel.getGlobalBounds();
         this->_passwordInput->SetPosition(localRect.left + localRect.width + (this->_data->settings.width * 2.5f / 100.0f),
                                         localRect.top - (this->_data->settings.height * 1.0f / 100.0f));
         this->_passwordInput->SetFont(this->_data->assets.GetFont(UI_FONT_NAME));
-        
+
         this->_loginButton = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME), "Log in", this->passwdLabel.getGlobalBounds().left + localRect.width/2.f, localRect.top + (localRect.width/2.f) + 10.0f);
-        
+
         localRect = this->loginLabel.getGlobalBounds();
         this->_loginInput->SetPosition(localRect.left + localRect.width + (this->_data->settings.width * 5.6f / 100.0f),
                                         localRect.top - (this->_data->settings.height * 1.0f / 100.0f));

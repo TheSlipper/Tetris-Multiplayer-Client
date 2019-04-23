@@ -45,86 +45,86 @@ namespace States
         ///
         ////////////////////////////////////////////////////////////
         HomeScreenState(ArktisEngine::GameDataRef data);
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Initialization of the state
         ///
         ////////////////////////////////////////////////////////////
         void Init();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Handles scene-specific user input
         ///
         ////////////////////////////////////////////////////////////
         void HandleInput();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Updates the scene (call the animation or physics
         ///         methods here)
         ///
         ////////////////////////////////////////////////////////////
         void Update(float dt);
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Draws to the screen
         ///
         ////////////////////////////////////////////////////////////
         void Draw(float dt);
-        
+
     private:
         ////////////////////////////////////////////////////////////
         /// \brief Sets up the play buttons
         ///
         ////////////////////////////////////////////////////////////
         void setUpPlayButtons();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Sets up the account HUD
         ///
         ////////////////////////////////////////////////////////////
         void setUpAccHUD();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Sets up the news section
         ///
         ////////////////////////////////////////////////////////////
         void setUpNewsSection();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Loads the avatar textures to the asset manager
         ///
         ////////////////////////////////////////////////////////////
         void loadAvatarTextures();
-        
+
         ////////////////////////////////////////////////////////////
         /// \brief Loads articles for the game from the database
         ///
         ////////////////////////////////////////////////////////////
         void loadArticles();
-        
+
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
         sf::RoundedRectangleShape newsOutline; ///< Outline of the news section
-        
+
         std::vector<sf::Text> articleHeaders; ///< Headers of the articles
-        
+
         std::vector<sf::Text> articleContent; ///< Content of the articles
-        
+
         std::unique_ptr<GameObjects::Button> _playNormal; ///< Play normal game box
-        
+
         std::unique_ptr<GameObjects::Button> _playRanked; ///< Play ranked game box
-        
+
         std::unique_ptr<GameObjects::Button> _nicknameBox; ///< User's nickname box
-        
+
         std::unique_ptr<GameObjects::Button> _blocksBox; ///< User's block points box
-        
+
         sf::Sprite gameLogo; ///< Game's logo
-        
+
         sf::Sprite avatar; ///< User avatar
-        
+
         sf::Sprite bgStylizedImage; ///< Stylized background image
-        
+
         ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };
 }
