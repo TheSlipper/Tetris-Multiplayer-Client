@@ -40,10 +40,6 @@ namespace States
             exit(ERROR_CODE_FONT_NOT_LOADED);
         
         // Set up the state
-//        this->_data->socket.connect(SERVER_IP, SERVER_PORT);
-//        this->_data->listener.listen(GAME_PORT);
-//        this->_data->listener.setBlocking(false);
-//        this->_data->listener.accept(this->_data->socket);
         this->_data->messaging.ConnectToServer();
         this->setUpGameLogo();
         this->centerAndPositionLogo();
@@ -60,7 +56,10 @@ namespace States
         while(this->_data->window.pollEvent(event))
         {
             if (sf::Event::Closed == event.type)
+            {
+                this->_data->messaging.SendStringData("LOGOUT");
                 this->_data->window.close();
+            }
             else if (sf::Event::MouseButtonPressed == event.type)
             {
                 this->_passwordInput->SetFocus(false);
