@@ -24,12 +24,9 @@
 #define GRID_WIDTH 10
 #define GRID_HEIGHT 20
 
-#define TILE_WIDTH 36
-#define TILE_HEIGHT 36
-
-//#define X_OFFSET 28.f
-#define X_OFFSET 54.f
-#define Y_OFFSET 61.f
+// TODO: Scalability
+#define X_OFFSET 210.f
+#define Y_OFFSET 126.f
 
 ////////////////////////////////////////////////////////////
 // Headers
@@ -84,7 +81,17 @@ namespace States
         void Draw(float dt);
         
     private:
+        void move();
+        
+        void rotation();
+        
+        void tick();
+        
         bool check();
+        
+        void checkLines();
+        
+        bool isItGameOver();
         
         ////////////////////////////////////////////////////////////
         // Member data
@@ -110,21 +117,13 @@ namespace States
             2, 3, 4, 5      // O
         };
         
-        sf::Sprite s;
+        sf::Sprite s, background;
         
-        sf::Sprite background;
+        int dx = 0, colorNum = 1;
         
-        sf::Sprite frame;
-        
-        int dx = 0;
+        float timer = 0.f, delay = .7f, tileWidth, tileHeight;
         
         bool rotate = 0;
-        
-        int colorNum = 1;
-        
-        float timer = 0.f;
-        
-        float delay = .3f;
         
         sf::Clock gameClock;
         

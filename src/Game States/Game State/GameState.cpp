@@ -22,6 +22,9 @@
 ////////////////////////////////////////////////////////////
 #include "GameState.hpp"
 
+// TODO: DELET THIS
+#include <iostream>
+
 namespace States
 {
     ////////////////////////////////////////////////////////////
@@ -37,9 +40,14 @@ namespace States
         this->_data->assets.LoadTexture(GAME_BG_NAME, GAME_BG_PATH);
         this->_data->assets.LoadTexture(FRAME_NAME, FRAME_PATH);
         this->s.setTexture(this->_data->assets.GetTexture(TILES_NAME));
-        this->s.setTextureRect(sf::IntRect(0, 0, 36, 36));
+        float tileSetWidth = this->_data->settings.width * 828.f / 3840.f, tileSetHeight = this->_data->settings.height * 101.f / 2160.f;
+        this->tileWidth = 101.f * 808.f / 828.f;
+//        this->tileHeight = tileSetHeight;
+        this->tileHeight = 101.f;
+        ArktisEngine::ScaleSprToDims(this->s, tileSetWidth, tileSetHeight);
+        this->_data->assets.GetTexture(GAME_BG_NAME).setSmooth(false);
         this->background.setTexture(this->_data->assets.GetTexture(GAME_BG_NAME));
-        this->frame.setTexture(this->_data->assets.GetTexture(FRAME_NAME));
+        ArktisEngine::ScaleSprToDims(this->background, this->_data->settings.width, this->_data->settings.height);
     }
     
     ////////////////////////////////////////////////////////////
@@ -82,6 +90,54 @@ namespace States
     {
         // TODO: Create seperate functions for that stuff
         //// <- Move -> ///
+        this->move();
+        
+        //////Rotate//////
+        if (this->rotate)
+            this->rotation();
+        
+        ///////Tick//////
+        this->tick();
+        
+        ///////check lines//////////
+        this->checkLines();
+        
+        this->dx = 0; this->rotate = 0; this->delay = 0.3f;
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void GameState::Draw(float dt)
+    {
+        this->_data->window.clear(sf::Color::White);
+        this->_data->window.draw(background);
+        
+        for (int i = 0; i < M; i++)
+        {
+            for (int j = 0; j < N; j++)
+            {
+                if (this->field[i][j] == 0)
+                    continue;
+                this->s.setTextureRect(sf::IntRect(this->field[i][j] * tileWidth, 0, tileWidth, tileHeight)); // maybe delete -1
+                this->s.setPosition(j * tileHeight, i * tileHeight);
+                this->s.move(X_OFFSET, Y_OFFSET);
+                
+                this->_data->window.draw(s);
+            }
+        }
+        
+        for (int i = 0; i < 4; i++)
+        {
+            this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
+            this->s.setPosition(a[i].x * tileHeight, a[i].y * tileHeight);
+            this->s.move(X_OFFSET, Y_OFFSET); //offset
+            this->_data->window.draw(s);
+        }
+        this->_data->window.display();
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void GameState::move()
+    {
         for (int i = 0; i < 4; i++)
         {
             this->b[i] = this->a[i];
@@ -93,26 +149,29 @@ namespace States
             for (int i = 0; i < 4; i++)
                 this->a[i] = b[i];
         }
-        
-        //////Rotate//////
-        if (this->rotate)
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void GameState::rotation()
+    {
+        Point p = this->a[1];     //center of rotation
+        for (int i = 0; i < 4; i++)
         {
-            Point p = this->a[1];     //center of rotation
-            for (int i = 0; i < 4; i++)
-            {
-                int x = this->a[i].y - p.y;
-                int y = this->a[i].x - p.x;
-                this->a[i].x = p.x - x;
-                this->a[i].y = p.y + y;
-            }
-            if (!check())
-            {
-                for (int i = 0; i < 4; i++)
-                    this->a[i]= this->b[i];
-            }
+            int x = this->a[i].y - p.y;
+            int y = this->a[i].x - p.x;
+            this->a[i].x = p.x - x;
+            this->a[i].y = p.y + y;
         }
-        
-        ///////Tick//////
+        if (!check())
+        {
+            for (int i = 0; i < 4; i++)
+                this->a[i]= this->b[i];
+        }
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void GameState::tick()
+    {
         if (this->timer > this->delay)
         {
             for (int i = 0; i < 4; i++)
@@ -123,9 +182,10 @@ namespace States
             
             if (!this->check())
             {
+                if (this->isItGameOver())
+                    std::cout << "Game over" << std::endl;
                 for (int i = 0; i < 4; i++)
-                    this->field[this->b[i].y][this->b[i].x] = colorNum; // b[i].x = some huge num
-                // TODO: check what b and a are used for
+                    this->field[this->b[i].y][this->b[i].x] = colorNum;
                 this->colorNum = 1 + rand() % 7;
                 int n = rand() % 7;
                 for (int i = 0; i < 4; i++)
@@ -137,54 +197,6 @@ namespace States
             
             this->timer = 0;
         }
-        
-        ///////check lines//////////
-        int k = M - 1;
-        for (int i = M - 1; i > 0; i--)
-        {
-            int count = 0;
-            for (int j = 0; j < N; j++)
-            {
-                if (this->field[i][j])
-                    count++;
-                this->field[k][j] = this->field[i][j];
-            }
-            if (count < N)
-                k--;
-        }
-        
-        this->dx = 0; this->rotate = 0; this->delay = 0.3f;
-        
-    }
-    
-    ////////////////////////////////////////////////////////////
-    void GameState::Draw(float dt)
-    {
-        this->_data->window.clear(sf::Color::Red);
-        this->_data->window.draw(background);
-        
-        for (int i = 0; i < M; i++)
-        {
-            for (int j = 0; j < N; j++)
-            {
-                if (this->field[i][j] == 0)
-                    continue;
-                this->s.setTextureRect(sf::IntRect(this->field[i][j] * TILE_HEIGHT, 0, TILE_WIDTH, TILE_HEIGHT));
-                this->s.setPosition(j * TILE_HEIGHT, i * TILE_HEIGHT);
-                this->s.move(X_OFFSET, Y_OFFSET);
-                
-                this->_data->window.draw(s);
-            }
-        }
-        
-        for (int i = 0; i < 4; i++)
-        {
-            this->s.setTextureRect(sf::IntRect(colorNum * TILE_HEIGHT, 0, TILE_HEIGHT, TILE_HEIGHT));
-            this->s.setPosition(a[i].x * TILE_HEIGHT, a[i].y * TILE_HEIGHT);
-            this->s.move(X_OFFSET, Y_OFFSET); //offset
-            this->_data->window.draw(s);
-        }
-        this->_data->window.display();
     }
     
     ////////////////////////////////////////////////////////////
@@ -199,5 +211,33 @@ namespace States
         }
         
         return 1;
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void GameState::checkLines()
+    {
+        int k = M - 1;
+        for (int i = M - 1; i > 0; i--)
+        {
+            int count = 0;
+            for (int j = 0; j < N; j++)
+            {
+                if (this->field[i][j])
+                    count++;
+                this->field[k][j] = this->field[i][j];
+            }
+            if (count < N)
+                k--;
+        }
+    }
+    
+    bool GameState::isItGameOver()
+    {
+        for (int i = 0; i < N; i++)
+        {
+            if (this->field[0][i] != 0 || this->field[0][i])
+                return true;
+        }
+        return false;
     }
 }
