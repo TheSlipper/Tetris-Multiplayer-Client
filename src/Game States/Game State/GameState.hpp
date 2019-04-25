@@ -19,16 +19,27 @@
 #pragma once
 
 ////////////////////////////////////////////////////////////
+// Definitions
+////////////////////////////////////////////////////////////
+#define GRID_WIDTH 10
+#define GRID_HEIGHT 20
+
+#define TILE_WIDTH 36
+#define TILE_HEIGHT 36
+
+//#define X_OFFSET 28.f
+#define X_OFFSET 54.f
+#define Y_OFFSET 61.f
+
+////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics.hpp>
-#include <memory>
-#include "../../Definitions/TEXTURE_DEFINITIONS.h"
-#include "../../Definitions/FONT_DEFINITIONS.h"
+#include "../State/State.hpp"
 #include "../../Game Engine/GameData/GameData.hpp"
-#include "../../Game Objects/Button/Button.hpp"
+#include "../../Definitions/TEXTURE_DEFINITIONS.h"
+#include "../Login State/LoginState.hpp"
 #include "../../Game Engine/Misc Utils/MiscUtils.hpp"
-#include "../Game State/GameState.hpp"
 
 namespace States
 {
@@ -36,7 +47,7 @@ namespace States
     /// \brief Splash State
     ///
     ////////////////////////////////////////////////////////////
-    class HomeScreenState : public State
+    class GameState : public State
     {
     public:
         ////////////////////////////////////////////////////////////
@@ -45,87 +56,78 @@ namespace States
         /// \param GameDataRef data pointer to the game's crucial data
         ///
         ////////////////////////////////////////////////////////////
-        HomeScreenState(ArktisEngine::GameDataRef data);
-
+        GameState(ArktisEngine::GameDataRef data);
+        
         ////////////////////////////////////////////////////////////
         /// \brief Initialization of the state
         ///
         ////////////////////////////////////////////////////////////
         void Init();
-
+        
         ////////////////////////////////////////////////////////////
         /// \brief Handles scene-specific user input
         ///
         ////////////////////////////////////////////////////////////
         void HandleInput();
-
+        
         ////////////////////////////////////////////////////////////
         /// \brief Updates the scene (call the animation or physics
         ///         methods here)
         ///
         ////////////////////////////////////////////////////////////
         void Update(float dt);
-
+        
         ////////////////////////////////////////////////////////////
         /// \brief Draws to the screen
         ///
         ////////////////////////////////////////////////////////////
         void Draw(float dt);
-
+        
     private:
-        ////////////////////////////////////////////////////////////
-        /// \brief Sets up the play buttons
-        ///
-        ////////////////////////////////////////////////////////////
-        void setUpPlayButtons();
-
-        ////////////////////////////////////////////////////////////
-        /// \brief Sets up the account HUD
-        ///
-        ////////////////////////////////////////////////////////////
-        void setUpAccHUD();
-
-        ////////////////////////////////////////////////////////////
-        /// \brief Sets up the news section
-        ///
-        ////////////////////////////////////////////////////////////
-        void setUpNewsSection();
-
-        ////////////////////////////////////////////////////////////
-        /// \brief Loads the avatar textures to the asset manager
-        ///
-        ////////////////////////////////////////////////////////////
-        void loadAvatarTextures();
-
-        ////////////////////////////////////////////////////////////
-        /// \brief Loads articles for the game from the database
-        ///
-        ////////////////////////////////////////////////////////////
-        void loadArticles();
-
+        bool check();
+        
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
-        sf::RoundedRectangleShape newsOutline; ///< Outline of the news section
-
-        std::vector<sf::Text> articleHeaders; ///< Headers of the articles
-
-        std::vector<sf::Text> articleContent; ///< Content of the articles
-
-        std::unique_ptr<GameObjects::Button> _playNormal; ///< Play normal game box
-
-        std::unique_ptr<GameObjects::Button> _playRanked; ///< Play ranked game box
-
-        std::unique_ptr<GameObjects::Button> _nicknameBox; ///< User's nickname box
-
-        std::unique_ptr<GameObjects::Button> _blocksBox; ///< User's block points box
-
-        sf::Sprite gameLogo; ///< Game's logo
-
-        sf::Sprite avatar; ///< User avatar
-
-        sf::Sprite bgStylizedImage; ///< Stylized background image
-
+        const int M = GRID_HEIGHT;
+        const int N = GRID_WIDTH;
+        
+        int field[GRID_HEIGHT][GRID_WIDTH] = {0};
+        
+        struct Point
+        {
+            int x = 0, y = 0;
+        } a[4], b[4];
+        
+        int figures[7][4] = ///< Figures available in Tetris
+        {
+            1, 3, 5, 7,     // I
+            2, 4, 5, 7,     // Z
+            3, 5, 4, 6,     // S
+            3, 5, 4, 7,     // T
+            2, 3, 5, 7,     // L
+            3, 5, 7, 6,     // J
+            2, 3, 4, 5      // O
+        };
+        
+        sf::Sprite s;
+        
+        sf::Sprite background;
+        
+        sf::Sprite frame;
+        
+        int dx = 0;
+        
+        bool rotate = 0;
+        
+        int colorNum = 1;
+        
+        float timer = 0.f;
+        
+        float delay = .3f;
+        
+        sf::Clock gameClock;
+        
         ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };
 }

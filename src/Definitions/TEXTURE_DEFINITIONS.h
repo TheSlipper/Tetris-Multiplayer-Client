@@ -44,3 +44,17 @@
 
 #define TETRISMP_BARE_LOGO_PATH "Resources/Game Logo/logo_no_label.png"
 #define TETRISMP_BARE_LOGO_NAME "Tetris Mp Logo Without Caption"
+
+// Game State
+#define TILES_PATH "Resources/Tetris/tiles.png"
+#define TILES_NAME "Tetris Tiles"
+
+#define GAME_BG_PATH "Resources/Tetris/background.png"
+#define GAME_BG_NAME "Game Background"
+
+#define FRAME_PATH "Resources/Tetris/frame.png"
+#define FRAME_NAME "Frame"
+
+
+
+

@@ -22,9 +22,6 @@
 ////////////////////////////////////////////////////////////
 #include "LoginState.hpp"
 
-// TODO: Delete
-#include <iostream>
-
 namespace States
 {
     ////////////////////////////////////////////////////////////
@@ -73,8 +70,6 @@ namespace States
                 {
                     this->_data->messaging.SendStringData("LOGIN " + this->_loginInput->GetStdString() + " " + this->passwd);
                     std::string response = this->_data->messaging.GetStringResponse();
-                    std::cout << "Response: " << response << std::endl;
-                    // Substring 0-20 + login_length
                     if (response.substr(0, 20 + this->_loginInput->GetStdString().length()).compare("CORRECT_CREDENTIALS " + this->_loginInput->GetStdString()) == 0)
                         this->_data->machine.AddState((ArktisEngine::StateRef)new HomeScreenState(this->_data));
                 }

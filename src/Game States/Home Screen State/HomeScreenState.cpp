@@ -49,6 +49,13 @@ namespace States
         {
             if (sf::Event::Closed == event.type)
                 this->_data->window.close();
+            else if (sf::Event::MouseButtonPressed == event.type)
+            {
+                if (this->_data->input.IsButtonClicked(*this->_playNormal, sf::Mouse::Left, this->_data->window))
+                {
+                    this->_data->machine.AddState((ArktisEngine::StateRef)new GameState(this->_data));
+                }
+            }
         }
     }
     
