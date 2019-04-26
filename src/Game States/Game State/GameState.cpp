@@ -61,7 +61,10 @@ namespace States
         while (this->_data->window.pollEvent(event))
         {
             if (sf::Event::Closed == event.type)
+            {
+                this->_data->messaging.DisconnectSocket();
                 this->_data->window.close();
+            }
             else if (event.type == sf::Event::KeyPressed)
             {
                 switch (event.key.code)

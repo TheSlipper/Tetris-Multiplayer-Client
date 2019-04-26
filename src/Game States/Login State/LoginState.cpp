@@ -54,7 +54,7 @@ namespace States
         {
             if (sf::Event::Closed == event.type)
             {
-                this->_data->messaging.SendStringData("LOGOUT");
+                this->_data->messaging.DisconnectSocket();
                 this->_data->window.close();
             }
             else if (sf::Event::MouseButtonPressed == event.type)

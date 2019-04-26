@@ -48,7 +48,10 @@ namespace States
         while (this->_data->window.pollEvent(event))
         {
             if (sf::Event::Closed == event.type)
+            {
+                this->_data->messaging.DisconnectSocket();
                 this->_data->window.close();
+            }
             else if (sf::Event::MouseButtonPressed == event.type)
             {
                 if (this->_data->input.IsButtonClicked(*this->_playNormal, sf::Mouse::Left, this->_data->window))

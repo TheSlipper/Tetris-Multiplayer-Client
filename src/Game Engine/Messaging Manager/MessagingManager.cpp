@@ -47,4 +47,12 @@ namespace ArktisEngine
         else
             return std::string(buffer);
     }
+    
+    ////////////////////////////////////////////////////////////
+    bool MessagingManager::DisconnectSocket()
+    {
+        bool res = this->SendStringData("LOGOUT");
+        this->socket.disconnect();
+        return res;
+    }
 }
