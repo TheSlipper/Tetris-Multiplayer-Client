@@ -39,13 +39,13 @@ namespace States
         this->_data->assets.LoadTexture(TILES_NAME, TILES_PATH);
         this->_data->assets.LoadTexture(GAME_BG_NAME, GAME_BG_PATH);
         this->_data->assets.LoadTexture(FRAME_NAME, FRAME_PATH);
+        this->frame.setTexture(this->_data->assets.GetTexture(FRAME_NAME));
+        ArktisEngine::ScaleSprToDims(this->frame, this->_data->settings.width, this->_data->settings.height);
         this->s.setTexture(this->_data->assets.GetTexture(TILES_NAME));
-        float tileSetWidth = this->_data->settings.width * 828.f / 3840.f, tileSetHeight = this->_data->settings.height * 101.f / 2160.f;
-        this->tileWidth = 101.f * 808.f / 828.f;
-//        this->tileHeight = tileSetHeight;
-        this->tileHeight = 101.f;
+        float tileSetWidth = this->_data->settings.width * 970.f / 3840.f, tileSetHeight = this->_data->settings.height * 121.f / 2160.f;
+        this->tileWidth = tileSetWidth / 8.0f;
+        this->tileHeight = tileSetHeight;
         ArktisEngine::ScaleSprToDims(this->s, tileSetWidth, tileSetHeight);
-        this->_data->assets.GetTexture(GAME_BG_NAME).setSmooth(false);
         this->background.setTexture(this->_data->assets.GetTexture(GAME_BG_NAME));
         ArktisEngine::ScaleSprToDims(this->background, this->_data->settings.width, this->_data->settings.height);
     }
@@ -88,21 +88,23 @@ namespace States
     ////////////////////////////////////////////////////////////
     void GameState::Update(float dt)
     {
-        // TODO: Create seperate functions for that stuff
-        //// <- Move -> ///
-        this->move();
-        
-        //////Rotate//////
-        if (this->rotate)
-            this->rotation();
-        
-        ///////Tick//////
-        this->tick();
-        
-        ///////check lines//////////
-        this->checkLines();
-        
-        this->dx = 0; this->rotate = 0; this->delay = 0.3f;
+        if (lostGame == false)
+        {
+            //// <- Move -> ///
+            this->move();
+            
+            //////Rotate//////
+            if (this->rotate)
+                this->rotation();
+            
+            ///////Tick//////
+            this->tick();
+            
+            ///////check lines//////////
+            this->checkLines();
+            
+            this->dx = 0; this->rotate = 0; this->delay = BASE_DELAY;
+        }
     }
     
     ////////////////////////////////////////////////////////////
@@ -111,14 +113,17 @@ namespace States
         this->_data->window.clear(sf::Color::White);
         this->_data->window.draw(background);
         
+        float horizontal_padding = -1 * (this->_data->settings.height * 36.f / 2160.f); // -25.f
+        float vertical_padding = -1 * (this->_data->settings.height * 35.f / 2160.f);
+        
         for (int i = 0; i < M; i++)
         {
             for (int j = 0; j < N; j++)
             {
                 if (this->field[i][j] == 0)
                     continue;
-                this->s.setTextureRect(sf::IntRect(this->field[i][j] * tileWidth, 0, tileWidth, tileHeight)); // maybe delete -1
-                this->s.setPosition(j * tileHeight, i * tileHeight);
+                this->s.setTextureRect(sf::IntRect(this->field[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight)); // maybe delete -1
+                this->s.setPosition(j * (this->tileWidth + horizontal_padding), i * (this->tileHeight + vertical_padding));
                 this->s.move(X_OFFSET, Y_OFFSET);
                 
                 this->_data->window.draw(s);
@@ -128,10 +133,13 @@ namespace States
         for (int i = 0; i < 4; i++)
         {
             this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
-            this->s.setPosition(a[i].x * tileHeight, a[i].y * tileHeight);
-            this->s.move(X_OFFSET, Y_OFFSET); //offset
+            this->s.setPosition(a[i].x * (tileHeight + horizontal_padding), a[i].y * (tileHeight + vertical_padding));
+            this->s.move(X_OFFSET, Y_OFFSET);
             this->_data->window.draw(s);
         }
+        
+        this->_data->window.draw(this->frame);
+        
         this->_data->window.display();
     }
     
@@ -182,8 +190,13 @@ namespace States
             
             if (!this->check())
             {
-                if (this->isItGameOver())
+                if (this->isItGameOver() && !lostGame)
+                {
+                    this->lostGame = true;
                     std::cout << "Game over" << std::endl;
+                    this->_data->machine.AddState((ArktisEngine::StateRef)new HomeScreenState(this->_data), true);
+                    return;
+                }
                 for (int i = 0; i < 4; i++)
                     this->field[this->b[i].y][this->b[i].x] = colorNum;
                 this->colorNum = 1 + rand() % 7;

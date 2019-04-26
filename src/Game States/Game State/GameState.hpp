@@ -25,8 +25,10 @@
 #define GRID_HEIGHT 20
 
 // TODO: Scalability
-#define X_OFFSET 210.f
-#define Y_OFFSET 126.f
+#define X_OFFSET 215.f
+#define Y_OFFSET 167.f
+
+#define BASE_DELAY .7f
 
 ////////////////////////////////////////////////////////////
 // Headers
@@ -101,6 +103,8 @@ namespace States
         
         int field[GRID_HEIGHT][GRID_WIDTH] = {0};
         
+        bool lostGame = false;
+        
         struct Point
         {
             int x = 0, y = 0;
@@ -117,11 +121,11 @@ namespace States
             2, 3, 4, 5      // O
         };
         
-        sf::Sprite s, background;
+        sf::Sprite s, background, frame;
         
         int dx = 0, colorNum = 1;
         
-        float timer = 0.f, delay = .7f, tileWidth, tileHeight;
+        float timer = 0.f, delay = BASE_DELAY, tileWidth, tileHeight;
         
         bool rotate = 0;
         
