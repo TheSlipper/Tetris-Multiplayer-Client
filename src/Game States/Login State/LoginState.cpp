@@ -152,12 +152,9 @@ namespace States
     ////////////////////////////////////////////////////////////
     void LoginState::centerAndPositionLabels()
     {
-//        sf::FloatRect localRect = this->logo.getGlobalBounds();
         sf::FloatRect localRect;
         localRect.width = this->_data->settings.width;
         localRect.height = this->_data->settings.height;
-//        this->loginLabel.setPosition(localRect.left - (5.0f * this->_data->settings.width / 100.0f),
-//                                     localRect.height + localRect.top + (5.0f * this->_data->settings.height / 100.0f));
         this->loginLabel.setPosition(localRect.width/2.75f, localRect.height - (localRect.height * 30.f / 100.f));
         localRect = this->loginLabel.getGlobalBounds();
         this->passwdLabel.setPosition(localRect.left, localRect.height + localRect.top + (4.0f * this->_data->settings.height / 100.0f));
