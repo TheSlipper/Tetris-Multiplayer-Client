@@ -22,6 +22,8 @@
 ////////////////////////////////////////////////////////////
 #include "LoginState.hpp"
 
+#include <iostream>
+
 namespace States
 {
     ////////////////////////////////////////////////////////////
@@ -97,7 +99,7 @@ namespace States
                         this->_passwordInput->SwitchFocusState();
                     }
                 }
-                else if (inputCharacter == (char)10) // Enter
+                else if (inputCharacter == (char)10 || inputCharacter == (char)13) // Enter
                     this->sendFormData();
                 else
                 {
@@ -204,7 +206,7 @@ namespace States
         this->_loginInput->SetFont(this->_data->assets.GetFont(UI_FONT_NAME));
         this->_loginInput->SetFocus(true);
     }
-    
+
     ////////////////////////////////////////////////////////////
     void LoginState::sendFormData()
     {
