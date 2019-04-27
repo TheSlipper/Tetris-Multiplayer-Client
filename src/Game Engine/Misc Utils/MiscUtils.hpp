@@ -22,6 +22,8 @@
 // Headers
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics.hpp>
+#include <sstream>
+#include "../GameData/GameData.hpp"
 
 namespace ArktisEngine
 {
@@ -46,4 +48,34 @@ namespace ArktisEngine
     ///
     ////////////////////////////////////////////////////////////
     void ScaleSprToDims(sf::Sprite& spr, sf::Vector2f& vect);
+    
+    ////////////////////////////////////////////////////////////
+    /// \brief Gets the position of an object with the given
+    ///         percent values
+    ///
+    /// \param verticalPercent percentage of how much an object
+    ///         should be moved down on the canvas
+    ///
+    /// \param horizontalPercent percentage of how much an object
+    ///         should be moved to the right on the canvas
+    ///
+    /// \param settings game settings
+    ///
+    ////////////////////////////////////////////////////////////
+    sf::Vector2f GetPosRelToScreenByPrct(float verticalPercent, float horizontalPercent, GameSettings &settings);
+    
+    float GetYPosRelToScreenByPrct(float yPerc, GameSettings &settings);
+    
+    float GetXPosRelToScreenByPrct(float xPerc, GameSettings &settings);
+    
+    void CenterHorizontally(sf::Text &text, GameSettings &settings, float y = 0.f);
+    
+    template <typename T>
+    std::string to_string_with_precision(const T a_value, const int n = 6)
+    {
+        std::ostringstream out;
+        out.precision(n);
+        out << std::fixed << a_value;
+        return out.str();
+    }
 }

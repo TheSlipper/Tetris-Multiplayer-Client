@@ -42,8 +42,8 @@ namespace ArktisEngine
     void Game::LoadGamesSettings(std::string settingsFilePath)
     {
         // TODO: This function
-        this->_data->settings.width = 1280.f;
-        this->_data->settings.height = 720.f;
+        this->_data->settings.width = 1920.f;
+        this->_data->settings.height = 1080.f;
         this->_data->settings.master_vol = 100.f;
         this->_data->settings.sfx_vol = 100.f;
         this->_data->settings.music_vol = 100.f;

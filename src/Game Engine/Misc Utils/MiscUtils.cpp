@@ -37,4 +37,30 @@ namespace ArktisEngine
         sf::FloatRect bounds = spr.getGlobalBounds();
         spr.setScale((vect.x * 100.0 / bounds.width) * 0.01, (vect.y * 100.0 / bounds.height) * 0.01);
     }
+    
+    ////////////////////////////////////////////////////////////
+    sf::Vector2f GetPosRelToScreenByPrct(float verticalPercent, float horizontalPercent, GameSettings &settings)
+    {
+        return sf::Vector2f(verticalPercent * settings.width / 100.f, horizontalPercent * settings.height / 100.f);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    float GetYPosRelToScreenByPrct(float yPerc, GameSettings &settings)
+    {
+        return yPerc * settings.height / 100.f;
+    }
+    
+    ////////////////////////////////////////////////////////////
+    float GetXPosRelToScreenByPrct(float xPerc, GameSettings &settings)
+    {
+        return xPerc * settings.width / 100.f;
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void CenterHorizontally(sf::Text &text, GameSettings &settings, float y)
+    {
+        sf::FloatRect textRect = text.getLocalBounds();
+        text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top  + textRect.height / 2.0f);
+        text.setPosition(sf::Vector2f(settings.width / 2.0f, y));
+    }
 }

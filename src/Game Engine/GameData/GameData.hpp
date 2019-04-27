@@ -29,6 +29,12 @@
 
 namespace ArktisEngine
 {
+    struct UserData
+    {
+        int elo;
+        std::string username, password;
+    };
+    
     ////////////////////////////////////////////////////////////
     /// \brief Contains all of the important game settings
     ///
@@ -52,6 +58,7 @@ namespace ArktisEngine
         InputManager input;
         GameSettings settings;
         MessagingManager messaging;
+        UserData userData;
     };
     
     typedef std::shared_ptr<GameData> GameDataRef;  ///< Definition of shared pointer to the GameData struct

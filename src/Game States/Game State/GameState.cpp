@@ -39,6 +39,7 @@ namespace States
         this->_data->assets.LoadTexture(TILES_NAME, TILES_PATH);
         this->_data->assets.LoadTexture(GAME_BG_NAME, GAME_BG_PATH);
         this->_data->assets.LoadTexture(FRAME_NAME, FRAME_PATH);
+        this->setUpLabels();
         this->frame.setTexture(this->_data->assets.GetTexture(FRAME_NAME));
         ArktisEngine::ScaleSprToDims(this->frame, this->_data->settings.width, this->_data->settings.height);
         this->s.setTexture(this->_data->assets.GetTexture(TILES_NAME));
@@ -73,10 +74,10 @@ namespace States
                         this->rotate = true;
                         break;
                     case sf::Keyboard::Left:
-                        this->dx = -1;
+                        this->directionX = -1;
                         break;
                     case sf::Keyboard::Right:
-                        this->dx = 1;
+                        this->directionX = 1;
                         break;
                     default:
                         break;
@@ -91,6 +92,7 @@ namespace States
     ////////////////////////////////////////////////////////////
     void GameState::Update(float dt)
     {
+        this->timeText.setString("Time Spent\r\n" + this->timeSpent());
         if (lostGame == false)
         {
             //// <- Move -> ///
@@ -106,7 +108,7 @@ namespace States
             ///////check lines//////////
             this->checkLines();
             
-            this->dx = 0; this->rotate = 0; this->delay = BASE_DELAY;
+            this->directionX = 0; this->rotate = 0; this->delay = baseDelay;
         }
     }
     
@@ -143,7 +145,80 @@ namespace States
         
         this->_data->window.draw(this->frame);
         
+        this->drawLabels();
+        
         this->_data->window.display();
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void GameState::drawLabels()
+    {
+        this->_data->window.draw(this->p1UserName);
+        this->_data->window.draw(this->p2UserName);
+        
+        this->_data->window.draw(this->eloText);
+        this->_data->window.draw(this->p1Elo);
+        this->_data->window.draw(this->p2Elo);
+        
+        this->_data->window.draw(this->ptsText);
+        this->_data->window.draw(this->p1Pts);
+        this->_data->window.draw(this->p2Pts);
+        
+        this->_data->window.draw(this->linesText);
+        this->_data->window.draw(this->p1Lines);
+        this->_data->window.draw(this->p2Lines);
+        
+        this->_data->window.draw(this->delayText);
+        this->_data->window.draw(this->p1Delay);
+        this->_data->window.draw(this->p2Delay);
+        
+        this->_data->window.draw(this->timeText);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void GameState::positionRowOfLabels(sf::Text &rowName, sf::Text &p1, sf::Text &p2, float heightPrct, std::string rowStr, std::string p1String, std::string p2String)
+    {
+        rowName.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
+        p1.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
+        p2.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
+        
+        rowName.setString(rowStr);
+        p1.setString(p1String);
+        p2.setString(p2String);
+        
+        rowName.setFillColor(sf::Color::Black);
+        p1.setFillColor(sf::Color::Black);
+        p2.setFillColor(sf::Color::Black);
+        
+        ArktisEngine::CenterHorizontally(rowName, this->_data->settings, ArktisEngine::GetYPosRelToScreenByPrct(heightPrct, this->_data->settings));
+        ArktisEngine::CenterHorizontally(p1, this->_data->settings, ArktisEngine::GetYPosRelToScreenByPrct(heightPrct, this->_data->settings));
+        ArktisEngine::CenterHorizontally(p2, this->_data->settings, ArktisEngine::GetYPosRelToScreenByPrct(heightPrct, this->_data->settings));
+        
+        p1.move(-1 * ArktisEngine::GetXPosRelToScreenByPrct(10.f, this->_data->settings), 0.f);
+        p2.move(ArktisEngine::GetXPosRelToScreenByPrct(10.f, this->_data->settings), 0.f);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void GameState::setUpLabels()
+    {
+        this->p1UserName.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
+        this->p1UserName.setString(this->_data->userData.username);
+        this->p1UserName.setPosition(ArktisEngine::GetPosRelToScreenByPrct(19.5f, 15.f, this->_data->settings));
+        this->p1UserName.setFillColor(sf::Color::White);
+        this->p2UserName.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
+        this->p2UserName.setString("Placeholder name");
+        this->p2UserName.setPosition(ArktisEngine::GetPosRelToScreenByPrct(71.625f, 15.f, this->_data->settings));
+        this->p2UserName.setFillColor(sf::Color::White);
+        
+        this->positionRowOfLabels(this->eloText, this->p1Elo, this->p2Elo, 40.f, "ELO", "800", "800");
+        this->positionRowOfLabels(this->ptsText, this->p1Pts, this->p2Pts, 50.f, "Points", "0", "0");
+        this->positionRowOfLabels(this->linesText, this->p1Lines, this->p2Lines, 60.f, "Lines", "0", "0");
+        this->positionRowOfLabels(this->delayText, this->p1Delay, this->p2Delay, 70.f, "Delay", ArktisEngine::to_string_with_precision<float>(this->delay, 3), ArktisEngine::to_string_with_precision<float>(this->delay, 3));
+        
+        this->timeText.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
+        this->timeText.setString("Time Spent\r\n" + this->timeSpent());
+        this->timeText.setFillColor(sf::Color::Black);
+        ArktisEngine::CenterHorizontally(this->timeText, this->_data->settings, ArktisEngine::GetYPosRelToScreenByPrct(80.f, this->_data->settings));
     }
     
     ////////////////////////////////////////////////////////////
@@ -152,7 +227,7 @@ namespace States
         for (int i = 0; i < 4; i++)
         {
             this->b[i] = this->a[i];
-            this->a[i].x += this->dx;
+            this->a[i].x += this->directionX;
         }
         
         if (!this->check())
@@ -244,9 +319,22 @@ namespace States
             }
             if (count < N)
                 k--;
+            if (count == N)
+            {
+                int ptCount = std::stoi(this->p1Pts.getString().toAnsiString());
+                int lineCount = std::stoi(this->p1Lines.getString().toAnsiString());
+                ptCount += 1000 + 0.7f / this->baseDelay * 100;
+                lineCount++;
+                this->baseDelay -= 0.0125;
+                this->delay = this->baseDelay;
+                this->p1Pts.setString(std::to_string(ptCount));
+                this->p1Lines.setString(std::to_string(lineCount));
+                this->p1Delay.setString(ArktisEngine::to_string_with_precision<float>(this->baseDelay, 3));
+            }
         }
     }
     
+    ////////////////////////////////////////////////////////////
     bool GameState::isItGameOver()
     {
         for (int i = 0; i < N; i++)
@@ -255,5 +343,15 @@ namespace States
                 return true;
         }
         return false;
+    }
+    
+    ////////////////////////////////////////////////////////////
+    std::string GameState::timeSpent()
+    {
+        int minutes = (int)this->timeSpentClock.getElapsedTime().asSeconds() / 60;
+        int seconds = (int)this->timeSpentClock.getElapsedTime().asSeconds() % 60;
+        int milliseconds = (int)this->timeSpentClock.getElapsedTime().asMilliseconds() - ((int)this->timeSpentClock.getElapsedTime().asMilliseconds() / 1000) * 1000;
+        
+        return std::to_string(minutes) + " : " + std::to_string(seconds) + " : " + std::to_string(milliseconds);
     }
 }

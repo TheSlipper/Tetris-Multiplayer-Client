@@ -24,6 +24,6 @@
 #define GAME_PORT 7000
 
 /// Server metadata
-#define SERVER_IP "localhost"
+#define SERVER_IP "192.168.1.105"
 
 #define SERVER_PORT 7001

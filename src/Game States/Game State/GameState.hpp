@@ -28,8 +28,6 @@
 #define X_OFFSET 215.f
 #define Y_OFFSET 167.f
 
-#define BASE_DELAY .7f
-
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
@@ -83,6 +81,12 @@ namespace States
         void Draw(float dt);
         
     private:
+        void setUpLabels();
+        
+        void positionRowOfLabels(sf::Text &rowName, sf::Text &p1, sf::Text &p2, float heightPrct, std::string rowStr, std::string p1String, std::string p2String);
+        
+        void drawLabels();
+        
         void move();
         
         void rotation();
@@ -94,6 +98,8 @@ namespace States
         void checkLines();
         
         bool isItGameOver();
+        
+        std::string timeSpent();
         
         ////////////////////////////////////////////////////////////
         // Member data
@@ -123,13 +129,27 @@ namespace States
         
         sf::Sprite s, background, frame;
         
-        int dx = 0, colorNum = 1;
+        sf::Text p1UserName, p2UserName;
         
-        float timer = 0.f, delay = BASE_DELAY, tileWidth, tileHeight;
+        sf::Text p1Elo, p2Elo, eloText;
+        
+        sf::Text p1Pts, p2Pts, ptsText;
+        
+        sf::Text p1Lines, p2Lines, linesText;
+        
+        sf::Text p1Delay, p2Delay, delayText;
+        
+        sf::Text timeText;
+        
+        int directionX = 0, colorNum = 1;
+        
+        float baseDelay = .7f;
+        
+        float timer = 0.f, delay = baseDelay, tileWidth, tileHeight;
         
         bool rotate = 0;
         
-        sf::Clock gameClock;
+        sf::Clock gameClock, timeSpentClock;
         
         ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };

@@ -67,12 +67,7 @@ namespace States
                 else if (this->_data->input.IsInputFieldClicked(*this->_passwordInput, sf::Mouse::Left, this->_data->window))
                     this->_passwordInput->SwitchFocusState();
                 else if (this->_data->input.IsButtonClicked(*this->_loginButton, sf::Mouse::Left, this->_data->window))
-                {
-                    this->_data->messaging.SendStringData("LOGIN " + this->_loginInput->GetStdString() + " " + this->passwd);
-                    std::string response = this->_data->messaging.GetStringResponse();
-                    if (response.substr(0, 20 + this->_loginInput->GetStdString().length()).compare("CORRECT_CREDENTIALS " + this->_loginInput->GetStdString()) == 0)
-                        this->_data->machine.AddState((ArktisEngine::StateRef)new HomeScreenState(this->_data), true);
-                }
+                    this->sendFormData();
             }
             else if (sf::Event::TextEntered == event.type)
             {
@@ -102,6 +97,8 @@ namespace States
                         this->_passwordInput->SwitchFocusState();
                     }
                 }
+                else if (inputCharacter == (char)10) // Enter
+                    this->sendFormData();
                 else
                 {
                     if (this->_loginInput->HasFocus())
@@ -149,6 +146,7 @@ namespace States
         sf::FloatRect spriteRect = this->logo.getGlobalBounds();
         this->logo.setOrigin(spriteRect.left + spriteRect.width/2.0f, 0.0f);
         this->logo.setPosition(sf::Vector2f(this->_data->settings.width / 2.40f, this->_data->settings.height * 5.0f / 100.0f));
+        this->logo.move(-1 * ArktisEngine::GetXPosRelToScreenByPrct(10.f, this->_data->settings), 0.f);
     }
 
     ////////////////////////////////////////////////////////////
@@ -186,6 +184,8 @@ namespace States
             exit(ERROR_CODE_TEXTURE_NOT_LOADED);
         // this->logo = this->_data->assets.GetScaledSprite(TETRISMP_LOGO_NAME); // TODO: Check if scaled sprite works for everything
         this->logo.setTexture(this->_data->assets.GetTexture(TETRISMP_LOGO_NAME));
+        float width = this->_data->settings.width / 2.f, height = this->_data->settings.height / 2.f;
+        ArktisEngine::ScaleSprToDims(this->logo, width, height);
     }
 
     ////////////////////////////////////////////////////////////
@@ -206,5 +206,22 @@ namespace States
                                         localRect.top - (this->_data->settings.height * 1.0f / 100.0f));
         this->_loginInput->SetFont(this->_data->assets.GetFont(UI_FONT_NAME));
         this->_loginInput->SetFocus(true);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void LoginState::sendFormData()
+    {
+        this->_data->messaging.SendStringData("LOGIN " + this->_loginInput->GetStdString() + " " + this->passwd);
+        std::string response = this->_data->messaging.GetStringResponse();
+        if (response.substr(0, 20 + this->_loginInput->GetStdString().length()).compare("CORRECT_CREDENTIALS " + this->_loginInput->GetStdString()) == 0)
+        {
+            this->_data->userData.username = this->_loginInput->GetStdString();
+            this->_data->userData.password = this->passwd;
+            this->_data->machine.AddState((ArktisEngine::StateRef)new HomeScreenState(this->_data), true);
+        }
+        else
+        {
+            // TODO: Handle wrong credentials
+        }
     }
 }
