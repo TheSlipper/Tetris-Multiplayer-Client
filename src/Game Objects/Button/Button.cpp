@@ -105,6 +105,19 @@ namespace GameObjects
     }
     
     ////////////////////////////////////////////////////////////
+    void Button::SetOrigin(float x, float y)
+    {
+        this->buttonLabel.setOrigin(x, y);
+        this->rrs.setOrigin(x, y);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void Button::SetOrigin(sf::Vector2f vect)
+    {
+        this->SetOrigin(vect.x, vect.y);
+    }
+    
+    ////////////////////////////////////////////////////////////
     sf::FloatRect Button::GetGlobalBounds()
     {
         return this->rrs.getGlobalBounds();

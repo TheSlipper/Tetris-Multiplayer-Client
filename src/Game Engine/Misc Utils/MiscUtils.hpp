@@ -70,6 +70,10 @@ namespace ArktisEngine
     
     void CenterHorizontally(sf::Text &text, GameSettings &settings, float y = 0.f);
     
+    void CenterHorizontallyInArea(sf::Text &text, float areaWidth, float y);
+    
+    void CenterHorizontallyInArea(GameObjects::Button button, float areaWidth, float y);
+    
     template <typename T>
     std::string to_string_with_precision(const T a_value, const int n = 6)
     {

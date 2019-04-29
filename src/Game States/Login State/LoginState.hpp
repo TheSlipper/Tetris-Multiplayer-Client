@@ -31,6 +31,7 @@
 #include "../../Game Objects/Button/Button.hpp"
 #include "../../Game Objects/Input Field/InputField.hpp"
 #include "../Home Screen State/HomeScreenState.hpp"
+#include "../../Game Objects/MessageBox/MessageBox.hpp"
 
 namespace States
 {
@@ -102,6 +103,12 @@ namespace States
         void setUpForm();
         
         ////////////////////////////////////////////////////////////
+        /// \brief Sets up the message box
+        ///
+        ////////////////////////////////////////////////////////////
+        void setUpMessageBox();
+        
+        ////////////////////////////////////////////////////////////
         /// \brief Handles sending form data and validity of the
         ///         credentials
         ///
@@ -126,6 +133,8 @@ namespace States
         std::unique_ptr<GameObjects::InputField> _passwordInput; ///< Password input field
         
         std::unique_ptr<GameObjects::Button> _loginButton;
+        
+        std::unique_ptr<GameObjects::MessageBox> _messageBox;
         
         ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };

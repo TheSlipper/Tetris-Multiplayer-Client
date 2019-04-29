@@ -45,6 +45,7 @@ namespace States
         this->setUpLabels();
         this->centerAndPositionLabels();
         this->setUpForm();
+        this->setUpMessageBox();
     }
 
     ////////////////////////////////////////////////////////////
@@ -138,6 +139,8 @@ namespace States
         this->_data->window.draw(*this->_passwordInput);
 
         this->_data->window.draw(*this->_loginButton);
+        
+        this->_data->window.draw(*this->_messageBox);
 
         this->_data->window.display();
     }
@@ -206,6 +209,12 @@ namespace States
         this->_loginInput->SetFont(this->_data->assets.GetFont(UI_FONT_NAME));
         this->_loginInput->SetFocus(true);
     }
+    
+    ////////////////////////////////////////////////////////////
+    void LoginState::setUpMessageBox()
+    {
+        this->_messageBox = std::make_unique<GameObjects::MessageBox>(MessageBoxType::MB_OK, this->_data->assets.GetFont(UI_FONT_NAME), "-Incorrect credentials-", "The entered login or password is incorrect", 0.f, 0.f, 500.f, 300.f);
+    }
 
     ////////////////////////////////////////////////////////////
     void LoginState::sendFormData()
@@ -219,8 +228,6 @@ namespace States
             this->_data->machine.AddState((ArktisEngine::StateRef)new HomeScreenState(this->_data), true);
         }
         else
-        {
-            // TODO: Handle wrong credentials
-        }
+            this->_messageBox->PopUp();
     }
 }

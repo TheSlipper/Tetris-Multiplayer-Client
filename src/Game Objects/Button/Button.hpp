@@ -132,6 +132,24 @@ namespace GameObjects
         void SetSize(sf::Vector2f vect);
         
         ////////////////////////////////////////////////////////////
+        /// \brief Sets the origin of the object
+        ///
+        /// \param x x coordinate of the origin
+        ///
+        /// \param y y coordinate of the origin
+        ///
+        ////////////////////////////////////////////////////////////
+        void SetOrigin(float x, float y);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Sets the origin of the object
+        ///
+        /// \param vect vector with x and y coordinates of the origin
+        ///
+        ////////////////////////////////////////////////////////////
+        void SetOrigin(sf::Vector2f vect);
+        
+        ////////////////////////////////////////////////////////////
         /// \brief Gets the global bounds of the object
         ///
         /// \return sf::FloatRect global bounds

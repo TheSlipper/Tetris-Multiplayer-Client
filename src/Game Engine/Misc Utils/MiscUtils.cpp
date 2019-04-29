@@ -63,4 +63,20 @@ namespace ArktisEngine
         text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top  + textRect.height / 2.0f);
         text.setPosition(sf::Vector2f(settings.width / 2.0f, y));
     }
+    
+    ////////////////////////////////////////////////////////////
+    void CenterHorizontallyInArea(sf::Text &text, float areaWidth, float y)
+    {
+        sf::FloatRect textRect = text.getLocalBounds();
+        text.setOrigin(textRect.left + textRect.width / 2.f, textRect.top + textRect.height / 2.f);
+        text.setPosition(sf::Vector2f(areaWidth / 2.f, y));
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void CenterHorizontallyInArea(GameObjects::Button button, float areaWidth, float y)
+    {
+        sf::FloatRect btnRect = button.GetGlobalBounds();
+        button.SetOrigin(btnRect.left + btnRect.width / 2.f, btnRect.top + btnRect.height / 2.f);
+        button.SetPosition(sf::Vector2f(areaWidth / 2.f, y));
+    }
 }
