@@ -28,7 +28,7 @@
 #include "../../Game Engine/GameData/GameData.hpp"
 #include "../../Game Objects/Button/Button.hpp"
 #include "../../Game Engine/Misc Utils/MiscUtils.hpp"
-#include "../Game State/GameState.hpp"
+#include "../Loading Screen State/LoadingScreenState.hpp"
 
 namespace States
 {

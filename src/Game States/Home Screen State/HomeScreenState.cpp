@@ -55,9 +55,7 @@ namespace States
             else if (sf::Event::MouseButtonPressed == event.type)
             {
                 if (this->_data->input.IsButtonClicked(*this->_playNormal, sf::Mouse::Left, this->_data->window))
-                {
-                    this->_data->machine.AddState((ArktisEngine::StateRef)new GameState(this->_data), true);
-                }
+                    this->_data->machine.AddState((ArktisEngine::StateRef)new LoadingScreenState(this->_data), true);
             }
         }
     }

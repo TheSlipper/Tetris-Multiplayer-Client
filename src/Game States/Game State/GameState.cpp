@@ -36,6 +36,12 @@ namespace States
     void GameState::Init()
     {
         srand(time(0));
+        const std::string test = GAME_SONG_PATH_PREFIX + std::to_string(0) + std::to_string(rand()%3) + GAME_SONG_PATH_SUFFIX;
+        if (!this->backgroundMusic.openFromFile(test))
+            std::cout << "An error occurred - Could not load the file" << std::endl;
+        this->backgroundMusic.play();
+        this->backgroundMusic.setVolume(100);
+        this->backgroundMusic.setLoop(true);
         this->_data->assets.LoadTexture(TILES_NAME, TILES_PATH);
         this->_data->assets.LoadTexture(GAME_BG_NAME, GAME_BG_PATH);
         this->_data->assets.LoadTexture(FRAME_NAME, FRAME_PATH);
@@ -272,6 +278,7 @@ namespace States
                 {
                     this->lostGame = true;
                     std::cout << "Game over" << std::endl;
+                    this->backgroundMusic.stop();
                     this->_data->machine.AddState((ArktisEngine::StateRef)new HomeScreenState(this->_data), true);
                     return;
                 }

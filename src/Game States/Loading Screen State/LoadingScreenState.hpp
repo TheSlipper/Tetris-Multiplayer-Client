@@ -19,34 +19,20 @@
 #pragma once
 
 ////////////////////////////////////////////////////////////
-// Definitions
-////////////////////////////////////////////////////////////
-#define GRID_WIDTH 10
-#define GRID_HEIGHT 20
-
-// TODO: Scalability
-#define X_OFFSET 215.f
-#define Y_OFFSET 167.f
-
-////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-#include <SFML/Graphics.hpp>
-#include <SFML/Audio.hpp>
 #include "../State/State.hpp"
 #include "../../Game Engine/GameData/GameData.hpp"
-#include "../../Definitions/TEXTURE_DEFINITIONS.h"
-#include "../../Definitions/AUDIO_DEFINITIONS.h"
-#include "../Login State/LoginState.hpp"
-#include "../../Game Engine/Misc Utils/MiscUtils.hpp"
+#include "../../Definitions/FONT_DEFINITIONS.h"
+#include "../Game State/GameState.hpp"
 
 namespace States
 {
     ////////////////////////////////////////////////////////////
-    /// \brief Game State
+    /// \brief Loading Screen State
     ///
     ////////////////////////////////////////////////////////////
-    class GameState : public State
+    class LoadingScreenState : public State
     {
     public:
         ////////////////////////////////////////////////////////////
@@ -55,7 +41,7 @@ namespace States
         /// \param GameDataRef data pointer to the game's crucial data
         ///
         ////////////////////////////////////////////////////////////
-        GameState(ArktisEngine::GameDataRef data);
+        LoadingScreenState(ArktisEngine::GameDataRef data);
         
         ////////////////////////////////////////////////////////////
         /// \brief Initialization of the state
@@ -83,77 +69,18 @@ namespace States
         void Draw(float dt);
         
     private:
-        void setUpLabels();
-        
-        void positionRowOfLabels(sf::Text &rowName, sf::Text &p1, sf::Text &p2, float heightPrct, std::string rowStr, std::string p1String, std::string p2String);
-        
-        void drawLabels();
-        
-        void move();
-        
-        void rotation();
-        
-        void tick();
-        
-        bool check();
-        
-        void checkLines();
-        
-        bool isItGameOver();
-        
-        std::string timeSpent();
+        void centerText();
+
+        void sendMatchmakingReq();
         
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
-        const int M = GRID_HEIGHT;
-        const int N = GRID_WIDTH;
+        sf::Text loadingScreenText;
         
-        int field[GRID_HEIGHT][GRID_WIDTH] = {0};
+        std::string serverResponse;
         
-        bool lostGame = false;
-        
-        struct Point
-        {
-            int x = 0, y = 0;
-        } a[4], b[4];
-        
-        int figures[7][4] = ///< Figures available in Tetris
-        {
-            1, 3, 5, 7,     // I
-            2, 4, 5, 7,     // Z
-            3, 5, 4, 6,     // S
-            3, 5, 4, 7,     // T
-            2, 3, 5, 7,     // L
-            3, 5, 7, 6,     // J
-            2, 3, 4, 5      // O
-        };
-        
-        sf::Sprite s, background, frame;
-        
-        sf::Text p1UserName, p2UserName;
-        
-        sf::Text p1Elo, p2Elo, eloText;
-        
-        sf::Text p1Pts, p2Pts, ptsText;
-        
-        sf::Text p1Lines, p2Lines, linesText;
-        
-        sf::Text p1Delay, p2Delay, delayText;
-        
-        sf::Text timeText;
-        
-        sf::Music backgroundMusic;
-        
-        int directionX = 0, colorNum = 1;
-        
-        float baseDelay = .7f;
-        
-        float timer = 0.f, delay = baseDelay, tileWidth, tileHeight;
-        
-        bool rotate = 0;
-        
-        sf::Clock gameClock, timeSpentClock;
+        bool firstDraw = true;
         
         ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };
