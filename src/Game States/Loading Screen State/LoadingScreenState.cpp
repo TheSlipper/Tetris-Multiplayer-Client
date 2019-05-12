@@ -22,6 +22,9 @@
 ////////////////////////////////////////////////////////////
 #include "LoadingScreenState.hpp"
 
+// TODO: DELETE
+#include <iostream>
+
 namespace States
 {
     ////////////////////////////////////////////////////////////
@@ -61,7 +64,11 @@ namespace States
         {
             this->sendMatchmakingReq();
             if (this->serverResponse.substr(0, 10).compare("GAME_SETUP") == 0)
+            {
+                this->loadingScreenText.setString("OPPONENT FOUND!");
+                this->centerText();
                 this->_data->machine.AddState((ArktisEngine::StateRef)new GameState(this->_data), true);
+            }
         }
     }
     
@@ -92,5 +99,6 @@ namespace States
         const std::string gameSearch = "GAME_SEARCH " + this->_data->userData.username + " " + std::to_string(this->_data->userData.elo);
         this->_data->messaging.SendStringData(gameSearch);
         serverResponse = this->_data->messaging.GetStringResponse();
+        std::cout << serverResponse << std::endl;
     }
 }

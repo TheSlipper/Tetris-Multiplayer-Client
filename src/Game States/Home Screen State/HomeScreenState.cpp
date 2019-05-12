@@ -22,6 +22,9 @@
 ////////////////////////////////////////////////////////////
 #include "HomeScreenState.hpp"
 
+#include <iostream>
+
+
 namespace States
 {
     ////////////////////////////////////////////////////////////
@@ -32,7 +35,7 @@ namespace States
     ////////////////////////////////////////////////////////////
     void HomeScreenState::Init()
     {
-        //        this->_data->socket.connect("192.168.1.101", 6911); TODO: Enter server IP in the login screen maybe
+        this->setUserData();
         this->loadAvatarTextures();
         this->setUpNewsSection();
         this->setUpAccHUD();
@@ -78,19 +81,67 @@ namespace States
 
         this->_data->window.draw(*this->_nicknameBox);
 
-        this->_data->window.draw(*this->_blocksBox);
+        this->_data->window.draw(*this->_tetrominoPtsBlock);
 
         this->_data->window.draw(this->avatar);
 
         this->_data->window.draw(this->gameLogo);
 
-        for (sf::Text txt : this->articleHeaders)
+        for (const sf::Text &txt : this->articleHeaders)
             this->_data->window.draw(txt);
 
-        for (sf::Text txt : this->articleContent)
+        for (const sf::Text &txt : this->articleContents)
+            this->_data->window.draw(txt);
+        
+        for (const sf::Text &txt : this->articleAuthors)
+            this->_data->window.draw(txt);
+        
+        for (const sf::Text &txt : this->articleDates)
             this->_data->window.draw(txt);
 
         this->_data->window.display();
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void HomeScreenState::setUserData()
+    {
+        this->_data->messaging.SendStringData("GET_USER_DATA " + this->_data->userData.username);
+        std::string response = this->_data->messaging.GetStringResponse();
+        ArktisEngine::StringTokenizer tokenizer{response};
+        int i = 0;
+        for (const auto &t : tokenizer)
+        {
+            switch(i)
+            {
+                case 5:
+                    this->_data->userData.elo = std::stoi(t);
+                    break;
+                case 6:
+                    this->_data->userData.privilegeGroup = std::stoi(t);
+                    break;
+                case 7:
+                    this->_data->userData.unrankedWins = std::stoi(t);
+                    break;
+                case 8:
+                    this->_data->userData.unrankedLosses = std::stoi(t);
+                    break;
+                case 9:
+                    this->_data->userData.rankedWins = std::stoi(t);
+                    break;
+                case 10:
+                    this->_data->userData.rankedLosses = std::stoi(t);
+                    break;
+                case 11:
+                    this->_data->userData.tetrominoPoints = std::stoll(t);
+                    break;
+                case 12:
+                    this->_data->userData.timePlayed = std::stoll(t);
+                    break;
+                default:
+                    break;
+            }
+            i++;
+        }
     }
 
     ////////////////////////////////////////////////////////////
@@ -110,16 +161,17 @@ namespace States
     ////////////////////////////////////////////////////////////
     void HomeScreenState::setUpAccHUD()
     {
-        // TODO: Get the nickname by a request to the server
         this->_data->assets.LoadTexture(TETRISMP_BARE_LOGO_NAME, TETRISMP_BARE_LOGO_PATH);
         this->gameLogo.setTexture(this->_data->assets.GetTexture(TETRISMP_BARE_LOGO_NAME));
-        // TODO:
-//        float width = (this->_data->settings.width * 20.f)/100.f, height = ;
-//        ArktisEngine::ScaleSprToDims(this->gameLogo, width, <#float &height#>)
-        this->_nicknameBox = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME), "Slipper");
-        this->_blocksBox = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME), "13500 Blocks");
+        float logoWidth = this->_data->settings.width * 500.f / 3840.f, logoHeight = this->_data->settings.height * 442.30f / 2160.f;
+        ArktisEngine::ScaleSprToDims(this->gameLogo, logoWidth, logoHeight);
+        this->gameLogo.move(50.f, 2.5f);
+        this->_nicknameBox = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME), this->_data->userData.username);
+        this->_tetrominoPtsBlock = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME),
+                                                                std::to_string(this->_data->userData.tetrominoPoints) + " Tetromino Points");
+        
         this->_nicknameBox->SetPosition(sf::Vector2f(1500.f, 50.f));
-        this->_blocksBox->SetPosition(sf::Vector2f(this->_nicknameBox->GetPosition().x, this->_nicknameBox->GetPosition().y + this->_nicknameBox->GetGlobalBounds().height));
+        this->_tetrominoPtsBlock->SetPosition(sf::Vector2f(this->_nicknameBox->GetPosition().x, this->_nicknameBox->GetPosition().y + this->_nicknameBox->GetGlobalBounds().height));
         this->_nicknameBox->SetRrsFillColor(sf::Color(0, 0, 0, 50));
         this->avatar.setTexture(this->_data->assets.GetTexture(AVATAR_1_NAME));
         auto nicknameBounds = this->_nicknameBox->GetGlobalBounds();
@@ -148,27 +200,97 @@ namespace States
     ////////////////////////////////////////////////////////////
     void HomeScreenState::loadArticles()
     {
+        this->_data->messaging.SendStringData("GET_UPDATE_LOGS");
+        std::string response = this->_data->messaging.GetStringResponse();
+        boost::char_separator<char> sep{"\r\n"};
+        ArktisEngine::StringTokenizer tokenizer{response, sep};
+        int i = -1;
+        for (const std::string &token : tokenizer)
+        {
+            switch (i)
+            {
+                case 0:
+                    this->addArticleHeader(token);
+                    break;
+                case 1:
+                    this->addArticleContent(token);
+                    break;
+                case 2:
+                    this->addArticleAuthor(token);
+                    break;
+                case 3:
+                    this->addArticleDate(token);
+                    break;
+                case -1:
+                    const std::string codename = "SEND_UPDATE_LOGS";
+                    if (codename.compare(token) != 0)
+                        return;
+                    break;
+            }
+            i = (i == 3) ? 0 : i + 1;
+        }
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void HomeScreenState::addArticleHeader(std::string header)
+    {
         sf::Text txt;
         txt.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
-        txt.setString("Hello world! - Welcome to the indev version 0.0.1");
+        txt.setString(header);
         txt.setCharacterSize(this->_nicknameBox->GetGlobalBounds().height);
-        txt.setPosition(20.f, this->_data->settings.height * 457.f / 2160.f);
-        txt.setFillColor(sf::Color(0,0,0));
+        if (this->articleHeaders.empty())
+            txt.setPosition(20.f, this->_data->settings.height * 457.f / 2160.f);
+        else
+        {
+            const auto prevGlobalBounds = this->articleDates[this->articleDates.size() - 1].getGlobalBounds();
+            txt.setPosition(prevGlobalBounds.left, prevGlobalBounds.top + prevGlobalBounds.height + 30.f); // SCALE THIS
+        }
+        txt.setFillColor(sf::Color(0, 0, 0));
         this->articleHeaders.push_back(txt);
-
-        sf::Text txt2;
-        txt2.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
-        std::string content = "    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut odio nulla, tincidunt non pulvinar ac, consectetur et odio. Praesent viverra varius tortor ut fermentum. Fusce sollicitudin nisi augue, id suscipit ipsum facilisis non. Praesent nec laoreet tellus. Proin suscipit eros sit amet dui sodales, et tempor mauris tempus. Curabitur auctor cursus erat nec egestas. Aenean at quam eros. Integer vitae nisl sapien. Proin non arcu at nulla iaculis bibendum. Etiam tincidunt, orci a semper faucibus, justo neque pretium lorem, ut egestas purus risus vel lectus. Integer lacinia enim interdum, laoreet nisi non, tristique ante.\r\nVivamus euismod velit eros. Etiam lacinia urna nec libero condimentum mattis. Aliquam interdum purus eget orci ultrices, in tempor libero varius. Vestibulum lacus orci, scelerisque in euismod eget, tempor eu risus. Nulla facilisi. Vivamus blandit faucibus imperdiet. Nunc nec tellus imperdiet, volutpat velit eu, suscipit nunc. Nullam porta, tortor at fermentum ornare, ligula dui ornare leo, ultrices venenatis lectus ipsum nec nisi. Cras neque mi, elementum non risus et, dictum laoreet felis. Aenean eget risus semper, pellentesque nunc id, sollicitudin lorem. Fusce nec placerat ex. Ut vitae massa leo. Etiam quis est ut lectus ornare posuere. Pellentesque aliquam elementum diam, a vehicula augue hendrerit sit amet. Proin id turpis ut elit suscipit pretium. Aliquam iaculis sit amet turpis sit amet convallis.";
-        for (int i = 0; i < content.length(); i++)
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void HomeScreenState::addArticleContent(std::string content)
+    {
+        sf::Text txt;
+        const auto prevGlobalBounds = this->articleHeaders[this->articleHeaders.size() - 1].getGlobalBounds();
+        std::string copiedContent = content;
+        for (int i = 0; i < copiedContent.length(); i++)
         {
             if (i % 174 == 0)
-                content.insert(i, "\r\n");
+                copiedContent.insert(i, "\r\n");
         }
-
-        txt2.setString(content);
-        txt2.setCharacterSize(this->_nicknameBox->GetGlobalBounds().height/2.0);
-        txt2.setFillColor(sf::Color::Black);
-        txt2.setPosition(txt.getPosition().x, txt.getPosition().y + txt.getCharacterSize() + 5.f);
-        this->articleContent.push_back(txt2);
+        txt.setString(copiedContent);
+        txt.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
+        txt.setCharacterSize(this->_nicknameBox->GetGlobalBounds().height / 2.0f);
+        txt.setFillColor(sf::Color::Black);
+        txt.setPosition(prevGlobalBounds.left, prevGlobalBounds.top + prevGlobalBounds.height + 3.f); // SCALE THIS (.5f)
+        this->articleContents.push_back(txt);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void HomeScreenState::addArticleAuthor(std::string author)
+    {
+        sf::Text txt;
+        const auto prevGlobalBounds = this->articleContents[this->articleContents.size() - 1].getGlobalBounds();
+        txt.setString("Made by: " + author);
+        txt.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
+        txt.setCharacterSize(this->_nicknameBox->GetGlobalBounds().height / 2.25f); // SCALE THIS or maybe even change 2.25f to something else
+        txt.setFillColor(sf::Color::Black);
+        txt.setPosition(prevGlobalBounds.left, prevGlobalBounds.top + prevGlobalBounds.height + 5.f);
+        this->articleAuthors.push_back(txt);
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void HomeScreenState::addArticleDate(std::string date)
+    {
+        sf::Text txt;
+        const auto prevGlobalBounds = this->articleAuthors[this->articleAuthors.size() - 1].getGlobalBounds();
+        txt.setString(date);
+        txt.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
+        txt.setCharacterSize(this->_nicknameBox->GetGlobalBounds().height / 2.25f); // SCALE THIS or maybe even change 2.25f to something else
+        txt.setFillColor(sf::Color::Black);
+        txt.setPosition(prevGlobalBounds.left, prevGlobalBounds.top + prevGlobalBounds.height + 3.f);
+        this->articleDates.push_back(txt);
     }
 }

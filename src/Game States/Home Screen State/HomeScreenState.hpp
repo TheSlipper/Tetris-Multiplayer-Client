@@ -74,6 +74,12 @@ namespace States
 
     private:
         ////////////////////////////////////////////////////////////
+        /// \brief Sends a request to the server for the user's data
+        ///
+        ////////////////////////////////////////////////////////////
+        void setUserData();
+        
+        ////////////////////////////////////////////////////////////
         /// \brief Sets up the play buttons
         ///
         ////////////////////////////////////////////////////////////
@@ -102,6 +108,30 @@ namespace States
         ///
         ////////////////////////////////////////////////////////////
         void loadArticles();
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Adds a header to a new article
+        ///
+        ////////////////////////////////////////////////////////////
+        void addArticleHeader(std::string header);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Adds content to a new article
+        ///
+        ////////////////////////////////////////////////////////////
+        void addArticleContent(std::string content);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Adds the name of the author of a new article
+        ///
+        ////////////////////////////////////////////////////////////
+        void addArticleAuthor(std::string author);
+        
+        ////////////////////////////////////////////////////////////
+        /// \brief Adds content to a new article
+        ///
+        ////////////////////////////////////////////////////////////
+        void addArticleDate(std::string date);
 
         ////////////////////////////////////////////////////////////
         // Member data
@@ -110,7 +140,11 @@ namespace States
 
         std::vector<sf::Text> articleHeaders; ///< Headers of the articles
 
-        std::vector<sf::Text> articleContent; ///< Content of the articles
+        std::vector<sf::Text> articleContents; ///< Content of the articles
+        
+        std::vector<sf::Text> articleAuthors; ///< Authors of the articles
+        
+        std::vector<sf::Text> articleDates; ///< Dates of the articles
 
         std::unique_ptr<GameObjects::Button> _playNormal; ///< Play normal game box
 
@@ -118,7 +152,7 @@ namespace States
 
         std::unique_ptr<GameObjects::Button> _nicknameBox; ///< User's nickname box
 
-        std::unique_ptr<GameObjects::Button> _blocksBox; ///< User's block points box
+        std::unique_ptr<GameObjects::Button> _tetrominoPtsBlock; ///< User's block points box
 
         sf::Sprite gameLogo; ///< Game's logo
 

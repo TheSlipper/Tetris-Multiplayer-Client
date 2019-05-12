@@ -26,12 +26,14 @@
 #include "../Input Manager/InputManager.hpp"
 #include "../Messaging Manager/MessagingManager.hpp"
 #include <SFML/Network.hpp>
+#include <boost/tokenizer.hpp>
 
 namespace ArktisEngine
 {
     struct UserData
     {
-        int elo;
+        int elo, privilegeGroup, unrankedWins, unrankedLosses, rankedWins, rankedLosses;
+        long tetrominoPoints, timePlayed;
         std::string username, password;
     };
     
@@ -62,4 +64,6 @@ namespace ArktisEngine
     };
     
     typedef std::shared_ptr<GameData> GameDataRef;  ///< Definition of shared pointer to the GameData struct
+    
+    typedef boost::tokenizer<boost::char_separator<char>> StringTokenizer; ///< Definition of a java-style tokenizer
 }
