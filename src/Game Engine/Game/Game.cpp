@@ -29,11 +29,12 @@ namespace ArktisEngine
     {
         this->LoadGamesSettings("game_settings.conf");
 
-        _data->window.create(sf::VideoMode(this->_data->settings.width,
+        this->_data->window.create(sf::VideoMode(this->_data->settings.width,
                                            this->_data->settings.height), GAME_NAME, sf::Style::Close
                              | sf::Style::Titlebar);
-
-        _data->machine.AddState(StateRef(new States::SplashState(this->_data)));
+        this->loadIcon();
+        
+        this->_data->machine.AddState(StateRef(new States::SplashState(this->_data)));
 
         this->Run();
     }
@@ -81,5 +82,13 @@ namespace ArktisEngine
             interpolation = accumulator / dt;
             this->_data->machine.GetActiveState()->Draw(interpolation);
         }
+    }
+    
+    ////////////////////////////////////////////////////////////
+    void Game::loadIcon()
+    {
+        sf::Image icon;
+        icon.loadFromFile("Resources/Game Logo/logo_no_label.png");
+        this->_data->window.setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
     }
 }

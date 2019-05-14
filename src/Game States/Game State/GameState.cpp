@@ -60,6 +60,8 @@ namespace States
     ////////////////////////////////////////////////////////////
     void GameState::HandleInput()
     {
+        if (!this->_data->window.hasFocus())
+            return;
         sf::Event event;
         float time = this->gameClock.getElapsedTime().asSeconds();
         gameClock.restart();
