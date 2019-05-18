@@ -56,6 +56,16 @@ namespace States
         ///
         ////////////////////////////////////////////////////////////
         GameState(ArktisEngine::GameDataRef data);
+
+		////////////////////////////////////////////////////////////
+		/// \brief Default constructor
+		///
+		/// \param userData data of the opponent
+		///
+		/// \param data pointer to the game's crucial data
+		///
+		////////////////////////////////////////////////////////////
+		GameState(ArktisEngine::UserData opponentData, ArktisEngine::GameDataRef data);
         
         ////////////////////////////////////////////////////////////
         /// \brief Initialization of the state
@@ -106,6 +116,8 @@ namespace States
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
+		ArktisEngine::UserData opponentData;
+
         const int M = GRID_HEIGHT;
         const int N = GRID_WIDTH;
         

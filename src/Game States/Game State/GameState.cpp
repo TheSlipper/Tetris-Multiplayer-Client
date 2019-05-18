@@ -31,6 +31,12 @@ namespace States
     GameState::GameState(ArktisEngine::GameDataRef data) : _data(data)
     {
     }
+
+	////////////////////////////////////////////////////////////
+	GameState::GameState(ArktisEngine::UserData opponentData, ArktisEngine::GameDataRef data) : _data(data)
+	{
+		this->opponentData = opponentData;
+	}
     
     ////////////////////////////////////////////////////////////
     void GameState::Init()

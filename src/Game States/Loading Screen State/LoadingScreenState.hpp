@@ -72,6 +72,8 @@ namespace States
         void centerText();
 
         void sendMatchmakingReq();
+
+		ArktisEngine::UserData getOpponentData();
         
         ////////////////////////////////////////////////////////////
         // Member data

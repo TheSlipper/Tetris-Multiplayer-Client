@@ -65,9 +65,10 @@ namespace States
             this->sendMatchmakingReq();
             if (this->serverResponse.substr(0, 10).compare("GAME_SETUP") == 0)
             {
-                this->loadingScreenText.setString("OPPONENT FOUND!");
+                this->loadingScreenText.setString("OPPONENT FOUND!\r\nSETTING UP THE GAME...");
                 this->centerText();
-                this->_data->machine.AddState((ArktisEngine::StateRef)new GameState(this->_data), true);
+                this->_data->machine.AddState((ArktisEngine::StateRef)
+					new GameState(this->getOpponentData(), this->_data), true);
             }
         }
     }
@@ -93,12 +94,58 @@ namespace States
         loadingScreenText.setPosition(sf::Vector2f(this->_data->settings.width/2.0f, this->_data->settings.height/2.0f));
     }
     
-    ////////////////////////////////////////////////////////////
-    void LoadingScreenState::sendMatchmakingReq()
+	////////////////////////////////////////////////////////////
+	void LoadingScreenState::sendMatchmakingReq()
     {
         const std::string gameSearch = "GAME_SEARCH " + this->_data->userData.username + " " + std::to_string(this->_data->userData.elo);
         this->_data->messaging.SendStringData(gameSearch);
         serverResponse = this->_data->messaging.GetStringResponse();
-        std::cout << serverResponse << std::endl;
     }
+
+	////////////////////////////////////////////////////////////
+	ArktisEngine::UserData LoadingScreenState::getOpponentData()
+	{
+		ArktisEngine::StringTokenizer tokenizer{this->serverResponse};
+		ArktisEngine::UserData opponentData;
+		int i = 0;
+		for (const auto &t : tokenizer)
+		{
+			std::cout << t << std::endl;
+			switch (i)
+			{
+			case 3:
+				this->_data->userData.elo = std::stoi(t);
+				break;
+			case 4:
+				this->_data->userData.privilegeGroup = std::stoi(t);
+				break;
+			case 5:
+				this->_data->userData.unrankedWins = std::stoi(t);
+				break;
+			case 6:
+				this->_data->userData.unrankedLosses = std::stoi(t);
+				break;
+			case 7:
+				this->_data->userData.rankedWins = std::stoi(t);
+				break;
+			case 8:
+				this->_data->userData.rankedLosses = std::stoi(t);
+				break;
+			case 9:
+				this->_data->userData.tetrominoPoints = std::stoll(t);
+				break;
+			case 10:
+				this->_data->userData.timePlayed = std::stoll(t);
+				break;
+			case 11:
+				this->_data->userData.username = t;
+				break;
+			default:
+				break;
+			}
+			i++;
+		}
+
+		return opponentData;
+	}
 }
