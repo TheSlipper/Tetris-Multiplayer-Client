@@ -5,3 +5,8 @@ bin/
 obj/
 Resources/.DS_Store
 Tetris Multiplayer.layout
+Debug/
+*.vcxproj
+*.filters
+*.user
+*.dll

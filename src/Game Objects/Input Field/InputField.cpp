@@ -52,7 +52,7 @@ namespace GameObjects
     ////////////////////////////////////////////////////////////
     void InputField::AppendCharacter(char character)
     {
-        if(this->inputContent[this->inputContent.getSize()-1] == '|')
+        if(this->inputContent.getSize() > 0 && this->inputContent[this->inputContent.getSize()-1] == '|')
             this->RemoveLastChar();
         this->inputContent += character;
         this->inputText.setString(this->inputContent);
@@ -64,8 +64,17 @@ namespace GameObjects
         // TODO: Check if this works correctly
         // std::string content = this->inputContent.toAnsiString();
         // this->inputContent = sf::String(content.substr(0, content.length() - 2));
-        this->inputContent = this->inputContent.substring(0, this->inputContent.getSize() - 1);
-        this->inputText.setString(this->inputContent);
+		int len = this->inputContent.getSize();
+		if (len > 1)
+		{
+			this->inputContent = this->inputContent.substring(0, this->inputContent.getSize() - 1);
+			this->inputText.setString(this->inputContent);
+		}
+		else if (len == 1)
+		{
+			this->inputContent = "";
+			this->inputText.setString(this->inputContent);
+		}
     }
     
     ////////////////////////////////////////////////////////////
@@ -110,7 +119,7 @@ namespace GameObjects
     {
         this->focus = focus;
         this->timeFocused = this->clock->getElapsedTime().asSeconds();
-        if (this->inputContent[this->inputContent.getSize()-1] == '|')
+        if (this->inputContent.getSize() > 0 && this->inputContent[this->inputContent.getSize()-1] == '|')
             this->RemoveLastChar();
     }
     
@@ -148,7 +157,7 @@ namespace GameObjects
             return;
         else if(this->clock->getElapsedTime().asSeconds() > this->timeFocused + ANIMATION_TIME_INTERVAL)
         {
-            if (this->inputContent[this->inputContent.getSize()-1] == '|')
+            if (this->inputContent.getSize() > 0 && this->inputContent[this->inputContent.getSize()-1] == '|')
                 this->RemoveLastChar();
             else
                 this->AppendCharacter('|');

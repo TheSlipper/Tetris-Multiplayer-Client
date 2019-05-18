@@ -80,9 +80,9 @@ namespace States
                     // Backspace
                     if (this->_loginInput->HasFocus())
                         this->_loginInput->RemoveLastContentChar();
-                    else if (this->_passwordInput->HasFocus())
+                    else if (this->_passwordInput->HasFocus() && this->passwd.length() > 0)
                     {
-                        this->passwd.pop_back();
+						this->passwd.pop_back();
                         this->_passwordInput->RemoveLastContentChar();
                     }
                 }
