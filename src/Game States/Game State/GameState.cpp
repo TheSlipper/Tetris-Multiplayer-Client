@@ -36,6 +36,8 @@ namespace States
 	GameState::GameState(ArktisEngine::UserData opponentData, ArktisEngine::GameDataRef data) : _data(data)
 	{
 		this->opponentData = opponentData;
+		std::cout << opponentData.elo << std::endl;
+		std::cout << this->opponentData.elo << std::endl;
 	}
     
     ////////////////////////////////////////////////////////////
@@ -220,11 +222,13 @@ namespace States
         this->p1UserName.setPosition(ArktisEngine::GetPosRelToScreenByPrct(19.5f, 15.f, this->_data->settings));
         this->p1UserName.setFillColor(sf::Color::White);
         this->p2UserName.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
-        this->p2UserName.setString("Placeholder name");
+		std::cout << this->opponentData.username << std::endl;
+        this->p2UserName.setString(this->opponentData.username);
         this->p2UserName.setPosition(ArktisEngine::GetPosRelToScreenByPrct(71.625f, 15.f, this->_data->settings));
         this->p2UserName.setFillColor(sf::Color::White);
         
-        this->positionRowOfLabels(this->eloText, this->p1Elo, this->p2Elo, 40.f, "ELO", "800", "800");
+        this->positionRowOfLabels(this->eloText, this->p1Elo, this->p2Elo, 40.f, "ELO", 
+			std::to_string(this->_data->userData.elo), std::to_string(this->opponentData.elo));
         this->positionRowOfLabels(this->ptsText, this->p1Pts, this->p2Pts, 50.f, "Points", "0", "0");
         this->positionRowOfLabels(this->linesText, this->p1Lines, this->p2Lines, 60.f, "Lines", "0", "0");
         this->positionRowOfLabels(this->delayText, this->p1Delay, this->p2Delay, 70.f, "Delay", ArktisEngine::to_string_with_precision<float>(this->delay, 3), ArktisEngine::to_string_with_precision<float>(this->delay, 3));

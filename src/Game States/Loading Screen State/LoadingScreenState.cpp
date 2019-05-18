@@ -110,35 +110,34 @@ namespace States
 		int i = 0;
 		for (const auto &t : tokenizer)
 		{
-			std::cout << t << std::endl;
 			switch (i)
 			{
 			case 3:
-				this->_data->userData.elo = std::stoi(t);
+				opponentData.elo = std::stoi(t);
 				break;
 			case 4:
-				this->_data->userData.privilegeGroup = std::stoi(t);
+				opponentData.privilegeGroup = std::stoi(t);
 				break;
 			case 5:
-				this->_data->userData.unrankedWins = std::stoi(t);
+				opponentData.unrankedWins = std::stoi(t);
 				break;
 			case 6:
-				this->_data->userData.unrankedLosses = std::stoi(t);
+				opponentData.unrankedLosses = std::stoi(t);
 				break;
 			case 7:
-				this->_data->userData.rankedWins = std::stoi(t);
+				opponentData.rankedWins = std::stoi(t);
 				break;
 			case 8:
-				this->_data->userData.rankedLosses = std::stoi(t);
+				opponentData.rankedLosses = std::stoi(t);
 				break;
 			case 9:
-				this->_data->userData.tetrominoPoints = std::stoll(t);
+				opponentData.tetrominoPoints = std::stoll(t);
 				break;
 			case 10:
-				this->_data->userData.timePlayed = std::stoll(t);
+				opponentData.timePlayed = std::stoll(t);
 				break;
 			case 11:
-				this->_data->userData.username = t;
+				opponentData.username = t;
 				break;
 			default:
 				break;
