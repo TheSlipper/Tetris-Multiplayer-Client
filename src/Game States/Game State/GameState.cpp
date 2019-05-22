@@ -393,19 +393,20 @@ namespace States
 	void GameState::sendFieldData()
 	{
 		std::stringstream ss;
-		ss << "P_F_DATA " << std::to_string(this->_data->userData.matchId);
+		ss << "P_F_DATA " << std::to_string(this->_data->userData.matchId) << " ";
 		for (int i = 0; i < GRID_HEIGHT; i++)
 		{
 			for (int j = 0; j < GRID_WIDTH; j++)
-				ss << std::to_string(this->field[i][j]) << " ";
+				ss << (unsigned char)this->field[i][j] << " "; // CHECK IF THIS WORKS
 		}
 
+		std::cout << "My field: " << ss.str() << std::endl;
 		this->_data->messaging.SendStringData(ss.str());
 	}
 
 	////////////////////////////////////////////////////////////
 	void GameState::receiveFieldData()
 	{
-		std::cout << this->_data->messaging.GetStringResponse() << std::endl;
+		std::cout << "Enemy Field: " << this->_data->messaging.GetStringResponse() << std::endl;
 	}
 }
