@@ -28,17 +28,20 @@
 namespace States
 {
     ////////////////////////////////////////////////////////////
-    GameState::GameState(ArktisEngine::GameDataRef data) : _data(data)
+    GameState::GameState(ArktisEngine::GameDataRef data)
+	: _data(data),
+	networkingThread(&GameState::handleNetworking, this)
     {
     }
 
 	////////////////////////////////////////////////////////////
-	GameState::GameState(ArktisEngine::UserData opponentData, ArktisEngine::GameDataRef data) : _data(data)
+	GameState::GameState(ArktisEngine::UserData opponentData, ArktisEngine::GameDataRef data)
+	: _data(data),
+	networkingThread(&GameState::handleNetworking, this)
 	{
 		this->opponentData = opponentData;
 		std::cout << opponentData.elo << std::endl;
 		std::cout << this->opponentData.elo << std::endl;
-		this->networkingThread = std::make_unique<sf::Thread>(&handleNetworking);
 	}
     
     ////////////////////////////////////////////////////////////
@@ -64,8 +67,8 @@ namespace States
         ArktisEngine::ScaleSprToDims(this->s, tileSetWidth, tileSetHeight);
         this->background.setTexture(this->_data->assets.GetTexture(GAME_BG_NAME));
         ArktisEngine::ScaleSprToDims(this->background, this->_data->settings.width, this->_data->settings.height);
-		this->networkingThread->launch();
-    }
+		this->networkingThread.launch();
+	}
     
     ////////////////////////////////////////////////////////////
     void GameState::HandleInput()
@@ -403,6 +406,6 @@ namespace States
 	////////////////////////////////////////////////////////////
 	void GameState::receiveFieldData()
 	{
-		std::cout << this->_data->messaging.GetStringResponse << std::endl;
+		std::cout << this->_data->messaging.GetStringResponse() << std::endl;
 	}
 }

@@ -143,8 +143,6 @@ namespace States
 				int matchId = std::stoi(t);
 				opponentData.matchId = matchId;
 				this->_data->userData.matchId = matchId;
-			default:
-				break;
 			}
 			i++;
 		}

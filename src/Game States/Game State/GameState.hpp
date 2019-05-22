@@ -33,6 +33,8 @@
 ////////////////////////////////////////////////////////////
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
+#include <memory>
+#include <functional>
 #include "../State/State.hpp"
 #include "../../Game Engine/GameData/GameData.hpp"
 #include "../../Definitions/TEXTURE_DEFINITIONS.h"
@@ -173,7 +175,7 @@ namespace States
         
         sf::Clock gameClock, timeSpentClock;
 
-		std::unique_ptr<sf::Thread> networkingThread;
+		sf::Thread networkingThread;
         
         ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };
