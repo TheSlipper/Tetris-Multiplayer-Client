@@ -384,9 +384,12 @@ namespace States
 	void GameState::handleNetworking()
 	{
 		const static sf::Time time = sf::seconds(1.f);
-		sf::sleep(time);
-		this->sendFieldData();
-		this->receiveFieldData();
+		while (true)
+		{
+			sf::sleep(time);
+			this->sendFieldData();
+			this->receiveFieldData();
+		}
 	}
 
 	////////////////////////////////////////////////////////////
@@ -407,6 +410,15 @@ namespace States
 	////////////////////////////////////////////////////////////
 	void GameState::receiveFieldData()
 	{
-		std::cout << "Enemy Field: " << this->_data->messaging.GetStringResponse() << std::endl;
+		const std::string response = this->_data->messaging.GetStringResponse();
+		ArktisEngine::StringTokenizer tokenizer{response};
+		std::cout << "Enemy Field: ";
+		for (const std::string &t : tokenizer)
+		{
+			std::cout << (int)t.c_str()[0] << " ";
+		}
+		std::cout << std::endl;
+
+		// <<  << std::endl;
 	}
 }
