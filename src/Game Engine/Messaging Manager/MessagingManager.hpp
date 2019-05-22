@@ -67,6 +67,15 @@ namespace ArktisEngine
         ///
         ////////////////////////////////////////////////////////////
         std::string GetStringResponse();
+
+		////////////////////////////////////////////////////////////
+		/// \brief Gets the string response from the host
+		///
+		/// \param bufferSize defines the size of buffer used to 
+		///			get the message
+		///
+		////////////////////////////////////////////////////////////
+		std::string GetStringResponse(const int bufferSize);
         
         ////////////////////////////////////////////////////////////
         /// \brief Sends a message about client shutdown and gently

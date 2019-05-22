@@ -400,13 +400,17 @@ namespace States
 		for (int i = 0; i < GRID_HEIGHT; i++)
 		{
 			for (int j = 0; j < GRID_WIDTH; j++)
-				ss << std::to_string(this->field[i][j]) << " ";
+				// ss << std::to_string(this->field[i][j]) << " ";
+				ss << std::to_string(this->field[i][j]);
+			// ss << "\r\n";
 		}
 
 		for (int i = 0; i < 4; i++)
 		{
-			ss << a[i].x << " " << a[i].y << " ";
-			ss << b[i].x << " " << b[i].y << " ";
+			// ss << a[i].x << " " << a[i].y << " ";
+			ss << a[i].x << a[i].y;
+			// ss << b[i].x << " " << b[i].y << " ";
+			ss << b[i].x << b[i].y;
 		}
 
 		std::cout << "My field: " << ss.str() << std::endl;

@@ -51,8 +51,22 @@ namespace ArktisEngine
         }
     }
     
-    ////////////////////////////////////////////////////////////
-    bool MessagingManager::DisconnectSocket()
+	////////////////////////////////////////////////////////////
+	std::string MessagingManager::GetStringResponse(const int bufferSize)
+	{
+		char *buffer = new char[bufferSize];
+		std::size_t received = 0;
+		if (this->socket.receive(buffer, sizeof(buffer), received) != sf::Socket::Done)
+			return "DATA_GET_ERR";
+		else
+		{
+			std::string stringBuff(buffer);
+			return stringBuff.substr(0, received);
+		}
+	}
+
+	////////////////////////////////////////////////////////////
+	bool MessagingManager::DisconnectSocket()
     {
         bool res = this->SendStringData("LOGOUT");
         this->socket.disconnect();
