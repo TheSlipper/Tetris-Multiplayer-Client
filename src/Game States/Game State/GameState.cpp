@@ -400,7 +400,7 @@ namespace States
 		for (int i = 0; i < GRID_HEIGHT; i++)
 		{
 			for (int j = 0; j < GRID_WIDTH; j++)
-				ss << (unsigned char)this->field[i][j] << " "; // CHECK IF THIS WORKS
+				ss << std::to_string(this->field[i][j]) << " ";
 		}
 
 		std::cout << "My field: " << ss.str() << std::endl;
@@ -411,13 +411,7 @@ namespace States
 	void GameState::receiveFieldData()
 	{
 		const std::string response = this->_data->messaging.GetStringResponse();
-		ArktisEngine::StringTokenizer tokenizer{response};
-		std::cout << "Enemy Field: ";
-		for (const std::string &t : tokenizer)
-		{
-			std::cout << (int)t.c_str()[0] << " ";
-		}
-		std::cout << std::endl;
+		std::cout << "Enemy Field: " << response << std::endl;
 
 		// <<  << std::endl;
 	}
