@@ -403,6 +403,12 @@ namespace States
 				ss << std::to_string(this->field[i][j]) << " ";
 		}
 
+		for (int i = 0; i < 4; i++)
+		{
+			ss << a[i].x << " " << a[i].y << " ";
+			ss << b[i].x << " " << b[i].y << " ";
+		}
+
 		std::cout << "My field: " << ss.str() << std::endl;
 		this->_data->messaging.SendStringData(ss.str());
 	}
