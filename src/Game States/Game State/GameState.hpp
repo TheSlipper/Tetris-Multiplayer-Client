@@ -130,13 +130,15 @@ namespace States
         const int N = GRID_WIDTH;
         
         int field[GRID_HEIGHT][GRID_WIDTH] = {0};
+		
+		int opponentField[GRID_HEIGHT][GRID_WIDTH] = {0};
         
         bool lostGame = false;
         
         struct Point
         {
             int x = 0, y = 0;
-        } a[4], b[4];
+        } a[4], b[4], opponentA[4], opponentB[4];
         
         int figures[7][4] = ///< Figures available in Tetris
         {

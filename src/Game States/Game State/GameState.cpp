@@ -140,6 +140,7 @@ namespace States
         this->_data->window.draw(background);
         
         float horizontal_padding = -1 * (this->_data->settings.height * 36.f / 2160.f); // -25.f
+		float opp_horizontal_padding = -1 * (this->_data->settings.height * 72.f / 2160.f);
         float vertical_padding = -1 * (this->_data->settings.height * 35.f / 2160.f);
         
         for (int i = 0; i < M; i++)
@@ -153,6 +154,12 @@ namespace States
                 this->s.move(X_OFFSET, Y_OFFSET);
                 
                 this->_data->window.draw(s);
+
+				// ADDED THIS:
+				this->s.setTextureRect(sf::IntRect(this->opponentField[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
+				this->s.setPosition(j * (this->tileWidth + opp_horizontal_padding), i * (this->tileHeight + vertical_padding));
+				this->s.move(X_OFFSET, Y_OFFSET);
+				this->_data->window.draw(s);
             }
         }
         
@@ -162,6 +169,11 @@ namespace States
             this->s.setPosition(a[i].x * (tileHeight + horizontal_padding), a[i].y * (tileHeight + vertical_padding));
             this->s.move(X_OFFSET, Y_OFFSET);
             this->_data->window.draw(s);
+
+			this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
+			this->s.setPosition(opponentA[i].x * (tileHeight + opp_horizontal_padding), opponentA[i].y * (tileHeight + vertical_padding));
+			this->s.move(X_OFFSET, Y_OFFSET);
+			this->_data->window.draw(s);
         }
         
         this->_data->window.draw(this->frame);
@@ -400,16 +412,12 @@ namespace States
 		for (int i = 0; i < GRID_HEIGHT; i++)
 		{
 			for (int j = 0; j < GRID_WIDTH; j++)
-				// ss << std::to_string(this->field[i][j]) << " ";
 				ss << std::to_string(this->field[i][j]);
-			// ss << "\r\n";
 		}
 
 		for (int i = 0; i < 4; i++)
 		{
-			// ss << a[i].x << " " << a[i].y << " ";
 			ss << a[i].x << a[i].y;
-			// ss << b[i].x << " " << b[i].y << " ";
 			ss << b[i].x << b[i].y;
 		}
 
@@ -421,8 +429,22 @@ namespace States
 	void GameState::receiveFieldData()
 	{
 		const std::string response = this->_data->messaging.GetStringResponse();
-		std::cout << "Enemy Field: " << response << std::endl;
+		int charCount = 0;
+		for (int i = 0; i < GRID_HEIGHT; i++)
+		{
+			for (int j = 0; j < GRID_WIDTH; j++, charCount++)
+				this->opponentField[i][j] = (int)response[charCount];
+		}
 
-		// <<  << std::endl;
+		for (int i = 0; i < 4; i++, charCount++)
+		{
+			opponentA[i].x = (int)response[charCount];
+			charCount++;
+			opponentA[i].y = (int)response[charCount];
+			charCount++;
+			opponentB[i].x = (int)response[charCount];
+			charCount++;
+			opponentB[i].y = (int)response[charCount];
+		}
 	}
 }
