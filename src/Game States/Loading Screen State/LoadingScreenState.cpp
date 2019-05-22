@@ -139,6 +139,10 @@ namespace States
 			case 11:
 				opponentData.username = t;
 				break;
+			case 12:
+				int matchId = std::stoi(t);
+				opponentData.matchId = matchId;
+				this->_data->userData.matchId = matchId;
 			default:
 				break;
 			}
