@@ -35,6 +35,7 @@ namespace ArktisEngine
         int elo, privilegeGroup, unrankedWins, unrankedLosses, rankedWins, rankedLosses;
         long tetrominoPoints, timePlayed;
         std::string username, password;
+		int matchId;
     };
     
     ////////////////////////////////////////////////////////////

@@ -112,6 +112,12 @@ namespace States
         bool isItGameOver();
         
         std::string timeSpent();
+
+		void handleNetworking();
+
+		void sendFieldData();
+
+		void receiveFieldData();
         
         ////////////////////////////////////////////////////////////
         // Member data
@@ -166,6 +172,8 @@ namespace States
         bool rotate = 0;
         
         sf::Clock gameClock, timeSpentClock;
+
+		std::unique_ptr<sf::Thread> networkingThread;
         
         ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };

@@ -38,6 +38,7 @@ namespace States
 		this->opponentData = opponentData;
 		std::cout << opponentData.elo << std::endl;
 		std::cout << this->opponentData.elo << std::endl;
+		this->networkingThread = std::make_unique<sf::Thread>(&handleNetworking);
 	}
     
     ////////////////////////////////////////////////////////////
@@ -63,6 +64,7 @@ namespace States
         ArktisEngine::ScaleSprToDims(this->s, tileSetWidth, tileSetHeight);
         this->background.setTexture(this->_data->assets.GetTexture(GAME_BG_NAME));
         ArktisEngine::ScaleSprToDims(this->background, this->_data->settings.width, this->_data->settings.height);
+		this->networkingThread->launch();
     }
     
     ////////////////////////////////////////////////////////////
@@ -305,7 +307,9 @@ namespace States
                 }
             }
             
-            this->timer = 0;
+			// this->sendFieldData();
+			// this->receiveFieldData();
+			this->timer = 0;
         }
     }
     
@@ -373,4 +377,32 @@ namespace States
         
         return std::to_string(minutes) + " : " + std::to_string(seconds) + " : " + std::to_string(milliseconds);
     }
+
+	void GameState::handleNetworking()
+	{
+		const static sf::Time time = sf::seconds(1.f);
+		sf::sleep(time);
+		this->sendFieldData();
+		this->receiveFieldData();
+	}
+
+	////////////////////////////////////////////////////////////
+	void GameState::sendFieldData()
+	{
+		std::stringstream ss;
+		ss << "P_F_DATA " << std::to_string(this->_data->userData.matchId);
+		for (int i = 0; i < GRID_HEIGHT; i++)
+		{
+			for (int j = 0; j < GRID_WIDTH; j++)
+				ss << std::to_string(this->field[i][j]) << " ";
+		}
+
+		this->_data->messaging.SendStringData(ss.str());
+	}
+
+	////////////////////////////////////////////////////////////
+	void GameState::receiveFieldData()
+	{
+		std::cout << this->_data->messaging.GetStringResponse << std::endl;
+	}
 }
