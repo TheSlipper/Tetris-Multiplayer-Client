@@ -140,7 +140,7 @@ namespace States
         this->_data->window.draw(background);
         
         float horizontal_padding = -1 * (this->_data->settings.height * 36.f / 2160.f); // -25.f
-		float opp_horizontal_padding = -1 * (this->_data->settings.height * 72.f / 2160.f);
+		float opp_horizontal_padding = -1 * (this->_data->settings.height * 9.f / 2160.f);
         float vertical_padding = -1 * (this->_data->settings.height * 35.f / 2160.f);
         
         for (int i = 0; i < M; i++)
@@ -435,11 +435,18 @@ namespace States
 		{
 			for (int j = 0; j < GRID_WIDTH; j++, charCount++)
 			{
-				this->opponentField[i][j] = (int)response[charCount];
+				this->opponentField[i][j] = (int)response[charCount] - 48;
 				std::cout << opponentField[i][j];
 			}
 			std::cout << std::endl;
 		}
+
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << std::endl;
+
 
 		for (int i = 0; i < 4; i++, charCount++)
 		{
