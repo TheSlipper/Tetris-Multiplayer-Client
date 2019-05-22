@@ -156,6 +156,8 @@ namespace States
                 this->_data->window.draw(s);
 
 				// ADDED THIS:
+				if (opponentField[i][j] == 0)
+					continue;
 				this->s.setTextureRect(sf::IntRect(this->opponentField[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
 				this->s.setPosition(j * (this->tileWidth + opp_horizontal_padding), i * (this->tileHeight + vertical_padding));
 				this->s.move(X_OFFSET, Y_OFFSET);
@@ -421,7 +423,6 @@ namespace States
 			ss << b[i].x << b[i].y;
 		}
 
-		std::cout << "My field: " << ss.str() << std::endl;
 		this->_data->messaging.SendStringData(ss.str());
 	}
 
@@ -433,18 +434,23 @@ namespace States
 		for (int i = 0; i < GRID_HEIGHT; i++)
 		{
 			for (int j = 0; j < GRID_WIDTH; j++, charCount++)
+			{
 				this->opponentField[i][j] = (int)response[charCount];
+				std::cout << opponentField[i][j];
+			}
+			std::cout << std::endl;
 		}
 
 		for (int i = 0; i < 4; i++, charCount++)
 		{
-			opponentA[i].x = (int)response[charCount];
+			opponentA[i].x = (int)response[charCount] - 48;
 			charCount++;
-			opponentA[i].y = (int)response[charCount];
+			opponentA[i].y = (int)response[charCount] - 48;
 			charCount++;
-			opponentB[i].x = (int)response[charCount];
+			opponentB[i].x = (int)response[charCount] - 48;
 			charCount++;
-			opponentB[i].y = (int)response[charCount];
+			opponentB[i].y = (int)response[charCount] - 48;
 		}
+
 	}
 }
