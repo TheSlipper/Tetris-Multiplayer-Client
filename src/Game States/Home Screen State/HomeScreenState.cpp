@@ -149,7 +149,13 @@ namespace States
     {
         this->_playNormal = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME), "Play");
         this->_playRanked = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME), "Play Ranked");
-        this->_playNormal->SetSize(sf::Vector2f(300.f, 100.f));
+        // 600.f - 3840.f
+        // X - 1920.f
+        // 112.5f - 2160.f
+        // Y - 2160.f
+        
+//        sf::Vector2f dims();
+        this->_playNormal->SetSize(sf::Vector2f(600.f * this->_data->settings.width / 3840.f, 200.f * this->_data->settings.height / 2160.f));
         this->_playRanked->SetSize(sf::Vector2f(300.f, 100.f));
         this->_playRanked->SetPosition(sf::Vector2f(this->avatar.getPosition().x - this->_playNormal->GetGlobalBounds().width -
                                                     (this->_data->settings.width * 5.f / 100.f), this->avatar.getPosition().y));
