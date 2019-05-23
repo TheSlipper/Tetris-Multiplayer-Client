@@ -139,9 +139,16 @@ namespace States
         this->_data->window.clear(sf::Color::White);
         this->_data->window.draw(background);
         
-        const float horizontal_padding = -1 * (this->_data->settings.height * 36.f / 3840.f); // -25.f
-		const float opp_horizontal_padding = -1 * (this->_data->settings.height * 9.f / 3840.f);
-		const float vertical_padding = -1 * (this->_data->settings.height * 35.f / 2160.f);
+        // const float horizontal_padding = -1 * (this->_data->settings.height * 60.f / 3840.f); // -25.f
+		// 100% - 3840.f
+		// 30% - X
+        const float horizontalPadding = this->_data->settings.width * 11.25f / 100.f; // -25.f
+		const float opp_horizontal_padding = this->_data->settings.width * 50.f / 100.f;
+
+		const float verticalPadding = this->_data->settings.height * 29.25f / 100.f;
+		const float tileSizeWPadding = this->tileWidth - (this->_data->settings.width * 50.f / 3840.f);
+
+		const sf::Vector2f tileScaleVec(1.25, 1.25);
         
         for (int i = 0; i < M; i++)
         {
@@ -149,33 +156,31 @@ namespace States
             {
                 if (this->field[i][j] == 0)
                     continue;
-                this->s.setTextureRect(sf::IntRect(this->field[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight)); // maybe delete -1
-                this->s.setPosition(j * (this->tileWidth + horizontal_padding), i * (this->tileHeight + vertical_padding));
-                this->s.move(X_OFFSET, Y_OFFSET);
-                
+                this->s.setTextureRect(sf::IntRect(this->field[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
+                this->s.setPosition(j * tileSizeWPadding + horizontalPadding, i * tileSizeWPadding + verticalPadding);
                 this->_data->window.draw(s);
 
 				// ADDED THIS:
-				if (opponentField[i][j] == 0)
-					continue;
-				this->s.setTextureRect(sf::IntRect(this->opponentField[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
-				this->s.setPosition(j * (this->tileWidth + opp_horizontal_padding), i * (this->tileHeight + vertical_padding));
-				this->s.move(X_OFFSET, Y_OFFSET);
-				this->_data->window.draw(s);
+				//if (opponentField[i][j] == 0)
+				//	continue;
+				//this->s.setTextureRect(sf::IntRect(this->opponentField[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
+				//this->s.setPosition(j * (this->tileWidth + opp_horizontal_padding), i * (this->tileHeight + vertical_padding));
+				//this->s.move(X_OFFSET, Y_OFFSET);
+				//this->_data->window.draw(s);
             }
         }
         
         for (int i = 0; i < 4; i++)
         {
             this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
-            this->s.setPosition(a[i].x * (tileHeight + horizontal_padding), a[i].y * (tileHeight + vertical_padding));
-            this->s.move(X_OFFSET, Y_OFFSET);
+			this->s.setPosition(a[i].x * tileSizeWPadding + horizontalPadding, a[i].y * tileSizeWPadding + verticalPadding);
             this->_data->window.draw(s);
 
-			this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
-			this->s.setPosition(opponentA[i].x * (tileHeight + opp_horizontal_padding), opponentA[i].y * (tileHeight + vertical_padding));
-			this->s.move(X_OFFSET, Y_OFFSET);
-			this->_data->window.draw(s);
+
+			//this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
+			//this->s.setPosition(opponentA[i].x * (tileHeight + opp_horizontal_padding), opponentA[i].y * (tileHeight + vertical_padding));
+			//this->s.move(X_OFFSET, Y_OFFSET);
+			//this->_data->window.draw(s);
         }
         
         this->_data->window.draw(this->frame);
