@@ -398,13 +398,18 @@ namespace States
 	////////////////////////////////////////////////////////////
 	void GameState::handleNetworking()
 	{
-		const static sf::Time time = sf::seconds(1.f);
-		while (true)
-		{
+		//const static sf::Time time = sf::seconds(1.f);
+		//while (true)
+		//{
+		//	sf::sleep(time);
+		//	this->sendFieldData();
+		//	this->receiveFieldData();
+		//}
+
+		const static sf::Time time = sf::seconds(4.f);
 			sf::sleep(time);
 			this->sendFieldData();
 			this->receiveFieldData();
-		}
 	}
 
 	////////////////////////////////////////////////////////////
