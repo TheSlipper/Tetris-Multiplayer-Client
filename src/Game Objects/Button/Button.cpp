@@ -48,7 +48,6 @@ namespace GameObjects
         this->buttonLabel.setString(label);
         this->buttonLabel.setPosition(x, y);
         this->buttonLabel.setCharacterSize(9.0f * this->rrs.getGlobalBounds().width / 100.0f);
-//        this->buttonLabel.setFillColor(sf::Color(255,255,255));
         this->buttonLabel.setFillColor(sf::Color(255,255,255));
         this->centerTextVert();
     }
