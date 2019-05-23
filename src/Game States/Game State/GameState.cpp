@@ -139,11 +139,8 @@ namespace States
         this->_data->window.clear(sf::Color::White);
         this->_data->window.draw(background);
         
-        // const float horizontal_padding = -1 * (this->_data->settings.height * 60.f / 3840.f); // -25.f
-		// 100% - 3840.f
-		// 30% - X
         const float horizontalPadding = this->_data->settings.width * 11.25f / 100.f; // -25.f
-		const float opp_horizontal_padding = this->_data->settings.width * 50.f / 100.f;
+		const float oppHorizontalPadding = this->_data->settings.width * 60.f / 100.f;
 
 		const float verticalPadding = this->_data->settings.height * 14.25f / 100.f;
 		const float tileSizeWPaddingVer = this->tileWidth - (this->_data->settings.width * 50.f / 3840.f);
@@ -161,13 +158,11 @@ namespace States
                 this->s.setPosition(j * tileSizeWPaddingHor + horizontalPadding, i * tileSizeWPaddingVer + verticalPadding);
                 this->_data->window.draw(s);
 
-				// ADDED THIS:
-				//if (opponentField[i][j] == 0)
-				//	continue;
-				//this->s.setTextureRect(sf::IntRect(this->opponentField[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
-				//this->s.setPosition(j * (this->tileWidth + opp_horizontal_padding), i * (this->tileHeight + vertical_padding));
-				//this->s.move(X_OFFSET, Y_OFFSET);
-				//this->_data->window.draw(s);
+				if (opponentField[i][j] == 0)
+					continue;
+				this->s.setTextureRect(sf::IntRect(this->opponentField[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
+				this->s.setPosition(j * tileSizeWPaddingHor + oppHorizontalPadding, i * tileSizeWPaddingVer + verticalPadding);
+				this->_data->window.draw(s);
             }
         }
         
@@ -178,10 +173,9 @@ namespace States
             this->_data->window.draw(s);
 
 
-			//this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
-			//this->s.setPosition(opponentA[i].x * (tileHeight + opp_horizontal_padding), opponentA[i].y * (tileHeight + vertical_padding));
-			//this->s.move(X_OFFSET, Y_OFFSET);
-			//this->_data->window.draw(s);
+			this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
+			this->s.setPosition(opponentA[i].x * tileSizeWPaddingHor + oppHorizontalPadding, opponentA[i].y * tileSizeWPaddingVer + verticalPadding);
+			this->_data->window.draw(s);
         }
         
         this->_data->window.draw(this->frame);
@@ -401,6 +395,7 @@ namespace States
         return std::to_string(minutes) + " : " + std::to_string(seconds) + " : " + std::to_string(milliseconds);
     }
 
+	////////////////////////////////////////////////////////////
 	void GameState::handleNetworking()
 	{
 		const static sf::Time time = sf::seconds(1.f);
@@ -442,28 +437,32 @@ namespace States
 			for (int j = 0; j < GRID_WIDTH; j++, charCount++)
 			{
 				this->opponentField[i][j] = (int)response[charCount] - 48;
-				std::cout << opponentField[i][j];
+				std::cout << opponentField[i][j] << " ";
 			}
 			std::cout << std::endl;
 		}
 
 		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-
 
 		for (int i = 0; i < 4; i++, charCount++)
 		{
 			opponentA[i].x = (int)response[charCount] - 48;
 			charCount++;
 			opponentA[i].y = (int)response[charCount] - 48;
+			std::cout << opponentA[i].x << " " << opponentA[i].y << std::endl;
 			charCount++;
 			opponentB[i].x = (int)response[charCount] - 48;
 			charCount++;
 			opponentB[i].y = (int)response[charCount] - 48;
+			std::cout << opponentA[i].x << " " << opponentA[i].y << std::endl;
+
 		}
+
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << std::endl;
+		std::cout << std::endl;
 
 	}
 }
