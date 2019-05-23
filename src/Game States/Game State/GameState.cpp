@@ -61,7 +61,7 @@ namespace States
         this->frame.setTexture(this->_data->assets.GetTexture(FRAME_NAME));
         ArktisEngine::ScaleSprToDims(this->frame, this->_data->settings.width, this->_data->settings.height);
         this->s.setTexture(this->_data->assets.GetTexture(TILES_NAME));
-        float tileSetWidth = this->_data->settings.width * 970.f / 3840.f, tileSetHeight = this->_data->settings.height * 121.f / 2160.f;
+        float tileSetWidth = this->_data->settings.width * 1100.f / 3840.f, tileSetHeight = this->_data->settings.height * 138.f / 2160.f;
         this->tileWidth = tileSetWidth / 8.0f;
         this->tileHeight = tileSetHeight;
         ArktisEngine::ScaleSprToDims(this->s, tileSetWidth, tileSetHeight);
@@ -145,8 +145,9 @@ namespace States
         const float horizontalPadding = this->_data->settings.width * 11.25f / 100.f; // -25.f
 		const float opp_horizontal_padding = this->_data->settings.width * 50.f / 100.f;
 
-		const float verticalPadding = this->_data->settings.height * 29.25f / 100.f;
-		const float tileSizeWPadding = this->tileWidth - (this->_data->settings.width * 50.f / 3840.f);
+		const float verticalPadding = this->_data->settings.height * 14.25f / 100.f;
+		const float tileSizeWPaddingVer = this->tileWidth - (this->_data->settings.width * 50.f / 3840.f);
+        const float tileSizeWPaddingHor = this->tileWidth - (this->_data->settings.width * 54.f / 3840.f);
 
 		const sf::Vector2f tileScaleVec(1.25, 1.25);
         
@@ -157,7 +158,7 @@ namespace States
                 if (this->field[i][j] == 0)
                     continue;
                 this->s.setTextureRect(sf::IntRect(this->field[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
-                this->s.setPosition(j * tileSizeWPadding + horizontalPadding, i * tileSizeWPadding + verticalPadding);
+                this->s.setPosition(j * tileSizeWPaddingHor + horizontalPadding, i * tileSizeWPaddingVer + verticalPadding);
                 this->_data->window.draw(s);
 
 				// ADDED THIS:
@@ -173,7 +174,7 @@ namespace States
         for (int i = 0; i < 4; i++)
         {
             this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
-			this->s.setPosition(a[i].x * tileSizeWPadding + horizontalPadding, a[i].y * tileSizeWPadding + verticalPadding);
+			this->s.setPosition(a[i].x * tileSizeWPaddingHor + horizontalPadding, a[i].y * tileSizeWPaddingVer + verticalPadding);
             this->_data->window.draw(s);
 
 
