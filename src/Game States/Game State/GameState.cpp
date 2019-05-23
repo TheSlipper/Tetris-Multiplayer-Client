@@ -435,39 +435,44 @@ namespace States
 	////////////////////////////////////////////////////////////
 	void GameState::receiveFieldData()
 	{
-		const std::string response = this->_data->messaging.GetStringResponse();
+		const std::string response = this->_data->messaging.GetStringResponse().substr(1, 224);
+
+		std::cout << "Raw Response: \r\n";
+		for (int i = 0; i < response.length(); i++)
+		{
+			std::cout << response[i] << " ";
+			if (i % 9 == 0)
+				std::cout << std::endl;
+		}
+		std::cout << "\r\n\r\n\r\n\r\n";
+
 		int charCount = 0;
 		for (int i = 0; i < GRID_HEIGHT; i++)
 		{
 			for (int j = 0; j < GRID_WIDTH; j++, charCount++)
 			{
 				this->opponentField[i][j] = (int)response[charCount] - 48;
-				std::cout << opponentField[i][j] << " ";
 			}
-			std::cout << std::endl;
 		}
-
-		std::cout << std::endl;
 
 		for (int i = 0; i < 4; i++, charCount++)
 		{
 			opponentA[i].x = (int)response[charCount] - 48;
 			charCount++;
 			opponentA[i].y = (int)response[charCount] - 48;
-			std::cout << opponentA[i].x << " " << opponentA[i].y << std::endl;
 			charCount++;
 			opponentB[i].x = (int)response[charCount] - 48;
 			charCount++;
 			opponentB[i].y = (int)response[charCount] - 48;
-			std::cout << opponentA[i].x << " " << opponentA[i].y << std::endl;
-
 		}
 
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-		std::cout << std::endl;
-
+		for (int i = 0; i < GRID_HEIGHT; i++)
+		{
+			for (int j = 0; j < GRID_WIDTH; j++)
+			{
+				std::cout << this->opponentField[i][j] << " ";
+			}
+			std::cout << std::endl;
+		}
 	}
 }
