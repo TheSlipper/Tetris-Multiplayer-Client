@@ -97,12 +97,18 @@ namespace GameObjects
         this->SetPosition(sf::Vector2f(x, y));
     }
     
-    ////////////////////////////////////////////////////////////
-    void Button::SetSize(sf::Vector2f vect)
+	////////////////////////////////////////////////////////////
+	void Button::SetSize(sf::Vector2f vect)
     {
         this->rrs.setSize(vect);
         this->centerTextVert();
     }
+
+	////////////////////////////////////////////////////////////
+	void Button::SetSize(float width, float height)
+	{
+		this->SetSize(sf::Vector2f(width, height));
+	}
     
     ////////////////////////////////////////////////////////////
     void Button::SetOrigin(float x, float y)
@@ -116,9 +122,16 @@ namespace GameObjects
     {
         this->SetOrigin(vect.x, vect.y);
     }
+
+	////////////////////////////////////////////////////////////
+	void Button::SetCharacterSize(int charSize)
+	{
+		this->buttonLabel.setCharacterSize(charSize);
+		this->centerTextVert();
+	}
     
-    ////////////////////////////////////////////////////////////
-    sf::FloatRect Button::GetGlobalBounds()
+	////////////////////////////////////////////////////////////
+	sf::FloatRect Button::GetGlobalBounds()
     {
         return this->rrs.getGlobalBounds();
     }

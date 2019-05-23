@@ -149,19 +149,12 @@ namespace States
     {
         this->_playNormal = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME), "Play");
         this->_playRanked = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME), "Play Ranked");
-        // 600.f - 3840.f
-        // X - 1920.f
-        // 112.5f - 2160.f
-        // Y - 2160.f
         
-//        sf::Vector2f dims();
-        this->_playNormal->SetSize(sf::Vector2f(600.f * this->_data->settings.width / 3840.f, 200.f * this->_data->settings.height / 2160.f));
-        this->_playRanked->SetSize(sf::Vector2f(300.f, 100.f));
-        this->_playRanked->SetPosition(sf::Vector2f(this->avatar.getPosition().x - this->_playNormal->GetGlobalBounds().width -
-                                                    (this->_data->settings.width * 5.f / 100.f), this->avatar.getPosition().y));
-        this->_playNormal->SetPosition(sf::Vector2f(this->_playRanked->GetPosition().x - this->_playRanked->GetGlobalBounds().width -
-                                                    (this->_data->settings.width * 2.5f / 100.f), this->avatar.getPosition().y));
-        this->_playRanked->SetSize(sf::Vector2f(300.f, 100.f)); // TODO: Scalable
+        sf::Vector2f dims(600.f * this->_data->settings.width / 3840.f, 200.f * this->_data->settings.height / 2160.f);
+        this->_playNormal->SetSize(dims);
+        this->_playRanked->SetSize(dims);
+        this->_playRanked->SetPosition(this->_data->settings.width * 30.f / 100.f, this->_data->settings.height * 4.f / 100.f);
+        this->_playNormal->SetPosition(this->_data->settings.width * 50.f / 100.f, this->_data->settings.height * 4.f / 100.f);
     }
 
     ////////////////////////////////////////////////////////////
@@ -175,9 +168,14 @@ namespace States
         this->_nicknameBox = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME), this->_data->userData.username);
         this->_tetrominoPtsBlock = std::make_unique<GameObjects::Button>(this->_data->assets.GetFont(UI_FONT_NAME),
                                                                 std::to_string(this->_data->userData.tetrominoPoints) + " Tetromino Points");
-        
-        this->_nicknameBox->SetPosition(sf::Vector2f(1500.f, 50.f));
+
+		this->_nicknameBox->SetPosition(this->_data->settings.width * 2985.f / 3820.f, this->_data->settings.height * 4.f / 100.f);
+		this->_nicknameBox->SetSize(this->_data->settings.width * 597.f / 3820.f, this->_data->settings.height * 100.f / 2160.f);
+		this->_nicknameBox->SetCharacterSize(this->_data->settings.width * 32.f / 2160.f);
+
         this->_tetrominoPtsBlock->SetPosition(sf::Vector2f(this->_nicknameBox->GetPosition().x, this->_nicknameBox->GetPosition().y + this->_nicknameBox->GetGlobalBounds().height));
+		this->_tetrominoPtsBlock->SetSize(this->_data->settings.width * 597.f / 3820.f, this->_data->settings.height * 100.f / 2160.f);
+		this->_tetrominoPtsBlock->SetCharacterSize(this->_data->settings.width * 32.f / 2160.f);
         this->_nicknameBox->SetRrsFillColor(sf::Color(0, 0, 0, 50));
         this->avatar.setTexture(this->_data->assets.GetTexture(AVATAR_1_NAME));
         auto nicknameBounds = this->_nicknameBox->GetGlobalBounds();
