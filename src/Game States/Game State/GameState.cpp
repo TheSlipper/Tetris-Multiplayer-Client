@@ -436,11 +436,11 @@ namespace States
 		const static sf::Time time = sf::seconds(1.f);
 		while (true)
 		{
-			sf::sleep(time);
 			if (this->p1LostGame && this->p2LostGame)
 			{
 				return;
 			}
+			sf::sleep(time);
 			this->sendFieldData();
 			this->receiveFieldData();
 		}
@@ -480,10 +480,9 @@ namespace States
 
 		if (response[0] == 'L')
 		{
-			if (this->p2LostGame)
-				return;
 			this->p2LostGame = true;
 			this->p2GameOver.setFillColor(sf::Color::Red);
+			return;
 		}
 
 		int charCount = 0;
