@@ -421,6 +421,7 @@ namespace States
 		{
 			for (int j = 0; j < GRID_WIDTH; j++)
 				ss << std::to_string(this->field[i][j]);
+			ss << 'N';
 		}
 
 		for (int i = 0; i < 4; i++)
@@ -435,22 +436,25 @@ namespace States
 	////////////////////////////////////////////////////////////
 	void GameState::receiveFieldData()
 	{
-		const std::string response = this->_data->messaging.GetStringResponse().substr(1, 224);
+		//const std::string response = this->_data->messaging.GetStringResponse().substr(1, 224);
+		const std::string response = this->_data->messaging.GetStringResponse();
 
 		std::cout << "Raw Response: \r\n";
 		for (int i = 0; i < response.length(); i++)
 		{
-			std::cout << response[i] << " ";
-			if (i % 9 == 0)
+			if (response[i] == 'N')
 				std::cout << std::endl;
+			std::cout << response[i] << " ";
 		}
 		std::cout << "\r\n\r\n\r\n\r\n";
 
 		int charCount = 0;
 		for (int i = 0; i < GRID_HEIGHT; i++)
 		{
-			for (int j = 0; j < GRID_WIDTH; j++, charCount++)
+			for (int j = 0; j <= GRID_WIDTH; j++, charCount++)
 			{
+				if (response[charCount] == 'N')
+					break;
 				this->opponentField[i][j] = (int)response[charCount] - 48;
 			}
 		}
@@ -464,21 +468,6 @@ namespace States
 			opponentB[i].x = (int)response[charCount] - 48;
 			charCount++;
 			opponentB[i].y = (int)response[charCount] - 48;
-		}
-
-		for (int i = 0; i < GRID_HEIGHT; i++)
-		{
-			for (int j = 0; j < GRID_WIDTH; j++)
-			{
-				std::cout << this->opponentField[i][j] << " ";
-			}
-			std::cout << std::endl << std::endl;
-		}
-
-		for (int i = 0; i < 4; i++)
-		{
-			std::cout << "a[" << i << "]: (" << opponentA[i].x << ", " << opponentA[i].y << ")" << std::endl;
-			std::cout << "b[" << i << "]: (" << opponentB[i].x << ", " << opponentB[i].y << ")" << std::endl;
 		}
 	}
 }
