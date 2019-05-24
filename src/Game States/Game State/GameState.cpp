@@ -140,7 +140,7 @@ namespace States
         this->_data->window.draw(background);
         
         const float horizontalPadding = this->_data->settings.width * 11.25f / 100.f; // -25.f
-		const float oppHorizontalPadding = this->_data->settings.width * 60.f / 100.f;
+		const float oppHorizontalPadding = this->_data->settings.width * 70.f / 100.f;
 
 		const float verticalPadding = this->_data->settings.height * 14.25f / 100.f;
 		const float tileSizeWPaddingVer = this->tileWidth - (this->_data->settings.width * 50.f / 3840.f);
@@ -398,18 +398,18 @@ namespace States
 	////////////////////////////////////////////////////////////
 	void GameState::handleNetworking()
 	{
-		//const static sf::Time time = sf::seconds(1.f);
-		//while (true)
-		//{
-		//	sf::sleep(time);
-		//	this->sendFieldData();
-		//	this->receiveFieldData();
-		//}
-
-		const static sf::Time time = sf::seconds(4.f);
+		const static sf::Time time = sf::seconds(1.f);
+		while (true)
+		{
 			sf::sleep(time);
 			this->sendFieldData();
 			this->receiveFieldData();
+		}
+
+		//const static sf::Time time = sf::seconds(4.f);
+		//	sf::sleep(time);
+		//	this->sendFieldData();
+		//	this->receiveFieldData();
 	}
 
 	////////////////////////////////////////////////////////////
@@ -472,7 +472,13 @@ namespace States
 			{
 				std::cout << this->opponentField[i][j] << " ";
 			}
-			std::cout << std::endl;
+			std::cout << std::endl << std::endl;
+		}
+
+		for (int i = 0; i < 4; i++)
+		{
+			std::cout << "a[" << i << "]: (" << opponentA[i].x << ", " << opponentA[i].y << ")" << std::endl;
+			std::cout << "b[" << i << "]: (" << opponentB[i].x << ", " << opponentB[i].y << ")" << std::endl;
 		}
 	}
 }
