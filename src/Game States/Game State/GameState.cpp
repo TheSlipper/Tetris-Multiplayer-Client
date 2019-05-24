@@ -140,7 +140,7 @@ namespace States
         this->_data->window.draw(background);
         
         const float horizontalPadding = this->_data->settings.width * 11.25f / 100.f; // -25.f
-		const float oppHorizontalPadding = this->_data->settings.width * 70.f / 100.f;
+		const float oppHorizontalPadding = this->_data->settings.width * 66.f / 100.f;
 
 		const float verticalPadding = this->_data->settings.height * 14.25f / 100.f;
 		const float tileSizeWPaddingVer = this->tileWidth - (this->_data->settings.width * 50.f / 3840.f);
@@ -152,17 +152,18 @@ namespace States
         {
             for (int j = 0; j < N; j++)
             {
-                if (this->field[i][j] == 0)
-                    continue;
-                this->s.setTextureRect(sf::IntRect(this->field[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
-                this->s.setPosition(j * tileSizeWPaddingHor + horizontalPadding, i * tileSizeWPaddingVer + verticalPadding);
-                this->_data->window.draw(s);
-
-				if (opponentField[i][j] == 0)
-					continue;
-				this->s.setTextureRect(sf::IntRect(this->opponentField[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
-				this->s.setPosition(j * tileSizeWPaddingHor + oppHorizontalPadding, i * tileSizeWPaddingVer + verticalPadding);
-				this->_data->window.draw(s);
+				if (this->field[i][j] != 0)
+				{
+					this->s.setTextureRect(sf::IntRect(this->field[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
+					this->s.setPosition(j * tileSizeWPaddingHor + horizontalPadding, i * tileSizeWPaddingVer + verticalPadding);
+					this->_data->window.draw(s);
+				}
+				if (opponentField[i][j] != 0)
+				{
+					this->s.setTextureRect(sf::IntRect(this->opponentField[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
+					this->s.setPosition(j * tileSizeWPaddingHor + oppHorizontalPadding, i * tileSizeWPaddingVer + verticalPadding);
+					this->_data->window.draw(s);
+				}
             }
         }
         
@@ -439,23 +440,13 @@ namespace States
 		//const std::string response = this->_data->messaging.GetStringResponse().substr(1, 224);
 		const std::string response = this->_data->messaging.GetStringResponse();
 
-		std::cout << "Raw Response: \r\n";
-		for (int i = 0; i < response.length(); i++)
-		{
-			if (response[i] == 'N')
-				std::cout << std::endl;
-			std::cout << response[i] << " ";
-		}
-		std::cout << "\r\n\r\n\r\n\r\n";
-
 		int charCount = 0;
 		for (int i = 0; i < GRID_HEIGHT; i++)
 		{
 			for (int j = 0; j <= GRID_WIDTH; j++, charCount++)
 			{
-				if (response[charCount] == 'N')
-					break;
-				this->opponentField[i][j] = (int)response[charCount] - 48;
+				if (response[charCount] != 'N')
+					this->opponentField[i][j] = (int)response[charCount] - 48;
 			}
 		}
 
