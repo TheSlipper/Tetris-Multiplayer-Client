@@ -18,5 +18,4 @@
 ////////////////////////////////////////////////////////////
 #pragma once
 
-#define GAME_SONG_PATH_PREFIX "Resources/Music/tetris-ost-"
-#define GAME_SONG_PATH_SUFFIX ".ogg"
+#define GAME_SONG_PATH "Resources/Music/tetris-ost-02.ogg"

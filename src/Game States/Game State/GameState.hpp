@@ -100,6 +100,8 @@ namespace States
         void positionRowOfLabels(sf::Text &rowName, sf::Text &p1, sf::Text &p2, float heightPrct, std::string rowStr, std::string p1String, std::string p2String);
         
         void drawLabels();
+
+		void drawFields();
         
         void move();
         
@@ -164,6 +166,8 @@ namespace States
         sf::Text p1Delay, p2Delay, delayText;
         
         sf::Text timeText;
+
+		sf::Text p1GameOver, p2GameOver;
         
         sf::Music backgroundMusic;
         

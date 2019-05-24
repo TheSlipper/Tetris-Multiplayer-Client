@@ -22,9 +22,6 @@
 ////////////////////////////////////////////////////////////
 #include "GameState.hpp"
 
-// TODO: DELET THIS
-#include <iostream>
-
 namespace States
 {
     ////////////////////////////////////////////////////////////
@@ -40,17 +37,15 @@ namespace States
 	networkingThread(&GameState::handleNetworking, this)
 	{
 		this->opponentData = opponentData;
-		std::cout << opponentData.elo << std::endl;
-		std::cout << this->opponentData.elo << std::endl;
 	}
     
     ////////////////////////////////////////////////////////////
     void GameState::Init()
     {
         srand(time(0));
-        const std::string test = GAME_SONG_PATH_PREFIX + std::to_string(0) + std::to_string(rand()%3) + GAME_SONG_PATH_SUFFIX;
-        if (!this->backgroundMusic.openFromFile(test))
-            std::cout << "An error occurred - Could not load the file" << std::endl;
+        const std::string test = GAME_SONG_PATH;
+		if (!this->backgroundMusic.openFromFile(test))
+			exit(0);
         this->backgroundMusic.play();
         this->backgroundMusic.setVolume(100);
         this->backgroundMusic.setLoop(true);
@@ -114,6 +109,8 @@ namespace States
     void GameState::Update(float dt)
     {
         this->timeText.setString("Time Spent\r\n" + this->timeSpent());
+		if (this->lostGame)
+			return;
         if (lostGame == false)
         {
             //// <- Move -> ///
@@ -137,47 +134,10 @@ namespace States
     void GameState::Draw(float dt)
     {
         this->_data->window.clear(sf::Color::White);
+
         this->_data->window.draw(background);
         
-        const float horizontalPadding = this->_data->settings.width * 11.25f / 100.f; // -25.f
-		const float oppHorizontalPadding = this->_data->settings.width * 67.5f / 100.f;
-
-		const float verticalPadding = this->_data->settings.height * 14.25f / 100.f;
-		const float tileSizeWPaddingVer = this->tileWidth - (this->_data->settings.width * 50.f / 3840.f);
-        const float tileSizeWPaddingHor = this->tileWidth - (this->_data->settings.width * 54.f / 3840.f);
-
-		const sf::Vector2f tileScaleVec(1.25, 1.25);
-        
-        for (int i = 0; i < M; i++)
-        {
-            for (int j = 0; j < N; j++)
-            {
-				if (this->field[i][j] != 0)
-				{
-					this->s.setTextureRect(sf::IntRect(this->field[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
-					this->s.setPosition(j * tileSizeWPaddingHor + horizontalPadding, i * tileSizeWPaddingVer + verticalPadding);
-					this->_data->window.draw(s);
-				}
-				if (opponentField[i][j] != 0)
-				{
-					this->s.setTextureRect(sf::IntRect(this->opponentField[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
-					this->s.setPosition(j * tileSizeWPaddingHor + oppHorizontalPadding, i * tileSizeWPaddingVer + verticalPadding);
-					this->_data->window.draw(s);
-				}
-            }
-        }
-        
-        for (int i = 0; i < 4; i++)
-        {
-            this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
-			this->s.setPosition(a[i].x * tileSizeWPaddingHor + horizontalPadding, a[i].y * tileSizeWPaddingVer + verticalPadding);
-            this->_data->window.draw(s);
-
-
-			this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
-			this->s.setPosition(opponentA[i].x * tileSizeWPaddingHor + oppHorizontalPadding, opponentA[i].y * tileSizeWPaddingVer + verticalPadding);
-			this->_data->window.draw(s);
-        }
+		this->drawFields();
         
         this->_data->window.draw(this->frame);
         
@@ -209,7 +169,57 @@ namespace States
         this->_data->window.draw(this->p2Delay);
         
         this->_data->window.draw(this->timeText);
+
+		this->_data->window.draw(p1GameOver);
+		this->_data->window.draw(p2GameOver);
     }
+
+	////////////////////////////////////////////////////////////
+	void GameState::drawFields()
+	{
+		const float horizontalPadding = this->_data->settings.width * 11.25f / 100.f; // -25.f
+		const float oppHorizontalPadding = this->_data->settings.width * 67.5f / 100.f;
+
+		const float verticalPadding = this->_data->settings.height * 14.25f / 100.f;
+		const float tileSizeWPaddingVer = this->tileWidth - (this->_data->settings.width * 50.f / 3840.f);
+		const float tileSizeWPaddingHor = this->tileWidth - (this->_data->settings.width * 54.f / 3840.f);
+
+		const sf::Vector2f tileScaleVec(1.25, 1.25);
+
+		for (int i = 0; i < M; i++)
+		{
+			for (int j = 0; j < N; j++)
+			{
+				if (this->field[i][j] != 0)
+				{
+					this->s.setTextureRect(sf::IntRect(this->field[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
+					this->s.setPosition(j * tileSizeWPaddingHor + horizontalPadding, i * tileSizeWPaddingVer + verticalPadding);
+					this->_data->window.draw(s);
+				}
+
+				if (this->opponentField[i][j] != 0)
+				{
+					this->s.setTextureRect(sf::IntRect(this->opponentField[i][j] * this->tileWidth, 0, this->tileWidth, this->tileHeight));
+					this->s.setPosition(j * tileSizeWPaddingHor + oppHorizontalPadding, i * tileSizeWPaddingVer + verticalPadding);
+					this->_data->window.draw(s);
+				}
+			}
+		}
+
+		for (int i = 0; i < 4; i++)
+		{
+			if (!this->lostGame)
+			{
+				this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
+				this->s.setPosition(a[i].x * tileSizeWPaddingHor + horizontalPadding, a[i].y * tileSizeWPaddingVer + verticalPadding);
+				this->_data->window.draw(s);
+			}
+
+			this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
+			this->s.setPosition(opponentA[i].x * tileSizeWPaddingHor + oppHorizontalPadding, opponentA[i].y * tileSizeWPaddingVer + verticalPadding);
+			this->_data->window.draw(s);
+		}
+	}
     
     ////////////////////////////////////////////////////////////
     void GameState::positionRowOfLabels(sf::Text &rowName, sf::Text &p1, sf::Text &p2, float heightPrct, std::string rowStr, std::string p1String, std::string p2String)
@@ -225,6 +235,11 @@ namespace States
         rowName.setFillColor(sf::Color::Black);
         p1.setFillColor(sf::Color::Black);
         p2.setFillColor(sf::Color::Black);
+
+		rowName.setCharacterSize(this->_data->settings.height * 60.f / 2160.f);
+		p1.setCharacterSize(this->_data->settings.height * 60.f / 2160.f);
+		p2.setCharacterSize(this->_data->settings.height * 60.f / 2160.f);
+
         
         ArktisEngine::CenterHorizontally(rowName, this->_data->settings, ArktisEngine::GetYPosRelToScreenByPrct(heightPrct, this->_data->settings));
         ArktisEngine::CenterHorizontally(p1, this->_data->settings, ArktisEngine::GetYPosRelToScreenByPrct(heightPrct, this->_data->settings));
@@ -239,11 +254,13 @@ namespace States
     {
         this->p1UserName.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
         this->p1UserName.setString(this->_data->userData.username);
+		this->p1UserName.setCharacterSize(this->_data->settings.height * 60.f / 2160.f);
         this->p1UserName.setPosition(ArktisEngine::GetPosRelToScreenByPrct(19.5f, 15.f, this->_data->settings));
         this->p1UserName.setFillColor(sf::Color::White);
+
         this->p2UserName.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
-		std::cout << this->opponentData.username << std::endl;
         this->p2UserName.setString(this->opponentData.username);
+		this->p2UserName.setCharacterSize(this->_data->settings.height * 60.f / 2160.f);
         this->p2UserName.setPosition(ArktisEngine::GetPosRelToScreenByPrct(71.625f, 15.f, this->_data->settings));
         this->p2UserName.setFillColor(sf::Color::White);
         
@@ -257,6 +274,18 @@ namespace States
         this->timeText.setString("Time Spent\r\n" + this->timeSpent());
         this->timeText.setFillColor(sf::Color::Black);
         ArktisEngine::CenterHorizontally(this->timeText, this->_data->settings, ArktisEngine::GetYPosRelToScreenByPrct(80.f, this->_data->settings));
+
+		this->p1GameOver.setCharacterSize(this->_data->settings.height * 60.f / 2160.f);
+		this->p1GameOver.setFillColor(sf::Color(0, 0, 0, 0));
+		this->p1GameOver.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
+		this->p1GameOver.setString("[GAME OVER]");
+		this->p1GameOver.setPosition(this->_data->settings.height * 35.f / 100.f, this->_data->settings.width * 20.f / 100.f);
+
+		this->p2GameOver.setCharacterSize(this->_data->settings.height * 60.f / 2160.f);
+		this->p2GameOver.setFillColor(sf::Color(0, 0, 0, 0));
+		this->p2GameOver.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
+		this->p2GameOver.setString("[GAME OVER]");
+		this->p2GameOver.setPosition(this->_data->settings.height * 40.f / 100.f, this->_data->settings.width * 60.f / 100.f);
     }
     
     ////////////////////////////////////////////////////////////
@@ -296,6 +325,8 @@ namespace States
     ////////////////////////////////////////////////////////////
     void GameState::tick()
     {
+		if (this->lostGame)
+			return;
         if (this->timer > this->delay)
         {
             for (int i = 0; i < 4; i++)
@@ -309,9 +340,7 @@ namespace States
                 if (this->isItGameOver() && !lostGame)
                 {
                     this->lostGame = true;
-                    std::cout << "Game over" << std::endl;
-                    this->backgroundMusic.stop();
-                    this->_data->machine.AddState((ArktisEngine::StateRef)new HomeScreenState(this->_data), true);
+					this->p1GameOver.setFillColor(sf::Color::Red);
                     return;
                 }
                 for (int i = 0; i < 4; i++)
@@ -406,11 +435,6 @@ namespace States
 			this->sendFieldData();
 			this->receiveFieldData();
 		}
-
-		//const static sf::Time time = sf::seconds(4.f);
-		//	sf::sleep(time);
-		//	this->sendFieldData();
-		//	this->receiveFieldData();
 	}
 
 	////////////////////////////////////////////////////////////
@@ -437,7 +461,6 @@ namespace States
 	////////////////////////////////////////////////////////////
 	void GameState::receiveFieldData()
 	{
-		//const std::string response = this->_data->messaging.GetStringResponse().substr(1, 224);
 		const std::string response = this->_data->messaging.GetStringResponse();
 
 		int charCount = 0;
