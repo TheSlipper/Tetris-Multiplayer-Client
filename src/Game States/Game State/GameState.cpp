@@ -453,7 +453,7 @@ namespace States
 		ss << "P_F_DATA " << std::to_string(this->_data->userData.matchId) << " ";
 
 		if (this->p1LostGame)
-			ss << "L";
+			ss << "L ";
 		else
 		{
 			for (int i = 0; i < GRID_HEIGHT; i++)
@@ -470,6 +470,8 @@ namespace States
 			}
 		}
 
+		ss << this->p1Pts.getString().toAnsiString() << " " << this->p1Lines.getString().toAnsiString() << " " << this->p1Delay.getString().toAnsiString();
+
 		this->_data->messaging.SendStringData(ss.str());
 	}
 
@@ -477,33 +479,55 @@ namespace States
 	void GameState::receiveFieldData()
 	{
 		const std::string response = this->_data->messaging.GetStringResponse();
+		int charCount = 0;
 
 		if (response[0] == 'L')
 		{
 			this->p2LostGame = true;
 			this->p2GameOver.setFillColor(sf::Color::Red);
-			return;
+			charCount += 2;
 		}
-
-		int charCount = 0;
-		for (int i = 0; i < GRID_HEIGHT; i++)
+		else
 		{
-			for (int j = 0; j <= GRID_WIDTH; j++, charCount++)
+			for (int i = 0; i < GRID_HEIGHT; i++)
 			{
-				if (response[charCount] != 'N')
-					this->opponentField[i][j] = (int)response[charCount] - 48;
+				for (int j = 0; j <= GRID_WIDTH; j++, charCount++)
+				{
+					if (response[charCount] != 'N')
+						this->opponentField[i][j] = (int)response[charCount] - 48;
+				}
+			}
+
+			for (int i = 0; i < 4; i++, charCount++)
+			{
+				opponentA[i].x = (int)response[charCount] - 48;
+				charCount++;
+				opponentA[i].y = (int)response[charCount] - 48;
+				charCount++;
+				opponentB[i].x = (int)response[charCount] - 48;
+				charCount++;
+				opponentB[i].y = (int)response[charCount] - 48;
 			}
 		}
 
-		for (int i = 0; i < 4; i++, charCount++)
+		std::string p2Data = response.substr(charCount);
+		ArktisEngine::StringTokenizer tokenizer{p2Data};
+		
+		int i = 0;
+		for (const std::string &t : tokenizer)
 		{
-			opponentA[i].x = (int)response[charCount] - 48;
-			charCount++;
-			opponentA[i].y = (int)response[charCount] - 48;
-			charCount++;
-			opponentB[i].x = (int)response[charCount] - 48;
-			charCount++;
-			opponentB[i].y = (int)response[charCount] - 48;
+			switch (i)
+			{
+			case 0:
+				this->p2Pts.setString(t);
+				break;
+			case 1:
+				this->p2Lines.setString(t);
+				break;
+			case 2:
+				this->p2Delay.setString(t);
+				break;
+			}
 		}
 	}
 }
