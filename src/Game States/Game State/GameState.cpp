@@ -109,9 +109,14 @@ namespace States
     void GameState::Update(float dt)
     {
         this->timeText.setString("Time Spent\r\n" + this->timeSpent());
-		if (this->lostGame)
+		if (this->p1LostGame && p2LostGame)
+		{
+			this->backgroundMusic.stop();
+			this->_data->machine.AddState((ArktisEngine::StateRef) new HomeScreenState(this->_data), true);
+		}
+		else if (this->p1LostGame)
 			return;
-        if (lostGame == false)
+		else if (p1LostGame == false)
         {
             //// <- Move -> ///
             this->move();
@@ -208,7 +213,7 @@ namespace States
 
 		for (int i = 0; i < 4; i++)
 		{
-			if (!this->lostGame)
+			if (!this->p1LostGame)
 			{
 				this->s.setTextureRect(sf::IntRect(colorNum * tileWidth, 0, tileWidth, tileHeight));
 				this->s.setPosition(a[i].x * tileSizeWPaddingHor + horizontalPadding, a[i].y * tileSizeWPaddingVer + verticalPadding);
@@ -325,7 +330,7 @@ namespace States
     ////////////////////////////////////////////////////////////
     void GameState::tick()
     {
-		if (this->lostGame)
+		if (this->p1LostGame)
 			return;
         if (this->timer > this->delay)
         {
@@ -337,9 +342,9 @@ namespace States
             
             if (!this->check())
             {
-                if (this->isItGameOver() && !lostGame)
+                if (this->isItGameOver() && !p1LostGame)
                 {
-                    this->lostGame = true;
+                    this->p1LostGame = true;
 					this->p1GameOver.setFillColor(sf::Color::Red);
                     return;
                 }
@@ -432,6 +437,10 @@ namespace States
 		while (true)
 		{
 			sf::sleep(time);
+			if (this->p1LostGame && this->p2LostGame)
+			{
+				return;
+			}
 			this->sendFieldData();
 			this->receiveFieldData();
 		}
@@ -442,17 +451,23 @@ namespace States
 	{
 		std::stringstream ss;
 		ss << "P_F_DATA " << std::to_string(this->_data->userData.matchId) << " ";
-		for (int i = 0; i < GRID_HEIGHT; i++)
-		{
-			for (int j = 0; j < GRID_WIDTH; j++)
-				ss << std::to_string(this->field[i][j]);
-			ss << 'N';
-		}
 
-		for (int i = 0; i < 4; i++)
+		if (this->p1LostGame)
+			ss << "L";
+		else
 		{
-			ss << a[i].x << a[i].y;
-			ss << b[i].x << b[i].y;
+			for (int i = 0; i < GRID_HEIGHT; i++)
+			{
+				for (int j = 0; j < GRID_WIDTH; j++)
+					ss << std::to_string(this->field[i][j]);
+				ss << 'N';
+			}
+
+			for (int i = 0; i < 4; i++)
+			{
+				ss << a[i].x << a[i].y;
+				ss << b[i].x << b[i].y;
+			}
 		}
 
 		this->_data->messaging.SendStringData(ss.str());
@@ -462,6 +477,14 @@ namespace States
 	void GameState::receiveFieldData()
 	{
 		const std::string response = this->_data->messaging.GetStringResponse();
+
+		if (response[0] == 'L')
+		{
+			if (this->p2LostGame)
+				return;
+			this->p2LostGame = true;
+			this->p2GameOver.setFillColor(sf::Color::Red);
+		}
 
 		int charCount = 0;
 		for (int i = 0; i < GRID_HEIGHT; i++)

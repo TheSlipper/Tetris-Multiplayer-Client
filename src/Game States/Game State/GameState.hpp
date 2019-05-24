@@ -135,7 +135,7 @@ namespace States
 		
 		int opponentField[GRID_HEIGHT][GRID_WIDTH] = {0};
         
-        bool lostGame = false;
+		bool p1LostGame = false, p2LostGame = false;
         
         struct Point
         {
