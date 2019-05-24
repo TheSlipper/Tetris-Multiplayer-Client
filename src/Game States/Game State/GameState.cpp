@@ -140,7 +140,7 @@ namespace States
         this->_data->window.draw(background);
         
         const float horizontalPadding = this->_data->settings.width * 11.25f / 100.f; // -25.f
-		const float oppHorizontalPadding = this->_data->settings.width * 66.f / 100.f;
+		const float oppHorizontalPadding = this->_data->settings.width * 67.5f / 100.f;
 
 		const float verticalPadding = this->_data->settings.height * 14.25f / 100.f;
 		const float tileSizeWPaddingVer = this->tileWidth - (this->_data->settings.width * 50.f / 3840.f);
