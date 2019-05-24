@@ -41,6 +41,7 @@ namespace ArktisEngine
     std::string MessagingManager::GetStringResponse()
     {
         static char buffer[1024];
+		memset(buffer, 0, sizeof(buffer));
         std::size_t received = 0;
         if (this->socket.receive(buffer, sizeof(buffer), received) != sf::Socket::Done)
             return "DATA_GET_ERR";
