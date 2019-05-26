@@ -74,6 +74,9 @@ namespace ArktisEngine
 		/// \param bufferSize defines the size of buffer used to 
 		///			get the message
 		///
+		/// \deprecated This is to be removed in the future versions
+		///					because it's not used by anything
+		///
 		////////////////////////////////////////////////////////////
 		std::string GetStringResponse(const int bufferSize);
         
@@ -89,6 +92,12 @@ namespace ArktisEngine
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
-        sf::TcpSocket socket;
+		const bool usingTcp = true; ///< Flag that determines which socket should be used
+
+		unsigned short serverPort;
+
+        sf::TcpSocket tcpSocket; ///< Socket used in tcp connections
+
+		sf::UdpSocket udpSocket; ///< Socket used in udp connections
     };
 }

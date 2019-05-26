@@ -27,14 +27,38 @@ namespace ArktisEngine
     ////////////////////////////////////////////////////////////
     bool MessagingManager::ConnectToServer()
     {
-        return this->socket.connect(SERVER_IP, SERVER_PORT) == sf::Socket::Done;
+		bool execStatus = true;
+		if (this->usingTcp)
+			execStatus = this->tcpSocket.connect(SERVER_IP, SERVER_PORT) == sf::Socket::Done;
+		else
+		{
+			const char *connectionMsg = "PORT_ALL_REQ";
+			char buff[100];
+			std::size_t received;
+			sf::IpAddress sender;
+			unsigned short port;
+			if (this->udpSocket.bind(7000) != sf::Socket::Done)
+				return false;
+			if (this->udpSocket.send(connectionMsg, strlen(connectionMsg), SERVER_IP, SERVER_PORT) != sf::Socket::Done)
+				return false;
+			if (this->udpSocket.receive(buff, 100, received, sender, port) != sf::Socket::Done)
+				return false;
+			this->serverPort = (short)std::stoi(std::string(buff).substr(14, 18));
+		}
+
+		return execStatus;
     }
     
     ////////////////////////////////////////////////////////////
     bool MessagingManager::SendStringData(std::string stringData)
     {
         char *data = strdup(stringData.c_str());
-        return this->socket.send(data, strlen(data)) == sf::Socket::Done;
+		bool execStatus = true;
+		if (this->usingTcp)
+			execStatus = this->tcpSocket.send(data, strlen(data)) == sf::Socket::Done;
+		else
+			execStatus = this->udpSocket.send(data, strlen(data), SERVER_IP, this->serverPort) == sf::Socket::Done;
+        return execStatus;
     }
     
     ////////////////////////////////////////////////////////////
@@ -43,13 +67,16 @@ namespace ArktisEngine
         static char buffer[1024];
 		memset(buffer, 0, sizeof(buffer));
         std::size_t received = 0;
-        if (this->socket.receive(buffer, sizeof(buffer), received) != sf::Socket::Done)
-            return "DATA_GET_ERR";
-        else
-        {
-            std::string stringBuff(buffer);
-            return stringBuff.substr(0, received);
-        }
+		sf::IpAddress sender;
+		unsigned short port;
+		bool execStatus = false;
+
+		if (this->usingTcp)
+			execStatus = this->tcpSocket.receive(buffer, sizeof(buffer), received) == sf::Socket::Done;
+		else
+			execStatus = this->udpSocket.receive(buffer, sizeof(buffer), received, sender, port) == sf::Socket::Done;
+		
+		return execStatus ? std::string(buffer).substr(0, received) : "DATA_GET_ERR";
     }
     
 	////////////////////////////////////////////////////////////
@@ -57,7 +84,7 @@ namespace ArktisEngine
 	{
 		char *buffer = new char[bufferSize];
 		std::size_t received = 0;
-		if (this->socket.receive(buffer, sizeof(buffer), received) != sf::Socket::Done)
+		if (this->tcpSocket.receive(buffer, sizeof(buffer), received) != sf::Socket::Done)
 			return "DATA_GET_ERR";
 		else
 		{
@@ -70,7 +97,7 @@ namespace ArktisEngine
 	bool MessagingManager::DisconnectSocket()
     {
         bool res = this->SendStringData("LOGOUT");
-        this->socket.disconnect();
+        this->tcpSocket.disconnect();
         return res;
     }
 }
