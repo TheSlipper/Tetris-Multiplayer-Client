@@ -52,7 +52,7 @@ namespace ArktisEngine
         /// \param std::string settingsFilePath path to the file
         ///
         ////////////////////////////////////////////////////////////
-        void LoadGamesSettings(std::string settingsFilePath);
+        void LoadGamesSettings();
         
     private:
         ////////////////////////////////////////////////////////////
@@ -66,10 +66,10 @@ namespace ArktisEngine
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
-        // TODO: Confirm the assumption that it's delta time (forgot already lol)
         const float dt = 1.0f / 60.0f;  ///< Delta time
         
-        // TODO: Is this clock redundant due to the clock in GameDataRef?
+		const char *settingsFilePath = "Resources/settings.conf";
+
         sf::Clock _clock;   ///< Game's clock
         
         GameDataRef _data = std::make_shared<GameData>();   ///< Pointer to the GameData

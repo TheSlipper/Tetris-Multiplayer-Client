@@ -27,7 +27,7 @@ namespace ArktisEngine
     ////////////////////////////////////////////////////////////
     Game::Game()
     {
-        this->LoadGamesSettings("game_settings.conf");
+        this->LoadGamesSettings();
 
         this->_data->window.create(sf::VideoMode(this->_data->settings.width,
                                            this->_data->settings.height), GAME_NAME, sf::Style::Close
@@ -40,14 +40,44 @@ namespace ArktisEngine
     }
 
     ////////////////////////////////////////////////////////////
-    void Game::LoadGamesSettings(std::string settingsFilePath)
+    void Game::LoadGamesSettings()
     {
-        // TODO: This function
-        this->_data->settings.width = 1280.f;
-        this->_data->settings.height = 720.f;
-        this->_data->settings.master_vol = 100.f;
-        this->_data->settings.sfx_vol = 100.f;
-        this->_data->settings.music_vol = 100.f;
+		std::ifstream settingsReader(settingsFilePath, std::ios::in);
+		int index = 0;
+		std::string helper;
+		if (!settingsReader)
+			exit(4);
+		while (!settingsReader.eof())
+		{
+			std::getline(settingsReader, helper);
+			if (helper.compare("") == 0 || helper[0] == '#')
+				continue;
+			switch (index)
+			{
+			case 0:
+				this->_data->settings.width = std::stof(helper);
+				break;
+			case 1:
+				this->_data->settings.height = std::stof(helper);
+				break;
+			case 2:
+				this->_data->settings.master_vol = std::stof(helper);
+				break;
+			case 3:
+				this->_data->settings.sfx_vol = std::stof(helper);
+				break;
+			case 4:
+				this->_data->settings.music_vol = std::stof(helper);
+				break;
+			case 5:
+				this->_data->messaging.SetIpAddress(helper);
+				break;
+			case 6:
+				this->_data->messaging.SetToTcp((bool)std::stoi(helper));
+				break;
+			}
+			index++;
+		}
     }
 
     ////////////////////////////////////////////////////////////

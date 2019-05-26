@@ -29,7 +29,7 @@ namespace ArktisEngine
     {
 		bool execStatus = true;
 		if (this->usingTcp)
-			execStatus = this->tcpSocket.connect(SERVER_IP, SERVER_PORT) == sf::Socket::Done;
+			execStatus = this->tcpSocket.connect(this->serverIpAddress, this->mainServerPort) == sf::Socket::Done;
 		else
 		{
 			const char *connectionMsg = "PORT_ALL_REQ";
@@ -39,7 +39,7 @@ namespace ArktisEngine
 			unsigned short port;
 			if (this->udpSocket.bind(7000) != sf::Socket::Done)
 				return false;
-			if (this->udpSocket.send(connectionMsg, strlen(connectionMsg), SERVER_IP, SERVER_PORT) != sf::Socket::Done)
+			if (this->udpSocket.send(connectionMsg, strlen(connectionMsg), SERVER_IP, mainServerPort) != sf::Socket::Done)
 				return false;
 			if (this->udpSocket.receive(buff, 100, received, sender, port) != sf::Socket::Done)
 				return false;
@@ -57,7 +57,7 @@ namespace ArktisEngine
 		if (this->usingTcp)
 			execStatus = this->tcpSocket.send(data, strlen(data)) == sf::Socket::Done;
 		else
-			execStatus = this->udpSocket.send(data, strlen(data), SERVER_IP, this->serverPort) == sf::Socket::Done;
+			execStatus = this->udpSocket.send(data, strlen(data), this->serverIpAddress, this->serverPort) == sf::Socket::Done;
         return execStatus;
     }
     
@@ -100,4 +100,20 @@ namespace ArktisEngine
         this->tcpSocket.disconnect();
         return res;
     }
+	
+	////////////////////////////////////////////////////////////
+	void MessagingManager::SetIpAddress(sf::IpAddress addr)
+	{
+		this->serverIpAddress = addr;
+	}
+
+	////////////////////////////////////////////////////////////
+	void MessagingManager::SetToTcp(bool usingTcp)
+	{
+		this->usingTcp = usingTcp;
+	}
+	void MessagingManager::SetToUdp(bool usingUdp)
+	{
+		this->SetToTcp(!usingUdp);
+	}
 }

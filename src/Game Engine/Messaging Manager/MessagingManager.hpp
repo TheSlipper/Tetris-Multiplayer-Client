@@ -87,14 +87,36 @@ namespace ArktisEngine
         ///
         ////////////////////////////////////////////////////////////
         bool DisconnectSocket();
+		
+		////////////////////////////////////////////////////////////
+		/// \brief Sets the ip address of the server
+		///
+		////////////////////////////////////////////////////////////
+		void SetIpAddress(sf::IpAddress addr);
+
+		////////////////////////////////////////////////////////////
+		/// \brief Sets the socket type flag to true
+		///
+		////////////////////////////////////////////////////////////
+		void SetToTcp(bool usingTcp);
+
+		////////////////////////////////////////////////////////////
+		/// \brief Sets the socket type flag to false
+		///
+		////////////////////////////////////////////////////////////
+		void SetToUdp(bool usingUdp);
 
     private:
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
-		const bool usingTcp = true; ///< Flag that determines which socket should be used
+		bool usingTcp = true; ///< Flag that determines which socket should be used
 
-		unsigned short serverPort;
+		sf::IpAddress serverIpAddress; ///< Ip address of the server
+
+		const unsigned short mainServerPort = 7001; ///< Port used for sending a request for a unique client dedicated port
+
+		unsigned short serverPort; ///< Port assigned for the client by the server
 
         sf::TcpSocket tcpSocket; ///< Socket used in tcp connections
 
