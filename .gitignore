@@ -10,3 +10,5 @@ Debug/
 *.filters
 *.user
 *.dll
+.settings.conf.swp
+Resources/.settings.conf.swp
