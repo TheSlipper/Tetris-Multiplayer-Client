@@ -261,7 +261,7 @@ namespace States
         std::string copiedContent = content;
         for (int i = 0; i < copiedContent.length(); i++)
         {
-            if (i % 174 == 0)
+            if (i % 135 == 0)
                 copiedContent.insert(i, "\r\n");
         }
         txt.setString(copiedContent);
