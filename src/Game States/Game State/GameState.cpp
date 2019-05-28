@@ -470,7 +470,7 @@ namespace States
 			}
 		}
 
-		ss << this->p1Pts.getString().toAnsiString() << " " << this->p1Lines.getString().toAnsiString() << " " << this->p1Delay.getString().toAnsiString();
+		ss << this->p1Pts.getString().toAnsiString() << " " << this->p1Lines.getString().toAnsiString() << " " << this->timeSpentClock.getElapsedTime().asSeconds() << " " << this->p1Delay.getString().toAnsiString();
 
 		this->_data->messaging.SendStringData(ss.str());
 	}
