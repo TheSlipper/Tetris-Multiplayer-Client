@@ -34,7 +34,7 @@ namespace States
 	void GameOverState::Init()
 	{
 		std::string resp = this->_data->messaging.GetStringResponse();
-
+		this->parseResponseData(resp);
 	}
 
 	////////////////////////////////////////////////////////////
@@ -71,7 +71,38 @@ namespace States
 		int iterator = 0;
 		for (const auto &t : tokenizer)
 		{
+			switch (iterator)
+			{
+			case 3:
+				this->_data->userData.elo = std::stoi(t);
+				break;
+			case 4:
+				this->_data->userData.unrankedWins = std::stoi(t);
+				break;
+			case 5:
+				this->_data->userData.unrankedLosses = std::stoi(t);
+				break;
+			case 6:
+				this->_data->userData.rankedWins = std::stoi(t);
+				break;
+			case 7:
+				this->_data->userData.rankedLosses = std::stoi(t);
+				break;
+			case 8:
+				this->_data->userData.tetrominoPoints = std::stoi(t);
+				break;
+			case 9:
+				this->_data->userData.timePlayed = std::stol(t);
+				break;
+			case 10:
+				this->playerPoints = std::stoi(t);
+				break;
+			case 11:
+				this->time = std::stol(t);
+				break;
+			}
 			iterator++;
 		}
+		return;
 	}
 }

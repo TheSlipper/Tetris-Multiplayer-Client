@@ -75,6 +75,10 @@ namespace States
 		////////////////////////////////////////////////////////////
 		// Member data
 		////////////////////////////////////////////////////////////
+		float playerPoints;
+
+		long time;
+
 		ArktisEngine::UserData opponentData;
 
 		ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
