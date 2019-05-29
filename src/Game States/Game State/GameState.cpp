@@ -112,6 +112,10 @@ namespace States
 		if (this->p1LostGame && p2LostGame)
 		{
 			this->backgroundMusic.stop();
+			this->abortThread = true;
+			while (this->sending)
+				sf::sleep(sf::milliseconds(10));
+
 			this->_data->machine.AddState((ArktisEngine::StateRef) new GameOverState(this->opponentData, this->_data), true);
 		}
 		else if (this->p1LostGame)
@@ -433,24 +437,28 @@ namespace States
 	////////////////////////////////////////////////////////////
 	void GameState::handleNetworking()
 	{
+		this->sending = false;
 		const static sf::Time time = sf::seconds(1.f);
+		const auto matchId = this->_data->userData.matchId;
 		while (true)
 		{
-			if (this->p1LostGame && this->p2LostGame)
-			{
+			if ((this->p1LostGame && this->p2LostGame) || this->abortThread)
 				return;
-			}
 			sf::sleep(time);
-			this->sendFieldData();
+			this->sending = true;
+			this->sendFieldData(matchId);
+			this->sending = false;
+			if (this->abortThread)
+				return;
 			this->receiveFieldData();
 		}
 	}
 
 	////////////////////////////////////////////////////////////
-	void GameState::sendFieldData()
+	void GameState::sendFieldData(const int &matchId)
 	{
 		std::stringstream ss;
-		ss << "P_F_DATA " << std::to_string(this->_data->userData.matchId) << " ";
+		ss << "P_F_DATA " << std::to_string(matchId) << " ";
 
 		if (this->p1LostGame)
 			ss << "L ";

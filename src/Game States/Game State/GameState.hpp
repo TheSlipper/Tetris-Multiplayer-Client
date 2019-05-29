@@ -119,7 +119,7 @@ namespace States
 
 		void handleNetworking();
 
-		void sendFieldData();
+		void sendFieldData(const int &matchId);
 
 		void receiveFieldData();
         
@@ -182,6 +182,10 @@ namespace States
         sf::Clock gameClock, timeSpentClock;
 
 		sf::Thread networkingThread;
+
+		bool sending = true;
+
+		bool abortThread = false;
         
         ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };
