@@ -39,7 +39,7 @@
 #include "../../Game Engine/GameData/GameData.hpp"
 #include "../../Definitions/TEXTURE_DEFINITIONS.h"
 #include "../../Definitions/AUDIO_DEFINITIONS.h"
-#include "../Login State/LoginState.hpp"
+#include "../Game Over State/GameOverState.hpp"
 #include "../../Game Engine/Misc Utils/MiscUtils.hpp"
 
 namespace States
@@ -62,7 +62,7 @@ namespace States
 		////////////////////////////////////////////////////////////
 		/// \brief Default constructor
 		///
-		/// \param userData data of the opponent
+		/// \param opponentData data of the opponent
 		///
 		/// \param data pointer to the game's crucial data
 		///

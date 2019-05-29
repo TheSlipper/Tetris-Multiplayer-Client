@@ -112,7 +112,7 @@ namespace States
 		if (this->p1LostGame && p2LostGame)
 		{
 			this->backgroundMusic.stop();
-			this->_data->machine.AddState((ArktisEngine::StateRef) new HomeScreenState(this->_data), true);
+			this->_data->machine.AddState((ArktisEngine::StateRef) new GameOverState(this->opponentData, this->_data), true);
 		}
 		else if (this->p1LostGame)
 			return;
