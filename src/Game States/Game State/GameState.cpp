@@ -478,7 +478,11 @@ namespace States
 			}
 		}
 
-		ss << this->p1Pts.getString().toAnsiString() << " " << this->p1Lines.getString().toAnsiString() << " " << this->timeSpentClock.getElapsedTime().asSeconds() << " " << this->p1Delay.getString().toAnsiString();
+		const auto lines = this->p1Lines.getString().toAnsiString().c_str();
+		const auto pts = this->p1Pts.getString().toAnsiString().c_str();
+		const auto timeSpent = this->timeSpentClock.getElapsedTime().asSeconds();
+		const auto delay = this->p1Delay.getString().toAnsiString().c_str();
+		ss << pts << " " << lines << " " << timeSpent << " " << delay;
 
 		this->_data->messaging.SendStringData(ss.str());
 	}

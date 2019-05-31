@@ -35,6 +35,7 @@ namespace States
 	{
 		std::string resp = this->_data->messaging.GetStringResponse();
 		this->parseResponseData(resp);
+		this->placeLabelsWithVals();
 	}
 
 	////////////////////////////////////////////////////////////
@@ -56,9 +57,20 @@ namespace States
 	{
 	}
 
+	////////////////////////////////////////////////////////////
 	void GameOverState::Draw(float dt)
 	{
 		this->_data->window.clear(sf::Color::White);
+
+		this->drawLabels(this->_data->window, this->scoreLabel, this->p1Score, this->p2Score);
+
+		this->drawLabels(this->_data->window, this->linesLabel, this->p1Lines, this->p2Lines);
+
+		this->drawLabels(this->_data->window, this->eloLabel, this->p1Elo, this->p2Elo);
+
+		this->drawLabels(this->_data->window, this->unrankedWinsLabel, this->p1UnrWins, this->p2UnrWins);
+
+		this->drawLabels(this->_data->window, this->rankedWinsLabel, this->p1RanWins, this->p2RanWins);
 
 		this->_data->window.display();
 	}
@@ -100,7 +112,9 @@ namespace States
 		bool p1Data = true;
 		for (const auto &t : tokenizer)
 		{
-			if (p1Data)
+			if (iterator < 3)
+				iterator++;
+			else if (p1Data)
 			{
 				if (iterator < 10)
 					this->assignDataByIterator(iterator, t, this->_data->userData);
@@ -108,6 +122,7 @@ namespace States
 					this->p1Pts = std::stof(t);
 				else if (iterator == 11)
 					this->p1Time = std::stol(t);
+				p1Data = false;
 			}
 			else
 			{
@@ -118,16 +133,19 @@ namespace States
 				else if (iterator == 11)
 					this->p2Time = std::stol(t);
 				iterator++;
+				p1Data = true;
 			}
 		}
 	}
 	
 	////////////////////////////////////////////////////////////
-	void GameOverState::drawLabelsWithVals()
+	void GameOverState::placeLabelsWithVals()
 	{
 		this->timeSpentLabel.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
 		this->timeSpentLabel.setCharacterSize(72.f);
 		this->timeSpentLabel.setString("Time");
+		this->timeSpentLabel.setFillColor(sf::Color::Black);
+
 		ArktisEngine::CenterHorizontally(this->timeSpentLabel, this->_data->settings, 10.f);
 
 		this->positionRow(this->scoreLabel, this->p1Score, this->p2Score, "Final Score", std::to_string(p1Pts), std::to_string(p2Pts), 72.f, 20.f);
@@ -136,9 +154,17 @@ namespace States
 		
 		this->positionRow(this->eloLabel, this->p1Elo, this->p2Elo, "ELO", std::to_string(this->_data->userData.elo), std::to_string(this->opponentData.elo), 72.f, 40.f);
 
-		this->positionRow(this->unrankedWins, this->p1UnrWins, this->p2UnrWins, "Unranked Wins", std::to_string(this->_data->userData.unrankedWins), std::to_string(this->opponentData.unrankedWins), 72.f, 50.f);
+		this->positionRow(this->unrankedWinsLabel, this->p1UnrWins, this->p2UnrWins, "Unranked Wins", std::to_string(this->_data->userData.unrankedWins), std::to_string(this->opponentData.unrankedWins), 72.f, 50.f);
 
-		this->positionRow(this->rankedWins, this->p1RanWins, this->p2RanWins, "Ranked Wins", std::to_string(this->_data->userData.rankedWins), std::to_string(this->opponentData.rankedWins), 72.f, 60.f);
+		this->positionRow(this->rankedWinsLabel, this->p1RanWins, this->p2RanWins, "Ranked Wins", std::to_string(this->_data->userData.rankedWins), std::to_string(this->opponentData.rankedWins), 72.f, 60.f);
+	}
+
+	////////////////////////////////////////////////////////////
+	void GameOverState::drawLabels(sf::RenderWindow &rw, sf::Text &rowHeader, sf::Text &p1Val, sf::Text &p2Val)
+	{
+		rw.draw(rowHeader);
+		rw.draw(p1Val);
+		rw.draw(p2Val);
 	}
 
 	////////////////////////////////////////////////////////////
@@ -153,11 +179,16 @@ namespace States
 
 		p1Val.setString(p1Str);
 		p1Val.setString(p2Str);
+
+		p1Val.setFillColor(sf::Color::Black);
+		p2Val.setFillColor(sf::Color::Black);
 		
-		ArktisEngine::CenterHorizontallyInArea(p1Val, this->_data->settings.width/2.f, percHeight);
-		ArktisEngine::CenterHorizontallyInArea(p2Val, this->_data->settings.width/2.f, percHeight);
-		
-		p2Val.move(this->_data->settings.width/2.f, 0.f);
+		ArktisEngine::CenterHorizontally(p1Val, this->_data->settings, percHeight);
+		ArktisEngine::CenterHorizontally(p2Val, this->_data->settings, percHeight);
+	
+		p1Val.move(this->_data->settings.width/3.f, this->_data->settings.height * percHeight / 100.f);
+		p2Val.move(this->_data->settings.width/2.f, this->_data->settings.height * percHeight / 100.f);
+		rowHeader.move(0.f, this->_data->settings.height * percHeight / 100.f);
 	}
 
 	////////////////////////////////////////////////////////////
@@ -166,6 +197,7 @@ namespace States
 		label.setFont(font);
 		label.setString(str);
 		label.setCharacterSize(charSize);
+		label.setFillColor(sf::Color::Black);
 		ArktisEngine::CenterHorizontally(label, this->_data->settings, percHeight);
 	}
 

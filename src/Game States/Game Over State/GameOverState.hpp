@@ -75,7 +75,9 @@ namespace States
 
 		void parseResponseData(const std::string &data);
 
-		void drawLabelsWithVals();
+		void placeLabelsWithVals();
+
+		void drawLabels(sf::RenderWindow &rw, sf::Text &rowHeader, sf::Text &p1Val, sf::Text &p2Val);
 
 		void positionRow(sf::Text &rowHeader, sf::Text &p1Val, sf::Text &p2Val, std::string hStr, std::string p1Str, std::string p2Str, float hCharSize, float percHeight);
 
@@ -96,9 +98,9 @@ namespace States
 
 		sf::Text eloLabel;
 
-		sf::Text unrankedWins;
+		sf::Text unrankedWinsLabel;
 
-		sf::Text rankedWins;
+		sf::Text rankedWinsLabel;
 
 		sf::Text p1Score, p2Score;
 
