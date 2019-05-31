@@ -49,6 +49,8 @@ namespace States
 				this->_data->messaging.DisconnectSocket();
 				this->_data->window.close();
 			}
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+				this->_data->machine.AddState((ArktisEngine::StateRef) new HomeScreenState(this->_data), true);
 		}
 	}
 
@@ -178,15 +180,15 @@ namespace States
 		p2Val.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
 
 		p1Val.setString(p1Str);
-		p1Val.setString(p2Str);
+		p2Val.setString(p2Str);
 
 		p1Val.setFillColor(sf::Color::Black);
 		p2Val.setFillColor(sf::Color::Black);
 		
-		ArktisEngine::CenterHorizontally(p1Val, this->_data->settings, percHeight);
-		ArktisEngine::CenterHorizontally(p2Val, this->_data->settings, percHeight);
+		ArktisEngine::CenterHorizontallyInArea(p1Val, this->_data->settings.width/2.f, percHeight);
+		ArktisEngine::CenterHorizontallyInArea(p2Val, this->_data->settings.width / 2.f, percHeight);
 	
-		p1Val.move(this->_data->settings.width/3.f, this->_data->settings.height * percHeight / 100.f);
+		p1Val.move(0.f, this->_data->settings.height * percHeight / 100.f);
 		p2Val.move(this->_data->settings.width/2.f, this->_data->settings.height * percHeight / 100.f);
 		rowHeader.move(0.f, this->_data->settings.height * percHeight / 100.f);
 	}

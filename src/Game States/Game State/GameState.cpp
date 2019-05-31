@@ -478,10 +478,12 @@ namespace States
 			}
 		}
 
-		const auto lines = this->p1Lines.getString().toAnsiString().c_str();
-		const auto pts = this->p1Pts.getString().toAnsiString().c_str();
+		if (this->abortThread)
+			return;
+		const auto lines = this->p1Lines.getString().toAnsiString();
+		const auto pts = this->p1Pts.getString().toAnsiString();
 		const auto timeSpent = this->timeSpentClock.getElapsedTime().asSeconds();
-		const auto delay = this->p1Delay.getString().toAnsiString().c_str();
+		const auto delay = this->p1Delay.getString().toAnsiString();
 		ss << pts << " " << lines << " " << timeSpent << " " << delay;
 
 		this->_data->messaging.SendStringData(ss.str());

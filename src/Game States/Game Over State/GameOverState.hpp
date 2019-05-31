@@ -23,6 +23,7 @@
 ////////////////////////////////////////////////////////////
 #include "../../Game Engine/Misc Utils/MiscUtils.hpp"
 #include "../State/State.hpp"
+#include "../../Game States/Home Screen State/HomeScreenState.hpp"
 #include "../../Game Engine/GameData/GameData.hpp"
 #include "../../Definitions/FONT_DEFINITIONS.h"
 
@@ -86,7 +87,7 @@ namespace States
 		////////////////////////////////////////////////////////////
 		// Member data
 		////////////////////////////////////////////////////////////
-		float p1Pts, p2Pts;
+		int p1Pts, p2Pts;
 
 		int playerLines, enemyLines;
 
