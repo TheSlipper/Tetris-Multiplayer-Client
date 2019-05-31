@@ -21,6 +21,7 @@
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
+#include "../../Game Engine/Misc Utils/MiscUtils.hpp"
 #include "../State/State.hpp"
 #include "../../Game Engine/GameData/GameData.hpp"
 #include "../../Definitions/FONT_DEFINITIONS.h"
@@ -70,14 +71,46 @@ namespace States
 		void Draw(float dt);
 
 	private:
+		void assignDataByIterator(int &iterator, const std::string &val, ArktisEngine::UserData &data);
+
 		void parseResponseData(const std::string &data);
+
+		void drawLabelsWithVals();
+
+		void positionRow(sf::Text &rowHeader, sf::Text &p1Val, sf::Text &p2Val, std::string hStr, std::string p1Str, std::string p2Str, float hCharSize, float percHeight);
+
+		void labelDataInit(sf::Text &label, sf::Font &font, std::string str, float charSize, float percHeight);
 
 		////////////////////////////////////////////////////////////
 		// Member data
 		////////////////////////////////////////////////////////////
-		float playerPoints;
+		float p1Pts, p2Pts;
 
-		long time;
+		int playerLines, enemyLines;
+
+		sf::Text timeSpentLabel;
+
+		sf::Text scoreLabel;
+
+		sf::Text linesLabel;
+
+		sf::Text eloLabel;
+
+		sf::Text unrankedWins;
+
+		sf::Text rankedWins;
+
+		sf::Text p1Score, p2Score;
+
+		sf::Text p1Lines, p2Lines;
+
+		sf::Text p1Elo, p2Elo;
+
+		sf::Text p1UnrWins, p2UnrWins;
+
+		sf::Text p1RanWins, p2RanWins;
+
+		long p1Time, p2Time;
 
 		ArktisEngine::UserData opponentData;
 
