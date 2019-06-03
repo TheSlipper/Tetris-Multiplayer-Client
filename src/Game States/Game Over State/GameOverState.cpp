@@ -34,7 +34,13 @@ namespace States
 	void GameOverState::Init()
 	{
 		std::string resp = this->_data->messaging.GetStringResponse();
-		this->parseResponseData(resp);
+		if (resp[0] != 'L')
+			this->parseResponseData(resp);
+		else
+		{
+			resp = this->_data->messaging.GetStringResponse();
+			this->parseResponseData(resp);
+		}
 		this->placeLabelsWithVals();
 	}
 
