@@ -219,7 +219,7 @@ namespace States
     ////////////////////////////////////////////////////////////
     void LoginState::sendFormData()
     {
-        this->_data->messaging.SendStringData("LOGIN " + this->_loginInput->GetStdString() + " " + this->passwd);
+        this->_data->messaging.SendStringData("LOGIN " BUILD_NAME OS_NAME + this->_loginInput->GetStdString() + " " + this->passwd);
         std::string response = this->_data->messaging.GetStringResponse();
         if (response.substr(0, 20 + this->_loginInput->GetStdString().length()).compare("CORRECT_CREDENTIALS " + this->_loginInput->GetStdString()) == 0)
         {

@@ -18,8 +18,24 @@
 ////////////////////////////////////////////////////////////
 #pragma once
 
+/// Definition Flags
+#define __WIN_ 1
+/// #define __OS_X 1
+/// #define __LINUX_ 1
+
 /// Game metadata
 #define GAME_NAME "Tetris Multiplayer"
+#ifdef __WIN_
+	#define OS_NAME "Windows_10 "
+#endif
+#ifdef __OS_X
+	#define OS_NAME "MacOS_Mojave "
+#endif
+#ifdef __LINUX_
+#define OS_NAME "GNU_Linux "
+#endif
+
+#define BUILD_NAME "INDEV_0.0.1 "
 
 //#define GAME_PORT 7000
 
