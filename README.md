@@ -1,9 +1,12 @@
-# ![game_logo](Resources/Game Logo/logo_no_label.png) Tetris Multiplayer Client
+# ![game_logo](https://raw.githubusercontent.com/TheSlipper/Tetris-Multiplayer-Client/master/Resources/Game%20Logo/logo_no_label.png) Tetris Multiplayer Client
 ------------------------------
 
 ## List of Contents
 
 1. Game screenshots
+   * Login Screen
+   * Home Screen
+   * Game Screen
 2. Goal of the project
 3. Status of the project
 4. Contribution
