@@ -1,5 +1,6 @@
 # <img align="left" src="https://raw.githubusercontent.com/TheSlipper/Tetris-Multiplayer-Client/master/Resources/Game%20Logo/logo_no_label.png" height="230" width="230"> Tetris Multiplayer Client
-<br><br><br><br><br><br><br><br>
+
+Fully Free (both as in gratis and libre), cross-platform (Windows, Linux and MacOS) Tetris Multiplayer Game for everybody<br><br><br><br><br><br><br><br>
 
 ## List of Contents
 
