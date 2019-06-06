@@ -73,7 +73,7 @@ namespace ArktisEngine
     }
     
     ////////////////////////////////////////////////////////////
-    void CenterHorizontallyInArea(GameObjects::Button button, float areaWidth, float y)
+    void CenterHorizontallyInArea(GameObjects::Button &button, float areaWidth, float y)
     {
         sf::FloatRect btnRect = button.GetGlobalBounds();
         button.SetOrigin(btnRect.left + btnRect.width / 2.f, btnRect.top + btnRect.height / 2.f);

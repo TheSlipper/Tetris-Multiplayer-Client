@@ -176,7 +176,7 @@ namespace States
 	}
 
 	////////////////////////////////////////////////////////////
-	void GameOverState::positionRow(sf::Text &rowHeader, sf::Text &p1Val, sf::Text &p2Val, std::string hStr, std::string p1Str, std::string p2Str, float hCharSize, float percHeight)
+	void GameOverState::positionRow(sf::Text &rowHeader, sf::Text &p1Val, sf::Text &p2Val, const std::string hStr, const std::string p1Str, const std::string p2Str, const float hCharSize, const float percHeight)
 	{
 		this->labelDataInit(rowHeader, this->_data->assets.GetFont(UI_FONT_NAME), hStr, hCharSize, percHeight);
 		p1Val.setCharacterSize(rowHeader.getCharacterSize());
@@ -200,7 +200,7 @@ namespace States
 	}
 
 	////////////////////////////////////////////////////////////
-	void GameOverState::labelDataInit(sf::Text &label, sf::Font &font, std::string str, float charSize, float percHeight)
+	void GameOverState::labelDataInit(sf::Text &label, const sf::Font &font, const std::string str, const float charSize, const float percHeight)
 	{
 		label.setFont(font);
 		label.setString(str);

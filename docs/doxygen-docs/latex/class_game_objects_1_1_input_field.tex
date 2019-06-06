@@ -1,0 +1,502 @@
+\hypertarget{class_game_objects_1_1_input_field}{}\section{Game\+Objects\+::Input\+Field Class Reference}
+\label{class_game_objects_1_1_input_field}\index{GameObjects::InputField@{GameObjects::InputField}}
+Inheritance diagram for Game\+Objects\+::Input\+Field\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_objects_1_1_input_field}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_objects_1_1_input_field_a0a054047baaacb3610868aff6e111453}{Input\+Field}} (sf\+::\+Clock \&clock, float width=300.\+0f, float height=50.\+0f, float x\+Pos=0.\+0f, float y\+Pos=0.\+0f)
+\begin{DoxyCompactList}\small\item\em Default \mbox{\hyperlink{class_game_objects_1_1_input_field}{Input\+Field}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_objects_1_1_input_field_a82f424c00ccbf9409abb88d53b05fd68}{Input\+Field}} (sf\+::\+Font \&font, float width=300.\+0f, float height=50.\+0f, float x\+Pos=0.\+0f, float y\+Pos=0.\+0f)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_game_objects_1_1_input_field}{Input\+Field}} constructor with a specified font. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_objects_1_1_input_field_a653823ab6e81ec4535f6807243c267ff}{Append\+Character}} (char character)
+\begin{DoxyCompactList}\small\item\em Appends a character to the input content string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_objects_1_1_input_field_a517383656b3ac7f391a32b490ce3951a}{Remove\+Last\+Char}} ()
+\begin{DoxyCompactList}\small\item\em Removes the last character (includes the \textquotesingle{}$\vert$\textquotesingle{} character) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_objects_1_1_input_field_a4e7224efdb9d904915a9a7f288a9570a}{Remove\+Last\+Content\+Char}} ()
+\begin{DoxyCompactList}\small\item\em Removes the last character before the \textquotesingle{}$\vert$\textquotesingle{}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_objects_1_1_input_field_a6debb6685c52c38129ea39fb3046d3fe}{Set\+Position}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Sets the position of the object on the canvas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_objects_1_1_input_field_accc12efd2237909cd33e32c51cd4002d}{Set\+Font}} (sf\+::\+Font \&font)
+\begin{DoxyCompactList}\small\item\em Sets the font of the text in the input field. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{class_game_objects_1_1_input_field_a3c18942b479df89b20f2c25001fe3b8a}{Get\+C\+String}} ()
+\begin{DoxyCompactList}\small\item\em Gets the char$\ast$ of the input. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_game_objects_1_1_input_field_a4c67555be1e560afc7974a14e2565c56}{Get\+Std\+String}} ()
+\begin{DoxyCompactList}\small\item\em Gets the std\+::string of the input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_objects_1_1_input_field_af080e30d13ad74e8e58b17142c0dff0b}{Set\+Focus}} (bool focus)
+\begin{DoxyCompactList}\small\item\em Sets the focus of the input object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_objects_1_1_input_field_ab0e12850c9da42c7de085e8c73dd8de1}{Switch\+Focus\+State}} ()
+\begin{DoxyCompactList}\small\item\em Switches the status of the focus either from true to false or the other way around. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_game_objects_1_1_input_field_a24c8b48b7311a4bf6112359c5a0d50c6}{Get\+Position}} ()
+\begin{DoxyCompactList}\small\item\em Returns the position of the object. \end{DoxyCompactList}\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{class_game_objects_1_1_input_field_af629e9c792ccfdcc64ab807b9b30a5ac}{Get\+Global\+Bounds}} ()
+\begin{DoxyCompactList}\small\item\em Returns global bounds of the input field. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_objects_1_1_input_field_a2d50c951daa79d6afdf47b6afb0d7c3f}{Has\+Focus}} ()
+\begin{DoxyCompactList}\small\item\em Used to determine if the input is focused on. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_objects_1_1_input_field_adc1c1e00c8114cdf5278fff4ae070076}{Process\+Focus\+Animation}} ()
+\begin{DoxyCompactList}\small\item\em Procecess the animation of the indicator at the end of the line if focused. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 36 of file Input\+Field.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_a0a054047baaacb3610868aff6e111453}\label{class_game_objects_1_1_input_field_a0a054047baaacb3610868aff6e111453}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!InputField@{InputField}}
+\index{InputField@{InputField}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{InputField()}{InputField()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Game\+Objects\+::\+Input\+Field\+::\+Input\+Field (\begin{DoxyParamCaption}\item[{sf\+::\+Clock \&}]{clock,  }\item[{float}]{width = {\ttfamily 300.0f},  }\item[{float}]{height = {\ttfamily 50.0f},  }\item[{float}]{x\+Pos = {\ttfamily 0.0f},  }\item[{float}]{y\+Pos = {\ttfamily 0.0f} }\end{DoxyParamCaption})}
+
+
+
+Default \mbox{\hyperlink{class_game_objects_1_1_input_field}{Input\+Field}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & width of the input field\\
+\hline
+{\em height} & height of the input field\\
+\hline
+{\em x\+Pos} & x position of the field\\
+\hline
+{\em y\+Pos} & y position of the field \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29     : INPUT\_OUTLINE\_COL(sf::Color(0, 0, 0)),}
+\DoxyCodeLine{30     INPUT\_INNER\_COL(sf::Color(0, 0, 0))}
+\DoxyCodeLine{31     \{}
+\DoxyCodeLine{32         this->clock = \&clock;}
+\DoxyCodeLine{33         this->rrs.\mbox{\hyperlink{classsf_1_1_rounded_rectangle_shape_a6c768c97f3b1412f8b310c3c64b7cc91}{setSize}}(sf::Vector2f(width, height));}
+\DoxyCodeLine{34         this->rrs.setOutlineColor(this->INPUT\_OUTLINE\_COL);}
+\DoxyCodeLine{35         this->rrs.setFillColor(this->INPUT\_INNER\_COL);}
+\DoxyCodeLine{36         this->rrs.\mbox{\hyperlink{classsf_1_1_rounded_rectangle_shape_a2c390618b1f93fcd406018c0ed2eaa2f}{setCornerPointCount}}(4);}
+\DoxyCodeLine{37         this->rrs.setOutlineThickness(2.0f);}
+\DoxyCodeLine{38         this->inputText.setFillColor(sf::Color::White);}
+\DoxyCodeLine{39         this->inputText.setString(this->inputContent);}
+\DoxyCodeLine{40         this->inputText.setCharacterSize(9.0f * this->rrs.getGlobalBounds().width / 100.0f);}
+\DoxyCodeLine{41         this->\mbox{\hyperlink{class_game_objects_1_1_input_field_a6debb6685c52c38129ea39fb3046d3fe}{SetPosition}}(xPos, yPos);}
+\DoxyCodeLine{42     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_a82f424c00ccbf9409abb88d53b05fd68}\label{class_game_objects_1_1_input_field_a82f424c00ccbf9409abb88d53b05fd68}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!InputField@{InputField}}
+\index{InputField@{InputField}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{InputField()}{InputField()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Game\+Objects\+::\+Input\+Field\+::\+Input\+Field (\begin{DoxyParamCaption}\item[{sf\+::\+Font \&}]{font,  }\item[{float}]{width = {\ttfamily 300.0f},  }\item[{float}]{height = {\ttfamily 50.0f},  }\item[{float}]{x\+Pos = {\ttfamily 0.0f},  }\item[{float}]{y\+Pos = {\ttfamily 0.0f} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{class_game_objects_1_1_input_field}{Input\+Field}} constructor with a specified font. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & Font used on the input field\textquotesingle{}s text\\
+\hline
+{\em width} & width of the input field\\
+\hline
+{\em height} & height of the input field\\
+\hline
+{\em x\+Pos} & x position of the field\\
+\hline
+{\em y\+Pos} & y position of the field \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 45 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{46     \{}
+\DoxyCodeLine{47         sf::Clock clock; \textcolor{comment}{// TODO: Check if clock disappears after this scope}}
+\DoxyCodeLine{48         \mbox{\hyperlink{class_game_objects_1_1_input_field_a0a054047baaacb3610868aff6e111453}{InputField}}(clock, width, height, xPos, yPos);}
+\DoxyCodeLine{49         this->inputText.setFont(font);}
+\DoxyCodeLine{50     \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_a653823ab6e81ec4535f6807243c267ff}\label{class_game_objects_1_1_input_field_a653823ab6e81ec4535f6807243c267ff}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!AppendCharacter@{AppendCharacter}}
+\index{AppendCharacter@{AppendCharacter}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{AppendCharacter()}{AppendCharacter()}}
+{\footnotesize\ttfamily void Game\+Objects\+::\+Input\+Field\+::\+Append\+Character (\begin{DoxyParamCaption}\item[{char}]{character }\end{DoxyParamCaption})}
+
+
+
+Appends a character to the input content string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em character} & adds this character to the input content string \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 53 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{54     \{}
+\DoxyCodeLine{55         \textcolor{keywordflow}{if}(this->inputContent.getSize() > 0 \&\& this->inputContent[this->inputContent.getSize()-1] == \textcolor{charliteral}{'|'})}
+\DoxyCodeLine{56             this->\mbox{\hyperlink{class_game_objects_1_1_input_field_a517383656b3ac7f391a32b490ce3951a}{RemoveLastChar}}();}
+\DoxyCodeLine{57         this->inputContent += character;}
+\DoxyCodeLine{58         this->inputText.setString(this->inputContent);}
+\DoxyCodeLine{59     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_a3c18942b479df89b20f2c25001fe3b8a}\label{class_game_objects_1_1_input_field_a3c18942b479df89b20f2c25001fe3b8a}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!GetCString@{GetCString}}
+\index{GetCString@{GetCString}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{GetCString()}{GetCString()}}
+{\footnotesize\ttfamily char $\ast$ Game\+Objects\+::\+Input\+Field\+::\+Get\+C\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the char$\ast$ of the input. 
+
+\begin{DoxyReturn}{Returns}
+input\textquotesingle{}s C string \begin{DoxyVerb}\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 106 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{107     \{}
+\DoxyCodeLine{108         \textcolor{keywordflow}{return} strdup(this->inputText.getString().toAnsiString().c\_str());}
+\DoxyCodeLine{109     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_af629e9c792ccfdcc64ab807b9b30a5ac}\label{class_game_objects_1_1_input_field_af629e9c792ccfdcc64ab807b9b30a5ac}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!GetGlobalBounds@{GetGlobalBounds}}
+\index{GetGlobalBounds@{GetGlobalBounds}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{GetGlobalBounds()}{GetGlobalBounds()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Game\+Objects\+::\+Input\+Field\+::\+Get\+Global\+Bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns global bounds of the input field. 
+
+\begin{DoxyReturn}{Returns}
+sf\+::\+Float\+Rect with global bounds \begin{DoxyVerb}\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 142 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{143     \{}
+\DoxyCodeLine{144         \textcolor{keywordflow}{return} this->rrs.getGlobalBounds();}
+\DoxyCodeLine{145     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_a24c8b48b7311a4bf6112359c5a0d50c6}\label{class_game_objects_1_1_input_field_a24c8b48b7311a4bf6112359c5a0d50c6}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Game\+Objects\+::\+Input\+Field\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the position of the object. 
+
+\begin{DoxyReturn}{Returns}
+sf\+::\+Vector2f with data of the position \begin{DoxyVerb}\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 136 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{137     \{}
+\DoxyCodeLine{138         \textcolor{keywordflow}{return} this->rrs.getPosition();}
+\DoxyCodeLine{139     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_a4c67555be1e560afc7974a14e2565c56}\label{class_game_objects_1_1_input_field_a4c67555be1e560afc7974a14e2565c56}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!GetStdString@{GetStdString}}
+\index{GetStdString@{GetStdString}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{GetStdString()}{GetStdString()}}
+{\footnotesize\ttfamily std\+::string Game\+Objects\+::\+Input\+Field\+::\+Get\+Std\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the std\+::string of the input. 
+
+\begin{DoxyReturn}{Returns}
+input\textquotesingle{}s std\+::string \begin{DoxyVerb}\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 112 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{113     \{}
+\DoxyCodeLine{114         \textcolor{keywordflow}{return} this->inputContent.toAnsiString();}
+\DoxyCodeLine{115     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_a2d50c951daa79d6afdf47b6afb0d7c3f}\label{class_game_objects_1_1_input_field_a2d50c951daa79d6afdf47b6afb0d7c3f}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!HasFocus@{HasFocus}}
+\index{HasFocus@{HasFocus}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{HasFocus()}{HasFocus()}}
+{\footnotesize\ttfamily bool Game\+Objects\+::\+Input\+Field\+::\+Has\+Focus (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Used to determine if the input is focused on. 
+
+\begin{DoxyReturn}{Returns}
+bool is it focused on \begin{DoxyVerb}\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 148 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{149     \{}
+\DoxyCodeLine{150         \textcolor{keywordflow}{return} this->focus;}
+\DoxyCodeLine{151     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_adc1c1e00c8114cdf5278fff4ae070076}\label{class_game_objects_1_1_input_field_adc1c1e00c8114cdf5278fff4ae070076}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!ProcessFocusAnimation@{ProcessFocusAnimation}}
+\index{ProcessFocusAnimation@{ProcessFocusAnimation}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{ProcessFocusAnimation()}{ProcessFocusAnimation()}}
+{\footnotesize\ttfamily void Game\+Objects\+::\+Input\+Field\+::\+Process\+Focus\+Animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Procecess the animation of the indicator at the end of the line if focused. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 154 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{155     \{}
+\DoxyCodeLine{156         \textcolor{keywordflow}{if}(!this->focus)}
+\DoxyCodeLine{157             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{158         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(this->clock->getElapsedTime().asSeconds() > this->timeFocused + ANIMATION\_TIME\_INTERVAL)}
+\DoxyCodeLine{159         \{}
+\DoxyCodeLine{160             \textcolor{keywordflow}{if} (this->inputContent.getSize() > 0 \&\& this->inputContent[this->inputContent.getSize()-1] == \textcolor{charliteral}{'|'})}
+\DoxyCodeLine{161                 this->\mbox{\hyperlink{class_game_objects_1_1_input_field_a517383656b3ac7f391a32b490ce3951a}{RemoveLastChar}}();}
+\DoxyCodeLine{162             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{163                 this->\mbox{\hyperlink{class_game_objects_1_1_input_field_a653823ab6e81ec4535f6807243c267ff}{AppendCharacter}}(\textcolor{charliteral}{'|'});}
+\DoxyCodeLine{164             this->timeFocused = this->clock->getElapsedTime().asSeconds();}
+\DoxyCodeLine{165         \}}
+\DoxyCodeLine{166     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_a517383656b3ac7f391a32b490ce3951a}\label{class_game_objects_1_1_input_field_a517383656b3ac7f391a32b490ce3951a}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!RemoveLastChar@{RemoveLastChar}}
+\index{RemoveLastChar@{RemoveLastChar}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{RemoveLastChar()}{RemoveLastChar()}}
+{\footnotesize\ttfamily void Game\+Objects\+::\+Input\+Field\+::\+Remove\+Last\+Char (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Removes the last character (includes the \textquotesingle{}$\vert$\textquotesingle{} character) 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 62 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{63     \{}
+\DoxyCodeLine{64         \textcolor{comment}{// TODO: Check if this works correctly}}
+\DoxyCodeLine{65         \textcolor{comment}{// std::string content = this->inputContent.toAnsiString();}}
+\DoxyCodeLine{66         \textcolor{comment}{// this->inputContent = sf::String(content.substr(0, content.length() - 2));}}
+\DoxyCodeLine{67         \textcolor{keywordtype}{int} len = this->inputContent.getSize();}
+\DoxyCodeLine{68         \textcolor{keywordflow}{if} (len > 1)}
+\DoxyCodeLine{69         \{}
+\DoxyCodeLine{70             this->inputContent = this->inputContent.substring(0, this->inputContent.getSize() - 1);}
+\DoxyCodeLine{71             this->inputText.setString(this->inputContent);}
+\DoxyCodeLine{72         \}}
+\DoxyCodeLine{73         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (len == 1)}
+\DoxyCodeLine{74         \{}
+\DoxyCodeLine{75             this->inputContent = \textcolor{stringliteral}{""};}
+\DoxyCodeLine{76             this->inputText.setString(this->inputContent);}
+\DoxyCodeLine{77         \}}
+\DoxyCodeLine{78     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_a4e7224efdb9d904915a9a7f288a9570a}\label{class_game_objects_1_1_input_field_a4e7224efdb9d904915a9a7f288a9570a}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!RemoveLastContentChar@{RemoveLastContentChar}}
+\index{RemoveLastContentChar@{RemoveLastContentChar}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{RemoveLastContentChar()}{RemoveLastContentChar()}}
+{\footnotesize\ttfamily void Game\+Objects\+::\+Input\+Field\+::\+Remove\+Last\+Content\+Char (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Removes the last character before the \textquotesingle{}$\vert$\textquotesingle{}. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 81 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{82     \{}
+\DoxyCodeLine{83         \textcolor{keywordflow}{if} (this->inputContent.getSize() == 0)}
+\DoxyCodeLine{84             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{85         \textcolor{keywordflow}{if} (this->inputContent[this->inputContent.getSize()-1] == \textcolor{charliteral}{'|'})}
+\DoxyCodeLine{86             this->inputContent = this->inputContent.substring(0, this->inputContent.getSize() - 2);}
+\DoxyCodeLine{87         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{88             this->inputContent = this->inputContent.substring(0, this->inputContent.getSize() - 1);}
+\DoxyCodeLine{89         this->inputText.setString(this->inputContent);}
+\DoxyCodeLine{90     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_af080e30d13ad74e8e58b17142c0dff0b}\label{class_game_objects_1_1_input_field_af080e30d13ad74e8e58b17142c0dff0b}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!SetFocus@{SetFocus}}
+\index{SetFocus@{SetFocus}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{SetFocus()}{SetFocus()}}
+{\footnotesize\ttfamily void Game\+Objects\+::\+Input\+Field\+::\+Set\+Focus (\begin{DoxyParamCaption}\item[{bool}]{focus }\end{DoxyParamCaption})}
+
+
+
+Sets the focus of the input object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em focus} & focus of the object \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 118 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{119     \{}
+\DoxyCodeLine{120         this->focus = focus;}
+\DoxyCodeLine{121         this->timeFocused = this->clock->getElapsedTime().asSeconds();}
+\DoxyCodeLine{122         \textcolor{keywordflow}{if} (this->inputContent.getSize() > 0 \&\& this->inputContent[this->inputContent.getSize()-1] == \textcolor{charliteral}{'|'})}
+\DoxyCodeLine{123             this->\mbox{\hyperlink{class_game_objects_1_1_input_field_a517383656b3ac7f391a32b490ce3951a}{RemoveLastChar}}();}
+\DoxyCodeLine{124     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_accc12efd2237909cd33e32c51cd4002d}\label{class_game_objects_1_1_input_field_accc12efd2237909cd33e32c51cd4002d}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!SetFont@{SetFont}}
+\index{SetFont@{SetFont}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{SetFont()}{SetFont()}}
+{\footnotesize\ttfamily void Game\+Objects\+::\+Input\+Field\+::\+Set\+Font (\begin{DoxyParamCaption}\item[{sf\+::\+Font \&}]{font }\end{DoxyParamCaption})}
+
+
+
+Sets the font of the text in the input field. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em font} & font that is to be used for the text \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 100 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{101     \{}
+\DoxyCodeLine{102         this->inputText.setFont(font);}
+\DoxyCodeLine{103     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_a6debb6685c52c38129ea39fb3046d3fe}\label{class_game_objects_1_1_input_field_a6debb6685c52c38129ea39fb3046d3fe}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void Game\+Objects\+::\+Input\+Field\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{float}]{x,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Sets the position of the object on the canvas. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & the x position of the object\\
+\hline
+{\em y} & the y position of the object \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 93 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{94     \{}
+\DoxyCodeLine{95         this->rrs.setPosition(x, y);}
+\DoxyCodeLine{96         this->centerTextVert();}
+\DoxyCodeLine{97     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_input_field_ab0e12850c9da42c7de085e8c73dd8de1}\label{class_game_objects_1_1_input_field_ab0e12850c9da42c7de085e8c73dd8de1}} 
+\index{GameObjects::InputField@{GameObjects::InputField}!SwitchFocusState@{SwitchFocusState}}
+\index{SwitchFocusState@{SwitchFocusState}!GameObjects::InputField@{GameObjects::InputField}}
+\subsubsection{\texorpdfstring{SwitchFocusState()}{SwitchFocusState()}}
+{\footnotesize\ttfamily void Game\+Objects\+::\+Input\+Field\+::\+Switch\+Focus\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Switches the status of the focus either from true to false or the other way around. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 127 of file Input\+Field.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{128     \{}
+\DoxyCodeLine{129         \textcolor{keywordflow}{if}(this->focus)}
+\DoxyCodeLine{130             this->\mbox{\hyperlink{class_game_objects_1_1_input_field_af080e30d13ad74e8e58b17142c0dff0b}{SetFocus}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{131         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{132             this->\mbox{\hyperlink{class_game_objects_1_1_input_field_af080e30d13ad74e8e58b17142c0dff0b}{SetFocus}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{133     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game Objects/\+Input Field/Input\+Field.\+hpp\item 
+src/\+Game Objects/\+Input Field/Input\+Field.\+cpp\end{DoxyCompactItemize}

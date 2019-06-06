@@ -1,0 +1,411 @@
+\hypertarget{class_arktis_engine_1_1_asset_manager}{}\section{Arktis\+Engine\+::Asset\+Manager Class Reference}
+\label{class_arktis_engine_1_1_asset_manager}\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+
+
+Class that manages all of the asset data.  
+
+
+
+
+{\ttfamily \#include $<$Asset\+Manager.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_a83b4e37fd637e66918ecc86fe583247e}{Asset\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_a1fb7409422cd902a2b1cafead009a6d2}{$\sim$\+Asset\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_a69101c1f6e84b7e1f6e71a1fc8ae1543}{Load\+Texture}} (std\+::string name, std\+::string file\+Path)
+\begin{DoxyCompactList}\small\item\em Loads texture to the textures map. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_adf4904f82f595623f8e40134a7a9d398}{Load\+Repetitive\+Texture}} (std\+::string name, std\+::string file\+Path)
+\begin{DoxyCompactList}\small\item\em Loads texture to the textures map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_a91c15c5726d420f3516a8ac4c2cba6d8}{Remove\+Texture}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Removes the texture from the textures map. \end{DoxyCompactList}\item 
+sf\+::\+Texture \& \mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_a3a44df92faeed35c9f9200f5b4446c0a}{Get\+Texture}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Gets the reference to the sf\+::\+Texture object with the given index. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_a691afa1a5564f646dfb249008640cb26}{Load\+Font}} (std\+::string name, std\+::string file\+Path)
+\begin{DoxyCompactList}\small\item\em Loads font to the fonts map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_ad31adca114d126d15169de5895cdb0f3}{Remove\+Font}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Removes the font from the textures map. \end{DoxyCompactList}\item 
+sf\+::\+Font \& \mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_a5eedae3995e8e86fe49766f42e290dc6}{Get\+Font}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Gets the reference to the sf\+::\+Font object with the given index. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_ad056af109292cee56e6506c597562d80}{Load\+Sound\+Buffer}} (std\+::string name, std\+::string file\+Path)
+\begin{DoxyCompactList}\small\item\em Loads sound buffer object to the sound buffers map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_adcbe38814d48f4f493a844210ae160c2}{remove\+Sound\+Buffer}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Removes the sound buffer from the textures map. \end{DoxyCompactList}\item 
+sf\+::\+Sound\+Buffer \& \mbox{\hyperlink{class_arktis_engine_1_1_asset_manager_abf8ef54c6c562df3ec3fe93bb8643fe4}{get\+Sound\+Buffer}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em Gets the reference to the sf\+::\+Sound\+Buffer object with the given index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that manages all of the asset data. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 34 of file Asset\+Manager.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_a83b4e37fd637e66918ecc86fe583247e}\label{class_arktis_engine_1_1_asset_manager_a83b4e37fd637e66918ecc86fe583247e}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!AssetManager@{AssetManager}}
+\index{AssetManager@{AssetManager}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{AssetManager()}{AssetManager()}}
+{\footnotesize\ttfamily Arktis\+Engine\+::\+Asset\+Manager\+::\+Asset\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 41 of file Asset\+Manager.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{41 \{ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_a1fb7409422cd902a2b1cafead009a6d2}\label{class_arktis_engine_1_1_asset_manager_a1fb7409422cd902a2b1cafead009a6d2}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!````~AssetManager@{$\sim$AssetManager}}
+\index{````~AssetManager@{$\sim$AssetManager}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{$\sim$AssetManager()}{~AssetManager()}}
+{\footnotesize\ttfamily Arktis\+Engine\+::\+Asset\+Manager\+::$\sim$\+Asset\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default destructor. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 47 of file Asset\+Manager.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{47 \{ \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_a5eedae3995e8e86fe49766f42e290dc6}\label{class_arktis_engine_1_1_asset_manager_a5eedae3995e8e86fe49766f42e290dc6}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!GetFont@{GetFont}}
+\index{GetFont@{GetFont}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{GetFont()}{GetFont()}}
+{\footnotesize\ttfamily sf\+::\+Font \& Arktis\+Engine\+::\+Asset\+Manager\+::\+Get\+Font (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Gets the reference to the sf\+::\+Font object with the given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & name index of the file in the map \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 89 of file Asset\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{90     \{}
+\DoxyCodeLine{91         \textcolor{keywordflow}{return} this->fonts.at(name);}
+\DoxyCodeLine{92     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_abf8ef54c6c562df3ec3fe93bb8643fe4}\label{class_arktis_engine_1_1_asset_manager_abf8ef54c6c562df3ec3fe93bb8643fe4}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!getSoundBuffer@{getSoundBuffer}}
+\index{getSoundBuffer@{getSoundBuffer}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{getSoundBuffer()}{getSoundBuffer()}}
+{\footnotesize\ttfamily sf\+::\+Sound\+Buffer \& Arktis\+Engine\+::\+Asset\+Manager\+::get\+Sound\+Buffer (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Gets the reference to the sf\+::\+Sound\+Buffer object with the given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & name index of the file in the map \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 115 of file Asset\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{116     \{}
+\DoxyCodeLine{117         \textcolor{keywordflow}{return} this->soundBuffers.at(name);}
+\DoxyCodeLine{118     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_a3a44df92faeed35c9f9200f5b4446c0a}\label{class_arktis_engine_1_1_asset_manager_a3a44df92faeed35c9f9200f5b4446c0a}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!GetTexture@{GetTexture}}
+\index{GetTexture@{GetTexture}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{GetTexture()}{GetTexture()}}
+{\footnotesize\ttfamily sf\+::\+Texture \& Arktis\+Engine\+::\+Asset\+Manager\+::\+Get\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Gets the reference to the sf\+::\+Texture object with the given index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & name index of the file in the map \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 63 of file Asset\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{64     \{}
+\DoxyCodeLine{65         \textcolor{keywordflow}{return} this->textures.at(name);}
+\DoxyCodeLine{66     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_a691afa1a5564f646dfb249008640cb26}\label{class_arktis_engine_1_1_asset_manager_a691afa1a5564f646dfb249008640cb26}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!LoadFont@{LoadFont}}
+\index{LoadFont@{LoadFont}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{LoadFont()}{LoadFont()}}
+{\footnotesize\ttfamily bool Arktis\+Engine\+::\+Asset\+Manager\+::\+Load\+Font (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+Loads font to the fonts map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & name index for the map entry\\
+\hline
+{\em std\+::string} & file\+Path relative path to the file \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 69 of file Asset\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{70     \{}
+\DoxyCodeLine{71         sf::Font font;}
+\DoxyCodeLine{72         }
+\DoxyCodeLine{73         \textcolor{keywordflow}{if} (font.loadFromFile(filePath))}
+\DoxyCodeLine{74         \{}
+\DoxyCodeLine{75             this->fonts[name] = font;}
+\DoxyCodeLine{76             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{77         \}}
+\DoxyCodeLine{78         }
+\DoxyCodeLine{79         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{80     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_adf4904f82f595623f8e40134a7a9d398}\label{class_arktis_engine_1_1_asset_manager_adf4904f82f595623f8e40134a7a9d398}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!LoadRepetitiveTexture@{LoadRepetitiveTexture}}
+\index{LoadRepetitiveTexture@{LoadRepetitiveTexture}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{LoadRepetitiveTexture()}{LoadRepetitiveTexture()}}
+{\footnotesize\ttfamily bool Arktis\+Engine\+::\+Asset\+Manager\+::\+Load\+Repetitive\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+Loads texture to the textures map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & name index for the map entry\\
+\hline
+{\em std\+::string} & file\+Path relative path to the file \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 42 of file Asset\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{43     \{}
+\DoxyCodeLine{44         sf::Texture tex;}
+\DoxyCodeLine{45         }
+\DoxyCodeLine{46         \textcolor{keywordflow}{if} (tex.loadFromFile(filePath))}
+\DoxyCodeLine{47         \{}
+\DoxyCodeLine{48             tex.setRepeated(\textcolor{keyword}{true});}
+\DoxyCodeLine{49             this->textures[name] = tex;}
+\DoxyCodeLine{50             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{51         \}}
+\DoxyCodeLine{52         }
+\DoxyCodeLine{53         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{54     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_ad056af109292cee56e6506c597562d80}\label{class_arktis_engine_1_1_asset_manager_ad056af109292cee56e6506c597562d80}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!LoadSoundBuffer@{LoadSoundBuffer}}
+\index{LoadSoundBuffer@{LoadSoundBuffer}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{LoadSoundBuffer()}{LoadSoundBuffer()}}
+{\footnotesize\ttfamily bool Arktis\+Engine\+::\+Asset\+Manager\+::\+Load\+Sound\+Buffer (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+Loads sound buffer object to the sound buffers map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & name index for the map entry\\
+\hline
+{\em std\+::string} & file\+Path relative path to the file \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 95 of file Asset\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{96     \{}
+\DoxyCodeLine{97         sf::SoundBuffer sndb;}
+\DoxyCodeLine{98         }
+\DoxyCodeLine{99         \textcolor{keywordflow}{if} (sndb.loadFromFile(filePath))}
+\DoxyCodeLine{100         \{}
+\DoxyCodeLine{101             this->soundBuffers[name] = sndb;}
+\DoxyCodeLine{102             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{103         \}}
+\DoxyCodeLine{104         }
+\DoxyCodeLine{105         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{106     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_a69101c1f6e84b7e1f6e71a1fc8ae1543}\label{class_arktis_engine_1_1_asset_manager_a69101c1f6e84b7e1f6e71a1fc8ae1543}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!LoadTexture@{LoadTexture}}
+\index{LoadTexture@{LoadTexture}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{LoadTexture()}{LoadTexture()}}
+{\footnotesize\ttfamily bool Arktis\+Engine\+::\+Asset\+Manager\+::\+Load\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{file\+Path }\end{DoxyParamCaption})}
+
+
+
+Loads texture to the textures map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & name index for the map entry\\
+\hline
+{\em std\+::string} & file\+Path relative path to the file \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Asset\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         sf::Texture tex;}
+\DoxyCodeLine{31         }
+\DoxyCodeLine{32         \textcolor{keywordflow}{if} (tex.loadFromFile(filePath))}
+\DoxyCodeLine{33         \{}
+\DoxyCodeLine{34             this->textures[name] = tex;}
+\DoxyCodeLine{35             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{36         \}}
+\DoxyCodeLine{37         }
+\DoxyCodeLine{38         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{39     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_ad31adca114d126d15169de5895cdb0f3}\label{class_arktis_engine_1_1_asset_manager_ad31adca114d126d15169de5895cdb0f3}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!RemoveFont@{RemoveFont}}
+\index{RemoveFont@{RemoveFont}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{RemoveFont()}{RemoveFont()}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Asset\+Manager\+::\+Remove\+Font (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Removes the font from the textures map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & name removes the font with the given index from the map \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 83 of file Asset\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{84     \{}
+\DoxyCodeLine{85         this->fonts.erase(name);}
+\DoxyCodeLine{86     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_adcbe38814d48f4f493a844210ae160c2}\label{class_arktis_engine_1_1_asset_manager_adcbe38814d48f4f493a844210ae160c2}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!removeSoundBuffer@{removeSoundBuffer}}
+\index{removeSoundBuffer@{removeSoundBuffer}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{removeSoundBuffer()}{removeSoundBuffer()}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Asset\+Manager\+::remove\+Sound\+Buffer (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Removes the sound buffer from the textures map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & name removes the sound buffer with the given index from the map \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 109 of file Asset\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{110     \{}
+\DoxyCodeLine{111         this->soundBuffers.erase(name);}
+\DoxyCodeLine{112     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_asset_manager_a91c15c5726d420f3516a8ac4c2cba6d8}\label{class_arktis_engine_1_1_asset_manager_a91c15c5726d420f3516a8ac4c2cba6d8}} 
+\index{ArktisEngine::AssetManager@{ArktisEngine::AssetManager}!RemoveTexture@{RemoveTexture}}
+\index{RemoveTexture@{RemoveTexture}!ArktisEngine::AssetManager@{ArktisEngine::AssetManager}}
+\subsubsection{\texorpdfstring{RemoveTexture()}{RemoveTexture()}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Asset\+Manager\+::\+Remove\+Texture (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Removes the texture from the textures map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & name removes the texture with the given index from the map \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 57 of file Asset\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{58     \{}
+\DoxyCodeLine{59         this->textures.erase(name);}
+\DoxyCodeLine{60     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game Engine/\+Asset Manager/Asset\+Manager.\+hpp\item 
+src/\+Game Engine/\+Asset Manager/Asset\+Manager.\+cpp\end{DoxyCompactItemize}

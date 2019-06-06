@@ -225,7 +225,7 @@ namespace States
 	}
     
     ////////////////////////////////////////////////////////////
-    void GameState::positionRowOfLabels(sf::Text &rowName, sf::Text &p1, sf::Text &p2, float heightPrct, std::string rowStr, std::string p1String, std::string p2String)
+    void GameState::positionRowOfLabels(sf::Text &rowName, sf::Text &p1, sf::Text &p2, const float heightPrct, const std::string rowStr, const std::string p1String, const std::string p2String)
     {
         rowName.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
         p1.setFont(this->_data->assets.GetFont(UI_FONT_NAME));
@@ -369,12 +369,12 @@ namespace States
         for (int i = 0; i < 4; i++)
         {
             if (this->a[i].x < 0 || a[i].x >= N || a[i].y >= M)
-                return 0;
+                return false;
             else if (this->field[this->a[i].y][this->a[i].x])
-                return 0;
+                return false;
         }
         
-        return 1;
+        return true;
     }
     
     ////////////////////////////////////////////////////////////
@@ -419,7 +419,7 @@ namespace States
     }
     
     ////////////////////////////////////////////////////////////
-    std::string GameState::timeSpent()
+    const std::string GameState::timeSpent()
     {
         int minutes = (int)this->timeSpentClock.getElapsedTime().asSeconds() / 60;
         int seconds = (int)this->timeSpentClock.getElapsedTime().asSeconds() % 60;

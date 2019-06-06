@@ -95,32 +95,108 @@ namespace States
         void Draw(float dt);
         
     private:
+        ////////////////////////////////////////////////////////////
+        /// \brief Sets up all of the game labels
+        ///
+        ////////////////////////////////////////////////////////////
         void setUpLabels();
         
-        void positionRowOfLabels(sf::Text &rowName, sf::Text &p1, sf::Text &p2, float heightPrct, std::string rowStr, std::string p1String, std::string p2String);
+        ////////////////////////////////////////////////////////////
+        /// \brief Positions all of the label contents in a given order
+        ///         specified by the implementation of this function
+        ///
+        /// \param rowHeader header/name of the row
+        ///
+        /// \param p1 content of first player's label
+        ///
+        /// \param p2 content of second player's label
+        ///
+        /// \param topMrgnPrct specifies top margin of the row in percents
+        ///
+        /// \param rowStr std::string content of the row header
+        ///
+        /// \param p1String std::string content of the p1 label
+        ///
+        /// \param p2String std::string content of the p2 label
+        ///
+        ////////////////////////////////////////////////////////////
+        void positionRowOfLabels(sf::Text &rowHeader, sf::Text &p1, sf::Text &p2, const float topMrgnPrct, const std::string rowStr, const std::string p1String, const std::string p2String);
         
+        ////////////////////////////////////////////////////////////
+        /// \brief Draws all of the labels to the screen
+        ///
+        ////////////////////////////////////////////////////////////
         void drawLabels();
 
+        ////////////////////////////////////////////////////////////
+        /// \brief Draws the game fields to the screen
+        ///
+        ////////////////////////////////////////////////////////////
 		void drawFields();
         
+        ////////////////////////////////////////////////////////////
+        /// \brief Moves the falling tetromino
+        ///
+        ////////////////////////////////////////////////////////////
         void move();
         
+        ////////////////////////////////////////////////////////////
+        /// \brief Rotates the falling tetromino
+        ///
+        ////////////////////////////////////////////////////////////
         void rotation();
         
+        ////////////////////////////////////////////////////////////
+        /// \brief Performs all of the actions that should be handled
+        ///         on a "tick"
+        ///
+        ////////////////////////////////////////////////////////////
         void tick();
         
+        ////////////////////////////////////////////////////////////
+        /// \brief Checks if the falling tetromino have reached the point
+        ///         where they should stop falling
+        ///
+        ////////////////////////////////////////////////////////////
         bool check();
         
+        ////////////////////////////////////////////////////////////
+        /// \brief Checks if there is a full line and if there is one
+        ///         it deletes it
+        ///
+        ////////////////////////////////////////////////////////////
         void checkLines();
         
+        ////////////////////////////////////////////////////////////
+        /// \brief Checks if the game is over
+        ///
+        ////////////////////////////////////////////////////////////
         bool isItGameOver();
         
-        std::string timeSpent();
+        ////////////////////////////////////////////////////////////
+        /// \brief Gets the time spent in-game in std::string
+        ///
+        ////////////////////////////////////////////////////////////
+        const std::string timeSpent();
 
+        ////////////////////////////////////////////////////////////
+        /// \brief Networking data thread function
+        ///
+        ////////////////////////////////////////////////////////////
 		void handleNetworking();
 
+        ////////////////////////////////////////////////////////////
+        /// \brief Sends the player's field data
+        ///
+        /// \param matchId Id of the match
+        ///
+        ////////////////////////////////////////////////////////////
 		void sendFieldData(const int &matchId);
 
+        ////////////////////////////////////////////////////////////
+        /// \brief Receives the opponent's field data
+        ///
+        ////////////////////////////////////////////////////////////
 		void receiveFieldData();
         
         ////////////////////////////////////////////////////////////

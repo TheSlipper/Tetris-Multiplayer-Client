@@ -30,6 +30,10 @@
 
 namespace ArktisEngine
 {
+    ////////////////////////////////////////////////////////////
+    /// \brief Contains all of the game crucial user data
+    ///
+    ////////////////////////////////////////////////////////////
     struct UserData
     {
         int elo, privilegeGroup, unrankedWins, unrankedLosses, rankedWins, rankedLosses;

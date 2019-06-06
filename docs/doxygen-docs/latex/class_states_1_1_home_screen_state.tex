@@ -1,0 +1,229 @@
+\hypertarget{class_states_1_1_home_screen_state}{}\section{States\+::Home\+Screen\+State Class Reference}
+\label{class_states_1_1_home_screen_state}\index{States::HomeScreenState@{States::HomeScreenState}}
+
+
+Splash \mbox{\hyperlink{class_states_1_1_state}{State}}.  
+
+
+
+
+{\ttfamily \#include $<$Home\+Screen\+State.\+hpp$>$}
+
+Inheritance diagram for States\+::Home\+Screen\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_states_1_1_home_screen_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_states_1_1_home_screen_state_afce4f5145fb10c864de2c3aa86455e40}{Home\+Screen\+State}} (\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}} data)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_home_screen_state_a96524be599607993ac7abc72727cc9b2}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initialization of the state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_home_screen_state_abaada1fbdd186aea2845ea1d19b66d69}{Handle\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Handles scene-\/specific user input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_home_screen_state_a86c27b5c969563bb2d606cdecba1e949}{Update}} (float dt)
+\begin{DoxyCompactList}\small\item\em Updates the scene (call the animation or physics methods here) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_home_screen_state_aef921fb2964bf40565ba6fd2efacd3b4}{Draw}} (float dt)
+\begin{DoxyCompactList}\small\item\em Draws to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Splash \mbox{\hyperlink{class_states_1_1_state}{State}}. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 39 of file Home\+Screen\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_states_1_1_home_screen_state_afce4f5145fb10c864de2c3aa86455e40}\label{class_states_1_1_home_screen_state_afce4f5145fb10c864de2c3aa86455e40}} 
+\index{States::HomeScreenState@{States::HomeScreenState}!HomeScreenState@{HomeScreenState}}
+\index{HomeScreenState@{HomeScreenState}!States::HomeScreenState@{States::HomeScreenState}}
+\subsubsection{\texorpdfstring{HomeScreenState()}{HomeScreenState()}}
+{\footnotesize\ttfamily States\+::\+Home\+Screen\+State\+::\+Home\+Screen\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}}}]{data }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Game\+Data\+Ref} & data pointer to the game\textquotesingle{}s crucial data \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 31 of file Home\+Screen\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{31                                                                  : \_data(data)}
+\DoxyCodeLine{32     \{}
+\DoxyCodeLine{33     \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_states_1_1_home_screen_state_aef921fb2964bf40565ba6fd2efacd3b4}\label{class_states_1_1_home_screen_state_aef921fb2964bf40565ba6fd2efacd3b4}} 
+\index{States::HomeScreenState@{States::HomeScreenState}!Draw@{Draw}}
+\index{Draw@{Draw}!States::HomeScreenState@{States::HomeScreenState}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void States\+::\+Home\+Screen\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws to the screen. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_af5faf0a12478e595ec488fa6108fa490}{States\+::\+State}}.
+
+
+
+Definition at line 72 of file Home\+Screen\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{73     \{}
+\DoxyCodeLine{74         this->\_data->window.clear(sf::Color::Red);}
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76         this->\_data->window.draw(this->bgStylizedImage);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78         this->\_data->window.draw(*this->\_playNormal);}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80         this->\_data->window.draw(*this->\_playRanked);}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82         this->\_data->window.draw(*this->\_nicknameBox);}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84         this->\_data->window.draw(*this->\_tetrominoPtsBlock);}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86         this->\_data->window.draw(this->avatar);}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88         this->\_data->window.draw(this->gameLogo);}
+\DoxyCodeLine{89 }
+\DoxyCodeLine{90         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} sf::Text \&txt : this->articleHeaders)}
+\DoxyCodeLine{91             this->\_data->window.draw(txt);}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} sf::Text \&txt : this->articleContents)}
+\DoxyCodeLine{94             this->\_data->window.draw(txt);}
+\DoxyCodeLine{95         }
+\DoxyCodeLine{96         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} sf::Text \&txt : this->articleAuthors)}
+\DoxyCodeLine{97             this->\_data->window.draw(txt);}
+\DoxyCodeLine{98         }
+\DoxyCodeLine{99         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} sf::Text \&txt : this->articleDates)}
+\DoxyCodeLine{100             this->\_data->window.draw(txt);}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102         this->\_data->window.display();}
+\DoxyCodeLine{103     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_home_screen_state_abaada1fbdd186aea2845ea1d19b66d69}\label{class_states_1_1_home_screen_state_abaada1fbdd186aea2845ea1d19b66d69}} 
+\index{States::HomeScreenState@{States::HomeScreenState}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!States::HomeScreenState@{States::HomeScreenState}}
+\subsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void States\+::\+Home\+Screen\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles scene-\/specific user input. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_a9f5a1461456ad43c936808c9cfb9e8bd}{States\+::\+State}}.
+
+
+
+Definition at line 47 of file Home\+Screen\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{48     \{}
+\DoxyCodeLine{49         sf::Event event;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51         \textcolor{keywordflow}{while} (this->\_data->window.pollEvent(event))}
+\DoxyCodeLine{52         \{}
+\DoxyCodeLine{53             \textcolor{keywordflow}{if} (sf::Event::Closed == event.type)}
+\DoxyCodeLine{54             \{}
+\DoxyCodeLine{55                 this->\_data->messaging.DisconnectSocket();}
+\DoxyCodeLine{56                 this->\_data->window.close();}
+\DoxyCodeLine{57             \}}
+\DoxyCodeLine{58             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sf::Event::MouseButtonPressed == event.type)}
+\DoxyCodeLine{59             \{}
+\DoxyCodeLine{60                 \textcolor{keywordflow}{if} (this->\_data->input.IsButtonClicked(*this->\_playNormal, sf::Mouse::Left, this->\_data->window))}
+\DoxyCodeLine{61                     this->\_data->machine.AddState((\mbox{\hyperlink{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}{ArktisEngine::StateRef}})\textcolor{keyword}{new} LoadingScreenState(this->\_data), \textcolor{keyword}{true});}
+\DoxyCodeLine{62             \}}
+\DoxyCodeLine{63         \}}
+\DoxyCodeLine{64     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_home_screen_state_a96524be599607993ac7abc72727cc9b2}\label{class_states_1_1_home_screen_state_a96524be599607993ac7abc72727cc9b2}} 
+\index{States::HomeScreenState@{States::HomeScreenState}!Init@{Init}}
+\index{Init@{Init}!States::HomeScreenState@{States::HomeScreenState}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void States\+::\+Home\+Screen\+State\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Initialization of the state. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_aff396dd3b4f3f7f7e729a0eac1910f45}{States\+::\+State}}.
+
+
+
+Definition at line 36 of file Home\+Screen\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{37     \{}
+\DoxyCodeLine{38         this->setUserData();}
+\DoxyCodeLine{39         this->loadAvatarTextures();}
+\DoxyCodeLine{40         this->setUpNewsSection();}
+\DoxyCodeLine{41         this->setUpAccHUD();}
+\DoxyCodeLine{42         this->setUpPlayButtons();}
+\DoxyCodeLine{43         this->loadArticles();}
+\DoxyCodeLine{44     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_home_screen_state_a86c27b5c969563bb2d606cdecba1e949}\label{class_states_1_1_home_screen_state_a86c27b5c969563bb2d606cdecba1e949}} 
+\index{States::HomeScreenState@{States::HomeScreenState}!Update@{Update}}
+\index{Update@{Update}!States::HomeScreenState@{States::HomeScreenState}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void States\+::\+Home\+Screen\+State\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates the scene (call the animation or physics methods here) 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_ab8e935def8138e0b917c3228a29904e4}{States\+::\+State}}.
+
+
+
+Definition at line 67 of file Home\+Screen\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{68     \{}
+\DoxyCodeLine{69     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game States/\+Home Screen State/Home\+Screen\+State.\+hpp\item 
+src/\+Game States/\+Home Screen State/Home\+Screen\+State.\+cpp\end{DoxyCompactItemize}

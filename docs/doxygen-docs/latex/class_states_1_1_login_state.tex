@@ -1,0 +1,261 @@
+\hypertarget{class_states_1_1_login_state}{}\section{States\+::Login\+State Class Reference}
+\label{class_states_1_1_login_state}\index{States::LoginState@{States::LoginState}}
+Inheritance diagram for States\+::Login\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_states_1_1_login_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_states_1_1_login_state_a73147b21ae7bc566d4394a25881e887b}{Login\+State}} (\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}} data)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_login_state_abe7a51211f07fe9eeac422f548117b49}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initialization of the state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_login_state_a91cc904bfbe100def4cb967f089175f7}{Handle\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Handles scene-\/specific user input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_login_state_a026b040b86a5f4f0c3855fb5d5aef0ce}{Update}} (float dt)
+\begin{DoxyCompactList}\small\item\em Updates the scene (call the animation or physics methods here) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_login_state_aca115316c1aa308f39c6c95c47fd30f6}{Draw}} (float dt)
+\begin{DoxyCompactList}\small\item\em Draws to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 38 of file Login\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_states_1_1_login_state_a73147b21ae7bc566d4394a25881e887b}\label{class_states_1_1_login_state_a73147b21ae7bc566d4394a25881e887b}} 
+\index{States::LoginState@{States::LoginState}!LoginState@{LoginState}}
+\index{LoginState@{LoginState}!States::LoginState@{States::LoginState}}
+\subsubsection{\texorpdfstring{LoginState()}{LoginState()}}
+{\footnotesize\ttfamily States\+::\+Login\+State\+::\+Login\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}}}]{data }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Game\+Data\+Ref} & data pointer to the game\textquotesingle{}s crucial data \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 30 of file Login\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{30                                                        :\_data(data), BG\_COLOR(sf::Color(245, 246, 250))}
+\DoxyCodeLine{31     \{}
+\DoxyCodeLine{32     \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_states_1_1_login_state_aca115316c1aa308f39c6c95c47fd30f6}\label{class_states_1_1_login_state_aca115316c1aa308f39c6c95c47fd30f6}} 
+\index{States::LoginState@{States::LoginState}!Draw@{Draw}}
+\index{Draw@{Draw}!States::LoginState@{States::LoginState}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void States\+::\+Login\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws to the screen. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_af5faf0a12478e595ec488fa6108fa490}{States\+::\+State}}.
+
+
+
+Definition at line 127 of file Login\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{128     \{}
+\DoxyCodeLine{129         this->\_data->window.clear(this->BG\_COLOR);}
+\DoxyCodeLine{130 }
+\DoxyCodeLine{131         this->\_data->window.draw(this->logo);}
+\DoxyCodeLine{132 }
+\DoxyCodeLine{133         this->\_data->window.draw(this->loginLabel);}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135         this->\_data->window.draw(*this->\_loginInput);}
+\DoxyCodeLine{136 }
+\DoxyCodeLine{137         this->\_data->window.draw(this->passwdLabel);}
+\DoxyCodeLine{138 }
+\DoxyCodeLine{139         this->\_data->window.draw(*this->\_passwordInput);}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141         this->\_data->window.draw(*this->\_loginButton);}
+\DoxyCodeLine{142         }
+\DoxyCodeLine{143         this->\_data->window.draw(*this->\_messageBox);}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145         this->\_data->window.display();}
+\DoxyCodeLine{146     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_login_state_a91cc904bfbe100def4cb967f089175f7}\label{class_states_1_1_login_state_a91cc904bfbe100def4cb967f089175f7}} 
+\index{States::LoginState@{States::LoginState}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!States::LoginState@{States::LoginState}}
+\subsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void States\+::\+Login\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles scene-\/specific user input. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_a9f5a1461456ad43c936808c9cfb9e8bd}{States\+::\+State}}.
+
+
+
+Definition at line 52 of file Login\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{53     \{}
+\DoxyCodeLine{54         sf::Event event;}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56         \textcolor{keywordflow}{while}(this->\_data->window.pollEvent(event))}
+\DoxyCodeLine{57         \{}
+\DoxyCodeLine{58             \textcolor{keywordflow}{if} (sf::Event::Closed == event.type)}
+\DoxyCodeLine{59             \{}
+\DoxyCodeLine{60                 this->\_data->messaging.DisconnectSocket();}
+\DoxyCodeLine{61                 this->\_data->window.close();}
+\DoxyCodeLine{62             \}}
+\DoxyCodeLine{63             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sf::Event::MouseButtonPressed == event.type)}
+\DoxyCodeLine{64             \{}
+\DoxyCodeLine{65                 this->\_passwordInput->SetFocus(\textcolor{keyword}{false});}
+\DoxyCodeLine{66                 this->\_loginInput->SetFocus(\textcolor{keyword}{false});}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68                 \textcolor{keywordflow}{if} (this->\_data->input.IsInputFieldClicked(*this->\_loginInput, sf::Mouse::Left, this->\_data->window))}
+\DoxyCodeLine{69                     this->\_loginInput->SwitchFocusState();}
+\DoxyCodeLine{70                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (this->\_data->input.IsInputFieldClicked(*this->\_passwordInput, sf::Mouse::Left, this->\_data->window))}
+\DoxyCodeLine{71                     this->\_passwordInput->SwitchFocusState();}
+\DoxyCodeLine{72                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (this->\_data->input.IsButtonClicked(*this->\_loginButton, sf::Mouse::Left, this->\_data->window))}
+\DoxyCodeLine{73                     this->sendFormData();}
+\DoxyCodeLine{74             \}}
+\DoxyCodeLine{75             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (sf::Event::TextEntered == event.type)}
+\DoxyCodeLine{76             \{}
+\DoxyCodeLine{77                 \textcolor{keywordtype}{char} inputCharacter = static\_cast<char>(event.text.unicode);}
+\DoxyCodeLine{78                 \textcolor{keywordflow}{if} (inputCharacter == (\textcolor{keywordtype}{char})8)}
+\DoxyCodeLine{79                 \{}
+\DoxyCodeLine{80                     \textcolor{comment}{// Backspace}}
+\DoxyCodeLine{81                     \textcolor{keywordflow}{if} (this->\_loginInput->HasFocus())}
+\DoxyCodeLine{82                         this->\_loginInput->RemoveLastContentChar();}
+\DoxyCodeLine{83                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (this->\_passwordInput->HasFocus() \&\& this->passwd.length() > 0)}
+\DoxyCodeLine{84                     \{}
+\DoxyCodeLine{85                         this->passwd.pop\_back();}
+\DoxyCodeLine{86                         this->\_passwordInput->RemoveLastContentChar();}
+\DoxyCodeLine{87                     \}}
+\DoxyCodeLine{88                 \}}
+\DoxyCodeLine{89                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (inputCharacter == (\textcolor{keywordtype}{char})9)}
+\DoxyCodeLine{90                 \{}
+\DoxyCodeLine{91                     \textcolor{comment}{// Tab}}
+\DoxyCodeLine{92                     \textcolor{keywordflow}{if} (this->\_loginInput->HasFocus())}
+\DoxyCodeLine{93                     \{}
+\DoxyCodeLine{94                         this->\_loginInput->SwitchFocusState();}
+\DoxyCodeLine{95                         this->\_passwordInput->SetFocus(\textcolor{keyword}{true});}
+\DoxyCodeLine{96                     \}}
+\DoxyCodeLine{97                     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{98                     \{}
+\DoxyCodeLine{99                         this->\_loginInput->SetFocus(\textcolor{keyword}{true});}
+\DoxyCodeLine{100                         this->\_passwordInput->SwitchFocusState();}
+\DoxyCodeLine{101                     \}}
+\DoxyCodeLine{102                 \}}
+\DoxyCodeLine{103                 \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (inputCharacter == (\textcolor{keywordtype}{char})10 || inputCharacter == (\textcolor{keywordtype}{char})13) \textcolor{comment}{// Enter}}
+\DoxyCodeLine{104                     this->sendFormData();}
+\DoxyCodeLine{105                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{106                 \{}
+\DoxyCodeLine{107                     \textcolor{keywordflow}{if} (this->\_loginInput->HasFocus())}
+\DoxyCodeLine{108                         this->\_loginInput->AppendCharacter(inputCharacter);}
+\DoxyCodeLine{109                     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (this->\_passwordInput->HasFocus())}
+\DoxyCodeLine{110                     \{}
+\DoxyCodeLine{111                         this->passwd += inputCharacter;}
+\DoxyCodeLine{112                         this->\_passwordInput->AppendCharacter(\textcolor{charliteral}{'*'});}
+\DoxyCodeLine{113                     \}}
+\DoxyCodeLine{114                 \}}
+\DoxyCodeLine{115             \}}
+\DoxyCodeLine{116         \}}
+\DoxyCodeLine{117     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_login_state_abe7a51211f07fe9eeac422f548117b49}\label{class_states_1_1_login_state_abe7a51211f07fe9eeac422f548117b49}} 
+\index{States::LoginState@{States::LoginState}!Init@{Init}}
+\index{Init@{Init}!States::LoginState@{States::LoginState}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void States\+::\+Login\+State\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Initialization of the state. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_aff396dd3b4f3f7f7e729a0eac1910f45}{States\+::\+State}}.
+
+
+
+Definition at line 35 of file Login\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36     \{}
+\DoxyCodeLine{37         \textcolor{comment}{// Load UI font}}
+\DoxyCodeLine{38         \textcolor{keywordflow}{if} (!this->\_data->assets.LoadFont(UI\_FONT\_NAME, UI\_FONT\_PATH))}
+\DoxyCodeLine{39             exit(ERROR\_CODE\_FONT\_NOT\_LOADED);}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41         \textcolor{comment}{// Set up the state}}
+\DoxyCodeLine{42         this->\_data->messaging.ConnectToServer();}
+\DoxyCodeLine{43         this->setUpGameLogo();}
+\DoxyCodeLine{44         this->centerAndPositionLogo();}
+\DoxyCodeLine{45         this->setUpLabels();}
+\DoxyCodeLine{46         this->centerAndPositionLabels();}
+\DoxyCodeLine{47         this->setUpForm();}
+\DoxyCodeLine{48         this->setUpMessageBox();}
+\DoxyCodeLine{49     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_login_state_a026b040b86a5f4f0c3855fb5d5aef0ce}\label{class_states_1_1_login_state_a026b040b86a5f4f0c3855fb5d5aef0ce}} 
+\index{States::LoginState@{States::LoginState}!Update@{Update}}
+\index{Update@{Update}!States::LoginState@{States::LoginState}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void States\+::\+Login\+State\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates the scene (call the animation or physics methods here) 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_ab8e935def8138e0b917c3228a29904e4}{States\+::\+State}}.
+
+
+
+Definition at line 120 of file Login\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{121     \{}
+\DoxyCodeLine{122         this->\_loginInput->ProcessFocusAnimation();}
+\DoxyCodeLine{123         this->\_passwordInput->ProcessFocusAnimation();}
+\DoxyCodeLine{124     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game States/\+Login State/Login\+State.\+hpp\item 
+src/\+Game States/\+Login State/Login\+State.\+cpp\end{DoxyCompactItemize}

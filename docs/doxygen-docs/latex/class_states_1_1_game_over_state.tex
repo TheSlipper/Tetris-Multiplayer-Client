@@ -1,0 +1,215 @@
+\hypertarget{class_states_1_1_game_over_state}{}\section{States\+::Game\+Over\+State Class Reference}
+\label{class_states_1_1_game_over_state}\index{States::GameOverState@{States::GameOverState}}
+
+
+Loading Screen \mbox{\hyperlink{class_states_1_1_state}{State}}.  
+
+
+
+
+{\ttfamily \#include $<$Game\+Over\+State.\+hpp$>$}
+
+Inheritance diagram for States\+::Game\+Over\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_states_1_1_game_over_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_states_1_1_game_over_state_a5f860ecbc86851a222086251b76d6067}{Game\+Over\+State}} (\mbox{\hyperlink{struct_arktis_engine_1_1_user_data}{Arktis\+Engine\+::\+User\+Data}} opponent\+Data, \mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}} data)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_game_over_state_a72a8dafbebd94c2964ba48ba4a350096}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initialization of the state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_game_over_state_acc6edd1fdbca63e4564a0a04b9d48811}{Handle\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Handles scene-\/specific user input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_game_over_state_a8efab9044baa73dbe979b6da0aa9a041}{Update}} (float dt)
+\begin{DoxyCompactList}\small\item\em Updates the scene (call the animation or physics methods here) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_game_over_state_ac017a6a3acb091ae1596dbf9e5c38643}{Draw}} (float dt)
+\begin{DoxyCompactList}\small\item\em Draws to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Loading Screen \mbox{\hyperlink{class_states_1_1_state}{State}}. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 36 of file Game\+Over\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_states_1_1_game_over_state_a5f860ecbc86851a222086251b76d6067}\label{class_states_1_1_game_over_state_a5f860ecbc86851a222086251b76d6067}} 
+\index{States::GameOverState@{States::GameOverState}!GameOverState@{GameOverState}}
+\index{GameOverState@{GameOverState}!States::GameOverState@{States::GameOverState}}
+\subsubsection{\texorpdfstring{GameOverState()}{GameOverState()}}
+{\footnotesize\ttfamily States\+::\+Game\+Over\+State\+::\+Game\+Over\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_arktis_engine_1_1_user_data}{Arktis\+Engine\+::\+User\+Data}}}]{opponent\+Data,  }\item[{\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}}}]{data }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opponent\+Data} & data of the opponent\\
+\hline
+{\em data} & pointer to the game\textquotesingle{}s crucial data \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Game\+Over\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28                                                                                                 :\_data(data)}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         this->opponentData = opponentData;}
+\DoxyCodeLine{31     \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_states_1_1_game_over_state_ac017a6a3acb091ae1596dbf9e5c38643}\label{class_states_1_1_game_over_state_ac017a6a3acb091ae1596dbf9e5c38643}} 
+\index{States::GameOverState@{States::GameOverState}!Draw@{Draw}}
+\index{Draw@{Draw}!States::GameOverState@{States::GameOverState}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void States\+::\+Game\+Over\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws to the screen. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_af5faf0a12478e595ec488fa6108fa490}{States\+::\+State}}.
+
+
+
+Definition at line 69 of file Game\+Over\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{70     \{}
+\DoxyCodeLine{71         this->\_data->window.clear(sf::Color::White);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73         this->drawLabels(this->\_data->window, this->scoreLabel, this->p1Score, this->p2Score);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75         this->drawLabels(this->\_data->window, this->linesLabel, this->p1Lines, this->p2Lines);}
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77         this->drawLabels(this->\_data->window, this->eloLabel, this->p1Elo, this->p2Elo);}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{79         this->drawLabels(this->\_data->window, this->unrankedWinsLabel, this->p1UnrWins, this->p2UnrWins);}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81         this->drawLabels(this->\_data->window, this->rankedWinsLabel, this->p1RanWins, this->p2RanWins);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83         this->\_data->window.display();}
+\DoxyCodeLine{84     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_game_over_state_acc6edd1fdbca63e4564a0a04b9d48811}\label{class_states_1_1_game_over_state_acc6edd1fdbca63e4564a0a04b9d48811}} 
+\index{States::GameOverState@{States::GameOverState}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!States::GameOverState@{States::GameOverState}}
+\subsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void States\+::\+Game\+Over\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles scene-\/specific user input. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_a9f5a1461456ad43c936808c9cfb9e8bd}{States\+::\+State}}.
+
+
+
+Definition at line 48 of file Game\+Over\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{49     \{}
+\DoxyCodeLine{50         sf::Event event;}
+\DoxyCodeLine{51         \textcolor{keywordflow}{while} (this->\_data->window.pollEvent(event))}
+\DoxyCodeLine{52         \{}
+\DoxyCodeLine{53             \textcolor{keywordflow}{if} (sf::Event::Closed == event.type)}
+\DoxyCodeLine{54             \{}
+\DoxyCodeLine{55                 this->\_data->messaging.DisconnectSocket();}
+\DoxyCodeLine{56                 this->\_data->window.close();}
+\DoxyCodeLine{57             \}}
+\DoxyCodeLine{58             \textcolor{keywordflow}{if} (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))}
+\DoxyCodeLine{59                 this->\_data->machine.AddState((\mbox{\hyperlink{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}{ArktisEngine::StateRef}}) \textcolor{keyword}{new} HomeScreenState(this->\_data), \textcolor{keyword}{true});}
+\DoxyCodeLine{60         \}}
+\DoxyCodeLine{61     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_game_over_state_a72a8dafbebd94c2964ba48ba4a350096}\label{class_states_1_1_game_over_state_a72a8dafbebd94c2964ba48ba4a350096}} 
+\index{States::GameOverState@{States::GameOverState}!Init@{Init}}
+\index{Init@{Init}!States::GameOverState@{States::GameOverState}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void States\+::\+Game\+Over\+State\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Initialization of the state. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_aff396dd3b4f3f7f7e729a0eac1910f45}{States\+::\+State}}.
+
+
+
+Definition at line 34 of file Game\+Over\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35     \{}
+\DoxyCodeLine{36         std::string resp = this->\_data->messaging.GetStringResponse();}
+\DoxyCodeLine{37         \textcolor{keywordflow}{if} (resp[0] != \textcolor{charliteral}{'L'})}
+\DoxyCodeLine{38             this->parseResponseData(resp);}
+\DoxyCodeLine{39         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{40         \{}
+\DoxyCodeLine{41             resp = this->\_data->messaging.GetStringResponse();}
+\DoxyCodeLine{42             this->parseResponseData(resp);}
+\DoxyCodeLine{43         \}}
+\DoxyCodeLine{44         this->placeLabelsWithVals();}
+\DoxyCodeLine{45     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_game_over_state_a8efab9044baa73dbe979b6da0aa9a041}\label{class_states_1_1_game_over_state_a8efab9044baa73dbe979b6da0aa9a041}} 
+\index{States::GameOverState@{States::GameOverState}!Update@{Update}}
+\index{Update@{Update}!States::GameOverState@{States::GameOverState}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void States\+::\+Game\+Over\+State\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates the scene (call the animation or physics methods here) 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_ab8e935def8138e0b917c3228a29904e4}{States\+::\+State}}.
+
+
+
+Definition at line 64 of file Game\+Over\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{65     \{}
+\DoxyCodeLine{66     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game States/\+Game Over State/Game\+Over\+State.\+hpp\item 
+src/\+Game States/\+Game Over State/Game\+Over\+State.\+cpp\end{DoxyCompactItemize}

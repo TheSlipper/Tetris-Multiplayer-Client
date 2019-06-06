@@ -1,0 +1,212 @@
+\hypertarget{class_states_1_1_loading_screen_state}{}\section{States\+::Loading\+Screen\+State Class Reference}
+\label{class_states_1_1_loading_screen_state}\index{States::LoadingScreenState@{States::LoadingScreenState}}
+
+
+Loading Screen \mbox{\hyperlink{class_states_1_1_state}{State}}.  
+
+
+
+
+{\ttfamily \#include $<$Loading\+Screen\+State.\+hpp$>$}
+
+Inheritance diagram for States\+::Loading\+Screen\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_states_1_1_loading_screen_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_states_1_1_loading_screen_state_a4cbc4591072bff067015b5b959811980}{Loading\+Screen\+State}} (\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}} data)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_loading_screen_state_aa6783276ac59b0c137d062251ddc719a}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initialization of the state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_loading_screen_state_a3a473b2cf717f183e4573344405b7b49}{Handle\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Handles scene-\/specific user input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_loading_screen_state_aff3b4dab779277f43cca4b4409f59a35}{Update}} (float dt)
+\begin{DoxyCompactList}\small\item\em Updates the scene (call the animation or physics methods here) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_loading_screen_state_ab59e574f0ccfd3471c7f919df96190a5}{Draw}} (float dt)
+\begin{DoxyCompactList}\small\item\em Draws to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Loading Screen \mbox{\hyperlink{class_states_1_1_state}{State}}. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 35 of file Loading\+Screen\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_states_1_1_loading_screen_state_a4cbc4591072bff067015b5b959811980}\label{class_states_1_1_loading_screen_state_a4cbc4591072bff067015b5b959811980}} 
+\index{States::LoadingScreenState@{States::LoadingScreenState}!LoadingScreenState@{LoadingScreenState}}
+\index{LoadingScreenState@{LoadingScreenState}!States::LoadingScreenState@{States::LoadingScreenState}}
+\subsubsection{\texorpdfstring{LoadingScreenState()}{LoadingScreenState()}}
+{\footnotesize\ttfamily States\+::\+Loading\+Screen\+State\+::\+Loading\+Screen\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}}}]{data }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Game\+Data\+Ref} & data pointer to the game\textquotesingle{}s crucial data \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Loading\+Screen\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28                                                                        :\_data(data)}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         }
+\DoxyCodeLine{31     \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_states_1_1_loading_screen_state_ab59e574f0ccfd3471c7f919df96190a5}\label{class_states_1_1_loading_screen_state_ab59e574f0ccfd3471c7f919df96190a5}} 
+\index{States::LoadingScreenState@{States::LoadingScreenState}!Draw@{Draw}}
+\index{Draw@{Draw}!States::LoadingScreenState@{States::LoadingScreenState}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void States\+::\+Loading\+Screen\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws to the screen. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_af5faf0a12478e595ec488fa6108fa490}{States\+::\+State}}.
+
+
+
+Definition at line 74 of file Loading\+Screen\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{75     \{}
+\DoxyCodeLine{76         this->\_data->window.clear(sf::Color::White);}
+\DoxyCodeLine{77         }
+\DoxyCodeLine{78         this->\_data->window.draw(this->loadingScreenText);}
+\DoxyCodeLine{79         }
+\DoxyCodeLine{80         this->\_data->window.display();}
+\DoxyCodeLine{81         }
+\DoxyCodeLine{82         this->firstDraw = \textcolor{keyword}{false};}
+\DoxyCodeLine{83     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_loading_screen_state_a3a473b2cf717f183e4573344405b7b49}\label{class_states_1_1_loading_screen_state_a3a473b2cf717f183e4573344405b7b49}} 
+\index{States::LoadingScreenState@{States::LoadingScreenState}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!States::LoadingScreenState@{States::LoadingScreenState}}
+\subsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void States\+::\+Loading\+Screen\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles scene-\/specific user input. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_a9f5a1461456ad43c936808c9cfb9e8bd}{States\+::\+State}}.
+
+
+
+Definition at line 44 of file Loading\+Screen\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{45     \{}
+\DoxyCodeLine{46         sf::Event event;}
+\DoxyCodeLine{47         \textcolor{keywordflow}{while} (this->\_data->window.pollEvent(event))}
+\DoxyCodeLine{48         \{}
+\DoxyCodeLine{49             \textcolor{keywordflow}{if} (sf::Event::Closed == event.type)}
+\DoxyCodeLine{50             \{}
+\DoxyCodeLine{51                 this->\_data->messaging.DisconnectSocket();}
+\DoxyCodeLine{52                 this->\_data->window.close();}
+\DoxyCodeLine{53             \}}
+\DoxyCodeLine{54         \}}
+\DoxyCodeLine{55     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_loading_screen_state_aa6783276ac59b0c137d062251ddc719a}\label{class_states_1_1_loading_screen_state_aa6783276ac59b0c137d062251ddc719a}} 
+\index{States::LoadingScreenState@{States::LoadingScreenState}!Init@{Init}}
+\index{Init@{Init}!States::LoadingScreenState@{States::LoadingScreenState}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void States\+::\+Loading\+Screen\+State\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Initialization of the state. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_aff396dd3b4f3f7f7e729a0eac1910f45}{States\+::\+State}}.
+
+
+
+Definition at line 34 of file Loading\+Screen\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35     \{}
+\DoxyCodeLine{36         this->loadingScreenText.setString(\textcolor{stringliteral}{"LOOKING FOR AN OPPONENT..."});}
+\DoxyCodeLine{37         this->loadingScreenText.setFont(this->\_data->assets.GetFont(UI\_FONT\_NAME));}
+\DoxyCodeLine{38         this->loadingScreenText.setCharacterSize(this->\_data->settings.width * 128.f / 3820.f);}
+\DoxyCodeLine{39         this->loadingScreenText.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{40         this->centerText();}
+\DoxyCodeLine{41     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_loading_screen_state_aff3b4dab779277f43cca4b4409f59a35}\label{class_states_1_1_loading_screen_state_aff3b4dab779277f43cca4b4409f59a35}} 
+\index{States::LoadingScreenState@{States::LoadingScreenState}!Update@{Update}}
+\index{Update@{Update}!States::LoadingScreenState@{States::LoadingScreenState}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void States\+::\+Loading\+Screen\+State\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates the scene (call the animation or physics methods here) 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_ab8e935def8138e0b917c3228a29904e4}{States\+::\+State}}.
+
+
+
+Definition at line 58 of file Loading\+Screen\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{59     \{}
+\DoxyCodeLine{60         \textcolor{keywordflow}{if} (!this->firstDraw)}
+\DoxyCodeLine{61         \{}
+\DoxyCodeLine{62             this->sendMatchmakingReq();}
+\DoxyCodeLine{63             \textcolor{keywordflow}{if} (this->serverResponse.substr(0, 10).compare(\textcolor{stringliteral}{"GAME\_SETUP"}) == 0)}
+\DoxyCodeLine{64             \{}
+\DoxyCodeLine{65                 this->loadingScreenText.setString(\textcolor{stringliteral}{"OPPONENT FOUND!\(\backslash\)r\(\backslash\)nSETTING UP THE GAME..."});}
+\DoxyCodeLine{66                 this->centerText();}
+\DoxyCodeLine{67                 this->\_data->machine.AddState((\mbox{\hyperlink{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}{ArktisEngine::StateRef}})}
+\DoxyCodeLine{68                     \textcolor{keyword}{new} GameState(this->getOpponentData(), this->\_data), \textcolor{keyword}{true});}
+\DoxyCodeLine{69             \}}
+\DoxyCodeLine{70         \}}
+\DoxyCodeLine{71     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game States/\+Loading Screen State/Loading\+Screen\+State.\+hpp\item 
+src/\+Game States/\+Loading Screen State/Loading\+Screen\+State.\+cpp\end{DoxyCompactItemize}

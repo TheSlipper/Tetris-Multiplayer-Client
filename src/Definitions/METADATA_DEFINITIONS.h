@@ -19,8 +19,8 @@
 #pragma once
 
 /// Definition Flags
-#define __WIN_ 1
-/// #define __OS_X 1
+///#define __WIN_ 1
+#define __OS_X 1
 /// #define __LINUX_ 1
 
 /// Game metadata

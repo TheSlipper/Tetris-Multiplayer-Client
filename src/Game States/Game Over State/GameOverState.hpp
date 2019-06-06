@@ -72,17 +72,59 @@ namespace States
 		void Draw(float dt);
 
 	private:
+        ////////////////////////////////////////////////////////////
+        /// \brief Assigns data to a UserData structure to the specific
+        ///          struct member based on the given iterator
+        ///
+        ////////////////////////////////////////////////////////////
 		void assignDataByIterator(int &iterator, const std::string &val, ArktisEngine::UserData &data);
 
+        ////////////////////////////////////////////////////////////
+        /// \brief Parses end game data
+        ///
+        ////////////////////////////////////////////////////////////
 		void parseResponseData(const std::string &data);
 
+        ////////////////////////////////////////////////////////////
+        /// \brief Positions all of the labels with its values
+        ///
+        ////////////////////////////////////////////////////////////
 		void placeLabelsWithVals();
 
+        ////////////////////////////////////////////////////////////
+        /// \brief Draws all of the labels to the screen
+        ///
+        ////////////////////////////////////////////////////////////
 		void drawLabels(sf::RenderWindow &rw, sf::Text &rowHeader, sf::Text &p1Val, sf::Text &p2Val);
 
-		void positionRow(sf::Text &rowHeader, sf::Text &p1Val, sf::Text &p2Val, std::string hStr, std::string p1Str, std::string p2Str, float hCharSize, float percHeight);
+        ////////////////////////////////////////////////////////////
+        /// \brief Positions all of the label contents in a given order
+        ///         specified by the implementation of this function
+        ///
+        /// \param rowHeader header/name of the row
+        ///
+        /// \param p1Val content of first player's label
+        ///
+        /// \param p2Val content of second player's label
+        ///
+        /// \param hStr std::string content of the row header
+        ///
+        /// \param p1Str std::string content of the p1 label
+        ///
+        /// \param p2Str std::string content of the p2 label
+        ///
+        /// \param hCharSize specifies the header character size
+        ///
+        /// \param topMrgnPrct specifies top margin of the row in percents
+        ///
+        ////////////////////////////////////////////////////////////
+		void positionRow(sf::Text &rowHeader, sf::Text &p1Val, sf::Text &p2Val, const std::string hStr, const std::string p1Str, const std::string p2Str, const float hCharSize, const float percHeight);
 
-		void labelDataInit(sf::Text &label, sf::Font &font, std::string str, float charSize, float percHeight);
+        ////////////////////////////////////////////////////////////
+        /// \brief Initializes single label's data (used in positionRow function)
+        ///
+        ////////////////////////////////////////////////////////////
+		void labelDataInit(sf::Text &label, const sf::Font &font, const std::string str, const float charSize, const float percHeight);
 
 		////////////////////////////////////////////////////////////
 		// Member data

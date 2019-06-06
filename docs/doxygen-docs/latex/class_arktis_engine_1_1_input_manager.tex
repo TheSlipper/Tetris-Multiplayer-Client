@@ -1,0 +1,266 @@
+\hypertarget{class_arktis_engine_1_1_input_manager}{}\section{Arktis\+Engine\+::Input\+Manager Class Reference}
+\label{class_arktis_engine_1_1_input_manager}\index{ArktisEngine::InputManager@{ArktisEngine::InputManager}}
+
+
+Class that manages game\textquotesingle{}s input.  
+
+
+
+
+{\ttfamily \#include $<$Input\+Manager.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_arktis_engine_1_1_input_manager_af15067de706f4e40cf9c0315ec911b64}{Input\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_arktis_engine_1_1_input_manager_a9e73e0af9adc36ae1d73483618dbc306}{$\sim$\+Input\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_arktis_engine_1_1_input_manager_a257bf6e6aae99480273142138a59a489}{Is\+Sprite\+Clicked}} (sf\+::\+Sprite object, sf\+::\+Mouse\+::\+Button button, sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Checks if a given sprite was clicked. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_arktis_engine_1_1_input_manager_a81e17fadc0c2a29bdbafdda244f026c8}{Is\+Text\+Clicked}} (sf\+::\+Text object, sf\+::\+Mouse\+::\+Button button, sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Checks if a given text was clicked. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_arktis_engine_1_1_input_manager_a3f458f05059579d978aef9bb267f6dbf}{Is\+Input\+Field\+Clicked}} (\mbox{\hyperlink{class_game_objects_1_1_input_field}{Game\+Objects\+::\+Input\+Field}} input\+Field, sf\+::\+Mouse\+::\+Button button, sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Checks if an input field was clicked. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_arktis_engine_1_1_input_manager_af97228e4f02054a8d90e6b6ed773ed31}{Is\+Button\+Clicked}} (\mbox{\hyperlink{class_game_objects_1_1_button}{Game\+Objects\+::\+Button}} btn, sf\+::\+Mouse\+::\+Button button, sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Checks if an input field was clicked. \end{DoxyCompactList}\item 
+sf\+::\+Vector2i \mbox{\hyperlink{class_arktis_engine_1_1_input_manager_ab5bdb467c356e8ca0a058a7b9162f869}{Get\+Mouse\+Position}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Returns the position of the mouse in relation to the window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that manages game\textquotesingle{}s input. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 35 of file Input\+Manager.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_arktis_engine_1_1_input_manager_af15067de706f4e40cf9c0315ec911b64}\label{class_arktis_engine_1_1_input_manager_af15067de706f4e40cf9c0315ec911b64}} 
+\index{ArktisEngine::InputManager@{ArktisEngine::InputManager}!InputManager@{InputManager}}
+\index{InputManager@{InputManager}!ArktisEngine::InputManager@{ArktisEngine::InputManager}}
+\subsubsection{\texorpdfstring{InputManager()}{InputManager()}}
+{\footnotesize\ttfamily Arktis\+Engine\+::\+Input\+Manager\+::\+Input\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 42 of file Input\+Manager.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{42 \{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_input_manager_a9e73e0af9adc36ae1d73483618dbc306}\label{class_arktis_engine_1_1_input_manager_a9e73e0af9adc36ae1d73483618dbc306}} 
+\index{ArktisEngine::InputManager@{ArktisEngine::InputManager}!````~InputManager@{$\sim$InputManager}}
+\index{````~InputManager@{$\sim$InputManager}!ArktisEngine::InputManager@{ArktisEngine::InputManager}}
+\subsubsection{\texorpdfstring{$\sim$InputManager()}{~InputManager()}}
+{\footnotesize\ttfamily Arktis\+Engine\+::\+Input\+Manager\+::$\sim$\+Input\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default destructor. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 48 of file Input\+Manager.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{48 \{\}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_arktis_engine_1_1_input_manager_ab5bdb467c356e8ca0a058a7b9162f869}\label{class_arktis_engine_1_1_input_manager_ab5bdb467c356e8ca0a058a7b9162f869}} 
+\index{ArktisEngine::InputManager@{ArktisEngine::InputManager}!GetMousePosition@{GetMousePosition}}
+\index{GetMousePosition@{GetMousePosition}!ArktisEngine::InputManager@{ArktisEngine::InputManager}}
+\subsubsection{\texorpdfstring{GetMousePosition()}{GetMousePosition()}}
+{\footnotesize\ttfamily sf\+::\+Vector2i Arktis\+Engine\+::\+Input\+Manager\+::\+Get\+Mouse\+Position (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Returns the position of the mouse in relation to the window. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 82 of file Input\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{83     \{}
+\DoxyCodeLine{84         \textcolor{keywordflow}{return} sf::Mouse::getPosition(window);}
+\DoxyCodeLine{85     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_input_manager_af97228e4f02054a8d90e6b6ed773ed31}\label{class_arktis_engine_1_1_input_manager_af97228e4f02054a8d90e6b6ed773ed31}} 
+\index{ArktisEngine::InputManager@{ArktisEngine::InputManager}!IsButtonClicked@{IsButtonClicked}}
+\index{IsButtonClicked@{IsButtonClicked}!ArktisEngine::InputManager@{ArktisEngine::InputManager}}
+\subsubsection{\texorpdfstring{IsButtonClicked()}{IsButtonClicked()}}
+{\footnotesize\ttfamily bool Arktis\+Engine\+::\+Input\+Manager\+::\+Is\+Button\+Clicked (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_objects_1_1_button}{Game\+Objects\+::\+Button}}}]{btn,  }\item[{sf\+::\+Mouse\+::\+Button}]{button,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Checks if an input field was clicked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em btn} & UI button\\
+\hline
+{\em button} & \\
+\hline
+{\em \&window} & reference to the window \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 69 of file Input\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{70     \{}
+\DoxyCodeLine{71         \textcolor{keywordflow}{if}(sf::Mouse::isButtonPressed(button))}
+\DoxyCodeLine{72         \{}
+\DoxyCodeLine{73             sf::IntRect btnRect(btn.\mbox{\hyperlink{class_game_objects_1_1_button_afd9cb38464fbbd3dd97c8df38ab94779}{GetPosition}}().x, btn.\mbox{\hyperlink{class_game_objects_1_1_button_afd9cb38464fbbd3dd97c8df38ab94779}{GetPosition}}().y, btn.\mbox{\hyperlink{class_game_objects_1_1_button_a73b104836302e0c11afa3ab0ed07a4f5}{GetGlobalBounds}}().width, btn.\mbox{\hyperlink{class_game_objects_1_1_button_a73b104836302e0c11afa3ab0ed07a4f5}{GetGlobalBounds}}().height);}
+\DoxyCodeLine{74             \textcolor{keywordflow}{if} (btnRect.contains(sf::Mouse::getPosition(window)))}
+\DoxyCodeLine{75                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{76         \}}
+\DoxyCodeLine{77         }
+\DoxyCodeLine{78         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{79     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_input_manager_a3f458f05059579d978aef9bb267f6dbf}\label{class_arktis_engine_1_1_input_manager_a3f458f05059579d978aef9bb267f6dbf}} 
+\index{ArktisEngine::InputManager@{ArktisEngine::InputManager}!IsInputFieldClicked@{IsInputFieldClicked}}
+\index{IsInputFieldClicked@{IsInputFieldClicked}!ArktisEngine::InputManager@{ArktisEngine::InputManager}}
+\subsubsection{\texorpdfstring{IsInputFieldClicked()}{IsInputFieldClicked()}}
+{\footnotesize\ttfamily bool Arktis\+Engine\+::\+Input\+Manager\+::\+Is\+Input\+Field\+Clicked (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_objects_1_1_input_field}{Game\+Objects\+::\+Input\+Field}}}]{input\+Field,  }\item[{sf\+::\+Mouse\+::\+Button}]{button,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Checks if an input field was clicked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Field} & \\
+\hline
+{\em button} & \\
+\hline
+{\em \&window} & reference to the window \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 56 of file Input\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{57     \{}
+\DoxyCodeLine{58         \textcolor{keywordflow}{if}(sf::Mouse::isButtonPressed(button))}
+\DoxyCodeLine{59         \{}
+\DoxyCodeLine{60             sf::IntRect ifRect(inputField.\mbox{\hyperlink{class_game_objects_1_1_input_field_a24c8b48b7311a4bf6112359c5a0d50c6}{GetPosition}}().x, inputField.\mbox{\hyperlink{class_game_objects_1_1_input_field_a24c8b48b7311a4bf6112359c5a0d50c6}{GetPosition}}().y, inputField.\mbox{\hyperlink{class_game_objects_1_1_input_field_af629e9c792ccfdcc64ab807b9b30a5ac}{GetGlobalBounds}}().width, inputField.\mbox{\hyperlink{class_game_objects_1_1_input_field_af629e9c792ccfdcc64ab807b9b30a5ac}{GetGlobalBounds}}().height);}
+\DoxyCodeLine{61             \textcolor{keywordflow}{if} (ifRect.contains(sf::Mouse::getPosition(window)))}
+\DoxyCodeLine{62                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{63         \}}
+\DoxyCodeLine{64         }
+\DoxyCodeLine{65         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{66     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_input_manager_a257bf6e6aae99480273142138a59a489}\label{class_arktis_engine_1_1_input_manager_a257bf6e6aae99480273142138a59a489}} 
+\index{ArktisEngine::InputManager@{ArktisEngine::InputManager}!IsSpriteClicked@{IsSpriteClicked}}
+\index{IsSpriteClicked@{IsSpriteClicked}!ArktisEngine::InputManager@{ArktisEngine::InputManager}}
+\subsubsection{\texorpdfstring{IsSpriteClicked()}{IsSpriteClicked()}}
+{\footnotesize\ttfamily bool Arktis\+Engine\+::\+Input\+Manager\+::\+Is\+Sprite\+Clicked (\begin{DoxyParamCaption}\item[{sf\+::\+Sprite}]{object,  }\item[{sf\+::\+Mouse\+::\+Button}]{button,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Checks if a given sprite was clicked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sf\+::\+Sprite} & object object that could be clicked\\
+\hline
+{\em sf\+::\+Mouse\+::\+Button} & button\\
+\hline
+{\em sf\+::\+Render\+Window} & \&window reference to the window \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Input\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         \textcolor{keywordflow}{if} (sf::Mouse::isButtonPressed(button))}
+\DoxyCodeLine{31         \{}
+\DoxyCodeLine{32             sf::IntRect playButtonRect(\textcolor{keywordtype}{object}.getPosition().x, \textcolor{keywordtype}{object}.getPosition().y, \textcolor{keywordtype}{object}.getGlobalBounds().width, \textcolor{keywordtype}{object}.getGlobalBounds().height);}
+\DoxyCodeLine{33             }
+\DoxyCodeLine{34             \textcolor{keywordflow}{if} (playButtonRect.contains(sf::Mouse::getPosition(window)))}
+\DoxyCodeLine{35                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{36         \}}
+\DoxyCodeLine{37         }
+\DoxyCodeLine{38         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{39     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_input_manager_a81e17fadc0c2a29bdbafdda244f026c8}\label{class_arktis_engine_1_1_input_manager_a81e17fadc0c2a29bdbafdda244f026c8}} 
+\index{ArktisEngine::InputManager@{ArktisEngine::InputManager}!IsTextClicked@{IsTextClicked}}
+\index{IsTextClicked@{IsTextClicked}!ArktisEngine::InputManager@{ArktisEngine::InputManager}}
+\subsubsection{\texorpdfstring{IsTextClicked()}{IsTextClicked()}}
+{\footnotesize\ttfamily bool Arktis\+Engine\+::\+Input\+Manager\+::\+Is\+Text\+Clicked (\begin{DoxyParamCaption}\item[{sf\+::\+Text}]{object,  }\item[{sf\+::\+Mouse\+::\+Button}]{button,  }\item[{sf\+::\+Render\+Window \&}]{window }\end{DoxyParamCaption})}
+
+
+
+Checks if a given text was clicked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em object} & object that could be clicked\\
+\hline
+{\em button} & \\
+\hline
+{\em \&window} & reference to the window \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 42 of file Input\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{43     \{}
+\DoxyCodeLine{44         \textcolor{keywordflow}{if} (sf::Mouse::isButtonPressed(button))}
+\DoxyCodeLine{45         \{}
+\DoxyCodeLine{46             sf::IntRect playButtonRect(\textcolor{keywordtype}{object}.getPosition().x, \textcolor{keywordtype}{object}.getPosition().y, \textcolor{keywordtype}{object}.getGlobalBounds().width, \textcolor{keywordtype}{object}.getGlobalBounds().height);}
+\DoxyCodeLine{47             }
+\DoxyCodeLine{48             \textcolor{keywordflow}{if} (playButtonRect.contains(sf::Mouse::getPosition(window)))}
+\DoxyCodeLine{49                 \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{50         \}}
+\DoxyCodeLine{51         }
+\DoxyCodeLine{52         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{53     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game Engine/\+Input Manager/Input\+Manager.\+hpp\item 
+src/\+Game Engine/\+Input Manager/Input\+Manager.\+cpp\end{DoxyCompactItemize}

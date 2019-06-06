@@ -1,0 +1,197 @@
+\hypertarget{class_game_objects_1_1_message_box}{}\section{Game\+Objects\+::Message\+Box Class Reference}
+\label{class_game_objects_1_1_message_box}\index{GameObjects::MessageBox@{GameObjects::MessageBox}}
+Inheritance diagram for Game\+Objects\+::Message\+Box\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_game_objects_1_1_message_box}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_objects_1_1_message_box_af0c39632ec8ba0b07211da59bdabda7c}{Message\+Box}} (Message\+Box\+Type type, sf\+::\+Font \&font, std\+::string header\+Text, std\+::string content\+Text, float x=0.f, float y=0.f, float width=300.f, float height=100.f)
+\begin{DoxyCompactList}\small\item\em Default messagebox constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_objects_1_1_message_box_abda08bef1372287caa376336ec62ee25}{Hide}} ()
+\begin{DoxyCompactList}\small\item\em Hides the message box. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_objects_1_1_message_box_a7433a3b35f9d64d274c2fbc8c0d6b379}{Pop\+Up}} ()
+\begin{DoxyCompactList}\small\item\em Displays the message box. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_game_objects_1_1_message_box_a307b6074130607c6b1fff696315e8dc9}{Is\+Hidden}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the object is hidden. \end{DoxyCompactList}\item 
+sf\+::\+Float\+Rect \mbox{\hyperlink{class_game_objects_1_1_message_box_a9632c2496557a8fd93c58c4af0df4e22}{Get\+X\+Bounds}} ()
+\begin{DoxyCompactList}\small\item\em Gets the X bounds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 31 of file Message\+Box.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_game_objects_1_1_message_box_af0c39632ec8ba0b07211da59bdabda7c}\label{class_game_objects_1_1_message_box_af0c39632ec8ba0b07211da59bdabda7c}} 
+\index{GameObjects::MessageBox@{GameObjects::MessageBox}!MessageBox@{MessageBox}}
+\index{MessageBox@{MessageBox}!GameObjects::MessageBox@{GameObjects::MessageBox}}
+\subsubsection{\texorpdfstring{MessageBox()}{MessageBox()}}
+{\footnotesize\ttfamily Game\+Objects\+::\+Message\+Box\+::\+Message\+Box (\begin{DoxyParamCaption}\item[{Message\+Box\+Type}]{type,  }\item[{sf\+::\+Font \&}]{font,  }\item[{std\+::string}]{header\+Text,  }\item[{std\+::string}]{content\+Text,  }\item[{float}]{x = {\ttfamily 0.f},  }\item[{float}]{y = {\ttfamily 0.f},  }\item[{float}]{width = {\ttfamily 300.f},  }\item[{float}]{height = {\ttfamily 100.f} }\end{DoxyParamCaption})}
+
+
+
+Default messagebox constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Type of the message box (Defines the style of the messagebox\\
+\hline
+{\em header\+Text} & content of the message box\textquotesingle{}s header\\
+\hline
+{\em content\+Text} & content of the message box\\
+\hline
+{\em x} & x position on the canvas of the message box\\
+\hline
+{\em y} & y position on the canvas of the message box\\
+\hline
+{\em width} & width of the message box\\
+\hline
+{\em height} & height of the message box \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Message\+Box.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         \textcolor{keywordtype}{float} xPadding = width * 5.f / 100.f, yPadding = height * 5.f / 100.f;}
+\DoxyCodeLine{31         }
+\DoxyCodeLine{32         this->headerText.setString(headerText);}
+\DoxyCodeLine{33         this->headerText.setFont(font);}
+\DoxyCodeLine{34         this->headerText.setFillColor(sf::Color::White);}
+\DoxyCodeLine{35         this->headerText.setPosition(x + xPadding, y + yPadding);}
+\DoxyCodeLine{36         }
+\DoxyCodeLine{37         this->xButton.setString(\textcolor{stringliteral}{"[X]"});}
+\DoxyCodeLine{38         this->xButton.setFont(font);}
+\DoxyCodeLine{39         this->xButton.setFillColor(sf::Color::White);}
+\DoxyCodeLine{40         this->xButton.setPosition(x + (width - xButton.getGlobalBounds().width) - xPadding, y + yPadding);}
+\DoxyCodeLine{41         }
+\DoxyCodeLine{42         this->contentText.setString(contentText);}
+\DoxyCodeLine{43         this->contentText.setFont(font);}
+\DoxyCodeLine{44         this->contentText.setFillColor(sf::Color::White);}
+\DoxyCodeLine{45         this->contentText.setPosition(this->headerText.getLocalBounds().top, y + this->headerText.getLocalBounds().height + yPadding * 3);}
+\DoxyCodeLine{46         }
+\DoxyCodeLine{47         this->messageBoxShape.setPosition(x, y);}
+\DoxyCodeLine{48         this->messageBoxShape.setSize(sf::Vector2f(width, height));}
+\DoxyCodeLine{49         this->messageBoxShape.setFillColor(sf::Color::Black);}
+\DoxyCodeLine{50         }
+\DoxyCodeLine{51         this->\_button = std::make\_unique<Button>(font, \textcolor{stringliteral}{"ok"}, 0.f, 0.f, width/2.f, height / 2.f); \textcolor{comment}{// TOOD: Center stuff and other parameters}}
+\DoxyCodeLine{52         this->\_button->SetTextFillColor(sf::Color::Black);}
+\DoxyCodeLine{53         this->\_button->SetRrsFillColor(sf::Color::White);}
+\DoxyCodeLine{54         \mbox{\hyperlink{namespace_arktis_engine_aed1fe38ca02af676a1fab7f1697e2a6a}{ArktisEngine::CenterHorizontallyInArea}}(*this->\_button, width, this->contentText.getGlobalBounds().top + yPadding);}
+\DoxyCodeLine{55     \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_game_objects_1_1_message_box_a9632c2496557a8fd93c58c4af0df4e22}\label{class_game_objects_1_1_message_box_a9632c2496557a8fd93c58c4af0df4e22}} 
+\index{GameObjects::MessageBox@{GameObjects::MessageBox}!GetXBounds@{GetXBounds}}
+\index{GetXBounds@{GetXBounds}!GameObjects::MessageBox@{GameObjects::MessageBox}}
+\subsubsection{\texorpdfstring{GetXBounds()}{GetXBounds()}}
+{\footnotesize\ttfamily sf\+::\+Float\+Rect Game\+Objects\+::\+Message\+Box\+::\+Get\+X\+Bounds (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the X bounds. 
+
+\begin{DoxyReturn}{Returns}
+true if object is hidden \begin{DoxyVerb}\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 76 of file Message\+Box.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{77     \{}
+\DoxyCodeLine{78         \textcolor{keywordflow}{return} this->xButton.getGlobalBounds();}
+\DoxyCodeLine{79     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_message_box_abda08bef1372287caa376336ec62ee25}\label{class_game_objects_1_1_message_box_abda08bef1372287caa376336ec62ee25}} 
+\index{GameObjects::MessageBox@{GameObjects::MessageBox}!Hide@{Hide}}
+\index{Hide@{Hide}!GameObjects::MessageBox@{GameObjects::MessageBox}}
+\subsubsection{\texorpdfstring{Hide()}{Hide()}}
+{\footnotesize\ttfamily void Game\+Objects\+::\+Message\+Box\+::\+Hide (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Hides the message box. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 58 of file Message\+Box.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{59     \{}
+\DoxyCodeLine{60         this->hidden = \textcolor{keyword}{true};}
+\DoxyCodeLine{61     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_message_box_a307b6074130607c6b1fff696315e8dc9}\label{class_game_objects_1_1_message_box_a307b6074130607c6b1fff696315e8dc9}} 
+\index{GameObjects::MessageBox@{GameObjects::MessageBox}!IsHidden@{IsHidden}}
+\index{IsHidden@{IsHidden}!GameObjects::MessageBox@{GameObjects::MessageBox}}
+\subsubsection{\texorpdfstring{IsHidden()}{IsHidden()}}
+{\footnotesize\ttfamily bool Game\+Objects\+::\+Message\+Box\+::\+Is\+Hidden (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the object is hidden. 
+
+\begin{DoxyReturn}{Returns}
+true if object is hidden \begin{DoxyVerb}\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 70 of file Message\+Box.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{71     \{}
+\DoxyCodeLine{72         \textcolor{keywordflow}{return} this->hidden;}
+\DoxyCodeLine{73     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_game_objects_1_1_message_box_a7433a3b35f9d64d274c2fbc8c0d6b379}\label{class_game_objects_1_1_message_box_a7433a3b35f9d64d274c2fbc8c0d6b379}} 
+\index{GameObjects::MessageBox@{GameObjects::MessageBox}!PopUp@{PopUp}}
+\index{PopUp@{PopUp}!GameObjects::MessageBox@{GameObjects::MessageBox}}
+\subsubsection{\texorpdfstring{PopUp()}{PopUp()}}
+{\footnotesize\ttfamily void Game\+Objects\+::\+Message\+Box\+::\+Pop\+Up (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the message box. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 64 of file Message\+Box.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{65     \{}
+\DoxyCodeLine{66         this->hidden = \textcolor{keyword}{false};}
+\DoxyCodeLine{67     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game Objects/\+Message\+Box/Message\+Box.\+hpp\item 
+src/\+Game Objects/\+Message\+Box/Message\+Box.\+cpp\end{DoxyCompactItemize}

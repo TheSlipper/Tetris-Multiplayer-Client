@@ -1,0 +1,200 @@
+\hypertarget{class_states_1_1_splash_state}{}\section{States\+::Splash\+State Class Reference}
+\label{class_states_1_1_splash_state}\index{States::SplashState@{States::SplashState}}
+
+
+Splash \mbox{\hyperlink{class_states_1_1_state}{State}}.  
+
+
+
+
+{\ttfamily \#include $<$Splash\+State.\+hpp$>$}
+
+Inheritance diagram for States\+::Splash\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_states_1_1_splash_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_states_1_1_splash_state_a9f8047d3c5043ae63c4f82dfd9363149}{Splash\+State}} (\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}} data)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_splash_state_a666571efc81c245ed9e2c8c2baaf920b}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initialization of the state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_splash_state_a0bd8d0bc42837fa395cc3bc5c53935f2}{Handle\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Handles scene-\/specific user input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_splash_state_acf5f51ee32ca2a1634ce56dca901cad9}{Update}} (float dt)
+\begin{DoxyCompactList}\small\item\em Updates the scene (call the animation or physics methods here) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_splash_state_adae0af95808a668cd29b537d7126735f}{Draw}} (float dt)
+\begin{DoxyCompactList}\small\item\em Draws to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Splash \mbox{\hyperlink{class_states_1_1_state}{State}}. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 39 of file Splash\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_states_1_1_splash_state_a9f8047d3c5043ae63c4f82dfd9363149}\label{class_states_1_1_splash_state_a9f8047d3c5043ae63c4f82dfd9363149}} 
+\index{States::SplashState@{States::SplashState}!SplashState@{SplashState}}
+\index{SplashState@{SplashState}!States::SplashState@{States::SplashState}}
+\subsubsection{\texorpdfstring{SplashState()}{SplashState()}}
+{\footnotesize\ttfamily States\+::\+Splash\+State\+::\+Splash\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}}}]{data }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Game\+Data\+Ref} & data pointer to the game\textquotesingle{}s crucial data \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Splash\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{28                                                          : \_data(data)}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         }
+\DoxyCodeLine{31     \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_states_1_1_splash_state_adae0af95808a668cd29b537d7126735f}\label{class_states_1_1_splash_state_adae0af95808a668cd29b537d7126735f}} 
+\index{States::SplashState@{States::SplashState}!Draw@{Draw}}
+\index{Draw@{Draw}!States::SplashState@{States::SplashState}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void States\+::\+Splash\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws to the screen. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_af5faf0a12478e595ec488fa6108fa490}{States\+::\+State}}.
+
+
+
+Definition at line 64 of file Splash\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{65     \{}
+\DoxyCodeLine{66         this->\_data->window.clear(sf::Color::Red);}
+\DoxyCodeLine{67         }
+\DoxyCodeLine{68         this->\_data->window.draw(this->logo);}
+\DoxyCodeLine{69         }
+\DoxyCodeLine{70         this->\_data->window.display();}
+\DoxyCodeLine{71     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_splash_state_a0bd8d0bc42837fa395cc3bc5c53935f2}\label{class_states_1_1_splash_state_a0bd8d0bc42837fa395cc3bc5c53935f2}} 
+\index{States::SplashState@{States::SplashState}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!States::SplashState@{States::SplashState}}
+\subsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void States\+::\+Splash\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles scene-\/specific user input. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_a9f5a1461456ad43c936808c9cfb9e8bd}{States\+::\+State}}.
+
+
+
+Definition at line 44 of file Splash\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{45     \{}
+\DoxyCodeLine{46         sf::Event event;}
+\DoxyCodeLine{47         }
+\DoxyCodeLine{48         \textcolor{keywordflow}{while} (this->\_data->window.pollEvent(event))}
+\DoxyCodeLine{49         \{}
+\DoxyCodeLine{50             \textcolor{keywordflow}{if} (sf::Event::Closed == event.type)}
+\DoxyCodeLine{51                 this->\_data->window.close();}
+\DoxyCodeLine{52         \}}
+\DoxyCodeLine{53     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_splash_state_a666571efc81c245ed9e2c8c2baaf920b}\label{class_states_1_1_splash_state_a666571efc81c245ed9e2c8c2baaf920b}} 
+\index{States::SplashState@{States::SplashState}!Init@{Init}}
+\index{Init@{Init}!States::SplashState@{States::SplashState}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void States\+::\+Splash\+State\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Initialization of the state. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_aff396dd3b4f3f7f7e729a0eac1910f45}{States\+::\+State}}.
+
+
+
+Definition at line 34 of file Splash\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35     \{}
+\DoxyCodeLine{36         this->startTime = this->\_data->gameClock.getElapsedTime().asSeconds();}
+\DoxyCodeLine{37         \textcolor{keywordflow}{if} (!this->\_data->assets.LoadTexture(SPLASHSCREEN\_NAME, SPLASHSCREEN\_PATH))}
+\DoxyCodeLine{38             exit(ERROR\_CODE\_TEXTURE\_NOT\_LOADED);}
+\DoxyCodeLine{39         this->logo.setTexture(this->\_data->assets.GetTexture(SPLASHSCREEN\_NAME));}
+\DoxyCodeLine{40         \mbox{\hyperlink{namespace_arktis_engine_aee0d0d24a793b5dc52aac529a577a264}{ArktisEngine::ScaleSprToDims}}(this->logo, this->\_data->settings.width, this->\_data->settings.height);}
+\DoxyCodeLine{41     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_splash_state_acf5f51ee32ca2a1634ce56dca901cad9}\label{class_states_1_1_splash_state_acf5f51ee32ca2a1634ce56dca901cad9}} 
+\index{States::SplashState@{States::SplashState}!Update@{Update}}
+\index{Update@{Update}!States::SplashState@{States::SplashState}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void States\+::\+Splash\+State\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates the scene (call the animation or physics methods here) 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_ab8e935def8138e0b917c3228a29904e4}{States\+::\+State}}.
+
+
+
+Definition at line 56 of file Splash\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{57     \{}
+\DoxyCodeLine{58         \textcolor{keywordtype}{float} updatedTime = this->\_data->gameClock.getElapsedTime().asSeconds();}
+\DoxyCodeLine{59         \textcolor{keywordflow}{if} (updatedTime - this->startTime > 3.0)}
+\DoxyCodeLine{60             this->\_data->machine.AddState(\mbox{\hyperlink{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}{ArktisEngine::StateRef}}(\textcolor{keyword}{new} LoginState(this->\_data)), \textcolor{keyword}{true});}
+\DoxyCodeLine{61     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game States/\+Splash State/Splash\+State.\+hpp\item 
+src/\+Game States/\+Splash State/Splash\+State.\+cpp\end{DoxyCompactItemize}

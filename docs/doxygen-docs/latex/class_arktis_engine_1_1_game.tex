@@ -1,0 +1,138 @@
+\hypertarget{class_arktis_engine_1_1_game}{}\section{Arktis\+Engine\+::Game Class Reference}
+\label{class_arktis_engine_1_1_game}\index{ArktisEngine::Game@{ArktisEngine::Game}}
+
+
+The whole game runs inside of this class.  
+
+
+
+
+{\ttfamily \#include $<$Game.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_arktis_engine_1_1_game_a75366b8b4dfb7715acf171cb6f47e399}{Game}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_arktis_engine_1_1_game_ac1b1b094168ee4b834cdf932ac4f36f5}{Load\+Games\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em Loads the settings from the given file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The whole game runs inside of this class. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 38 of file Game.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_arktis_engine_1_1_game_a75366b8b4dfb7715acf171cb6f47e399}\label{class_arktis_engine_1_1_game_a75366b8b4dfb7715acf171cb6f47e399}} 
+\index{ArktisEngine::Game@{ArktisEngine::Game}!Game@{Game}}
+\index{Game@{Game}!ArktisEngine::Game@{ArktisEngine::Game}}
+\subsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily Arktis\+Engine\+::\+Game\+::\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & title of the window \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Game.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         this->\mbox{\hyperlink{class_arktis_engine_1_1_game_ac1b1b094168ee4b834cdf932ac4f36f5}{LoadGamesSettings}}();}
+\DoxyCodeLine{31 }
+\DoxyCodeLine{32         this->\_data->window.create(sf::VideoMode(this->\_data->settings.width,}
+\DoxyCodeLine{33                                            this->\_data->settings.height), GAME\_NAME, sf::Style::Close}
+\DoxyCodeLine{34                              | sf::Style::Titlebar);}
+\DoxyCodeLine{35         this->loadIcon();}
+\DoxyCodeLine{36         }
+\DoxyCodeLine{37         this->\_data->machine.AddState(\mbox{\hyperlink{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}{StateRef}}(\textcolor{keyword}{new} \mbox{\hyperlink{class_states_1_1_splash_state}{States::SplashState}}(this->\_data)));}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39         this->Run();}
+\DoxyCodeLine{40     \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_arktis_engine_1_1_game_ac1b1b094168ee4b834cdf932ac4f36f5}\label{class_arktis_engine_1_1_game_ac1b1b094168ee4b834cdf932ac4f36f5}} 
+\index{ArktisEngine::Game@{ArktisEngine::Game}!LoadGamesSettings@{LoadGamesSettings}}
+\index{LoadGamesSettings@{LoadGamesSettings}!ArktisEngine::Game@{ArktisEngine::Game}}
+\subsubsection{\texorpdfstring{LoadGamesSettings()}{LoadGamesSettings()}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Game\+::\+Load\+Games\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Loads the settings from the given file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & settings\+File\+Path path to the file \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 43 of file Game.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44     \{}
+\DoxyCodeLine{45         std::ifstream settingsReader(settingsFilePath, std::ios::in);}
+\DoxyCodeLine{46         \textcolor{keywordtype}{int} index = 0;}
+\DoxyCodeLine{47         std::string helper;}
+\DoxyCodeLine{48         \textcolor{keywordflow}{if} (!settingsReader)}
+\DoxyCodeLine{49             exit(4);}
+\DoxyCodeLine{50         \textcolor{keywordflow}{while} (!settingsReader.eof())}
+\DoxyCodeLine{51         \{}
+\DoxyCodeLine{52             std::getline(settingsReader, helper);}
+\DoxyCodeLine{53             \textcolor{keywordflow}{if} (helper.compare(\textcolor{stringliteral}{""}) == 0 || helper[0] == \textcolor{charliteral}{'\#'})}
+\DoxyCodeLine{54                 \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{55             \textcolor{keywordflow}{switch} (index)}
+\DoxyCodeLine{56             \{}
+\DoxyCodeLine{57             \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{58                 this->\_data->settings.width = std::stof(helper);}
+\DoxyCodeLine{59                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{60             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{61                 this->\_data->settings.height = std::stof(helper);}
+\DoxyCodeLine{62                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{63             \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{64                 this->\_data->settings.master\_vol = std::stof(helper);}
+\DoxyCodeLine{65                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{66             \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{67                 this->\_data->settings.sfx\_vol = std::stof(helper);}
+\DoxyCodeLine{68                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{69             \textcolor{keywordflow}{case} 4:}
+\DoxyCodeLine{70                 this->\_data->settings.music\_vol = std::stof(helper);}
+\DoxyCodeLine{71                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{72             \textcolor{keywordflow}{case} 5:}
+\DoxyCodeLine{73                 this->\_data->messaging.SetIpAddress(helper);}
+\DoxyCodeLine{74                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{75             \textcolor{keywordflow}{case} 6:}
+\DoxyCodeLine{76                 this->\_data->messaging.SetToTcp((\textcolor{keywordtype}{bool})std::stoi(helper));}
+\DoxyCodeLine{77                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{78             \}}
+\DoxyCodeLine{79             index++;}
+\DoxyCodeLine{80         \}}
+\DoxyCodeLine{81     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game Engine/\+Game/Game.\+hpp\item 
+src/\+Game Engine/\+Game/Game.\+cpp\end{DoxyCompactItemize}

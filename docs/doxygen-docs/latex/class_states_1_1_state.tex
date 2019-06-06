@@ -1,0 +1,150 @@
+\hypertarget{class_states_1_1_state}{}\section{States\+::State Class Reference}
+\label{class_states_1_1_state}\index{States::State@{States::State}}
+
+
+\mbox{\hyperlink{class_states_1_1_state}{State}} class.  
+
+
+
+
+{\ttfamily \#include $<$State.\+hpp$>$}
+
+Inheritance diagram for States\+::State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.072797cm]{class_states_1_1_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_states_1_1_state_aff396dd3b4f3f7f7e729a0eac1910f45}{Init}} ()=0
+\begin{DoxyCompactList}\small\item\em Initializes a state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_states_1_1_state_a9f5a1461456ad43c936808c9cfb9e8bd}{Handle\+Input}} ()=0
+\begin{DoxyCompactList}\small\item\em Handles state\textquotesingle{}s input. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_states_1_1_state_ab8e935def8138e0b917c3228a29904e4}{Update}} (float dt)=0
+\begin{DoxyCompactList}\small\item\em Updates the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_states_1_1_state_af5faf0a12478e595ec488fa6108fa490}{Draw}} (float dt)=0
+\begin{DoxyCompactList}\small\item\em Draws to the screen. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_states_1_1_state_aa6e8c4d6cba7b9a01f041e135babe2c4}{Pause}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the state. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_states_1_1_state_a6051e49b660cf6e35baf28b25892a91b}{Resume}} ()
+\begin{DoxyCompactList}\small\item\em Resumes the state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\mbox{\hyperlink{class_states_1_1_state}{State}} class. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 9 of file State.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_states_1_1_state_af5faf0a12478e595ec488fa6108fa490}\label{class_states_1_1_state_af5faf0a12478e595ec488fa6108fa490}} 
+\index{States::State@{States::State}!Draw@{Draw}}
+\index{Draw@{Draw}!States::State@{States::State}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily virtual void States\+::\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Draws to the screen. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implemented in \mbox{\hyperlink{class_states_1_1_game_state_a56f09cd84928af04b70405bb43511bad}{States\+::\+Game\+State}}, \mbox{\hyperlink{class_states_1_1_home_screen_state_aef921fb2964bf40565ba6fd2efacd3b4}{States\+::\+Home\+Screen\+State}}, \mbox{\hyperlink{class_states_1_1_splash_state_adae0af95808a668cd29b537d7126735f}{States\+::\+Splash\+State}}, \mbox{\hyperlink{class_states_1_1_game_over_state_ac017a6a3acb091ae1596dbf9e5c38643}{States\+::\+Game\+Over\+State}}, \mbox{\hyperlink{class_states_1_1_login_state_aca115316c1aa308f39c6c95c47fd30f6}{States\+::\+Login\+State}}, and \mbox{\hyperlink{class_states_1_1_loading_screen_state_ab59e574f0ccfd3471c7f919df96190a5}{States\+::\+Loading\+Screen\+State}}.
+
+\mbox{\Hypertarget{class_states_1_1_state_a9f5a1461456ad43c936808c9cfb9e8bd}\label{class_states_1_1_state_a9f5a1461456ad43c936808c9cfb9e8bd}} 
+\index{States::State@{States::State}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!States::State@{States::State}}
+\subsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily virtual void States\+::\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Handles state\textquotesingle{}s input. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implemented in \mbox{\hyperlink{class_states_1_1_game_state_a6521d6d97ac2fb388085a70abce704a9}{States\+::\+Game\+State}}, \mbox{\hyperlink{class_states_1_1_home_screen_state_abaada1fbdd186aea2845ea1d19b66d69}{States\+::\+Home\+Screen\+State}}, \mbox{\hyperlink{class_states_1_1_splash_state_a0bd8d0bc42837fa395cc3bc5c53935f2}{States\+::\+Splash\+State}}, \mbox{\hyperlink{class_states_1_1_game_over_state_acc6edd1fdbca63e4564a0a04b9d48811}{States\+::\+Game\+Over\+State}}, \mbox{\hyperlink{class_states_1_1_login_state_a91cc904bfbe100def4cb967f089175f7}{States\+::\+Login\+State}}, and \mbox{\hyperlink{class_states_1_1_loading_screen_state_a3a473b2cf717f183e4573344405b7b49}{States\+::\+Loading\+Screen\+State}}.
+
+\mbox{\Hypertarget{class_states_1_1_state_aff396dd3b4f3f7f7e729a0eac1910f45}\label{class_states_1_1_state_aff396dd3b4f3f7f7e729a0eac1910f45}} 
+\index{States::State@{States::State}!Init@{Init}}
+\index{Init@{Init}!States::State@{States::State}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily virtual void States\+::\+State\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Initializes a state. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implemented in \mbox{\hyperlink{class_states_1_1_game_state_aeb73979fc3a22b001ed389790e24bd1e}{States\+::\+Game\+State}}, \mbox{\hyperlink{class_states_1_1_home_screen_state_a96524be599607993ac7abc72727cc9b2}{States\+::\+Home\+Screen\+State}}, \mbox{\hyperlink{class_states_1_1_splash_state_a666571efc81c245ed9e2c8c2baaf920b}{States\+::\+Splash\+State}}, \mbox{\hyperlink{class_states_1_1_game_over_state_a72a8dafbebd94c2964ba48ba4a350096}{States\+::\+Game\+Over\+State}}, \mbox{\hyperlink{class_states_1_1_login_state_abe7a51211f07fe9eeac422f548117b49}{States\+::\+Login\+State}}, and \mbox{\hyperlink{class_states_1_1_loading_screen_state_aa6783276ac59b0c137d062251ddc719a}{States\+::\+Loading\+Screen\+State}}.
+
+\mbox{\Hypertarget{class_states_1_1_state_aa6e8c4d6cba7b9a01f041e135babe2c4}\label{class_states_1_1_state_aa6e8c4d6cba7b9a01f041e135babe2c4}} 
+\index{States::State@{States::State}!Pause@{Pause}}
+\index{Pause@{Pause}!States::State@{States::State}}
+\subsubsection{\texorpdfstring{Pause()}{Pause()}}
+{\footnotesize\ttfamily virtual void States\+::\+State\+::\+Pause (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Pauses the state. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 40 of file State.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{40 \{ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_state_a6051e49b660cf6e35baf28b25892a91b}\label{class_states_1_1_state_a6051e49b660cf6e35baf28b25892a91b}} 
+\index{States::State@{States::State}!Resume@{Resume}}
+\index{Resume@{Resume}!States::State@{States::State}}
+\subsubsection{\texorpdfstring{Resume()}{Resume()}}
+{\footnotesize\ttfamily virtual void States\+::\+State\+::\+Resume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Resumes the state. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 46 of file State.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{46 \{ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_state_ab8e935def8138e0b917c3228a29904e4}\label{class_states_1_1_state_ab8e935def8138e0b917c3228a29904e4}} 
+\index{States::State@{States::State}!Update@{Update}}
+\index{Update@{Update}!States::State@{States::State}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily virtual void States\+::\+State\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Updates the state. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implemented in \mbox{\hyperlink{class_states_1_1_game_state_aceb987110e6ec94c3d6bf6f095b170cd}{States\+::\+Game\+State}}, \mbox{\hyperlink{class_states_1_1_home_screen_state_a86c27b5c969563bb2d606cdecba1e949}{States\+::\+Home\+Screen\+State}}, \mbox{\hyperlink{class_states_1_1_splash_state_acf5f51ee32ca2a1634ce56dca901cad9}{States\+::\+Splash\+State}}, \mbox{\hyperlink{class_states_1_1_game_over_state_a8efab9044baa73dbe979b6da0aa9a041}{States\+::\+Game\+Over\+State}}, \mbox{\hyperlink{class_states_1_1_login_state_a026b040b86a5f4f0c3855fb5d5aef0ce}{States\+::\+Login\+State}}, and \mbox{\hyperlink{class_states_1_1_loading_screen_state_aff3b4dab779277f43cca4b4409f59a35}{States\+::\+Loading\+Screen\+State}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game States/\+State/State.\+hpp\end{DoxyCompactItemize}

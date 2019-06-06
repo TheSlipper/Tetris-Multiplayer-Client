@@ -1,0 +1,329 @@
+\hypertarget{class_arktis_engine_1_1_messaging_manager}{}\section{Arktis\+Engine\+::Messaging\+Manager Class Reference}
+\label{class_arktis_engine_1_1_messaging_manager}\index{ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}}
+
+
+Class that manages all of the asset data.  
+
+
+
+
+{\ttfamily \#include $<$Messaging\+Manager.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_a2e4ad223ee19fffcab9dd3b6bc55e35a}{Messaging\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_ae5256f6a249582a27688925e34ce595d}{$\sim$\+Messaging\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_af87589a8b61b490eed53fbe9a4d5d637}{Connect\+To\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Connects to the main game server. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_a0c384955dba568c37085b2d71d77f4d7}{Send\+String\+Data}} (std\+::string string\+Data)
+\begin{DoxyCompactList}\small\item\em Sends string data to the host. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_a8c8d641ed44a7ffff9ac0cb128991edf}{Get\+String\+Response}} ()
+\begin{DoxyCompactList}\small\item\em Gets the string response from the host. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_a73d16428395e9e93615021dfc04e7200}{Get\+String\+Response}} (const int buffer\+Size)
+\begin{DoxyCompactList}\small\item\em Gets the string response from the host. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_aa06733c45d3e14055bf48ba8bdb74c8d}{Disconnect\+Socket}} ()
+\begin{DoxyCompactList}\small\item\em Sends a message about client shutdown and gently disconnects the socket. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_a31cacbae868864fcd2a6bc4070919a8c}{Set\+Ip\+Address}} (sf\+::\+Ip\+Address addr)
+\begin{DoxyCompactList}\small\item\em Sets the ip address of the server. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_ae420b8cb11c0015a35462adecb9ff3bf}{Set\+To\+Tcp}} (bool using\+Tcp)
+\begin{DoxyCompactList}\small\item\em Sets the socket type flag to true. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_a13dfdd0dedb881e64364351c24c6ecb3}{Set\+To\+Udp}} (bool using\+Udp)
+\begin{DoxyCompactList}\small\item\em Sets the socket type flag to false. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that manages all of the asset data. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 34 of file Messaging\+Manager.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_arktis_engine_1_1_messaging_manager_a2e4ad223ee19fffcab9dd3b6bc55e35a}\label{class_arktis_engine_1_1_messaging_manager_a2e4ad223ee19fffcab9dd3b6bc55e35a}} 
+\index{ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}!MessagingManager@{MessagingManager}}
+\index{MessagingManager@{MessagingManager}!ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}}
+\subsubsection{\texorpdfstring{MessagingManager()}{MessagingManager()}}
+{\footnotesize\ttfamily Arktis\+Engine\+::\+Messaging\+Manager\+::\+Messaging\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 41 of file Messaging\+Manager.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{41 \{ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_messaging_manager_ae5256f6a249582a27688925e34ce595d}\label{class_arktis_engine_1_1_messaging_manager_ae5256f6a249582a27688925e34ce595d}} 
+\index{ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}!````~MessagingManager@{$\sim$MessagingManager}}
+\index{````~MessagingManager@{$\sim$MessagingManager}!ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}}
+\subsubsection{\texorpdfstring{$\sim$MessagingManager()}{~MessagingManager()}}
+{\footnotesize\ttfamily Arktis\+Engine\+::\+Messaging\+Manager\+::$\sim$\+Messaging\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default destructor. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 47 of file Messaging\+Manager.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{47 \{ \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_arktis_engine_1_1_messaging_manager_af87589a8b61b490eed53fbe9a4d5d637}\label{class_arktis_engine_1_1_messaging_manager_af87589a8b61b490eed53fbe9a4d5d637}} 
+\index{ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}!ConnectToServer@{ConnectToServer}}
+\index{ConnectToServer@{ConnectToServer}!ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}}
+\subsubsection{\texorpdfstring{ConnectToServer()}{ConnectToServer()}}
+{\footnotesize\ttfamily bool Arktis\+Engine\+::\+Messaging\+Manager\+::\+Connect\+To\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Connects to the main game server. 
+
+\begin{DoxyReturn}{Returns}
+true on success \begin{DoxyVerb}\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 28 of file Messaging\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         \textcolor{keywordtype}{bool} execStatus = \textcolor{keyword}{true};}
+\DoxyCodeLine{31         \textcolor{keywordflow}{if} (this->usingTcp)}
+\DoxyCodeLine{32             execStatus = this->tcpSocket.connect(this->serverIpAddress, this->mainServerPort) == sf::Socket::Done;}
+\DoxyCodeLine{33         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{34         \{}
+\DoxyCodeLine{35             \textcolor{keyword}{const} \textcolor{keywordtype}{char} *connectionMsg = \textcolor{stringliteral}{"PORT\_ALL\_REQ"};}
+\DoxyCodeLine{36             \textcolor{keywordtype}{char} buff[100];}
+\DoxyCodeLine{37             std::size\_t received;}
+\DoxyCodeLine{38             sf::IpAddress sender;}
+\DoxyCodeLine{39             \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} port;}
+\DoxyCodeLine{40             \textcolor{keywordflow}{if} (this->udpSocket.bind(7000) != sf::Socket::Done)}
+\DoxyCodeLine{41                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{42             \textcolor{keywordflow}{if} (this->udpSocket.send(connectionMsg, strlen(connectionMsg), SERVER\_IP, mainServerPort) != sf::Socket::Done)}
+\DoxyCodeLine{43                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{44             \textcolor{keywordflow}{if} (this->udpSocket.receive(buff, 100, received, sender, port) != sf::Socket::Done)}
+\DoxyCodeLine{45                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{46             this->serverPort = (short)std::stoi(std::string(buff).substr(14, 18));}
+\DoxyCodeLine{47         \}}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49         \textcolor{keywordflow}{return} execStatus;}
+\DoxyCodeLine{50     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_messaging_manager_aa06733c45d3e14055bf48ba8bdb74c8d}\label{class_arktis_engine_1_1_messaging_manager_aa06733c45d3e14055bf48ba8bdb74c8d}} 
+\index{ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}!DisconnectSocket@{DisconnectSocket}}
+\index{DisconnectSocket@{DisconnectSocket}!ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}}
+\subsubsection{\texorpdfstring{DisconnectSocket()}{DisconnectSocket()}}
+{\footnotesize\ttfamily bool Arktis\+Engine\+::\+Messaging\+Manager\+::\+Disconnect\+Socket (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Sends a message about client shutdown and gently disconnects the socket. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 97 of file Messaging\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{98     \{}
+\DoxyCodeLine{99         \textcolor{keywordtype}{bool} res = this->\mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_a0c384955dba568c37085b2d71d77f4d7}{SendStringData}}(\textcolor{stringliteral}{"LOGOUT"});}
+\DoxyCodeLine{100         this->tcpSocket.disconnect();}
+\DoxyCodeLine{101         \textcolor{keywordflow}{return} res;}
+\DoxyCodeLine{102     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_messaging_manager_a8c8d641ed44a7ffff9ac0cb128991edf}\label{class_arktis_engine_1_1_messaging_manager_a8c8d641ed44a7ffff9ac0cb128991edf}} 
+\index{ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}!GetStringResponse@{GetStringResponse}}
+\index{GetStringResponse@{GetStringResponse}!ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}}
+\subsubsection{\texorpdfstring{GetStringResponse()}{GetStringResponse()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string Arktis\+Engine\+::\+Messaging\+Manager\+::\+Get\+String\+Response (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the string response from the host. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 65 of file Messaging\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{66     \{}
+\DoxyCodeLine{67         \textcolor{keyword}{static} \textcolor{keywordtype}{char} buffer[1024];}
+\DoxyCodeLine{68         memset(buffer, 0, \textcolor{keyword}{sizeof}(buffer));}
+\DoxyCodeLine{69         std::size\_t received = 0;}
+\DoxyCodeLine{70         sf::IpAddress sender;}
+\DoxyCodeLine{71         \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{short} port;}
+\DoxyCodeLine{72         \textcolor{keywordtype}{bool} execStatus = \textcolor{keyword}{false};}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74         \textcolor{keywordflow}{if} (this->usingTcp)}
+\DoxyCodeLine{75             execStatus = this->tcpSocket.receive(buffer, \textcolor{keyword}{sizeof}(buffer), received) == sf::Socket::Done;}
+\DoxyCodeLine{76         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{77             execStatus = this->udpSocket.receive(buffer, \textcolor{keyword}{sizeof}(buffer), received, sender, port) == sf::Socket::Done;}
+\DoxyCodeLine{78         }
+\DoxyCodeLine{79         \textcolor{keywordflow}{return} execStatus ? std::string(buffer).substr(0, received) : \textcolor{stringliteral}{"DATA\_GET\_ERR"};}
+\DoxyCodeLine{80     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_messaging_manager_a73d16428395e9e93615021dfc04e7200}\label{class_arktis_engine_1_1_messaging_manager_a73d16428395e9e93615021dfc04e7200}} 
+\index{ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}!GetStringResponse@{GetStringResponse}}
+\index{GetStringResponse@{GetStringResponse}!ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}}
+\subsubsection{\texorpdfstring{GetStringResponse()}{GetStringResponse()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string Arktis\+Engine\+::\+Messaging\+Manager\+::\+Get\+String\+Response (\begin{DoxyParamCaption}\item[{const int}]{buffer\+Size }\end{DoxyParamCaption})}
+
+
+
+Gets the string response from the host. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em buffer\+Size} & defines the size of buffer used to get the message\\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Deprecated}
+\item[\mbox{\hyperlink{deprecated__deprecated000001}{Deprecated}}]This is to be removed in the future versions because it\textquotesingle{}s not used by anything \end{DoxyRefDesc}
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 83 of file Messaging\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{84     \{}
+\DoxyCodeLine{85         \textcolor{keywordtype}{char} *buffer = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[bufferSize];}
+\DoxyCodeLine{86         std::size\_t received = 0;}
+\DoxyCodeLine{87         \textcolor{keywordflow}{if} (this->tcpSocket.receive(buffer, \textcolor{keyword}{sizeof}(buffer), received) != sf::Socket::Done)}
+\DoxyCodeLine{88             \textcolor{keywordflow}{return} \textcolor{stringliteral}{"DATA\_GET\_ERR"};}
+\DoxyCodeLine{89         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{90         \{}
+\DoxyCodeLine{91             std::string stringBuff(buffer);}
+\DoxyCodeLine{92             \textcolor{keywordflow}{return} stringBuff.substr(0, received);}
+\DoxyCodeLine{93         \}}
+\DoxyCodeLine{94     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_messaging_manager_a0c384955dba568c37085b2d71d77f4d7}\label{class_arktis_engine_1_1_messaging_manager_a0c384955dba568c37085b2d71d77f4d7}} 
+\index{ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}!SendStringData@{SendStringData}}
+\index{SendStringData@{SendStringData}!ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}}
+\subsubsection{\texorpdfstring{SendStringData()}{SendStringData()}}
+{\footnotesize\ttfamily bool Arktis\+Engine\+::\+Messaging\+Manager\+::\+Send\+String\+Data (\begin{DoxyParamCaption}\item[{std\+::string}]{string\+Data }\end{DoxyParamCaption})}
+
+
+
+Sends string data to the host. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 53 of file Messaging\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{54     \{}
+\DoxyCodeLine{55         \textcolor{keywordtype}{char} *data = strdup(stringData.c\_str());}
+\DoxyCodeLine{56         \textcolor{keywordtype}{bool} execStatus = \textcolor{keyword}{true};}
+\DoxyCodeLine{57         \textcolor{keywordflow}{if} (this->usingTcp)}
+\DoxyCodeLine{58             execStatus = this->tcpSocket.send(data, strlen(data)) == sf::Socket::Done;}
+\DoxyCodeLine{59         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{60             execStatus = this->udpSocket.send(data, strlen(data), this->serverIpAddress, this->serverPort) == sf::Socket::Done;}
+\DoxyCodeLine{61         \textcolor{keywordflow}{return} execStatus;}
+\DoxyCodeLine{62     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_messaging_manager_a31cacbae868864fcd2a6bc4070919a8c}\label{class_arktis_engine_1_1_messaging_manager_a31cacbae868864fcd2a6bc4070919a8c}} 
+\index{ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}!SetIpAddress@{SetIpAddress}}
+\index{SetIpAddress@{SetIpAddress}!ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}}
+\subsubsection{\texorpdfstring{SetIpAddress()}{SetIpAddress()}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Messaging\+Manager\+::\+Set\+Ip\+Address (\begin{DoxyParamCaption}\item[{sf\+::\+Ip\+Address}]{addr }\end{DoxyParamCaption})}
+
+
+
+Sets the ip address of the server. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 105 of file Messaging\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{106     \{}
+\DoxyCodeLine{107         this->serverIpAddress = addr;}
+\DoxyCodeLine{108     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_messaging_manager_ae420b8cb11c0015a35462adecb9ff3bf}\label{class_arktis_engine_1_1_messaging_manager_ae420b8cb11c0015a35462adecb9ff3bf}} 
+\index{ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}!SetToTcp@{SetToTcp}}
+\index{SetToTcp@{SetToTcp}!ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}}
+\subsubsection{\texorpdfstring{SetToTcp()}{SetToTcp()}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Messaging\+Manager\+::\+Set\+To\+Tcp (\begin{DoxyParamCaption}\item[{bool}]{using\+Tcp }\end{DoxyParamCaption})}
+
+
+
+Sets the socket type flag to true. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 111 of file Messaging\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{112     \{}
+\DoxyCodeLine{113         this->usingTcp = usingTcp;}
+\DoxyCodeLine{114     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_messaging_manager_a13dfdd0dedb881e64364351c24c6ecb3}\label{class_arktis_engine_1_1_messaging_manager_a13dfdd0dedb881e64364351c24c6ecb3}} 
+\index{ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}!SetToUdp@{SetToUdp}}
+\index{SetToUdp@{SetToUdp}!ArktisEngine::MessagingManager@{ArktisEngine::MessagingManager}}
+\subsubsection{\texorpdfstring{SetToUdp()}{SetToUdp()}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Messaging\+Manager\+::\+Set\+To\+Udp (\begin{DoxyParamCaption}\item[{bool}]{using\+Udp }\end{DoxyParamCaption})}
+
+
+
+Sets the socket type flag to false. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 115 of file Messaging\+Manager.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{116     \{}
+\DoxyCodeLine{117         this->\mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager_ae420b8cb11c0015a35462adecb9ff3bf}{SetToTcp}}(!usingUdp);}
+\DoxyCodeLine{118     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game Engine/\+Messaging Manager/Messaging\+Manager.\+hpp\item 
+src/\+Game Engine/\+Messaging Manager/Messaging\+Manager.\+cpp\end{DoxyCompactItemize}

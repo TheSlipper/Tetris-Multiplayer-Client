@@ -1,0 +1,207 @@
+\hypertarget{class_arktis_engine_1_1_state_machine}{}\section{Arktis\+Engine\+::State\+Machine Class Reference}
+\label{class_arktis_engine_1_1_state_machine}\index{ArktisEngine::StateMachine@{ArktisEngine::StateMachine}}
+
+
+Class that manages game\textquotesingle{}s scenes.  
+
+
+
+
+{\ttfamily \#include $<$State\+Machine.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_arktis_engine_1_1_state_machine_a1118386ad3a25318c596e7cd2973e653}{State\+Machine}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_arktis_engine_1_1_state_machine_a06a79046673c4e0810ea75044f7c833a}{$\sim$\+State\+Machine}} ()
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_arktis_engine_1_1_state_machine_ab9c7ff35ffee13eecfa31436d8158a0f}{Add\+State}} (\mbox{\hyperlink{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}{State\+Ref}} new\+State, bool is\+Replacing=true)
+\begin{DoxyCompactList}\small\item\em Queues a state to add it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_arktis_engine_1_1_state_machine_a3160a6d94f518c43ef6cdc5a39db67cf}{Remove\+State}} ()
+\begin{DoxyCompactList}\small\item\em Queues a state for it\textquotesingle{}s removal. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_arktis_engine_1_1_state_machine_a49929447f3475376c8073daea61442e7}{Process\+State\+Changes}} ()
+\begin{DoxyCompactList}\small\item\em Processes all the queued state changes. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}{State\+Ref}} \& \mbox{\hyperlink{class_arktis_engine_1_1_state_machine_adc32ec7490b802e3600dde4d9f793fb1}{Get\+Active\+State}} ()
+\begin{DoxyCompactList}\small\item\em Gets the reference to the currently running state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that manages game\textquotesingle{}s scenes. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 36 of file State\+Machine.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_arktis_engine_1_1_state_machine_a1118386ad3a25318c596e7cd2973e653}\label{class_arktis_engine_1_1_state_machine_a1118386ad3a25318c596e7cd2973e653}} 
+\index{ArktisEngine::StateMachine@{ArktisEngine::StateMachine}!StateMachine@{StateMachine}}
+\index{StateMachine@{StateMachine}!ArktisEngine::StateMachine@{ArktisEngine::StateMachine}}
+\subsubsection{\texorpdfstring{StateMachine()}{StateMachine()}}
+{\footnotesize\ttfamily Arktis\+Engine\+::\+State\+Machine\+::\+State\+Machine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 43 of file State\+Machine.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{43 \{ \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_state_machine_a06a79046673c4e0810ea75044f7c833a}\label{class_arktis_engine_1_1_state_machine_a06a79046673c4e0810ea75044f7c833a}} 
+\index{ArktisEngine::StateMachine@{ArktisEngine::StateMachine}!````~StateMachine@{$\sim$StateMachine}}
+\index{````~StateMachine@{$\sim$StateMachine}!ArktisEngine::StateMachine@{ArktisEngine::StateMachine}}
+\subsubsection{\texorpdfstring{$\sim$StateMachine()}{~StateMachine()}}
+{\footnotesize\ttfamily Arktis\+Engine\+::\+State\+Machine\+::$\sim$\+State\+Machine (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default destructor. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 49 of file State\+Machine.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{49 \{ \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_arktis_engine_1_1_state_machine_ab9c7ff35ffee13eecfa31436d8158a0f}\label{class_arktis_engine_1_1_state_machine_ab9c7ff35ffee13eecfa31436d8158a0f}} 
+\index{ArktisEngine::StateMachine@{ArktisEngine::StateMachine}!AddState@{AddState}}
+\index{AddState@{AddState}!ArktisEngine::StateMachine@{ArktisEngine::StateMachine}}
+\subsubsection{\texorpdfstring{AddState()}{AddState()}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+State\+Machine\+::\+Add\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}{State\+Ref}}}]{new\+State,  }\item[{bool}]{is\+Replacing = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Queues a state to add it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bool} & is\+Replacing tells if the previous scene should be replaced \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file State\+Machine.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         this->\_isAdding = \textcolor{keyword}{true};}
+\DoxyCodeLine{31         this->\_isReplacing = isReplacing;}
+\DoxyCodeLine{32         }
+\DoxyCodeLine{33         this->\_newState = std::move(newState);}
+\DoxyCodeLine{34     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_state_machine_adc32ec7490b802e3600dde4d9f793fb1}\label{class_arktis_engine_1_1_state_machine_adc32ec7490b802e3600dde4d9f793fb1}} 
+\index{ArktisEngine::StateMachine@{ArktisEngine::StateMachine}!GetActiveState@{GetActiveState}}
+\index{GetActiveState@{GetActiveState}!ArktisEngine::StateMachine@{ArktisEngine::StateMachine}}
+\subsubsection{\texorpdfstring{GetActiveState()}{GetActiveState()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}{State\+Ref}} \& Arktis\+Engine\+::\+State\+Machine\+::\+Get\+Active\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the reference to the currently running state. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 72 of file State\+Machine.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{73     \{}
+\DoxyCodeLine{74         \textcolor{keywordflow}{return} this->\_states.top();}
+\DoxyCodeLine{75     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_state_machine_a49929447f3475376c8073daea61442e7}\label{class_arktis_engine_1_1_state_machine_a49929447f3475376c8073daea61442e7}} 
+\index{ArktisEngine::StateMachine@{ArktisEngine::StateMachine}!ProcessStateChanges@{ProcessStateChanges}}
+\index{ProcessStateChanges@{ProcessStateChanges}!ArktisEngine::StateMachine@{ArktisEngine::StateMachine}}
+\subsubsection{\texorpdfstring{ProcessStateChanges()}{ProcessStateChanges()}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+State\+Machine\+::\+Process\+State\+Changes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Processes all the queued state changes. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 43 of file State\+Machine.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44     \{}
+\DoxyCodeLine{45         \textcolor{keywordflow}{if} (this->\_isRemoving \&\& !this->\_states.empty())}
+\DoxyCodeLine{46         \{}
+\DoxyCodeLine{47             this->\_states.pop();}
+\DoxyCodeLine{48             }
+\DoxyCodeLine{49             \textcolor{keywordflow}{if} (!this->\_states.empty())}
+\DoxyCodeLine{50                 this->\_states.top()->Resume();}
+\DoxyCodeLine{51             }
+\DoxyCodeLine{52             this->\_isRemoving = \textcolor{keyword}{false};}
+\DoxyCodeLine{53         \}}
+\DoxyCodeLine{54         }
+\DoxyCodeLine{55         \textcolor{keywordflow}{if} (this->\_isAdding)}
+\DoxyCodeLine{56         \{}
+\DoxyCodeLine{57             \textcolor{keywordflow}{if} (!this->\_states.empty())}
+\DoxyCodeLine{58             \{}
+\DoxyCodeLine{59                 \textcolor{keywordflow}{if} (this->\_isReplacing)}
+\DoxyCodeLine{60                     this->\_states.pop();}
+\DoxyCodeLine{61                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{62                     this->\_states.top()->Pause();}
+\DoxyCodeLine{63             \}}
+\DoxyCodeLine{64             }
+\DoxyCodeLine{65             this->\_states.push(std::move(this->\_newState));}
+\DoxyCodeLine{66             this->\_states.top()->Init();}
+\DoxyCodeLine{67             this->\_isAdding = \textcolor{keyword}{false};}
+\DoxyCodeLine{68         \}}
+\DoxyCodeLine{69     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_arktis_engine_1_1_state_machine_a3160a6d94f518c43ef6cdc5a39db67cf}\label{class_arktis_engine_1_1_state_machine_a3160a6d94f518c43ef6cdc5a39db67cf}} 
+\index{ArktisEngine::StateMachine@{ArktisEngine::StateMachine}!RemoveState@{RemoveState}}
+\index{RemoveState@{RemoveState}!ArktisEngine::StateMachine@{ArktisEngine::StateMachine}}
+\subsubsection{\texorpdfstring{RemoveState()}{RemoveState()}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+State\+Machine\+::\+Remove\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Queues a state for it\textquotesingle{}s removal. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 37 of file State\+Machine.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{38     \{}
+\DoxyCodeLine{39         this->\_isRemoving = \textcolor{keyword}{true};}
+\DoxyCodeLine{40     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game Engine/\+State Machine/State\+Machine.\+hpp\item 
+src/\+Game Engine/\+State Machine/State\+Machine.\+cpp\end{DoxyCompactItemize}

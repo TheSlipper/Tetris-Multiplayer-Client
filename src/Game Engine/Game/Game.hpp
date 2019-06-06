@@ -68,7 +68,7 @@ namespace ArktisEngine
         ////////////////////////////////////////////////////////////
         const float dt = 1.0f / 60.0f;  ///< Delta time
         
-		const char *settingsFilePath = "Resources/settings.conf";
+		const char *settingsFilePath = "Resources/settings.conf"; ///< Path to the settings file
 
         sf::Clock _clock;   ///< Game's clock
         

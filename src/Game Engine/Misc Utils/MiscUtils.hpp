@@ -64,16 +64,81 @@ namespace ArktisEngine
     ////////////////////////////////////////////////////////////
     sf::Vector2f GetPosRelToScreenByPrct(float verticalPercent, float horizontalPercent, GameSettings &settings);
     
+    ////////////////////////////////////////////////////////////
+    /// \brief Gets the y position of an object with the given
+    ///         percent value
+    ///
+    /// \param yPerc position of the object in percents
+    ///
+    /// \param settings game settings
+    ///
+    /// \return y position of the object
+    ///
+    ////////////////////////////////////////////////////////////
     float GetYPosRelToScreenByPrct(float yPerc, GameSettings &settings);
     
+    ////////////////////////////////////////////////////////////
+    /// \brief Gets the x position of an object with the given
+    ///         percent value
+    ///
+    /// \param xPerc position of the object in percents
+    ///
+    /// \param settings game settings
+    ///
+    /// \return x position of the object
+    ///
+    ////////////////////////////////////////////////////////////
     float GetXPosRelToScreenByPrct(float xPerc, GameSettings &settings);
     
+    ////////////////////////////////////////////////////////////
+    /// \brief Centers horizontally the given text on the screen and moves it on the y axis by the given pixel amount.
+    ///
+    /// \param text target text
+    ///
+    /// \param settings game settings
+    ///
+    /// \param y defines how much the text should be moved down vertically
+    ///
+    ////////////////////////////////////////////////////////////
     void CenterHorizontally(sf::Text &text, GameSettings &settings, float y = 0.f);
     
+    ////////////////////////////////////////////////////////////
+    /// \brief Centers horizontally the given text in a rectangle area on
+    ///        the screen and moves it on the y axis by the given pixel amount.
+    ///
+    /// \param text target text
+    ///
+    /// \param areaWidth width of the rectangle area
+    ///
+    /// \param y defines how much the text should be moved down vertically
+    ///
+    ////////////////////////////////////////////////////////////
     void CenterHorizontallyInArea(sf::Text &text, float areaWidth, float y);
     
-    void CenterHorizontallyInArea(GameObjects::Button button, float areaWidth, float y);
+    ////////////////////////////////////////////////////////////
+    /// \brief Centers horizontally the given button in a rectangle area on
+    ///        the screen and moves it on the y axis by the given pixel amount.
+    ///
+    /// \param button target button
+    ///
+    /// \param areaWidth width of the rectangle area
+    ///
+    /// \param y defines how much the text should be moved down vertically
+    ///
+    ////////////////////////////////////////////////////////////
+    void CenterHorizontallyInArea(GameObjects::Button &button, float areaWidth, float y);
     
+    ////////////////////////////////////////////////////////////
+    /// \brief Converts a floating point value to a string and sets
+    ///         takes only given amount of numbers after the '.' into consideration
+    ///
+    /// \param a_value the floating point variable
+    ///
+    /// \param n amount of characters after the '.'
+    ///
+    /// \return formatted floating point number in std::string
+    ///
+    ////////////////////////////////////////////////////////////
     template <typename T>
     std::string to_string_with_precision(const T a_value, const int n = 6)
     {

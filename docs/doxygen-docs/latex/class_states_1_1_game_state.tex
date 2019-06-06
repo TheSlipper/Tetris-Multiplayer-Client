@@ -1,0 +1,299 @@
+\hypertarget{class_states_1_1_game_state}{}\section{States\+::Game\+State Class Reference}
+\label{class_states_1_1_game_state}\index{States::GameState@{States::GameState}}
+
+
+Game \mbox{\hyperlink{class_states_1_1_state}{State}}.  
+
+
+
+
+{\ttfamily \#include $<$Game\+State.\+hpp$>$}
+
+Inheritance diagram for States\+::Game\+State\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_states_1_1_game_state}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_states_1_1_game_state_a04083789a08165586d338792e2def8fc}{Game\+State}} (\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}} data)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_states_1_1_game_state_adf2486bf10bade0720d63f17d8199fc4}{Game\+State}} (\mbox{\hyperlink{struct_arktis_engine_1_1_user_data}{Arktis\+Engine\+::\+User\+Data}} opponent\+Data, \mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}} data)
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_game_state_aeb73979fc3a22b001ed389790e24bd1e}{Init}} ()
+\begin{DoxyCompactList}\small\item\em Initialization of the state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_game_state_a6521d6d97ac2fb388085a70abce704a9}{Handle\+Input}} ()
+\begin{DoxyCompactList}\small\item\em Handles scene-\/specific user input. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_game_state_aceb987110e6ec94c3d6bf6f095b170cd}{Update}} (float dt)
+\begin{DoxyCompactList}\small\item\em Updates the scene (call the animation or physics methods here) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_states_1_1_game_state_a56f09cd84928af04b70405bb43511bad}{Draw}} (float dt)
+\begin{DoxyCompactList}\small\item\em Draws to the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Game \mbox{\hyperlink{class_states_1_1_state}{State}}. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Definition at line 51 of file Game\+State.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_states_1_1_game_state_a04083789a08165586d338792e2def8fc}\label{class_states_1_1_game_state_a04083789a08165586d338792e2def8fc}} 
+\index{States::GameState@{States::GameState}!GameState@{GameState}}
+\index{GameState@{GameState}!States::GameState@{States::GameState}}
+\subsubsection{\texorpdfstring{GameState()}{GameState()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily States\+::\+Game\+State\+::\+Game\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}}}]{data }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Game\+Data\+Ref} & data pointer to the game\textquotesingle{}s crucial data \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Game\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29     : \_data(data),}
+\DoxyCodeLine{30     networkingThread(\&GameState::handleNetworking, \textcolor{keyword}{this})}
+\DoxyCodeLine{31     \{}
+\DoxyCodeLine{32     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_game_state_adf2486bf10bade0720d63f17d8199fc4}\label{class_states_1_1_game_state_adf2486bf10bade0720d63f17d8199fc4}} 
+\index{States::GameState@{States::GameState}!GameState@{GameState}}
+\index{GameState@{GameState}!States::GameState@{States::GameState}}
+\subsubsection{\texorpdfstring{GameState()}{GameState()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily States\+::\+Game\+State\+::\+Game\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_arktis_engine_1_1_user_data}{Arktis\+Engine\+::\+User\+Data}}}]{opponent\+Data,  }\item[{\mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Arktis\+Engine\+::\+Game\+Data\+Ref}}}]{data }\end{DoxyParamCaption})}
+
+
+
+Default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opponent\+Data} & data of the opponent\\
+\hline
+{\em data} & pointer to the game\textquotesingle{}s crucial data \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 35 of file Game\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36     : \_data(data),}
+\DoxyCodeLine{37     networkingThread(\&GameState::handleNetworking, \textcolor{keyword}{this})}
+\DoxyCodeLine{38     \{}
+\DoxyCodeLine{39         this->opponentData = opponentData;}
+\DoxyCodeLine{40     \}}
+
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_states_1_1_game_state_a56f09cd84928af04b70405bb43511bad}\label{class_states_1_1_game_state_a56f09cd84928af04b70405bb43511bad}} 
+\index{States::GameState@{States::GameState}!Draw@{Draw}}
+\index{Draw@{Draw}!States::GameState@{States::GameState}}
+\subsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily void States\+::\+Game\+State\+::\+Draw (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Draws to the screen. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_af5faf0a12478e595ec488fa6108fa490}{States\+::\+State}}.
+
+
+
+Definition at line 137 of file Game\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{138     \{}
+\DoxyCodeLine{139         this->\_data->window.clear(sf::Color::White);}
+\DoxyCodeLine{140 }
+\DoxyCodeLine{141         this->\_data->window.draw(background);}
+\DoxyCodeLine{142         }
+\DoxyCodeLine{143         this->drawFields();}
+\DoxyCodeLine{144         }
+\DoxyCodeLine{145         this->\_data->window.draw(this->frame);}
+\DoxyCodeLine{146         }
+\DoxyCodeLine{147         this->drawLabels();}
+\DoxyCodeLine{148         }
+\DoxyCodeLine{149         this->\_data->window.display();}
+\DoxyCodeLine{150     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_game_state_a6521d6d97ac2fb388085a70abce704a9}\label{class_states_1_1_game_state_a6521d6d97ac2fb388085a70abce704a9}} 
+\index{States::GameState@{States::GameState}!HandleInput@{HandleInput}}
+\index{HandleInput@{HandleInput}!States::GameState@{States::GameState}}
+\subsubsection{\texorpdfstring{HandleInput()}{HandleInput()}}
+{\footnotesize\ttfamily void States\+::\+Game\+State\+::\+Handle\+Input (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Handles scene-\/specific user input. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_a9f5a1461456ad43c936808c9cfb9e8bd}{States\+::\+State}}.
+
+
+
+Definition at line 69 of file Game\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{70     \{}
+\DoxyCodeLine{71         sf::Event event;}
+\DoxyCodeLine{72         \textcolor{keywordtype}{float} time = this->gameClock.getElapsedTime().asSeconds();}
+\DoxyCodeLine{73         gameClock.restart();}
+\DoxyCodeLine{74         this->timer += time;}
+\DoxyCodeLine{75         }
+\DoxyCodeLine{76         \textcolor{keywordflow}{while} (this->\_data->window.pollEvent(event))}
+\DoxyCodeLine{77         \{}
+\DoxyCodeLine{78             \textcolor{keywordflow}{if} (sf::Event::Closed == event.type)}
+\DoxyCodeLine{79             \{}
+\DoxyCodeLine{80                 this->\_data->messaging.DisconnectSocket();}
+\DoxyCodeLine{81                 this->\_data->window.close();}
+\DoxyCodeLine{82             \}}
+\DoxyCodeLine{83             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (event.type == sf::Event::KeyPressed)}
+\DoxyCodeLine{84             \{}
+\DoxyCodeLine{85                 \textcolor{keywordflow}{switch} (event.key.code)}
+\DoxyCodeLine{86                 \{}
+\DoxyCodeLine{87                     \textcolor{keywordflow}{case} sf::Keyboard::Up:}
+\DoxyCodeLine{88                         this->rotate = \textcolor{keyword}{true};}
+\DoxyCodeLine{89                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{90                     \textcolor{keywordflow}{case} sf::Keyboard::Left:}
+\DoxyCodeLine{91                         this->directionX = -1;}
+\DoxyCodeLine{92                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{93                     \textcolor{keywordflow}{case} sf::Keyboard::Right:}
+\DoxyCodeLine{94                         this->directionX = 1;}
+\DoxyCodeLine{95                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{96                     \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{97                         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{98                 \}}
+\DoxyCodeLine{99             \}}
+\DoxyCodeLine{100         \}}
+\DoxyCodeLine{101         }
+\DoxyCodeLine{102         \textcolor{keywordflow}{if} (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))}
+\DoxyCodeLine{103             this->delay = 0.05f;}
+\DoxyCodeLine{104     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_game_state_aeb73979fc3a22b001ed389790e24bd1e}\label{class_states_1_1_game_state_aeb73979fc3a22b001ed389790e24bd1e}} 
+\index{States::GameState@{States::GameState}!Init@{Init}}
+\index{Init@{Init}!States::GameState@{States::GameState}}
+\subsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily void States\+::\+Game\+State\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Initialization of the state. 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_aff396dd3b4f3f7f7e729a0eac1910f45}{States\+::\+State}}.
+
+
+
+Definition at line 43 of file Game\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{44     \{}
+\DoxyCodeLine{45         srand(time(0));}
+\DoxyCodeLine{46         \textcolor{keyword}{const} std::string test = GAME\_SONG\_PATH;}
+\DoxyCodeLine{47         \textcolor{keywordflow}{if} (!this->backgroundMusic.openFromFile(test))}
+\DoxyCodeLine{48             exit(0);}
+\DoxyCodeLine{49         this->backgroundMusic.play();}
+\DoxyCodeLine{50         this->backgroundMusic.setVolume(100);}
+\DoxyCodeLine{51         this->backgroundMusic.setLoop(\textcolor{keyword}{true});}
+\DoxyCodeLine{52         this->\_data->assets.LoadTexture(TILES\_NAME, TILES\_PATH);}
+\DoxyCodeLine{53         this->\_data->assets.LoadTexture(GAME\_BG\_NAME, GAME\_BG\_PATH);}
+\DoxyCodeLine{54         this->\_data->assets.LoadTexture(FRAME\_NAME, FRAME\_PATH);}
+\DoxyCodeLine{55         this->setUpLabels();}
+\DoxyCodeLine{56         this->frame.setTexture(this->\_data->assets.GetTexture(FRAME\_NAME));}
+\DoxyCodeLine{57         \mbox{\hyperlink{namespace_arktis_engine_aee0d0d24a793b5dc52aac529a577a264}{ArktisEngine::ScaleSprToDims}}(this->frame, this->\_data->settings.width, this->\_data->settings.height);}
+\DoxyCodeLine{58         this->s.setTexture(this->\_data->assets.GetTexture(TILES\_NAME));}
+\DoxyCodeLine{59         \textcolor{keywordtype}{float} tileSetWidth = this->\_data->settings.width * 1100.f / 3840.f, tileSetHeight = this->\_data->settings.height * 138.f / 2160.f;}
+\DoxyCodeLine{60         this->tileWidth = tileSetWidth / 8.0f;}
+\DoxyCodeLine{61         this->tileHeight = tileSetHeight;}
+\DoxyCodeLine{62         \mbox{\hyperlink{namespace_arktis_engine_aee0d0d24a793b5dc52aac529a577a264}{ArktisEngine::ScaleSprToDims}}(this->s, tileSetWidth, tileSetHeight);}
+\DoxyCodeLine{63         this->background.setTexture(this->\_data->assets.GetTexture(GAME\_BG\_NAME));}
+\DoxyCodeLine{64         \mbox{\hyperlink{namespace_arktis_engine_aee0d0d24a793b5dc52aac529a577a264}{ArktisEngine::ScaleSprToDims}}(this->background, this->\_data->settings.width, this->\_data->settings.height);}
+\DoxyCodeLine{65         this->networkingThread.launch();}
+\DoxyCodeLine{66     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_states_1_1_game_state_aceb987110e6ec94c3d6bf6f095b170cd}\label{class_states_1_1_game_state_aceb987110e6ec94c3d6bf6f095b170cd}} 
+\index{States::GameState@{States::GameState}!Update@{Update}}
+\index{Update@{Update}!States::GameState@{States::GameState}}
+\subsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void States\+::\+Game\+State\+::\+Update (\begin{DoxyParamCaption}\item[{float}]{dt }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Updates the scene (call the animation or physics methods here) 
+
+\begin{DoxyVerb}\end{DoxyVerb}
+ 
+
+Implements \mbox{\hyperlink{class_states_1_1_state_ab8e935def8138e0b917c3228a29904e4}{States\+::\+State}}.
+
+
+
+Definition at line 107 of file Game\+State.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{108     \{}
+\DoxyCodeLine{109         this->timeText.setString(\textcolor{stringliteral}{"Time Spent\(\backslash\)r\(\backslash\)n"} + this->timeSpent());}
+\DoxyCodeLine{110         \textcolor{keywordflow}{if} (this->abortThread)}
+\DoxyCodeLine{111         \{}
+\DoxyCodeLine{112             this->\_data->machine.AddState((\mbox{\hyperlink{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}{ArktisEngine::StateRef}}) \textcolor{keyword}{new} GameOverState(this->opponentData, this->\_data), \textcolor{keyword}{true});}
+\DoxyCodeLine{113             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{114         \}}
+\DoxyCodeLine{115         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (this->p1LostGame)}
+\DoxyCodeLine{116             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{117         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (p1LostGame == \textcolor{keyword}{false})}
+\DoxyCodeLine{118         \{}
+\DoxyCodeLine{120             this->move();}
+\DoxyCodeLine{121             }
+\DoxyCodeLine{123             \textcolor{keywordflow}{if} (this->rotate)}
+\DoxyCodeLine{124                 this->rotation();}
+\DoxyCodeLine{125             }
+\DoxyCodeLine{127             this->tick();}
+\DoxyCodeLine{128             }
+\DoxyCodeLine{130             this->checkLines();}
+\DoxyCodeLine{131             }
+\DoxyCodeLine{132             this->directionX = 0; this->rotate = 0; this->delay = baseDelay;}
+\DoxyCodeLine{133         \}}
+\DoxyCodeLine{134     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Game States/\+Game State/Game\+State.\+hpp\item 
+src/\+Game States/\+Game State/Game\+State.\+cpp\end{DoxyCompactItemize}

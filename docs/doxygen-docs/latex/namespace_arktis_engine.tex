@@ -1,0 +1,358 @@
+\hypertarget{namespace_arktis_engine}{}\section{Arktis\+Engine Namespace Reference}
+\label{namespace_arktis_engine}\index{ArktisEngine@{ArktisEngine}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_arktis_engine_1_1_asset_manager}{Asset\+Manager}}
+\begin{DoxyCompactList}\small\item\em Class that manages all of the asset data. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_arktis_engine_1_1_game}{Game}}
+\begin{DoxyCompactList}\small\item\em The whole game runs inside of this class. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_arktis_engine_1_1_game_data}{Game\+Data}}
+\begin{DoxyCompactList}\small\item\em Contains the game essentials. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_arktis_engine_1_1_game_settings}{Game\+Settings}}
+\begin{DoxyCompactList}\small\item\em Contains all of the important game settings. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_arktis_engine_1_1_input_manager}{Input\+Manager}}
+\begin{DoxyCompactList}\small\item\em Class that manages game\textquotesingle{}s input. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_arktis_engine_1_1_messaging_manager}{Messaging\+Manager}}
+\begin{DoxyCompactList}\small\item\em Class that manages all of the asset data. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_arktis_engine_1_1_state_machine}{State\+Machine}}
+\begin{DoxyCompactList}\small\item\em Class that manages game\textquotesingle{}s scenes. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_arktis_engine_1_1_user_data}{User\+Data}}
+\begin{DoxyCompactList}\small\item\em Contains all of the game crucial user data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}\label{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}} 
+typedef std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{struct_arktis_engine_1_1_game_data}{Game\+Data}} $>$ \mbox{\hyperlink{namespace_arktis_engine_a52e783ae007274e2a6eccc201d9400a5}{Game\+Data\+Ref}}
+\begin{DoxyCompactList}\small\item\em Definition of shared pointer to the \mbox{\hyperlink{struct_arktis_engine_1_1_game_data}{Game\+Data}} struct. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_arktis_engine_a5666ac051d4a015a11ceb9c3c7aeaa0f}\label{namespace_arktis_engine_a5666ac051d4a015a11ceb9c3c7aeaa0f}} 
+typedef boost\+::tokenizer$<$ boost\+::char\+\_\+separator$<$ char $>$ $>$ \mbox{\hyperlink{namespace_arktis_engine_a5666ac051d4a015a11ceb9c3c7aeaa0f}{String\+Tokenizer}}
+\begin{DoxyCompactList}\small\item\em Definition of a java-\/style tokenizer. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}\label{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}} 
+typedef std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{class_states_1_1_state}{States\+::\+State}} $>$ \mbox{\hyperlink{namespace_arktis_engine_a2df871316f5a55f656d888e1ab2f4531}{State\+Ref}}
+\begin{DoxyCompactList}\small\item\em Definition of pointer to a State object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{namespace_arktis_engine_aee0d0d24a793b5dc52aac529a577a264}{Scale\+Spr\+To\+Dims}} (sf\+::\+Sprite \&spr, float \&width, float \&height)
+\begin{DoxyCompactList}\small\item\em Scales the sprite to the given width and height. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_arktis_engine_a72b7a00fd36289b3ff3c3f9f552af46e}{Scale\+Spr\+To\+Dims}} (sf\+::\+Sprite \&spr, sf\+::\+Vector2f \&vect)
+\begin{DoxyCompactList}\small\item\em Scales the sprite to the given width and height. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{namespace_arktis_engine_a45a3fbfd96555f84d94f59fae3de85cf}{Get\+Pos\+Rel\+To\+Screen\+By\+Prct}} (float vertical\+Percent, float horizontal\+Percent, \mbox{\hyperlink{struct_arktis_engine_1_1_game_settings}{Game\+Settings}} \&settings)
+\begin{DoxyCompactList}\small\item\em Gets the position of an object with the given percent values. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespace_arktis_engine_aa7101d84beded8cfc89a1b005f3b1f2a}{Get\+Y\+Pos\+Rel\+To\+Screen\+By\+Prct}} (float y\+Perc, \mbox{\hyperlink{struct_arktis_engine_1_1_game_settings}{Game\+Settings}} \&settings)
+\begin{DoxyCompactList}\small\item\em Gets the y position of an object with the given percent value. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{namespace_arktis_engine_a54f4502a1f55549659262906688ea821}{Get\+X\+Pos\+Rel\+To\+Screen\+By\+Prct}} (float x\+Perc, \mbox{\hyperlink{struct_arktis_engine_1_1_game_settings}{Game\+Settings}} \&settings)
+\begin{DoxyCompactList}\small\item\em Gets the x position of an object with the given percent value. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_arktis_engine_ad7ba786370c7c39afcfbb9c3c7972fd5}{Center\+Horizontally}} (sf\+::\+Text \&text, \mbox{\hyperlink{struct_arktis_engine_1_1_game_settings}{Game\+Settings}} \&settings, float y=0.f)
+\begin{DoxyCompactList}\small\item\em Centers horizontally the given text on the screen and moves it on the y axis by the given pixel amount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_arktis_engine_aed1fe38ca02af676a1fab7f1697e2a6a}{Center\+Horizontally\+In\+Area}} (sf\+::\+Text \&text, float area\+Width, float y)
+\begin{DoxyCompactList}\small\item\em Centers horizontally the given text in a rectangle area on the screen and moves it on the y axis by the given pixel amount. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{namespace_arktis_engine_aaf2bcd83bb03743f9f471b74e111d9b7}{Center\+Horizontally\+In\+Area}} (\mbox{\hyperlink{class_game_objects_1_1_button}{Game\+Objects\+::\+Button}} \&button, float area\+Width, float y)
+\begin{DoxyCompactList}\small\item\em Centers horizontally the given button in a rectangle area on the screen and moves it on the y axis by the given pixel amount. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\std\+::string \mbox{\hyperlink{namespace_arktis_engine_a94b44bcf5156b511b6510658261da5cc}{to\+\_\+string\+\_\+with\+\_\+precision}} (const T a\+\_\+value, const int n=6)
+\begin{DoxyCompactList}\small\item\em Converts a floating point value to a string and sets takes only given amount of numbers after the \textquotesingle{}.\textquotesingle{} into consideration. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Tetris Multiplayer \mbox{\hyperlink{class_arktis_engine_1_1_game}{Game}} -\/ PvP Tetris Experience Copyright (C) 2019 Kornel Domeradzki
+
+This program is free software; you can redistribute it and/or modify it under the terms of the G\+NU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but W\+I\+T\+H\+O\+UT A\+NY W\+A\+R\+R\+A\+N\+TY; without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+TY or F\+I\+T\+N\+E\+SS F\+OR A P\+A\+R\+T\+I\+C\+U\+L\+AR P\+U\+R\+P\+O\+SE. See the G\+NU General Public License for more details.
+
+You should have received a copy of the G\+NU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-\/1301, U\+SA. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespace_arktis_engine_ad7ba786370c7c39afcfbb9c3c7972fd5}\label{namespace_arktis_engine_ad7ba786370c7c39afcfbb9c3c7972fd5}} 
+\index{ArktisEngine@{ArktisEngine}!CenterHorizontally@{CenterHorizontally}}
+\index{CenterHorizontally@{CenterHorizontally}!ArktisEngine@{ArktisEngine}}
+\subsubsection{\texorpdfstring{CenterHorizontally()}{CenterHorizontally()}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Center\+Horizontally (\begin{DoxyParamCaption}\item[{sf\+::\+Text \&}]{text,  }\item[{\mbox{\hyperlink{struct_arktis_engine_1_1_game_settings}{Game\+Settings}} \&}]{settings,  }\item[{float}]{y = {\ttfamily 0.f} }\end{DoxyParamCaption})}
+
+
+
+Centers horizontally the given text on the screen and moves it on the y axis by the given pixel amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & target text\\
+\hline
+{\em settings} & game settings\\
+\hline
+{\em y} & defines how much the text should be moved down vertically \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 60 of file Misc\+Utils.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{61     \{}
+\DoxyCodeLine{62         sf::FloatRect textRect = text.getLocalBounds();}
+\DoxyCodeLine{63         text.setOrigin(textRect.left + textRect.width / 2.0f, textRect.top  + textRect.height / 2.0f);}
+\DoxyCodeLine{64         text.setPosition(sf::Vector2f(settings.width / 2.0f, y));}
+\DoxyCodeLine{65     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespace_arktis_engine_aed1fe38ca02af676a1fab7f1697e2a6a}\label{namespace_arktis_engine_aed1fe38ca02af676a1fab7f1697e2a6a}} 
+\index{ArktisEngine@{ArktisEngine}!CenterHorizontallyInArea@{CenterHorizontallyInArea}}
+\index{CenterHorizontallyInArea@{CenterHorizontallyInArea}!ArktisEngine@{ArktisEngine}}
+\subsubsection{\texorpdfstring{CenterHorizontallyInArea()}{CenterHorizontallyInArea()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Center\+Horizontally\+In\+Area (\begin{DoxyParamCaption}\item[{sf\+::\+Text \&}]{text,  }\item[{float}]{area\+Width,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Centers horizontally the given text in a rectangle area on the screen and moves it on the y axis by the given pixel amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & target text\\
+\hline
+{\em area\+Width} & width of the rectangle area\\
+\hline
+{\em y} & defines how much the text should be moved down vertically \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 68 of file Misc\+Utils.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{69     \{}
+\DoxyCodeLine{70         sf::FloatRect textRect = text.getLocalBounds();}
+\DoxyCodeLine{71         text.setOrigin(textRect.left + textRect.width / 2.f, textRect.top + textRect.height / 2.f);}
+\DoxyCodeLine{72         text.setPosition(sf::Vector2f(areaWidth / 2.f, y));}
+\DoxyCodeLine{73     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespace_arktis_engine_aaf2bcd83bb03743f9f471b74e111d9b7}\label{namespace_arktis_engine_aaf2bcd83bb03743f9f471b74e111d9b7}} 
+\index{ArktisEngine@{ArktisEngine}!CenterHorizontallyInArea@{CenterHorizontallyInArea}}
+\index{CenterHorizontallyInArea@{CenterHorizontallyInArea}!ArktisEngine@{ArktisEngine}}
+\subsubsection{\texorpdfstring{CenterHorizontallyInArea()}{CenterHorizontallyInArea()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Center\+Horizontally\+In\+Area (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_game_objects_1_1_button}{Game\+Objects\+::\+Button}} \&}]{button,  }\item[{float}]{area\+Width,  }\item[{float}]{y }\end{DoxyParamCaption})}
+
+
+
+Centers horizontally the given button in a rectangle area on the screen and moves it on the y axis by the given pixel amount. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em button} & target button\\
+\hline
+{\em area\+Width} & width of the rectangle area\\
+\hline
+{\em y} & defines how much the text should be moved down vertically \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 76 of file Misc\+Utils.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{77     \{}
+\DoxyCodeLine{78         sf::FloatRect btnRect = button.\mbox{\hyperlink{class_game_objects_1_1_button_a73b104836302e0c11afa3ab0ed07a4f5}{GetGlobalBounds}}();}
+\DoxyCodeLine{79         button.\mbox{\hyperlink{class_game_objects_1_1_button_a3404fcd2a6347a8700557ae204f316fc}{SetOrigin}}(btnRect.left + btnRect.width / 2.f, btnRect.top + btnRect.height / 2.f);}
+\DoxyCodeLine{80         button.\mbox{\hyperlink{class_game_objects_1_1_button_a72088e5bd0e281c879587b24e267f12f}{SetPosition}}(sf::Vector2f(areaWidth / 2.f, y));}
+\DoxyCodeLine{81     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespace_arktis_engine_a45a3fbfd96555f84d94f59fae3de85cf}\label{namespace_arktis_engine_a45a3fbfd96555f84d94f59fae3de85cf}} 
+\index{ArktisEngine@{ArktisEngine}!GetPosRelToScreenByPrct@{GetPosRelToScreenByPrct}}
+\index{GetPosRelToScreenByPrct@{GetPosRelToScreenByPrct}!ArktisEngine@{ArktisEngine}}
+\subsubsection{\texorpdfstring{GetPosRelToScreenByPrct()}{GetPosRelToScreenByPrct()}}
+{\footnotesize\ttfamily sf\+::\+Vector2f Arktis\+Engine\+::\+Get\+Pos\+Rel\+To\+Screen\+By\+Prct (\begin{DoxyParamCaption}\item[{float}]{vertical\+Percent,  }\item[{float}]{horizontal\+Percent,  }\item[{\mbox{\hyperlink{struct_arktis_engine_1_1_game_settings}{Game\+Settings}} \&}]{settings }\end{DoxyParamCaption})}
+
+
+
+Gets the position of an object with the given percent values. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertical\+Percent} & percentage of how much an object should be moved down on the canvas\\
+\hline
+{\em horizontal\+Percent} & percentage of how much an object should be moved to the right on the canvas\\
+\hline
+{\em settings} & game settings \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 42 of file Misc\+Utils.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{43     \{}
+\DoxyCodeLine{44         \textcolor{keywordflow}{return} sf::Vector2f(verticalPercent * settings.width / 100.f, horizontalPercent * settings.height / 100.f);}
+\DoxyCodeLine{45     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespace_arktis_engine_a54f4502a1f55549659262906688ea821}\label{namespace_arktis_engine_a54f4502a1f55549659262906688ea821}} 
+\index{ArktisEngine@{ArktisEngine}!GetXPosRelToScreenByPrct@{GetXPosRelToScreenByPrct}}
+\index{GetXPosRelToScreenByPrct@{GetXPosRelToScreenByPrct}!ArktisEngine@{ArktisEngine}}
+\subsubsection{\texorpdfstring{GetXPosRelToScreenByPrct()}{GetXPosRelToScreenByPrct()}}
+{\footnotesize\ttfamily float Arktis\+Engine\+::\+Get\+X\+Pos\+Rel\+To\+Screen\+By\+Prct (\begin{DoxyParamCaption}\item[{float}]{x\+Perc,  }\item[{\mbox{\hyperlink{struct_arktis_engine_1_1_game_settings}{Game\+Settings}} \&}]{settings }\end{DoxyParamCaption})}
+
+
+
+Gets the x position of an object with the given percent value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x\+Perc} & position of the object in percents\\
+\hline
+{\em settings} & game settings\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+x position of the object \begin{DoxyVerb}\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 54 of file Misc\+Utils.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{55     \{}
+\DoxyCodeLine{56         \textcolor{keywordflow}{return} xPerc * settings.width / 100.f;}
+\DoxyCodeLine{57     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespace_arktis_engine_aa7101d84beded8cfc89a1b005f3b1f2a}\label{namespace_arktis_engine_aa7101d84beded8cfc89a1b005f3b1f2a}} 
+\index{ArktisEngine@{ArktisEngine}!GetYPosRelToScreenByPrct@{GetYPosRelToScreenByPrct}}
+\index{GetYPosRelToScreenByPrct@{GetYPosRelToScreenByPrct}!ArktisEngine@{ArktisEngine}}
+\subsubsection{\texorpdfstring{GetYPosRelToScreenByPrct()}{GetYPosRelToScreenByPrct()}}
+{\footnotesize\ttfamily float Arktis\+Engine\+::\+Get\+Y\+Pos\+Rel\+To\+Screen\+By\+Prct (\begin{DoxyParamCaption}\item[{float}]{y\+Perc,  }\item[{\mbox{\hyperlink{struct_arktis_engine_1_1_game_settings}{Game\+Settings}} \&}]{settings }\end{DoxyParamCaption})}
+
+
+
+Gets the y position of an object with the given percent value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y\+Perc} & position of the object in percents\\
+\hline
+{\em settings} & game settings\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+y position of the object \begin{DoxyVerb}\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 48 of file Misc\+Utils.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{49     \{}
+\DoxyCodeLine{50         \textcolor{keywordflow}{return} yPerc * settings.height / 100.f;}
+\DoxyCodeLine{51     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespace_arktis_engine_aee0d0d24a793b5dc52aac529a577a264}\label{namespace_arktis_engine_aee0d0d24a793b5dc52aac529a577a264}} 
+\index{ArktisEngine@{ArktisEngine}!ScaleSprToDims@{ScaleSprToDims}}
+\index{ScaleSprToDims@{ScaleSprToDims}!ArktisEngine@{ArktisEngine}}
+\subsubsection{\texorpdfstring{ScaleSprToDims()}{ScaleSprToDims()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Scale\+Spr\+To\+Dims (\begin{DoxyParamCaption}\item[{sf\+::\+Sprite \&}]{spr,  }\item[{float \&}]{width,  }\item[{float \&}]{height }\end{DoxyParamCaption})}
+
+
+
+Scales the sprite to the given width and height. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spr} & sprite\\
+\hline
+{\em width} & new width of the sprite\\
+\hline
+{\em height} & new height of the sprite \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file Misc\+Utils.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{29     \{}
+\DoxyCodeLine{30         sf::FloatRect bounds = spr.getGlobalBounds();}
+\DoxyCodeLine{31         spr.setScale((width * 100.0 / bounds.width) * 0.01, (height * 100.0 / bounds.height) * 0.01);}
+\DoxyCodeLine{32     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespace_arktis_engine_a72b7a00fd36289b3ff3c3f9f552af46e}\label{namespace_arktis_engine_a72b7a00fd36289b3ff3c3f9f552af46e}} 
+\index{ArktisEngine@{ArktisEngine}!ScaleSprToDims@{ScaleSprToDims}}
+\index{ScaleSprToDims@{ScaleSprToDims}!ArktisEngine@{ArktisEngine}}
+\subsubsection{\texorpdfstring{ScaleSprToDims()}{ScaleSprToDims()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Arktis\+Engine\+::\+Scale\+Spr\+To\+Dims (\begin{DoxyParamCaption}\item[{sf\+::\+Sprite \&}]{spr,  }\item[{sf\+::\+Vector2f \&}]{vect }\end{DoxyParamCaption})}
+
+
+
+Scales the sprite to the given width and height. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em spr} & sprite\\
+\hline
+{\em vect} & vector with dimensions \begin{DoxyVerb}\end{DoxyVerb}
+ \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 35 of file Misc\+Utils.\+cpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{36     \{}
+\DoxyCodeLine{37         sf::FloatRect bounds = spr.getGlobalBounds();}
+\DoxyCodeLine{38         spr.setScale((vect.x * 100.0 / bounds.width) * 0.01, (vect.y * 100.0 / bounds.height) * 0.01);}
+\DoxyCodeLine{39     \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{namespace_arktis_engine_a94b44bcf5156b511b6510658261da5cc}\label{namespace_arktis_engine_a94b44bcf5156b511b6510658261da5cc}} 
+\index{ArktisEngine@{ArktisEngine}!to\_string\_with\_precision@{to\_string\_with\_precision}}
+\index{to\_string\_with\_precision@{to\_string\_with\_precision}!ArktisEngine@{ArktisEngine}}
+\subsubsection{\texorpdfstring{to\_string\_with\_precision()}{to\_string\_with\_precision()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::string Arktis\+Engine\+::to\+\_\+string\+\_\+with\+\_\+precision (\begin{DoxyParamCaption}\item[{const T}]{a\+\_\+value,  }\item[{const int}]{n = {\ttfamily 6} }\end{DoxyParamCaption})}
+
+
+
+Converts a floating point value to a string and sets takes only given amount of numbers after the \textquotesingle{}.\textquotesingle{} into consideration. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a\+\_\+value} & the floating point variable\\
+\hline
+{\em n} & amount of characters after the \textquotesingle{}.\textquotesingle{}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+formatted floating point number in std\+::string \begin{DoxyVerb}\end{DoxyVerb}
+ 
+\end{DoxyReturn}
+
+
+Definition at line 143 of file Misc\+Utils.\+hpp.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{144     \{}
+\DoxyCodeLine{145         std::ostringstream out;}
+\DoxyCodeLine{146         out.precision(n);}
+\DoxyCodeLine{147         out << std::fixed << a\_value;}
+\DoxyCodeLine{148         \textcolor{keywordflow}{return} out.str();}
+\DoxyCodeLine{149     \}}
+
+\end{DoxyCode}

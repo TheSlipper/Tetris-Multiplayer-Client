@@ -69,20 +69,32 @@ namespace States
         void Draw(float dt);
         
     private:
+        ////////////////////////////////////////////////////////////
+        /// \brief Centers the status text on the screen
+        ///
+        ////////////////////////////////////////////////////////////
         void centerText();
 
+        ////////////////////////////////////////////////////////////
+        /// \brief Sends a matchmaking request to the server
+        ///
+        ////////////////////////////////////////////////////////////
         void sendMatchmakingReq();
 
+        ////////////////////////////////////////////////////////////
+        /// \brief Gets data on the opponent
+        ///
+        ////////////////////////////////////////////////////////////
 		ArktisEngine::UserData getOpponentData();
         
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
-        sf::Text loadingScreenText;
+        sf::Text loadingScreenText; ///< Text with the matchmaking status
         
-        std::string serverResponse;
+        std::string serverResponse; ///< String with server response
         
-        bool firstDraw = true;
+        bool firstDraw = true; ///< First draw flag
         
         ArktisEngine::GameDataRef _data; ///< Pointer to game's crucial data
     };
