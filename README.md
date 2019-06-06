@@ -1,6 +1,5 @@
-# <img align="right" src="https://raw.githubusercontent.com/TheSlipper/Tetris-Multiplayer-Client/master/Resources/Game%20Logo/logo_no_label.png" height="230" width="230"> Tetris Multiplayer Client
-------------------------------
-
+# <img align="left" src="https://raw.githubusercontent.com/TheSlipper/Tetris-Multiplayer-Client/master/Resources/Game%20Logo/logo_no_label.png" height="230" width="230"> Tetris Multiplayer Client
+<br><br>
 ## List of Contents
 
 1. Game screenshots
