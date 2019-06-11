@@ -22,6 +22,8 @@
 ////////////////////////////////////////////////////////////
 #include "MessagingManager.hpp"
 
+#include <iostream>
+
 namespace ArktisEngine
 {
     ////////////////////////////////////////////////////////////
@@ -53,12 +55,26 @@ namespace ArktisEngine
     bool MessagingManager::SendStringData(std::string stringData)
     {
         char *data = strdup(stringData.c_str());
-		bool execStatus = true;
+		bool execStatus = false;
 		if (this->usingTcp)
 			execStatus = this->tcpSocket.send(data, strlen(data)) == sf::Socket::Done;
 		else
-			execStatus = this->udpSocket.send(data, strlen(data), this->serverIpAddress, this->serverPort) == sf::Socket::Done;
-        return execStatus;
+		{
+			char buffer[2];
+			sf::IpAddress sender;
+			std::size_t received = 0;
+			unsigned short port;
+			while (!execStatus)
+			{
+				int checksum = this->getStrChecksum(data, strlen(data));
+				std::cout << checksum << std::endl;
+				execStatus = this->udpSocket.send(data, strlen(data), this->serverIpAddress, this->serverPort) == sf::Socket::Done;
+				this->udpSocket.receive(buffer, sizeof(buffer), received, sender, port);
+				execStatus = (strcmp(buffer, "OK") == 0) && execStatus;
+			}
+		}
+
+		return execStatus;
     }
     
     ////////////////////////////////////////////////////////////
@@ -73,8 +89,11 @@ namespace ArktisEngine
 
 		if (this->usingTcp)
 			execStatus = this->tcpSocket.receive(buffer, sizeof(buffer), received) == sf::Socket::Done;
-		else
+		else 
+		{
 			execStatus = this->udpSocket.receive(buffer, sizeof(buffer), received, sender, port) == sf::Socket::Done;
+			this->udpSocket.send("OK", strlen("OK"), this->serverIpAddress, this->serverPort);
+		}
 		
 		return execStatus ? std::string(buffer).substr(0, received) : "DATA_GET_ERR";
     }
@@ -112,8 +131,19 @@ namespace ArktisEngine
 	{
 		this->usingTcp = usingTcp;
 	}
+
+	////////////////////////////////////////////////////////////
 	void MessagingManager::SetToUdp(bool usingUdp)
 	{
 		this->SetToTcp(!usingUdp);
+	}
+
+	////////////////////////////////////////////////////////////
+	int MessagingManager::getStrChecksum(const char *ptr, size_t sz)
+	{
+		int chk = 0;
+		for (int i = 0; i < sz; i++)
+			chk -= (int)*ptr++;
+		return chk/sz;
 	}
 }

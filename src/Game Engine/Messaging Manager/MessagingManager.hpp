@@ -107,6 +107,8 @@ namespace ArktisEngine
 		void SetToUdp(bool usingUdp);
 
     private:
+		int getStrChecksum(const char *ptr, const size_t sz);
+
         ////////////////////////////////////////////////////////////
         // Member data
         ////////////////////////////////////////////////////////////
