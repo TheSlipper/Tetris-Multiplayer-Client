@@ -60,18 +60,20 @@ namespace ArktisEngine
 			execStatus = this->tcpSocket.send(data, strlen(data)) == sf::Socket::Done;
 		else
 		{
-			char buffer[2];
+			char buffer[3];
+			memset(buffer, 0, 3);
 			sf::IpAddress sender;
 			std::size_t received = 0;
 			unsigned short port;
-			while (!execStatus)
+			do
 			{
+				const static char *okChar = "OK";
 				int checksum = this->getStrChecksum(data, strlen(data));
 				std::cout << checksum << std::endl;
 				execStatus = this->udpSocket.send(data, strlen(data), this->serverIpAddress, this->serverPort) == sf::Socket::Done;
-				this->udpSocket.receive(buffer, sizeof(buffer), received, sender, port);
-				execStatus = (strcmp(buffer, "OK") == 0) && execStatus;
-			}
+				this->udpSocket.receive(buffer, 2, received, sender, port);
+				execStatus = (strcmp(buffer, okChar) == 0) && execStatus;
+			} while (!execStatus);
 		}
 
 		return execStatus;
