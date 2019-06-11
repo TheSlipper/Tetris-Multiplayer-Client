@@ -32,14 +32,14 @@ namespace ArktisEngine
 			execStatus = this->tcpSocket.connect(this->serverIpAddress, this->mainServerPort) == sf::Socket::Done;
 		else
 		{
-			const char *connectionMsg = "PORT_ALL_REQ";
+			const char *connectionMsg = "PORT_ALLOC_REQ";
 			char buff[100];
 			std::size_t received;
 			sf::IpAddress sender;
 			unsigned short port;
 			if (this->udpSocket.bind(7000) != sf::Socket::Done)
 				return false;
-			if (this->udpSocket.send(connectionMsg, strlen(connectionMsg), SERVER_IP, mainServerPort) != sf::Socket::Done)
+			if (this->udpSocket.send(connectionMsg, strlen(connectionMsg), this->serverIpAddress, mainServerPort) != sf::Socket::Done)
 				return false;
 			if (this->udpSocket.receive(buff, 100, received, sender, port) != sf::Socket::Done)
 				return false;

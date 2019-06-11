@@ -12,3 +12,4 @@ Debug/
 *.dll
 .settings.conf.swp
 Resources/.settings.conf.swp
+Release/
